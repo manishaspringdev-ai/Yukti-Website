@@ -1,0 +1,69 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Node dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Production build outputs
+dist/
+dist-ssr/
+build/
+*.local
+
+# Environment variables & secrets
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+*.env
+
+# Editor & IDE files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swo
+*.swn
+*.swp
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+[Dd]esktop.ini
+
+# Temporary cache, extraction and media assets
+.cache/
+.temp/
+.tmp/
+extracted_media/
+/extracted_media/
+
+# Reference assets & source documents (PDFs & Word Docs)
+public/reference_assets/
+reference_assets/
+*.docx
+*.doc
+*.pdf
+
+# Test coverage
+coverage/
+*.lcov
+*.nyc_output
