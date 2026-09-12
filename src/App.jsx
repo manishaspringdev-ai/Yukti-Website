@@ -109,7 +109,10 @@ export default function App() {
           />
 
           {/* Client Presentation Mode & Live Customizer */}
-          <ThemeCustomizerModal />
+          <ThemeCustomizerModal 
+            currentPage={currentPage}
+            setCurrentPage={handlePageChange}
+          />
 
           {/* Floating WhatsApp & Call Bar (PDF Change 11) */}
           <FloatingHelpBar onOpenConsultation={() => setIsConsultationOpen(true)} />

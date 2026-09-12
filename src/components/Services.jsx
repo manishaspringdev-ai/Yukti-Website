@@ -363,7 +363,7 @@ export default function Services({ onOpenConsultation }) {
                     </p>
 
                     <div className="pt-2 space-y-1.5 border-t border-slate-100 dark:border-slate-800">
-                      {srv.features.slice(0, 3).map((feat, i) => (
+                      {(srv.highlights || srv.features || []).slice(0, 3).map((feat, i) => (
                         <div key={i} className="flex items-center space-x-2 text-[11px] text-slate-600 dark:text-slate-400">
                           <span className="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
                           <span>{feat}</span>

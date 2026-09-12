@@ -17,10 +17,11 @@ import {
   MessageSquare,
   Send,
   Sliders,
-  CheckCircle2
+  CheckCircle2,
+  ArrowRight
 } from 'lucide-react';
 
-export default function ThemeCustomizerModal() {
+export default function ThemeCustomizerModal({ currentPage, setCurrentPage }) {
   const { 
     colorPreset, 
     setColorPreset, 
@@ -62,8 +63,28 @@ export default function ThemeCustomizerModal() {
 
   const { isDark, toggleTheme } = useTheme();
 
+  const handleVariantChangeAndNavigate = (setter, value, sectionHash) => {
+    setter(value);
+    if (setCurrentPage) {
+      if (currentPage !== 'home') {
+        setCurrentPage('home');
+      }
+      if (sectionHash) {
+        setTimeout(() => {
+          const el = document.querySelector(sectionHash);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 120);
+      }
+    }
+  };
+
   const handleRandomize = () => {
     randomizeAllVariants();
+    if (setCurrentPage && currentPage !== 'home') {
+      setCurrentPage('home');
+    }
     confetti({
       particleCount: 100,
       spread: 90,
@@ -118,6 +139,42 @@ export default function ThemeCustomizerModal() {
             >
               <X className="w-5 h-5" />
             </button>
+          </div>
+
+          {/* Active Page Navigator */}
+          <div className="p-3.5 rounded-2xl bg-brand-50/80 dark:bg-brand-950/60 border border-brand-200/80 dark:border-brand-800/80 space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] font-bold text-brand-700 dark:text-brand-300 flex items-center space-x-1.5">
+                <Layers className="w-3.5 h-3.5 text-brand-600 dark:text-brand-400" />
+                <span>Active Page:</span>
+              </span>
+              {currentPage !== 'home' && (
+                <button
+                  onClick={() => setCurrentPage && setCurrentPage('home')}
+                  className="text-[10px] font-extrabold px-2 py-0.5 rounded-lg bg-brand-600 text-white shadow hover:bg-brand-700 transition-all flex items-center space-x-1"
+                >
+                  <span>Go to Home Page</span>
+                  <ArrowRight className="w-3 h-3" />
+                </button>
+              )}
+            </div>
+            <select
+              value={currentPage || 'home'}
+              onChange={(e) => setCurrentPage && setCurrentPage(e.target.value)}
+              className="w-full p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-brand-200 dark:border-brand-800 text-xs font-bold text-slate-900 dark:text-white shadow-sm"
+            >
+              <option value="home">🏠 Home Page (All 9 Sections Live Customizer)</option>
+              <option value="course-python">🐍 Python Training Course Page (Greater Noida)</option>
+              <option value="course-java-fullstack">☕ Java Full Stack Development Course Page</option>
+              <option value="course-dsa">⚡ FAANG DSA & System Design Course Page</option>
+              <option value="courses">🎓 Master Courses & Syllabus Catalog Page</option>
+              <option value="about">🏢 About Us & Company Profile Page</option>
+            </select>
+            {currentPage !== 'home' && (
+              <p className="text-[10px] text-brand-600 dark:text-brand-400 font-medium leading-relaxed">
+                💡 Note: Section layout variations (Hero, Services, Training, etc.) are rendered on the Home Page. Selecting any section below will automatically navigate you to Home and scroll to that section.
+              </p>
+            )}
           </div>
 
           {/* Randomizer Shuffle Button */}
@@ -224,7 +281,7 @@ export default function ThemeCustomizerModal() {
               <span className="text-[11px] font-bold text-slate-600 dark:text-slate-300">2. Hero Section (10+ Variants)</span>
               <select
                 value={heroVariant}
-                onChange={(e) => setHeroVariant(e.target.value)}
+                onChange={(e) => handleVariantChangeAndNavigate(setHeroVariant, e.target.value, '#hero')}
                 className="w-full p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white font-medium"
               >
                 {HERO_VARIANTS.map(v => <option key={v.id} value={v.id}>{v.name}</option>)}
@@ -236,7 +293,7 @@ export default function ThemeCustomizerModal() {
               <span className="text-[11px] font-bold text-slate-600 dark:text-slate-300">3. Services Section (10+ Variants)</span>
               <select
                 value={servicesVariant}
-                onChange={(e) => setServicesVariant(e.target.value)}
+                onChange={(e) => handleVariantChangeAndNavigate(setServicesVariant, e.target.value, '#services')}
                 className="w-full p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white font-medium"
               >
                 {SERVICES_VARIANTS.map(v => <option key={v.id} value={v.id}>{v.name}</option>)}
@@ -248,7 +305,7 @@ export default function ThemeCustomizerModal() {
               <span className="text-[11px] font-bold text-slate-600 dark:text-slate-300">4. Training & Courses (10+ Variants)</span>
               <select
                 value={trainingVariant}
-                onChange={(e) => setTrainingVariant(e.target.value)}
+                onChange={(e) => handleVariantChangeAndNavigate(setTrainingVariant, e.target.value, '#training')}
                 className="w-full p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white font-medium"
               >
                 {TRAINING_VARIANTS.map(v => <option key={v.id} value={v.id}>{v.name}</option>)}
@@ -260,7 +317,7 @@ export default function ThemeCustomizerModal() {
               <span className="text-[11px] font-bold text-slate-600 dark:text-slate-300">5. Delivery Roadmap (10+ Variants)</span>
               <select
                 value={roadmapVariant}
-                onChange={(e) => setRoadmapVariant(e.target.value)}
+                onChange={(e) => handleVariantChangeAndNavigate(setRoadmapVariant, e.target.value, '#roadmap')}
                 className="w-full p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white font-medium"
               >
                 {ROADMAP_VARIANTS.map(v => <option key={v.id} value={v.id}>{v.name}</option>)}
@@ -272,7 +329,7 @@ export default function ThemeCustomizerModal() {
               <span className="text-[11px] font-bold text-slate-600 dark:text-slate-300">6. Leadership & Team (10+ Variants)</span>
               <select
                 value={teamVariant}
-                onChange={(e) => setTeamVariant(e.target.value)}
+                onChange={(e) => handleVariantChangeAndNavigate(setTeamVariant, e.target.value, '#team')}
                 className="w-full p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white font-medium"
               >
                 {TEAM_VARIANTS.map(v => <option key={v.id} value={v.id}>{v.name}</option>)}
@@ -284,7 +341,7 @@ export default function ThemeCustomizerModal() {
               <span className="text-[11px] font-bold text-slate-600 dark:text-slate-300">7. Reviews & Placement (10+ Variants)</span>
               <select
                 value={testimonialsVariant}
-                onChange={(e) => setTestimonialsVariant(e.target.value)}
+                onChange={(e) => handleVariantChangeAndNavigate(setTestimonialsVariant, e.target.value, '#reviews')}
                 className="w-full p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white font-medium"
               >
                 {TESTIMONIALS_VARIANTS.map(v => <option key={v.id} value={v.id}>{v.name}</option>)}
@@ -296,7 +353,7 @@ export default function ThemeCustomizerModal() {
               <span className="text-[11px] font-bold text-slate-600 dark:text-slate-300">8. Consultation & Contact (10+ Variants)</span>
               <select
                 value={contactVariant}
-                onChange={(e) => setContactVariant(e.target.value)}
+                onChange={(e) => handleVariantChangeAndNavigate(setContactVariant, e.target.value, '#contact')}
                 className="w-full p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white font-medium"
               >
                 {CONTACT_VARIANTS.map(v => <option key={v.id} value={v.id}>{v.name}</option>)}

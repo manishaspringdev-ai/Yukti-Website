@@ -7,8 +7,9 @@ export const siteData = {
   brand: {
     name: "Yukti Software",
     shortName: "Yukti",
-    logo: "/yukti-logo-transparent.png",
-    logoFull: "/yukti-logo.png",
+    logo: "/Yukti_Logo.e50a033331c232b30a3976a6b8518a52.svg",
+    logoFull: "/Yukti_Logo.e50a033331c232b30a3976a6b8518a52.svg",
+    logoSvg: "/Yukti_Logo.e50a033331c232b30a3976a6b8518a52.svg",
     tagline: "Optimized Software Solutions and Advanced Training",
     subTagline: "Bringing Efficiency, Profitability, and Better ROI Through Customized Software Solutions.",
     foundedYear: "2014",
