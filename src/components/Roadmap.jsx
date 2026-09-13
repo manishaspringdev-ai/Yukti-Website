@@ -3,6 +3,7 @@ import { siteData } from '../data';
 import { useCustomizer } from '../context/CustomizerContext';
 import VariantSwitcherBar from './VariantSwitcherBar';
 import Icon from './Icon';
+import { getRoadmapLogo } from './TechLogos';
 import { Sparkles, CheckCircle2, ArrowRight, GitCommit, LayoutGrid, Check, Clock, ChevronDown, Layers, Milestone } from 'lucide-react';
 
 export default function Roadmap({ onOpenConsultation }) {
@@ -11,14 +12,13 @@ export default function Roadmap({ onOpenConsultation }) {
   const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <section id="roadmap" className="py-24 relative overflow-hidden bg-slate-100/50 dark:bg-slate-900/40">
+    <section id="roadmap" className="py-12 sm:py-16 relative overflow-hidden bg-slate-100/50 dark:bg-slate-900/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-8">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 border border-brand-200 text-brand-700 dark:bg-brand-950/70 dark:border-brand-800 dark:text-brand-300">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>{roadmapSection.badge}</span>
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-6">
+          <div className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 text-slate-800 dark:text-slate-200 shadow-sm hover:border-brand-300 transition-all">
+            <span className="font-medium">{roadmapSection.badge}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             {roadmapSection.title}
@@ -40,7 +40,7 @@ export default function Roadmap({ onOpenConsultation }) {
         {/* V1: HORIZONTAL INTERACTIVE TIMELINE */}
         {/* ========================================================================= */}
         {roadmapVariant === 'v1_timeline' && (
-          <div className="space-y-12 animate-fadeIn">
+          <div className="space-y-8 animate-fadeIn">
             <div className="overflow-x-auto pb-4 scrollbar-none">
               <div className="flex items-center justify-between min-w-[720px] relative px-4">
                 <div className="absolute top-1/2 left-8 right-8 h-1 bg-slate-200 dark:bg-slate-800 -translate-y-1/2 -z-0"></div>
@@ -53,17 +53,17 @@ export default function Roadmap({ onOpenConsultation }) {
                       onClick={() => setActiveStep(idx)}
                       className="relative z-10 flex flex-col items-center group focus:outline-none"
                     >
-                      <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-bold text-sm transition-all duration-300 ${
+                      <div className={`w-13 h-13 rounded-2xl flex items-center justify-center p-2 transition-all duration-300 ${
                         isSelected
-                          ? 'bg-brand-600 text-white shadow-xl shadow-brand-500/30 scale-110 ring-4 ring-brand-100 dark:ring-brand-950'
+                          ? 'bg-white dark:bg-slate-800 shadow-xl shadow-brand-500/20 scale-110 ring-4 ring-brand-500/20 border-2 border-brand-500'
                           : isCompleted
-                          ? 'bg-emerald-500 text-white'
-                          : 'bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700 hover:border-brand-500'
+                          ? 'bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-400 dark:border-emerald-600 shadow-sm'
+                          : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-brand-400'
                       }`}>
-                        {step.stepNumber}
+                        {getRoadmapLogo(step.stepNumber, "w-7 h-7")}
                       </div>
                       <span className={`text-xs font-bold mt-2 transition-colors ${
-                        isSelected ? 'text-brand-600 dark:text-brand-400' : 'text-slate-500 dark:text-slate-400'
+                        isSelected ? 'text-brand-600 dark:text-brand-400 font-extrabold' : 'text-slate-600 dark:text-slate-400'
                       }`}>
                         {step.title.split(' ')[0]}
                       </span>
@@ -80,8 +80,8 @@ export default function Roadmap({ onOpenConsultation }) {
                   <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 sm:p-10 shadow-xl relative overflow-hidden">
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-slate-100 dark:border-slate-800">
                       <div className="flex items-center space-x-4">
-                        <div className="w-14 h-14 rounded-2xl bg-brand-600 text-white flex items-center justify-center shadow-lg">
-                          <Icon name={current.icon} className="w-7 h-7" />
+                        <div className="w-16 h-16 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center p-2.5 shadow-md flex-shrink-0">
+                          {getRoadmapLogo(current.stepNumber, "w-10 h-10")}
                         </div>
                         <div>
                           <div className="flex items-center space-x-2">
@@ -102,10 +102,10 @@ export default function Roadmap({ onOpenConsultation }) {
                     </div>
                     <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-100 dark:border-slate-800">
                       <div className="flex items-center space-x-2">
-                        <button disabled={activeStep === 0} onClick={() => setActiveStep(prev => Math.max(0, prev - 1))} className="px-4 py-2 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 disabled:opacity-40">← Previous</button>
-                        <button disabled={activeStep === roadmapSection.steps.length - 1} onClick={() => setActiveStep(prev => Math.min(roadmapSection.steps.length - 1, prev + 1))} className="px-4 py-2 rounded-xl text-xs font-bold text-slate-900 dark:text-white bg-slate-200 dark:bg-slate-700 disabled:opacity-40">Next →</button>
+                        <button disabled={activeStep === 0} onClick={() => setActiveStep(prev => Math.max(0, prev - 1))} className="px-4 py-2 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 disabled:opacity-40 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">← Previous</button>
+                        <button disabled={activeStep === roadmapSection.steps.length - 1} onClick={() => setActiveStep(prev => Math.min(roadmapSection.steps.length - 1, prev + 1))} className="px-4 py-2 rounded-xl text-xs font-bold text-slate-900 dark:text-white bg-slate-200 dark:bg-slate-700 disabled:opacity-40 hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors">Next →</button>
                       </div>
-                      <button onClick={onOpenConsultation} className="text-xs font-bold text-brand-600 dark:text-brand-400 flex items-center space-x-1">
+                      <button onClick={onOpenConsultation} className="text-xs font-bold text-brand-600 dark:text-brand-400 flex items-center space-x-1 hover:underline">
                         <span>Discuss with engineering team</span><ArrowRight className="w-3.5 h-3.5" />
                       </button>
                     </div>
@@ -125,7 +125,9 @@ export default function Roadmap({ onOpenConsultation }) {
               <div key={idx} className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 p-7 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400 font-extrabold text-sm flex items-center justify-center">{step.stepNumber}</span>
+                    <div className="w-12 h-12 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-2 flex items-center justify-center shadow-sm">
+                      {getRoadmapLogo(step.stepNumber, "w-7 h-7")}
+                    </div>
                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{step.subtitle}</span>
                   </div>
                   <h3 className="text-xl font-extrabold text-slate-900 dark:text-white">{step.title}</h3>
@@ -147,12 +149,18 @@ export default function Roadmap({ onOpenConsultation }) {
           <div className="p-8 rounded-3xl bg-slate-900 text-white border border-slate-800 animate-fadeIn space-y-8">
             <div className="flex flex-wrap justify-center gap-2">
               {roadmapSection.steps.map((step, idx) => (
-                <button key={idx} onClick={() => setActiveStep(idx)} className={`px-4 py-2 rounded-xl text-xs font-bold ${activeStep === idx ? 'bg-brand-600 text-white shadow-lg' : 'bg-slate-800 text-slate-400'}`}>
-                  Step {step.stepNumber}: {step.title.split(' ')[0]}
+                <button key={idx} onClick={() => setActiveStep(idx)} className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center space-x-2 transition-all ${activeStep === idx ? 'bg-brand-600 text-white shadow-lg scale-105' : 'bg-slate-800 text-slate-400 hover:text-white'}`}>
+                  {getRoadmapLogo(step.stepNumber, "w-4 h-4")}
+                  <span>Step {step.stepNumber}: {step.title.split(' ')[0]}</span>
                 </button>
               ))}
             </div>
             <div className="max-w-2xl mx-auto text-center space-y-4 py-4">
+              <div className="flex justify-center">
+                <div className="w-16 h-16 rounded-2xl bg-white/10 p-2.5 flex items-center justify-center shadow-lg">
+                  {getRoadmapLogo(roadmapSection.steps[activeStep].stepNumber, "w-10 h-10")}
+                </div>
+              </div>
               <span className="text-xs font-mono font-bold text-accent-primary uppercase">Stage {roadmapSection.steps[activeStep].stepNumber}</span>
               <h3 className="text-3xl font-black text-white">{roadmapSection.steps[activeStep].title}</h3>
               <p className="text-sm text-slate-300 leading-relaxed">{roadmapSection.steps[activeStep].description}</p>
@@ -169,9 +177,12 @@ export default function Roadmap({ onOpenConsultation }) {
             <div className="flex space-x-4 min-w-[1100px]">
               {roadmapSection.steps.map((step, idx) => (
                 <div key={idx} className="w-64 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm flex flex-col justify-between">
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     <div className="flex justify-between items-center text-[10px] font-bold text-slate-400">
-                      <span>SPRINT 0{step.stepNumber}</span>
+                      <div className="flex items-center space-x-2">
+                        {getRoadmapLogo(step.stepNumber, "w-5 h-5")}
+                        <span>SPRINT 0{step.stepNumber}</span>
+                      </div>
                       <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
                     </div>
                     <h4 className="text-sm font-bold text-slate-900 dark:text-white">{step.title}</h4>
@@ -192,7 +203,9 @@ export default function Roadmap({ onOpenConsultation }) {
             {roadmapSection.steps.map((step, idx) => (
               <div key={idx} className="flex space-x-4">
                 <div className="flex flex-col items-center">
-                  <div className="w-10 h-10 rounded-full bg-brand-600 text-white font-bold text-xs flex items-center justify-center shadow">{step.stepNumber}</div>
+                  <div className="w-12 h-12 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-2 flex items-center justify-center shadow">
+                    {getRoadmapLogo(step.stepNumber, "w-7 h-7")}
+                  </div>
                   {idx !== roadmapSection.steps.length - 1 && <div className="w-0.5 h-full bg-slate-200 dark:bg-slate-800 my-2"></div>}
                 </div>
                 <div className="flex-1 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
@@ -219,7 +232,10 @@ export default function Roadmap({ onOpenConsultation }) {
               </div>
               {roadmapSection.steps.map((s, i) => (
                 <div key={i} className="flex items-center justify-between p-2 rounded-xl bg-slate-900">
-                  <span className="text-slate-200">{s.stepNumber}. {s.title}</span>
+                  <div className="flex items-center space-x-2">
+                    {getRoadmapLogo(s.stepNumber, "w-5 h-5")}
+                    <span className="text-slate-200">{s.stepNumber}. {s.title}</span>
+                  </div>
                   <div className="w-48 bg-slate-800 h-3 rounded-full overflow-hidden">
                     <div className="bg-brand-500 h-full rounded-full" style={{ width: `${(i + 1) * 14}%` }}></div>
                   </div>
@@ -255,7 +271,10 @@ export default function Roadmap({ onOpenConsultation }) {
           <div className="max-w-3xl mx-auto space-y-3 animate-fadeIn">
             {roadmapSection.steps.map((s, i) => (
               <div key={i} className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex justify-between items-center">
-                <span className="font-bold text-sm text-slate-800 dark:text-slate-200">{s.stepNumber}. {s.title}</span>
+                <div className="flex items-center space-x-3">
+                  {getRoadmapLogo(s.stepNumber, "w-6 h-6")}
+                  <span className="font-bold text-sm text-slate-800 dark:text-slate-200">{s.stepNumber}. {s.title}</span>
+                </div>
                 <span className="text-xs text-brand-600 dark:text-brand-400 font-medium">{s.deliverable}</span>
               </div>
             ))}
@@ -270,7 +289,10 @@ export default function Roadmap({ onOpenConsultation }) {
             <div className="flex space-x-4 min-w-[900px]">
               {roadmapSection.steps.map((s, i) => (
                 <div key={i} className="w-72 p-6 rounded-3xl bg-slate-900 text-white border border-slate-800 space-y-3">
-                  <span className="text-xs text-brand-400 font-mono">0{i + 1} / 07</span>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-brand-400 font-mono">0{i + 1} / 07</span>
+                    {getRoadmapLogo(s.stepNumber, "w-6 h-6")}
+                  </div>
                   <h4 className="text-base font-bold">{s.title}</h4>
                   <p className="text-xs text-slate-400 leading-relaxed">{s.description}</p>
                 </div>
@@ -287,8 +309,9 @@ export default function Roadmap({ onOpenConsultation }) {
             <div className="flex flex-wrap justify-center items-center gap-3">
               {roadmapSection.steps.map((s, i) => (
                 <React.Fragment key={i}>
-                  <div className="px-4 py-2.5 rounded-2xl bg-brand-600 text-white text-xs font-bold shadow-md">
-                    {s.title}
+                  <div className="px-4 py-2.5 rounded-2xl bg-brand-600 text-white text-xs font-bold shadow-md flex items-center space-x-2">
+                    {getRoadmapLogo(s.stepNumber, "w-4 h-4")}
+                    <span>{s.title}</span>
                   </div>
                   {i !== roadmapSection.steps.length - 1 && <span className="text-slate-400 font-bold">→</span>}
                 </React.Fragment>
@@ -316,8 +339,8 @@ export default function Roadmap({ onOpenConsultation }) {
                   >
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <div className="w-10 h-10 rounded-2xl bg-brand-600 text-white font-black text-sm flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                          0{step.stepNumber}
+                        <div className="w-12 h-12 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-2 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                          {getRoadmapLogo(step.stepNumber, "w-7 h-7")}
                         </div>
                         <span className="text-[10px] font-mono font-bold text-brand-600 dark:text-brand-400">
                           STAGE {step.stepNumber}

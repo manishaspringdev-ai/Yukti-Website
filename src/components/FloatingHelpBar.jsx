@@ -14,36 +14,36 @@ export default function FloatingHelpBar({ onOpenConsultation }) {
 
   return (
     <>
-      {/* Floating Bottom Action Bar for Mobile & Desktop */}
-      <div className="fixed bottom-6 left-6 z-40 flex items-center space-x-3">
+      {/* Floating Right Action Bar for Mobile & Desktop */}
+      <div className="fixed bottom-5 right-4 sm:right-6 z-40 flex items-center space-x-2 sm:space-x-3">
         
         {/* WhatsApp Direct Chat Trigger */}
         <button
           onClick={handleWhatsAppClick}
-          className="group flex items-center space-x-2 px-3.5 py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm shadow-2xl shadow-emerald-600/40 hover:scale-105 active:scale-95 transition-all"
+          className="group flex items-center space-x-1.5 sm:space-x-2 px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs sm:text-sm shadow-2xl shadow-emerald-600/40 hover:scale-105 active:scale-95 transition-all border border-emerald-500/40"
           aria-label="Chat on WhatsApp"
           title="Direct WhatsApp Chat"
         >
-          <WhatsAppIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
-          <span className="hidden md:inline font-bold">Chat on WhatsApp</span>
+          <WhatsAppIcon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform shrink-0" />
+          <span className="font-bold whitespace-nowrap">Chat on WhatsApp</span>
         </button>
 
         {/* Call Now Button Trigger */}
         <button
           onClick={() => setShowCallPopup(!showCallPopup)}
-          className="group flex items-center space-x-2 px-3.5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 font-bold text-xs sm:text-sm shadow-2xl border border-slate-700/50 hover:scale-105 active:scale-95 transition-all"
+          className="group flex items-center space-x-1.5 sm:space-x-2 px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-full bg-slate-900 hover:bg-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800 text-white font-black text-xs sm:text-sm shadow-2xl border border-slate-700/60 hover:scale-105 active:scale-95 transition-all"
           aria-label="Call Now"
           title="Direct Call Support"
         >
-          <Phone className="w-4 h-4 text-brand-400 dark:text-brand-600 group-hover:rotate-12 transition-transform" />
-          <span className="hidden md:inline font-bold">Call Now</span>
+          <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 group-hover:rotate-12 transition-transform shrink-0" />
+          <span className="font-bold whitespace-nowrap">Call Now</span>
         </button>
 
       </div>
 
       {/* Quick Call Modal Popup */}
       {showCallPopup && (
-        <div className="fixed bottom-20 left-6 z-50 w-80 p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl animate-fadeIn space-y-4">
+        <div className="fixed bottom-20 right-4 sm:right-6 z-50 w-80 p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl animate-fadeIn space-y-4">
           <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
             <div className="flex items-center space-x-2">
               <div className="w-7 h-7 rounded-xl bg-brand-600 text-white flex items-center justify-center">

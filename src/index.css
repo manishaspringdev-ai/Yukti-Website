@@ -140,8 +140,12 @@
     --accent-secondary: 244 63 94;
   }
 
+  :root {
+    --font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
   body {
-    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: var(--font-family), 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
   }
 }
 

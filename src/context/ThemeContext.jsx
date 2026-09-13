@@ -3,34 +3,20 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(() => {
-    // Check localStorage or system preference
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('yukti-theme');
-      if (savedTheme) return savedTheme;
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
-      }
-    }
-    return 'dark'; // Default to modern sleek dark mode
-  });
+  const [theme, setTheme] = useState('light');
 
   useEffect(() => {
     const root = document.documentElement;
-    if (theme === 'dark') {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
-    localStorage.setItem('yukti-theme', theme);
+    root.classList.remove('dark');
+    localStorage.setItem('yukti-theme', 'light');
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
+    setTheme('light');
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme, isDark: theme === 'dark' }}>
+    <ThemeContext.Provider value={{ theme: 'light', setTheme, toggleTheme, isDark: false }}>
       {children}
     </ThemeContext.Provider>
   );

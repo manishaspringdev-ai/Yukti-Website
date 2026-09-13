@@ -3,6 +3,7 @@ import { siteData } from '../data';
 import { useCustomizer } from '../context/CustomizerContext';
 import VariantSwitcherBar from './VariantSwitcherBar';
 import Icon from './Icon';
+import { getServiceLogo } from './TechLogos';
 import { 
   Check, 
   ArrowRight, 
@@ -26,14 +27,13 @@ export default function Services({ onOpenConsultation }) {
   const selectedService = servicesSection.services.find(s => s.id === activeService) || servicesSection.services[0];
 
   return (
-    <section id="services" className="py-24 relative overflow-hidden bg-slate-100/50 dark:bg-slate-900/40">
+    <section id="services" className="py-12 sm:py-16 relative overflow-hidden bg-slate-100/50 dark:bg-slate-900/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-8">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 border border-brand-200 text-brand-700 dark:bg-brand-950/70 dark:border-brand-800 dark:text-brand-300">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>{servicesSection.badge}</span>
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-6">
+          <div className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 text-slate-800 dark:text-slate-200 shadow-sm hover:border-brand-300 transition-all">
+            <span className="font-medium">{servicesSection.badge}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             {servicesSection.title}
@@ -70,10 +70,8 @@ export default function Services({ onOpenConsultation }) {
                     }`}
                   >
                     <div className="flex items-center space-x-4">
-                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110 ${
-                        isActive ? 'bg-brand-600 text-white shadow-md shadow-brand-500/30' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
-                      }`}>
-                        <Icon name={service.icon} className="w-6 h-6" />
+                      <div className="w-13 h-13 p-2 rounded-2xl bg-slate-50 dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                        {getServiceLogo(service.id, "w-8 h-8")}
                       </div>
                       <div>
                         <span className="text-xs font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-wider block">{service.tag}</span>
@@ -87,9 +85,9 @@ export default function Services({ onOpenConsultation }) {
             </div>
             <div className="lg:col-span-7">
               <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-xl space-y-6">
-                <div className="flex items-center space-x-3 pb-6 border-b border-slate-100 dark:border-slate-800">
-                  <div className="w-12 h-12 rounded-2xl bg-brand-600 text-white flex items-center justify-center shadow-lg">
-                    <Icon name={selectedService.icon} className="w-6 h-6" />
+                <div className="flex items-center space-x-4 pb-6 border-b border-slate-100 dark:border-slate-800">
+                  <div className="w-14 h-14 p-2.5 rounded-2xl bg-slate-50 dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-md">
+                    {getServiceLogo(selectedService.id, "w-9 h-9")}
                   </div>
                   <div>
                     <span className="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest">{selectedService.tag}</span>
@@ -129,8 +127,8 @@ export default function Services({ onOpenConsultation }) {
               <div key={service.id} className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 p-7 shadow-sm hover:shadow-2xl hover:border-brand-500/50 transition-all flex flex-col justify-between group">
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <div className="w-12 h-12 rounded-2xl bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Icon name={service.icon} className="w-6 h-6" />
+                    <div className="w-14 h-14 p-2.5 rounded-2xl bg-slate-50 dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                      {getServiceLogo(service.id, "w-9 h-9")}
                     </div>
                     <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-brand-50 dark:bg-brand-950 text-brand-700 dark:text-brand-300">{service.tag}</span>
                   </div>
@@ -157,7 +155,9 @@ export default function Services({ onOpenConsultation }) {
                 <div key={service.id} className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
                   <button onClick={() => setOpenAccordion(isOpen ? null : service.id)} className="w-full p-5 text-left flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-800/50">
                     <div className="flex items-center space-x-4">
-                      <div className="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400 flex items-center justify-center"><Icon name={service.icon} className="w-5 h-5" /></div>
+                      <div className="w-12 h-12 p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center">
+                        {getServiceLogo(service.id, "w-7 h-7")}
+                      </div>
                       <div><span className="text-[10px] font-bold text-brand-600 uppercase tracking-widest">{service.tag}</span><h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">{service.title}</h4></div>
                     </div>
                     <ChevronDown className={`w-5 h-5 text-slate-400 transition-transform ${isOpen ? 'rotate-180 text-brand-600' : ''}`} />
@@ -183,7 +183,9 @@ export default function Services({ onOpenConsultation }) {
               {servicesSection.services.map((service) => (
                 <div key={service.id} className="w-80 flex-shrink-0 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 shadow-md flex flex-col justify-between">
                   <div className="space-y-3">
-                    <div className="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400 flex items-center justify-center"><Icon name={service.icon} className="w-6 h-6" /></div>
+                    <div className="w-14 h-14 p-2.5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center">
+                      {getServiceLogo(service.id, "w-8 h-8")}
+                    </div>
                     <span className="text-[10px] font-bold text-brand-600 uppercase">{service.tag}</span>
                     <h4 className="text-lg font-bold text-slate-900 dark:text-white">{service.shortTitle}</h4>
                     <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">{service.description}</p>
@@ -208,7 +210,12 @@ export default function Services({ onOpenConsultation }) {
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
                   {servicesSection.services.map((s) => (
                     <tr key={s.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40">
-                      <td className="p-4 font-bold text-slate-900 dark:text-white flex items-center space-x-2"><Icon name={s.icon} className="w-4 h-4 text-brand-600" /><span>{s.shortTitle}</span></td>
+                      <td className="p-4 font-bold text-slate-900 dark:text-white flex items-center space-x-3">
+                        <div className="w-8 h-8 p-1 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+                          {getServiceLogo(s.id, "w-5 h-5")}
+                        </div>
+                        <span>{s.shortTitle}</span>
+                      </td>
                       <td className="p-4">{s.highlights[0]}</td>
                       <td className="p-4 text-emerald-600 dark:text-emerald-400 font-medium">100% Encrypted & QA Verified</td>
                       <td className="p-4 text-right"><button onClick={onOpenConsultation} className="px-3 py-1.5 rounded-lg bg-brand-600 text-white font-bold text-xs">Inquire</button></td>

@@ -11,14 +11,13 @@ export default function Team() {
   const [flippedIndex, setFlippedIndex] = useState(null);
 
   return (
-    <section id="team" className="py-24 relative overflow-hidden bg-slate-100/50 dark:bg-slate-900/40">
+    <section id="team" className="py-12 sm:py-16 relative overflow-hidden bg-slate-100/50 dark:bg-slate-900/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-8">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 border border-brand-200 text-brand-700 dark:bg-brand-950/70 dark:border-brand-800 dark:text-brand-300">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>{teamSection.badge}</span>
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-6">
+          <div className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 text-slate-800 dark:text-slate-200 shadow-sm hover:border-brand-300 transition-all">
+            <span className="font-medium">{teamSection.badge}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             {teamSection.title}

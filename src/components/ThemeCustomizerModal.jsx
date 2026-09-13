@@ -1,13 +1,10 @@
 import React from 'react';
 import { useCustomizer } from '../context/CustomizerContext';
-import { useTheme } from '../context/ThemeContext';
 import confetti from 'canvas-confetti';
 import { 
   Palette, 
   X, 
   Check, 
-  Sun, 
-  Moon, 
   Sparkles, 
   Dices,
   Layers,
@@ -18,13 +15,17 @@ import {
   Send,
   Sliders,
   CheckCircle2,
-  ArrowRight
+  ArrowRight,
+  Type
 } from 'lucide-react';
 
 export default function ThemeCustomizerModal({ currentPage, setCurrentPage }) {
   const { 
     colorPreset, 
-    setColorPreset, 
+    setColorPreset,
+    fontPreset,
+    setFontPreset,
+    FONT_PRESETS, 
     navbarVariant,
     setNavbarVariant,
     dropdownVariant,
@@ -61,8 +62,6 @@ export default function ThemeCustomizerModal({ currentPage, setCurrentPage }) {
     FOOTER_VARIANTS
   } = useCustomizer();
 
-  const { isDark, toggleTheme } = useTheme();
-
   const handleVariantChangeAndNavigate = (setter, value, sectionHash) => {
     setter(value);
     if (setCurrentPage) {
@@ -96,16 +95,20 @@ export default function ThemeCustomizerModal({ currentPage, setCurrentPage }) {
     return (
       <button
         onClick={() => setIsCustomizerOpen(true)}
-        className="fixed top-24 right-4 z-40 px-3.5 py-2.5 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 shadow-2xl backdrop-blur-xl flex items-center space-x-2 text-xs font-bold text-slate-800 dark:text-white hover:scale-105 active:scale-95 transition-all group"
-        title="Client Demo Studio"
+        className="fixed top-24 right-4 z-50 px-4 py-2.5 rounded-2xl bg-white/95 dark:bg-slate-900/95 border-2 border-brand-500/50 shadow-2xl backdrop-blur-xl flex items-center space-x-2.5 text-xs font-bold text-slate-800 dark:text-white hover:scale-105 active:scale-95 transition-all group ring-4 ring-brand-500/10"
+        title="Open Theme & Font Customizer"
+        aria-label="Open Theme & Font Customizer"
       >
-        <div className="w-5 h-5 rounded-lg bg-gradient-to-tr from-brand-600 to-accent-primary flex items-center justify-center text-white">
+        <div className="w-6 h-6 rounded-xl bg-gradient-to-tr from-brand-600 to-accent-primary flex items-center justify-center text-white shadow-md">
           <Palette className="w-3.5 h-3.5 group-hover:rotate-45 transition-transform" />
         </div>
-        <span className="hidden sm:inline font-black">Design Studio</span>
-        <span className="px-1.5 py-0.5 rounded-full text-[9px] bg-brand-100 text-brand-700 dark:bg-brand-950 dark:text-brand-300 font-extrabold">
-          28 Themes • 90+ Layouts
-        </span>
+        <div className="text-left hidden sm:block">
+          <div className="flex items-center gap-1.5">
+            <span className="font-extrabold text-slate-900 dark:text-white">Design Studio</span>
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+          </div>
+          <p className="text-[10px] text-slate-500 dark:text-slate-400">Themes, Fonts & 90+ Layouts</p>
+        </div>
       </button>
     );
   }
@@ -227,20 +230,51 @@ export default function ThemeCustomizerModal({ currentPage, setCurrentPage }) {
             </div>
           </div>
 
-          {/* Light / Dark Mode Toggle */}
-          <div className="p-3 rounded-2xl bg-slate-100 dark:bg-slate-800/80 flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              {isDark ? <Moon className="w-4 h-4 text-brand-400" /> : <Sun className="w-4 h-4 text-amber-500" />}
-              <span className="text-xs font-bold text-slate-900 dark:text-white">
-                {isDark ? "Dark Theme Active" : "Light Theme Active"}
+          {/* Typography Font Selection (5 Google Fonts) */}
+          <div className="space-y-2.5">
+            <div className="flex items-center justify-between">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center space-x-1.5">
+                <Type className="w-3.5 h-3.5 text-brand-500" />
+                <span>Typography Font (5 Presets)</span>
+              </label>
+              <span className="text-[11px] text-brand-600 dark:text-brand-400 font-bold">
+                {(FONT_PRESETS || []).find(f => f.id === fontPreset)?.name || 'Plus Jakarta Sans'}
               </span>
             </div>
-            <button
-              onClick={toggleTheme}
-              className="px-3 py-1 rounded-xl bg-white dark:bg-slate-900 text-xs font-bold shadow-sm hover:scale-105 transition-all"
-            >
-              Toggle
-            </button>
+
+            <div className="grid grid-cols-1 gap-1.5">
+              {(FONT_PRESETS || [
+                { id: 'plusJakarta', name: 'Plus Jakarta Sans', desc: 'Modern Tech & SaaS Standard' },
+                { id: 'inter', name: 'Inter Sans', desc: 'Stripe & Linear Minimalist' },
+                { id: 'outfit', name: 'Outfit Pro', desc: 'Futuristic Luxury & Tech Editorial' },
+                { id: 'poppins', name: 'Poppins Geometric', desc: 'Bold Friendly & Engaging' },
+                { id: 'spaceGrotesk', name: 'Space Grotesk', desc: 'Cyberpunk & Modernist Mono-Vibe' }
+              ]).map((font) => {
+                const isSelected = fontPreset === font.id;
+                return (
+                  <button
+                    key={font.id}
+                    onClick={() => setFontPreset(font.id)}
+                    className={`p-2.5 rounded-xl text-left border transition-all flex items-center justify-between ${
+                      isSelected
+                        ? 'border-brand-500 bg-brand-50/80 dark:bg-brand-950/70 ring-2 ring-brand-500/20 shadow-sm'
+                        : 'border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/60'
+                    }`}
+                  >
+                    <div>
+                      <p className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                        <span>{font.name}</span>
+                        {font.id === 'plusJakarta' && (
+                          <span className="text-[9px] px-1.5 py-0.2 bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 rounded font-bold">Default</span>
+                        )}
+                      </p>
+                      <p className="text-[10px] text-slate-500 dark:text-slate-400">{font.desc}</p>
+                    </div>
+                    {isSelected && <Check className="w-4 h-4 text-brand-600 dark:text-brand-400 flex-shrink-0" />}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           {/* Component Variants Dropdowns */}

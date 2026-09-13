@@ -1,7 +1,6 @@
-/**
- * Yukti Software - Central Dynamic Data Store
- * All website content from Homepage, About Us, PDF changes, and 3 Course documents (Python, Java Full Stack, DSA).
- */
+import { docxPagesData } from './data/pagesDataFromDocs';
+
+export { docxPagesData };
 
 export const siteData = {
   brand: {
@@ -51,7 +50,7 @@ export const siteData = {
   ],
 
   hero: {
-    badge: "🚀 Premier Software Solutions & IT Training Institute",
+    badge: "Premier Software Solutions & IT Training Institute",
     title: "Software Solutions and Training by",
     titleHighlight: "Yukti Software",
     subtitle: "Bringing Efficiency, Profitability, and Better ROI Through Customized Software Solutions.",

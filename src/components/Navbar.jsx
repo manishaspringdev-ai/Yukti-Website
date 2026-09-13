@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useTheme } from '../context/ThemeContext';
 import { useCustomizer } from '../context/CustomizerContext';
 import { siteData } from '../data';
 import { 
-  Sun, 
-  Moon, 
   Menu, 
   X, 
   ArrowRight, 
@@ -14,6 +11,7 @@ import {
   Mail, 
   MapPin, 
   ChevronDown, 
+  ChevronRight,
   GraduationCap, 
   Terminal, 
   Binary, 
@@ -25,7 +23,6 @@ import { WhatsAppIcon } from './SocialIcons';
 import NavbarCoursesDropdown from './NavbarCoursesDropdown';
 
 export default function Navbar({ currentPage, setCurrentPage, onOpenConsultation }) {
-  const { isDark, toggleTheme } = useTheme();
   const { navbarVariant } = useCustomizer();
   const { brand } = siteData;
 
@@ -117,11 +114,7 @@ export default function Navbar({ currentPage, setCurrentPage, onOpenConsultation
                   className="flex items-center group text-left focus:outline-none"
                 >
                   <div className="h-14 px-3.5 py-1.5 flex items-center justify-center rounded-2xl bg-white/95 dark:bg-slate-800/90 shadow-sm border border-slate-200/80 dark:border-slate-700/80 group-hover:scale-105 transition-transform duration-200">
-                    <img 
-                      src="/Yukti_Logo.e50a033331c232b30a3976a6b8518a52.svg" 
-                      alt="Yukti Software Logo" 
-                      className="h-10 w-auto object-contain"
-                    />
+                    <img src="/Yukti_Logo.e50a033331c232b30a3976a6b8518a52.svg" alt="Yukti Software Logo" width="160" height="44" decoding="async" className="h-10 w-auto object-contain" />
                   </div>
                 </button>
 
@@ -208,23 +201,8 @@ export default function Navbar({ currentPage, setCurrentPage, onOpenConsultation
                   </button>
                 </nav>
 
-                {/* Action Buttons & Theme Switcher */}
+                {/* Action Buttons */}
                 <div className="flex items-center space-x-3">
-                  
-                  {/* Theme Toggle */}
-                  <button
-                    onClick={toggleTheme}
-                    aria-label="Toggle Theme"
-                    className="p-2.5 rounded-xl text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all focus:outline-none"
-                    title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
-                  >
-                    {isDark ? (
-                      <Sun className="w-5 h-5 text-amber-400 hover:rotate-90 transition-transform duration-300" />
-                    ) : (
-                      <Moon className="w-5 h-5 text-brand-600 hover:-rotate-12 transition-transform duration-300" />
-                    )}
-                  </button>
-
                   {/* Book Demo CTA (Rexton Reference) */}
                   <button
                     onClick={onOpenConsultation}
@@ -259,7 +237,7 @@ export default function Navbar({ currentPage, setCurrentPage, onOpenConsultation
             {/* Logo */}
             <button onClick={() => handleNav('home')} className="flex items-center pl-1 group focus:outline-none">
               <div className="h-10 px-3 py-1 rounded-full bg-white dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-700 flex items-center justify-center group-hover:scale-105 transition-transform">
-                <img src="/Yukti_Logo.e50a033331c232b30a3976a6b8518a52.svg" alt="Yukti Logo" className="h-7 w-auto object-contain" />
+                <img src="/Yukti_Logo.e50a033331c232b30a3976a6b8518a52.svg" alt="Yukti Software - Enterprise Software Development & IT Training Institute" width="160" height="44" decoding="async" className="h-7 w-auto object-contain" />
               </div>
             </button>
 
@@ -300,9 +278,6 @@ export default function Navbar({ currentPage, setCurrentPage, onOpenConsultation
 
             {/* Actions */}
             <div className="flex items-center space-x-2 pr-1">
-              <button onClick={toggleTheme} className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:scale-105 transition-all">
-                {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-brand-600" />}
-              </button>
               <button 
                 onClick={onOpenConsultation} 
                 className="px-4 py-2 rounded-full bg-gradient-to-r from-brand-600 to-accent-primary text-white font-bold text-xs shadow-md hover:scale-105 active:scale-95 transition-all"
@@ -336,7 +311,7 @@ export default function Navbar({ currentPage, setCurrentPage, onOpenConsultation
             {/* Centered Brand Logo */}
             <button onClick={() => handleNav('home')} className="flex items-center group focus:outline-none">
               <div className="h-12 px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-700 flex items-center justify-center group-hover:scale-105 transition-transform">
-                <img src="/Yukti_Logo.e50a033331c232b30a3976a6b8518a52.svg" alt="Yukti Logo" className="h-8 w-auto object-contain" />
+                <img src="/Yukti_Logo.e50a033331c232b30a3976a6b8518a52.svg" alt="Yukti Software - Enterprise Software Development & IT Training Institute" width="160" height="44" decoding="async" className="h-8 w-auto object-contain" />
               </div>
             </button>
 
@@ -349,16 +324,13 @@ export default function Navbar({ currentPage, setCurrentPage, onOpenConsultation
               </div>
 
               <div className="flex items-center space-x-2">
-                <button onClick={toggleTheme} className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
-                  {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-brand-600" />}
-                </button>
                 <button 
                   onClick={onOpenConsultation} 
                   className="px-3.5 py-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs shadow-sm transition-all"
                 >
                   Book Free Demo
                 </button>
-                <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="lg:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800">
+                <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle mobile menu" className="lg:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800">
                   {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                 </button>
               </div>
@@ -377,7 +349,7 @@ export default function Navbar({ currentPage, setCurrentPage, onOpenConsultation
             <div className="flex items-center space-x-3">
               <button onClick={() => handleNav('home')} className="flex items-center space-x-2">
                 <div className="h-9 px-2 rounded-lg bg-white/10 border border-brand-400/40 flex items-center justify-center">
-                  <img src="/Yukti_Logo.e50a033331c232b30a3976a6b8518a52.svg" alt="Yukti Logo" className="h-6 w-auto object-contain" />
+                  <img src="/Yukti_Logo.e50a033331c232b30a3976a6b8518a52.svg" alt="Yukti Software - Enterprise Software Development & IT Training Institute" width="160" height="44" decoding="async" className="h-6 w-auto object-contain" />
                 </div>
                 <div className="text-left font-mono">
                   <span className="text-xs font-black text-white tracking-wider uppercase">YUKTI.CORE</span>
@@ -408,16 +380,13 @@ export default function Navbar({ currentPage, setCurrentPage, onOpenConsultation
                 <WhatsAppIcon className="w-3.5 h-3.5" />
                 <span>Live Chat</span>
               </button>
-              <button onClick={toggleTheme} className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">
-                {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-brand-400" />}
-              </button>
               <button 
                 onClick={onOpenConsultation} 
                 className="px-4 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white font-mono text-xs font-bold shadow-lg shadow-brand-500/30 transition-all"
               >
                 Execute Demo &gt;
               </button>
-              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">
+              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle mobile menu" className="md:hidden p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">
                 {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
               </button>
             </div>
@@ -431,14 +400,27 @@ export default function Navbar({ currentPage, setCurrentPage, onOpenConsultation
       {navbarVariant === 'v5_gradientBanner' && (
         <div className="w-full">
           {/* Top Live Admissions Ribbon */}
-          <div className="bg-gradient-to-r from-brand-700 via-brand-600 to-accent-primary text-white py-1 px-4 text-center text-xs font-bold shadow-inner">
-            <div className="max-w-7xl mx-auto flex items-center justify-between">
-              <span className="hidden sm:inline">🚀 Admissions Open for 2026 Batches | 100% Placement Assistance</span>
-              <span className="sm:hidden">🚀 New Batches Starting This Week!</span>
-              <div className="flex items-center space-x-4">
-                <button onClick={() => handleNav('course-python')} className="underline hover:text-brand-100 text-[11px]">Python</button>
-                <button onClick={() => handleNav('course-java-fullstack')} className="underline hover:text-brand-100 text-[11px]">Java</button>
-                <button onClick={() => handleNav('course-dsa')} className="underline hover:text-brand-100 text-[11px]">DSA</button>
+          <div className="bg-gradient-to-r from-brand-700 via-brand-600 to-accent-primary text-white py-1.5 px-4 text-xs font-bold shadow-inner">
+            <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+              <div className="flex items-center space-x-2 shrink-0">
+                <span className="hidden md:inline">🚀 Admissions Open for 2026 Batches | 100% Placement Assistance</span>
+                <span className="md:hidden">🚀 Admissions Open 2026:</span>
+              </div>
+              
+              <div className="flex items-center gap-1.5 overflow-x-auto py-0.5 no-scrollbar text-[11px]">
+                <button onClick={() => handleNav('course-python')} className="px-2 py-0.5 rounded-md bg-white/15 hover:bg-white/30 text-white transition-all shrink-0">Python</button>
+                <button onClick={() => handleNav('course-java-fullstack')} className="px-2 py-0.5 rounded-md bg-white/15 hover:bg-white/30 text-white transition-all shrink-0">Java FullStack</button>
+                <button onClick={() => handleNav('course-dsa')} className="px-2 py-0.5 rounded-md bg-white/15 hover:bg-white/30 text-white transition-all shrink-0">DSA</button>
+                <button onClick={() => handleNav('course-ai-fullstack')} className="px-2 py-0.5 rounded-md bg-white/15 hover:bg-white/30 text-white transition-all shrink-0">AI FullStack</button>
+                <button onClick={() => handleNav('course-mern-stack')} className="px-2 py-0.5 rounded-md bg-white/15 hover:bg-white/30 text-white transition-all shrink-0">MERN</button>
+                <button onClick={() => handleNav('course-react-js')} className="hidden sm:inline-block px-2 py-0.5 rounded-md bg-white/15 hover:bg-white/30 text-white transition-all shrink-0">React</button>
+                <button onClick={() => handleNav('course-spring-boot')} className="hidden lg:inline-block px-2 py-0.5 rounded-md bg-white/15 hover:bg-white/30 text-white transition-all shrink-0">Spring Boot</button>
+                <button onClick={() => handleNav('course-data-analytics')} className="hidden lg:inline-block px-2 py-0.5 rounded-md bg-white/15 hover:bg-white/30 text-white transition-all shrink-0">Data Analytics</button>
+                <button onClick={() => handleNav('course-dbms')} className="hidden xl:inline-block px-2 py-0.5 rounded-md bg-white/15 hover:bg-white/30 text-white transition-all shrink-0">DBMS</button>
+                <button onClick={() => handleNav('courses')} className="px-2 py-0.5 rounded-md bg-black/30 hover:bg-black/40 text-amber-300 font-extrabold transition-all shrink-0 flex items-center space-x-0.5">
+                  <span>All 15+</span>
+                  <ChevronRight className="w-3 h-3 inline" />
+                </button>
               </div>
             </div>
           </div>
@@ -449,7 +431,7 @@ export default function Navbar({ currentPage, setCurrentPage, onOpenConsultation
               {/* Brand Logo */}
               <button onClick={() => handleNav('home')} className="flex items-center group focus:outline-none">
                 <div className="h-11 px-3 py-1 rounded-xl bg-white/95 dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-700 flex items-center justify-center group-hover:scale-105 transition-transform">
-                  <img src="/Yukti_Logo.e50a033331c232b30a3976a6b8518a52.svg" alt="Yukti Logo" className="h-8 w-auto object-contain" />
+                  <img src="/Yukti_Logo.e50a033331c232b30a3976a6b8518a52.svg" alt="Yukti Software - Enterprise Software Development & IT Training Institute" width="160" height="44" decoding="async" className="h-8 w-auto object-contain" />
                 </div>
               </button>
 
@@ -492,16 +474,13 @@ export default function Navbar({ currentPage, setCurrentPage, onOpenConsultation
 
               {/* Actions */}
               <div className="flex items-center space-x-2">
-                <button onClick={toggleTheme} className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800">
-                  {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-brand-600" />}
-                </button>
                 <button 
                   onClick={onOpenConsultation}
                   className="px-4 py-2 rounded-xl bg-gradient-to-r from-brand-600 via-brand-500 to-accent-primary text-white font-bold text-xs shadow-md hover:scale-105 transition-all"
                 >
                   Book Free Demo
                 </button>
-                <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="lg:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800">
+                <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle mobile menu" className="lg:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800">
                   {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                 </button>
               </div>
@@ -528,32 +507,56 @@ export default function Navbar({ currentPage, setCurrentPage, onOpenConsultation
           </button>
 
           {/* Mobile Courses Section */}
-          <div className="p-3 rounded-2xl bg-brand-50/60 dark:bg-brand-950/40 space-y-2 border border-brand-200/60 dark:border-brand-800/60">
-            <p className="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wider">IT Training Courses</p>
-            <button
-              onClick={() => handleNav('course-python')}
-              className="w-full text-left p-2 rounded-lg text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900"
-            >
-              🐍 Python Training (Greater Noida)
-            </button>
-            <button
-              onClick={() => handleNav('course-java-fullstack')}
-              className="w-full text-left p-2 rounded-lg text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900"
-            >
-              ☕ Java Full Stack (React + Spring Boot)
-            </button>
-            <button
-              onClick={() => handleNav('course-dsa')}
-              className="w-full text-left p-2 rounded-lg text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900"
-            >
-              ⚡ Data Structures & Algorithms (DSA)
-            </button>
-            <button
-              onClick={() => handleNav('courses')}
-              className="w-full text-left p-2 rounded-lg text-xs font-bold text-brand-600 dark:text-brand-400"
-            >
-              → View All Career Courses
-            </button>
+          <div className="p-3.5 rounded-2xl bg-brand-50/60 dark:bg-brand-950/40 space-y-2 border border-brand-200/60 dark:border-brand-800/60">
+            <div className="flex items-center justify-between">
+              <p className="text-xs font-black text-brand-600 dark:text-brand-400 uppercase tracking-wider">All 15 Career Tracks</p>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-brand-100 text-brand-700 dark:bg-brand-900 dark:text-brand-300 font-bold">15 Programs</span>
+            </div>
+            
+            <div className="grid grid-cols-1 gap-1 pt-1">
+              <button
+                onClick={() => handleNav('course-python')}
+                className="w-full text-left p-2 rounded-lg text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900 flex items-center justify-between"
+              >
+                <span>🐍 Python Programming</span>
+                <span className="text-[10px] text-emerald-600 font-bold">4.5-18 LPA</span>
+              </button>
+              <button
+                onClick={() => handleNav('course-java-fullstack')}
+                className="w-full text-left p-2 rounded-lg text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900 flex items-center justify-between"
+              >
+                <span>☕ Java Full Stack & Microservices</span>
+                <span className="text-[10px] text-emerald-600 font-bold">6-24 LPA</span>
+              </button>
+              <button
+                onClick={() => handleNav('course-ai-fullstack')}
+                className="w-full text-left p-2 rounded-lg text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900 flex items-center justify-between"
+              >
+                <span>🤖 AI Full Stack Development</span>
+                <span className="text-[10px] text-emerald-600 font-bold">7-24 LPA</span>
+              </button>
+              <button
+                onClick={() => handleNav('course-mern-stack')}
+                className="w-full text-left p-2 rounded-lg text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900 flex items-center justify-between"
+              >
+                <span>🌐 MERN Stack Development</span>
+                <span className="text-[10px] text-emerald-600 font-bold">5-16 LPA</span>
+              </button>
+              <button
+                onClick={() => handleNav('course-dsa')}
+                className="w-full text-left p-2 rounded-lg text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900 flex items-center justify-between"
+              >
+                <span>⚡ DSA & System Design (FAANG)</span>
+                <span className="text-[10px] text-emerald-600 font-bold">12-42 LPA</span>
+              </button>
+              <button
+                onClick={() => handleNav('courses')}
+                className="w-full text-left p-2.5 mt-1 rounded-xl text-xs font-extrabold bg-brand-600 text-white flex items-center justify-between shadow-sm"
+              >
+                <span>Explore All 15 Courses & Full Syllabus</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
           </div>
 
           <button

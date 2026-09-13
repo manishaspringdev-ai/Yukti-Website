@@ -171,7 +171,7 @@ export default function ContactForm() {
   ];
 
   return (
-    <section id="consultation" className="py-24 relative overflow-hidden">
+    <section id="consultation" className="py-12 sm:py-16 relative overflow-hidden">
       
       {/* Background Glows */}
       <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-brand-500/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
@@ -180,10 +180,9 @@ export default function ContactForm() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-8">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 border border-brand-200 text-brand-700 dark:bg-brand-950/70 dark:border-brand-800 dark:text-brand-300">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>{consultationSection.badge}</span>
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-6">
+          <div className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 text-slate-800 dark:text-slate-200 shadow-sm hover:border-brand-300 transition-all">
+            <span className="font-medium">{consultationSection.badge}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             {consultationSection.title}
@@ -191,6 +190,35 @@ export default function ContactForm() {
           <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300">
             {consultationSection.subtitle}
           </p>
+        </div>
+
+        {/* Smart Category Switcher: Software Business (V1) vs Training Courses (V4) */}
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-8 animate-fadeIn">
+          <button
+            type="button"
+            onClick={() => setContactVariant('v1_dualMode')}
+            className={`px-5 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center space-x-2 shadow-sm ${
+              contactVariant === 'v1_dualMode'
+                ? 'bg-brand-600 text-white shadow-brand-500/25 scale-105 ring-2 ring-brand-400/30'
+                : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-slate-400'
+            }`}
+          >
+            <Building2 className="w-4 h-4 text-brand-400" />
+            <span>🏢 Software & Business Inquiries (Form V1)</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setContactVariant('v4_instantChat')}
+            className={`px-5 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center space-x-2 shadow-sm ${
+              contactVariant === 'v4_instantChat'
+                ? 'bg-emerald-600 text-white shadow-emerald-500/25 scale-105 ring-2 ring-emerald-400/30'
+                : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-slate-400'
+            }`}
+          >
+            <Bot className="w-4 h-4 text-emerald-400" />
+            <span>🎓 Training & Career Counseling (AI Concierge V4)</span>
+          </button>
         </div>
 
         {/* 10-Variant Switcher Bar */}

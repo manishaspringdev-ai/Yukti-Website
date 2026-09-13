@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { siteData } from '../data';
 import Icon from './Icon';
+import { getPromiseLogo } from './TechLogos';
 import { Sparkles, CheckCircle2, ShieldCheck, ArrowRight, Building2, GraduationCap } from 'lucide-react';
 
 export default function Promises({ onOpenConsultation }) {
@@ -8,8 +9,8 @@ export default function Promises({ onOpenConsultation }) {
   const [activeTab, setActiveTab] = useState('business');
 
   return (
-    <section className="py-20 relative overflow-hidden bg-slate-100/60 dark:bg-slate-900/40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    <section className="py-12 sm:py-16 relative overflow-hidden bg-slate-100/60 dark:bg-slate-900/40">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
         
         {/* Section Navigation Tabs */}
         <div className="text-center max-w-3xl mx-auto space-y-6">
@@ -55,8 +56,8 @@ export default function Promises({ onOpenConsultation }) {
                 className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-xl hover:border-brand-500/40 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-2xl bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <Icon name={p.icon} className="w-6 h-6" />
+                  <div className="w-14 h-14 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 p-2.5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-md">
+                    {getPromiseLogo(idx, false, "w-9 h-9")}
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
                     {p.title}
@@ -83,8 +84,8 @@ export default function Promises({ onOpenConsultation }) {
                 className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/40 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <Icon name={p.icon} className="w-6 h-6" />
+                  <div className="w-14 h-14 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 p-2.5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-md">
+                    {getPromiseLogo(idx, true, "w-9 h-9")}
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
                     {p.title}

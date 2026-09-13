@@ -2,6 +2,14 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const CustomizerContext = createContext();
 
+export const FONT_PRESETS = [
+  { id: 'plusJakarta', name: 'Plus Jakarta Sans', desc: 'Modern Tech & SaaS Standard', fontFamily: "'Plus Jakarta Sans', sans-serif" },
+  { id: 'inter', name: 'Inter Sans', desc: 'Stripe & Linear Minimalist', fontFamily: "'Inter', -apple-system, sans-serif" },
+  { id: 'outfit', name: 'Outfit Pro', desc: 'Futuristic Luxury & Tech Editorial', fontFamily: "'Outfit', sans-serif" },
+  { id: 'poppins', name: 'Poppins Geometric', desc: 'Bold Friendly & Engaging', fontFamily: "'Poppins', sans-serif" },
+  { id: 'spaceGrotesk', name: 'Space Grotesk', desc: 'Cyberpunk & Modernist Mono-Vibe', fontFamily: "'Space Grotesk', sans-serif" }
+];
+
 export const COLOR_PRESETS = [
   { 
     id: 'yuktiOfficial', 
@@ -493,6 +501,8 @@ export const CONTACT_VARIANTS = [
 
 export function CustomizerProvider({ children }) {
   const [colorPreset, setColorPreset] = useState(() => localStorage.getItem('yukti-color-preset') || 'yuktiOfficial');
+  const [fontPreset, setFontPreset] = useState(() => localStorage.getItem('yukti-font-preset') || 'plusJakarta');
+  const [hideVariantSwitchers, setHideVariantSwitchers] = useState(false);
   const [navbarVariant, setNavbarVariant] = useState(() => localStorage.getItem('yukti-navbar-variant') || 'v1_rextonEnterprise');
   const [dropdownVariant, setDropdownVariant] = useState(() => localStorage.getItem('yukti-dropdown-variant') || 'v1_megaSplit');
   const [heroVariant, setHeroVariant] = useState(() => localStorage.getItem('yukti-hero-variant') || 'v1_neosaas');
@@ -520,6 +530,30 @@ export function CustomizerProvider({ children }) {
 
     localStorage.setItem('yukti-color-preset', colorPreset);
   }, [colorPreset]);
+
+  useEffect(() => {
+    const fontObj = FONT_PRESETS.find(f => f.id === fontPreset) || FONT_PRESETS[0];
+    if (fontObj) {
+      let styleEl = document.getElementById('yukti-active-font-style');
+      if (!styleEl) {
+        styleEl = document.createElement('style');
+        styleEl.id = 'yukti-active-font-style';
+        document.head.appendChild(styleEl);
+      }
+      styleEl.innerHTML = `
+        :root {
+          --font-family: ${fontObj.fontFamily} !important;
+        }
+        html, body, button, input, select, textarea, h1, h2, h3, h4, h5, h6, p, span, a, div, .font-sans {
+          font-family: ${fontObj.fontFamily} !important;
+        }
+      `;
+      document.documentElement.style.setProperty('--font-family', fontObj.fontFamily);
+      document.documentElement.style.fontFamily = fontObj.fontFamily;
+      document.body.style.fontFamily = fontObj.fontFamily;
+    }
+    localStorage.setItem('yukti-font-preset', fontPreset);
+  }, [fontPreset]);
 
   useEffect(() => { localStorage.setItem('yukti-navbar-variant', navbarVariant); }, [navbarVariant]);
   useEffect(() => { localStorage.setItem('yukti-dropdown-variant', dropdownVariant); }, [dropdownVariant]);
@@ -552,6 +586,11 @@ export function CustomizerProvider({ children }) {
       value={{
         colorPreset,
         setColorPreset,
+        fontPreset,
+        setFontPreset,
+        FONT_PRESETS,
+        hideVariantSwitchers,
+        setHideVariantSwitchers,
         navbarVariant,
         setNavbarVariant,
         dropdownVariant,

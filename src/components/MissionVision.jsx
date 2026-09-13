@@ -7,14 +7,13 @@ export default function MissionVision() {
   const { aboutPageData } = siteData;
 
   return (
-    <section className="py-20 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    <section className="pt-4 pb-12 sm:pt-6 sm:pb-16 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
         
         {/* Main Header Narrative */}
-        <div className="max-w-4xl mx-auto text-center space-y-6">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-brand-50 border border-brand-200 text-brand-700 dark:bg-brand-950/70 dark:border-brand-800 dark:text-brand-300">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>{aboutPageData.hero.badge}</span>
+        <div className="max-w-4xl mx-auto text-center space-y-4">
+          <div className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 text-slate-800 dark:text-slate-200 shadow-sm hover:border-brand-300 transition-all">
+            <span className="font-medium">{aboutPageData.hero.badge}</span>
           </div>
           <h1 className="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
             {aboutPageData.hero.title}

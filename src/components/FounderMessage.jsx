@@ -6,7 +6,7 @@ export default function FounderMessage({ onOpenConsultation }) {
   const { founderMessageSection, brand } = siteData;
 
   return (
-    <section className="py-20 relative overflow-hidden bg-slate-100/60 dark:bg-slate-900/60 border-y border-slate-200/80 dark:border-slate-800/80">
+    <section className="py-12 sm:py-16 relative overflow-hidden bg-slate-100/60 dark:bg-slate-900/60 border-y border-slate-200/80 dark:border-slate-800/80">
       
       {/* Ambient background glows */}
       <div className="absolute -top-24 -left-24 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -65,12 +65,11 @@ export default function FounderMessage({ onOpenConsultation }) {
             </div>
           </div>
 
-          {/* Founder's Letter & Vision Narrative (Hexaware Style) */}
+          {/* Founder's Letter & Vision Narrative */}
           <div className="lg:col-span-7 space-y-6">
             
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 border border-brand-200 text-brand-700 dark:bg-brand-950/70 dark:border-brand-800 dark:text-brand-300">
-              <Quote className="w-3.5 h-3.5" />
-              <span>Leadership Vision • Hexaware Reference Standard</span>
+            <div className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 text-slate-800 dark:text-slate-200 shadow-sm hover:border-brand-300 transition-all">
+              <span className="font-medium">Leadership Vision & Enterprise Philosophy</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 dark:text-white leading-tight">

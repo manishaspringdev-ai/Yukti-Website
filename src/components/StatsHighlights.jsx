@@ -1,21 +1,21 @@
 import React from 'react';
 import { siteData } from '../data';
 import Icon from './Icon';
+import { getHighlightLogo } from './TechLogos';
 import { Sparkles, CheckCircle2, ShieldCheck, ArrowRight } from 'lucide-react';
 
 export default function StatsHighlights({ onOpenConsultation }) {
   const { highlightsSection, storySection } = siteData;
 
   return (
-    <section className="py-24 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+    <section className="py-12 sm:py-16 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         
         {/* Key Highlights of Our Services */}
         <div>
-          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 border border-brand-200 text-brand-700 dark:bg-brand-950/70 dark:border-brand-800 dark:text-brand-300">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>{highlightsSection.badge}</span>
+          <div className="text-center max-w-3xl mx-auto space-y-3 mb-8 sm:mb-10">
+            <div className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 text-slate-800 dark:text-slate-200 shadow-sm hover:border-brand-300 transition-all">
+              <span className="font-medium">{highlightsSection.badge}</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
               {highlightsSection.title}
@@ -33,8 +33,8 @@ export default function StatsHighlights({ onOpenConsultation }) {
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">
-                    <div className="w-12 h-12 rounded-2xl bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Icon name={item.icon} className="w-6 h-6" />
+                    <div className="w-14 h-14 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 p-2.5 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform flex-shrink-0">
+                      {getHighlightLogo(idx, "w-9 h-9")}
                     </div>
                     <span className="text-[11px] font-black px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
                       {item.stat}
@@ -57,9 +57,8 @@ export default function StatsHighlights({ onOpenConsultation }) {
           
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8 space-y-6">
-              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-bold bg-white/20 text-white backdrop-blur-md">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>{storySection.badge}</span>
+              <div className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/15 text-white border border-white/20 backdrop-blur-md">
+                <span className="font-medium">{storySection.badge}</span>
               </div>
               <h3 className="text-2xl sm:text-4xl font-black text-white leading-tight">
                 {storySection.title}

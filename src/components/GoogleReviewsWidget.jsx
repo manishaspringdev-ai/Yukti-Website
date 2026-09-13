@@ -6,13 +6,13 @@ export default function GoogleReviewsWidget({ onOpenConsultation }) {
   const { googleReviews, brand } = siteData;
 
   return (
-    <section id="reviews" className="py-20 relative overflow-hidden bg-slate-100/60 dark:bg-slate-900/50 border-y border-slate-200/80 dark:border-slate-800/80">
+    <section id="reviews" className="py-12 sm:py-14 relative overflow-hidden bg-slate-100/60 dark:bg-slate-900/50 border-y border-slate-200/80 dark:border-slate-800/80">
       
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 left-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* Section Header with Google G Badge */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-slate-200 dark:border-slate-800">
@@ -75,7 +75,7 @@ export default function GoogleReviewsWidget({ onOpenConsultation }) {
                     <img 
                       src={rev.avatar} 
                       alt={rev.author} 
-                      className="w-11 h-11 rounded-full object-cover ring-2 ring-brand-500/20 shadow-sm"
+                      className="w-11 h-11 rounded-full object-cover ring-2 ring-brand-500/20 shadow-sm" width="44" height="44" loading="lazy" decoding="async"
                     />
                     <div>
                       <h4 className="text-sm font-bold text-slate-900 dark:text-white leading-snug">

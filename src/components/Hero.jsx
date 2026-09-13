@@ -79,10 +79,10 @@ export default function Hero({ onOpenConsultation, onNavigateServices, onNavigat
   const [activeDeviceTab, setActiveDeviceTab] = useState('web');
 
   return (
-    <section id="hero" className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-grid-pattern">
+    <section id="hero" className="relative pt-6 pb-12 sm:pt-8 sm:pb-14 md:pt-10 md:pb-16 overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
       
-      {/* Background Glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-radial-glow rounded-full blur-3xl pointer-events-none -z-10 animate-pulse-glow"></div>
+      {/* Background Soft Glows */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-brand-500/10 dark:bg-brand-500/15 rounded-full blur-3xl pointer-events-none -z-10"></div>
       <div className="absolute top-1/3 left-10 w-80 h-80 bg-brand-500/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-accent-primary/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
 
@@ -102,9 +102,11 @@ export default function Hero({ onOpenConsultation, onNavigateServices, onNavigat
         {heroVariant === 'v1_neosaas' && (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center animate-fadeIn">
             <div className="lg:col-span-7 space-y-8 text-center lg:text-left">
-              <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-brand-50 border border-brand-200 text-brand-700 dark:bg-brand-950/80 dark:border-brand-800 dark:text-brand-300 shadow-sm">
-                <Sparkles className="w-4 h-4 text-brand-600 dark:text-brand-400" />
-                <span>{hero.badge}</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 text-slate-800 dark:text-slate-200 shadow-sm hover:border-brand-300 transition-all">
+                <span className="font-medium">{hero.badge}</span>
+                <span className="inline-flex items-center text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-brand-50 text-brand-700 dark:bg-brand-950/60 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
+                  ISO Certified
+                </span>
               </div>
               <div className="space-y-3">
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
@@ -186,9 +188,11 @@ export default function Hero({ onOpenConsultation, onNavigateServices, onNavigat
         {/* ========================================================================= */}
         {heroVariant === 'v2_enterprise' && (
           <div className="text-center max-w-4xl mx-auto space-y-8 animate-fadeIn">
-            <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full text-xs sm:text-sm font-bold bg-brand-50 border border-brand-200 text-brand-700 dark:bg-brand-950/80 dark:border-brand-800 dark:text-brand-300 shadow-md">
-              <Sparkles className="w-4 h-4 text-brand-600 dark:text-brand-400" />
-              <span>{hero.badge}</span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 text-slate-800 dark:text-slate-200 shadow-sm hover:border-brand-300 transition-all">
+              <span className="font-medium">{hero.badge}</span>
+              <span className="inline-flex items-center text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-brand-50 text-brand-700 dark:bg-brand-950/60 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
+                ISO Certified
+              </span>
             </div>
             <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.12]">
               {hero.title}{' '}
@@ -230,9 +234,9 @@ export default function Hero({ onOpenConsultation, onNavigateServices, onNavigat
         {heroVariant === 'v3_splitRoi' && (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center animate-fadeIn">
             <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-brand-50 border border-brand-200 text-brand-700 dark:bg-brand-950/80 dark:border-brand-800 dark:text-brand-300">
-                <Calculator className="w-4 h-4" />
-                <span>Live Interactive ROI & Project Estimator</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 text-slate-800 dark:text-slate-200 shadow-sm hover:border-brand-300 transition-all">
+                <Calculator className="w-3.5 h-3.5 text-brand-600 dark:text-brand-400" />
+                <span className="font-medium">Live Interactive ROI & Project Estimator</span>
               </div>
               <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white">
                 Transform Operations with <span className="text-brand-600 dark:text-brand-400">{siteData.brand.name}</span>
@@ -300,9 +304,9 @@ export default function Hero({ onOpenConsultation, onNavigateServices, onNavigat
         {heroVariant === 'v4_bentoGrid' && (
           <div className="space-y-8 animate-fadeIn">
             <div className="text-center max-w-3xl mx-auto space-y-3">
-              <span className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-brand-50 text-brand-700 dark:bg-brand-950 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
-                Modular Enterprise Architecture
-              </span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 text-slate-800 dark:text-slate-200 shadow-sm hover:border-brand-300 transition-all">
+                <span className="font-medium">Modular Enterprise Architecture</span>
+              </div>
               <h1 className="text-4xl sm:text-6xl font-black text-slate-900 dark:text-white">
                 {hero.title} <span className="text-brand-600 dark:text-brand-400">{hero.titleHighlight}</span>
               </h1>
@@ -516,9 +520,9 @@ export default function Hero({ onOpenConsultation, onNavigateServices, onNavigat
         {heroVariant === 'v_docx_itransition' && (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center animate-fadeIn">
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 border border-brand-200 text-brand-700 dark:bg-brand-950/70 dark:border-brand-800 dark:text-brand-300">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Docx Reference • Itransition Enterprise Standard</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 text-slate-800 dark:text-slate-200 shadow-sm hover:border-brand-300 transition-all">
+                <Sparkles className="w-3.5 h-3.5 text-brand-600 dark:text-brand-400" />
+                <span className="font-medium">Docx Reference • Itransition Enterprise Standard</span>
               </div>
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-tight">
                 Tailored Software Solutions for <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-accent-primary">Maximum Business Growth</span>

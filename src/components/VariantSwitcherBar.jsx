@@ -1,9 +1,15 @@
 import React from 'react';
 import { Sparkles } from 'lucide-react';
+import { useCustomizer } from '../context/CustomizerContext';
 
-export default function VariantSwitcherBar({ currentVariant, setVariant, variants, label = "Layout Variant" }) {
+export default function VariantSwitcherBar({ currentVariant, setVariant, variants, label = "Layout Variant", hide = false }) {
+  const customizer = useCustomizer ? useCustomizer() : null;
+  const isGlobalHidden = customizer?.hideVariantSwitchers;
+
+  if (hide || isGlobalHidden) return null;
+
   return (
-    <div className="flex flex-wrap items-center justify-center gap-1.5 mb-8 animate-fadeIn">
+    <div className="flex flex-wrap items-center justify-center gap-1.5 mb-5 animate-fadeIn">
       <div className="inline-flex flex-wrap items-center justify-center space-x-1 p-1 rounded-2xl bg-slate-200/70 dark:bg-slate-800/90 border border-slate-300/60 dark:border-slate-700/80 shadow-sm backdrop-blur-md max-w-full">
         <div className="flex items-center space-x-1 px-2.5 py-1 text-[11px] font-bold text-slate-500 dark:text-slate-400">
           <Sparkles className="w-3 h-3 text-brand-500" />
@@ -26,7 +32,6 @@ export default function VariantSwitcherBar({ currentVariant, setVariant, variant
               title={`${v.name} - ${v.desc}`}
             >
               <span>{isDocxRef ? '📄 Docx Ref' : `V${idx + 1}`}</span>
-              {/* Tooltip on hover */}
               <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:flex flex-col items-center pointer-events-none z-50">
                 <div className="bg-slate-900 text-white text-[10px] font-medium py-1.5 px-3 rounded-xl whitespace-nowrap shadow-2xl border border-slate-700">
                   <p className="font-bold text-brand-300">{v.name}</p>
