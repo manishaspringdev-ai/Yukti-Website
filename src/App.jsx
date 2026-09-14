@@ -14,12 +14,17 @@ import Footer from './components/Footer';
 import ConsultationModal from './components/ConsultationModal';
 import FloatingHelpBar from './components/FloatingHelpBar';
 import StructuredData from './components/StructuredData';
+import ScrollProgressBar from './components/ScrollProgressBar';
+import BrandPreloader from './components/BrandPreloader';
+import PageSkeletonLoader from './components/PageSkeletonLoader';
 import { ArrowUp } from 'lucide-react';
 
 // Lazy loaded sub-pages
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const AllCoursesPage = lazy(() => import('./pages/AllCoursesPage'));
 const CourseDetailPage = lazy(() => import('./pages/CourseDetailPage'));
+const GalleryPage = lazy(() => import('./pages/GalleryPage'));
+const CareersPage = lazy(() => import('./pages/CareersPage'));
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -87,7 +92,7 @@ export default function App() {
         'html-css': 'html-css'
       };
       return (
-        <Suspense fallback={<div className="py-24 text-center text-sm font-bold text-slate-400">Loading syllabus...</div>}>
+        <Suspense fallback={<PageSkeletonLoader type="detail" />}>
           <CourseDetailPage 
             courseKey={keyMap[docxKey] || docxKey} 
             onOpenConsultation={() => setIsConsultationOpen(true)} 
@@ -100,14 +105,29 @@ export default function App() {
     switch (currentPage) {
       case 'about':
         return (
-          <Suspense fallback={<div className="py-24 text-center text-sm font-bold text-slate-400">Loading...</div>}>
+          <Suspense fallback={<PageSkeletonLoader type="about" />}>
             <AboutPage onOpenConsultation={() => setIsConsultationOpen(true)} />
           </Suspense>
         );
       case 'courses':
         return (
-          <Suspense fallback={<div className="py-24 text-center text-sm font-bold text-slate-400">Loading catalog...</div>}>
+          <Suspense fallback={<PageSkeletonLoader type="courses" />}>
             <AllCoursesPage onOpenConsultation={() => setIsConsultationOpen(true)} setCurrentPage={handlePageChange} />
+          </Suspense>
+        );
+      case 'gallery':
+      case 'videos':
+        return (
+          <Suspense fallback={<PageSkeletonLoader type="courses" />}>
+            <GalleryPage onOpenConsultation={() => setIsConsultationOpen(true)} />
+          </Suspense>
+        );
+      case 'careers':
+      case 'internship':
+      case 'internships':
+        return (
+          <Suspense fallback={<PageSkeletonLoader type="courses" />}>
+            <CareersPage onOpenConsultation={() => setIsConsultationOpen(true)} />
           </Suspense>
         );
       case 'home':
@@ -145,6 +165,12 @@ export default function App() {
 
   return (
     <ThemeProvider>
+      {/* Brand Initial Splash Preloader */}
+      <BrandPreloader />
+
+      {/* Top Window Scroll Progress Bar */}
+      <ScrollProgressBar />
+
       <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-300">
         
         {/* Schema.org SEO & Metadata */}
@@ -179,13 +205,13 @@ export default function App() {
 
         {/* Back To Top Action */}
         {showBackToTop && (
-          <div className="fixed bottom-20 right-6 z-40">
+          <div className="fixed bottom-18 right-4 sm:bottom-22 sm:right-6 z-30 animate-fadeIn">
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="p-3 rounded-full bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xl hover:scale-110 active:scale-95 transition-all flex items-center justify-center"
+              className="p-2.5 sm:p-3 rounded-full bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xl hover:bg-slate-50 dark:hover:bg-slate-700 hover:scale-110 active:scale-95 transition-all flex items-center justify-center group"
               aria-label="Back to Top"
             >
-              <ArrowUp className="w-5 h-5" />
+              <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5 group-hover:-translate-y-0.5 transition-transform" />
             </button>
           </div>
         )}

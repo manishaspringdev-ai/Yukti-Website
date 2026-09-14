@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { siteData } from '../data';
-
+import { TechMarqueeTicker } from './TechLogos';
 
 import { 
   ArrowRight, 
@@ -98,6 +98,10 @@ export default function Hero({ onOpenConsultation, onNavigateServices, onNavigat
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center animate-fadeIn">
             <div className="lg:col-span-7 space-y-8 text-center lg:text-left">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 text-slate-800 dark:text-slate-200 shadow-sm hover:border-brand-300 transition-all">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
                 <span className="font-medium">{hero.badge}</span>
                 <span className="inline-flex items-center text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-brand-50 text-brand-700 dark:bg-brand-950/60 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
                   ISO Certified
@@ -582,6 +586,11 @@ export default function Hero({ onOpenConsultation, onNavigateServices, onNavigat
             </div>
           </div>
         )}
+
+        {/* Infinite Continuous Tech Stack & Partner Marquee */}
+        <div className="pt-8 sm:pt-12 border-t border-slate-200/60 dark:border-slate-800/60 mt-8 sm:mt-12">
+          <TechMarqueeTicker title="Empowering 50+ Enterprises & 1200+ Students with Industry-Standard Technologies" />
+        </div>
 
       </div>
     </section>

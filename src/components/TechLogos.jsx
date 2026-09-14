@@ -864,5 +864,52 @@ export function getPromiseLogo(promiseIdOrIndex, isStudent = false, className = 
   return <CustomDevPromiseLogo className={className} />;
 }
 
+// Infinite Tech Marquee Component for Social Proof & Stacks
+export function TechMarqueeTicker({ title = "Trusted by 50+ Enterprises & Powered by Modern Tech Stacks" }) {
+  const techItems = [
+    { name: "Python", icon: <PythonLogo className="w-5 h-5" />, color: "border-blue-500/30 text-blue-600 dark:text-blue-400" },
+    { name: "React.js", icon: <ReactLogo className="w-5 h-5" />, color: "border-cyan-500/30 text-cyan-600 dark:text-cyan-400" },
+    { name: "Java", icon: <JavaLogo className="w-5 h-5" />, color: "border-amber-500/30 text-amber-600 dark:text-amber-400" },
+    { name: "Spring Boot", icon: <SpringBootLogo className="w-5 h-5" />, color: "border-green-500/30 text-green-600 dark:text-green-400" },
+    { name: "Node.js", icon: <MernStackLogo className="w-5 h-5" />, color: "border-emerald-500/30 text-emerald-600 dark:text-emerald-400" },
+    { name: "AWS Cloud", icon: <CloudServiceLogo className="w-5 h-5" />, color: "border-orange-500/30 text-orange-600 dark:text-orange-400" },
+    { name: "Data Structures", icon: <DsaLogo className="w-5 h-5" />, color: "border-purple-500/30 text-purple-600 dark:text-purple-400" },
+    { name: "AI & ML", icon: <AiMlLogo className="w-5 h-5" />, color: "border-pink-500/30 text-pink-600 dark:text-pink-400" },
+    { name: "DevOps & CI/CD", icon: <DevopsServiceLogo className="w-5 h-5" />, color: "border-indigo-500/30 text-indigo-600 dark:text-indigo-400" },
+    { name: "Database Systems", icon: <DatabaseServiceLogo className="w-5 h-5" />, color: "border-teal-500/30 text-teal-600 dark:text-teal-400" }
+  ];
 
-
+  return (
+    <div className="w-full py-6 sm:py-8 overflow-hidden">
+      {title && (
+        <p className="text-center text-[11px] sm:text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-5">
+          {title}
+        </p>
+      )}
+      <div className="marquee-container">
+        <div className="marquee-content animate-marquee">
+          {techItems.map((tech, idx) => (
+            <div
+              key={idx}
+              className={`flex items-center space-x-2 px-4 py-2 rounded-xl bg-white/80 dark:bg-slate-900/80 border ${tech.color} shadow-sm backdrop-blur-md shrink-0`}
+            >
+              {tech.icon}
+              <span className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200">{tech.name}</span>
+            </div>
+          ))}
+        </div>
+        <div className="marquee-content animate-marquee" aria-hidden="true">
+          {techItems.map((tech, idx) => (
+            <div
+              key={`dup-${idx}`}
+              className={`flex items-center space-x-2 px-4 py-2 rounded-xl bg-white/80 dark:bg-slate-900/80 border ${tech.color} shadow-sm backdrop-blur-md shrink-0`}
+            >
+              {tech.icon}
+              <span className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200">{tech.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}

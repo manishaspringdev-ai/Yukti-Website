@@ -273,31 +273,31 @@ export default function ContactForm() {
             </div>
 
             <div className="lg:col-span-7">
-              <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 sm:p-10 shadow-xl relative">
-                <div className="flex items-center space-x-2 p-1.5 rounded-2xl bg-slate-100 dark:bg-slate-800 mb-8">
+              <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-xl relative pb-10 sm:pb-10">
+                <div className="flex flex-col sm:flex-row gap-2 p-1.5 rounded-2xl bg-slate-100 dark:bg-slate-800 mb-6 sm:mb-8">
                   <button
                     type="button"
                     onClick={() => setFormType('enterprise')}
-                    className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-2 ${
+                    className={`w-full sm:flex-1 py-2.5 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-2 ${
                       formType === 'enterprise'
                         ? 'bg-white dark:bg-slate-900 text-brand-600 dark:text-brand-400 shadow-sm'
-                        : 'text-slate-600 dark:text-slate-400'
+                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
                     }`}
                   >
-                    <Building2 className="w-4 h-4" />
-                    <span>Software Solutions Inquiry</span>
+                    <Building2 className="w-4 h-4 shrink-0" />
+                    <span className="truncate">Software Solutions Inquiry</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => setFormType('student')}
-                    className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-2 ${
+                    className={`w-full sm:flex-1 py-2.5 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-2 ${
                       formType === 'student'
                         ? 'bg-white dark:bg-slate-900 text-emerald-600 dark:text-emerald-400 shadow-sm'
-                        : 'text-slate-600 dark:text-slate-400'
+                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
                     }`}
                   >
-                    <GraduationCap className="w-4 h-4" />
-                    <span>Student Training Counseling</span>
+                    <GraduationCap className="w-4 h-4 shrink-0" />
+                    <span className="truncate">Student Training Counseling</span>
                   </button>
                 </div>
 
@@ -308,10 +308,10 @@ export default function ContactForm() {
                     </div>
                     <h3 className="text-2xl font-black text-slate-900 dark:text-white">Request Received!</h3>
                     <p className="text-sm text-slate-600 dark:text-slate-300 max-w-md mx-auto">
-                      Our team will contact you within 2 business hours.
+                      Our engineering and advisory team will contact you within 2 business hours.
                     </p>
                     <button onClick={() => setIsSubmitted(false)} className="px-6 py-2.5 rounded-xl bg-brand-600 text-white font-bold text-xs">
-                      Send Another
+                      Send Another Inquiry
                     </button>
                   </div>
                 ) : (
@@ -323,7 +323,7 @@ export default function ContactForm() {
                         placeholder="Full Name *"
                         value={formData.name}
                         onChange={(e) => setFormData({...formData, name: e.target.value})}
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-sm"
+                        className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
                       />
                       <input
                         type="email"
@@ -331,7 +331,7 @@ export default function ContactForm() {
                         placeholder="Email Address *"
                         value={formData.email}
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-sm"
+                        className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
                       />
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -341,27 +341,27 @@ export default function ContactForm() {
                         placeholder="Phone Number *"
                         value={formData.phone}
                         onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-sm"
+                        className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
                       />
                       <input
                         type="text"
                         placeholder={formType === 'enterprise' ? 'Company Name' : 'Qualification / College'}
                         value={formData.organizationOrCollege}
                         onChange={(e) => setFormData({...formData, organizationOrCollege: e.target.value})}
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-sm"
+                        className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
                       />
                     </div>
                     <textarea
                       rows="3"
-                      placeholder="Tell us about your requirements or goals..."
+                      placeholder="Tell us about your requirements or career goals..."
                       value={formData.message}
                       onChange={(e) => setFormData({...formData, message: e.target.value})}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-sm resize-none"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500 resize-none"
                     ></textarea>
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-3.5 px-6 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-brand-600 via-brand-500 to-accent-primary hover:shadow-xl transition-all flex items-center justify-center space-x-2"
+                      className="w-full py-3.5 px-6 rounded-xl font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-brand-600 via-brand-500 to-accent-primary hover:shadow-xl active:scale-[0.98] transition-all flex items-center justify-center space-x-2"
                     >
                       <Send className="w-4 h-4" />
                       <span>{isSubmitting ? "Sending Request..." : "Schedule Free Consultation"}</span>

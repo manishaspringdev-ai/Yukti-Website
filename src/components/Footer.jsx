@@ -116,17 +116,23 @@ export default function Footer({ setCurrentPage, onOpenConsultation }) {
                 </div>
               </div>
 
-              {/* IT Courses Links (Greater Noida) */}
+              {/* IT Courses & Career Programs */}
               <div className="space-y-3">
                 <h4 className="text-xs font-black uppercase tracking-widest text-slate-900 dark:text-white flex items-center space-x-1.5">
                   <GraduationCap className="w-3.5 h-3.5 text-brand-600 dark:text-brand-400" />
-                  <span>Greater Noida Courses</span>
+                  <span>Programs & Internships</span>
                 </h4>
                 <ul className="space-y-2 text-xs">
                   <li>
+                    <button onClick={() => handleNav('careers')} className="text-emerald-600 dark:text-emerald-400 font-bold hover:underline flex items-center space-x-1 text-left">
+                      <ChevronRight className="w-3 h-3 text-emerald-500" />
+                      <span>Careers & Paid Internships</span>
+                    </button>
+                  </li>
+                  <li>
                     <button onClick={() => handleNav('course-python')} className="text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors flex items-center space-x-1 text-left">
                       <ChevronRight className="w-3 h-3 text-slate-400 dark:text-slate-500" />
-                      <span>Python Training Institute</span>
+                      <span>Python Training Track</span>
                     </button>
                   </li>
                   <li>
@@ -143,23 +149,23 @@ export default function Footer({ setCurrentPage, onOpenConsultation }) {
                   </li>
                   <li>
                     <button onClick={() => handleNav('courses')} className="text-brand-600 dark:text-brand-400 hover:underline font-bold pt-1 flex items-center space-x-1">
-                      <span>→ View All 4 Career Tracks</span>
+                      <span>→ View All 15 Career Tracks</span>
                     </button>
                   </li>
                 </ul>
               </div>
 
-              {/* Software Services Links */}
+              {/* Company & Solutions Links */}
               <div className="space-y-3">
                 <h4 className="text-xs font-black uppercase tracking-widest text-slate-900 dark:text-white">
-                  Software Solutions
+                  Company & Solutions
                 </h4>
                 <ul className="space-y-2 text-xs text-slate-600 dark:text-slate-400">
-                  <li><button onClick={() => handleNav('home', '#services')} className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Full Stack Web Engineering</button></li>
-                  <li><button onClick={() => handleNav('home', '#services')} className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Mobile App Development</button></li>
-                  <li><button onClick={() => handleNav('home', '#services')} className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Database Optimization & Tuning</button></li>
-                  <li><button onClick={() => handleNav('home', '#services')} className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Cloud Infrastructure (AWS/Azure)</button></li>
-                  <li><button onClick={() => handleNav('home', '#services')} className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">DevOps Automation & CI/CD</button></li>
+                  <li><button onClick={() => handleNav('gallery')} className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Photo & Video Gallery</button></li>
+                  <li><button onClick={() => handleNav('careers')} className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Careers & Hiring</button></li>
+                  <li><button onClick={() => handleNav('about')} className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">About Yukti Software</button></li>
+                  <li><button onClick={() => handleNav('home', '#services')} className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Enterprise Software Services</button></li>
+                  <li><button onClick={() => handleNav('home', '#reviews')} className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Google Reviews (4.9★)</button></li>
                 </ul>
               </div>
 

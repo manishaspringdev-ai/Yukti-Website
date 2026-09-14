@@ -335,7 +335,7 @@ export default function AllCoursesPage({ onOpenConsultation, setCurrentPage }) {
             return (
               <div
                 key={course.id}
-                className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-2xl hover:border-brand-500/50 transition-all flex flex-col justify-between group space-y-5"
+                className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-2xl hover:border-brand-500/50 hover-shine transition-all duration-300 flex flex-col justify-between group space-y-5"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">

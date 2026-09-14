@@ -29,6 +29,7 @@ export default function Navbar({ currentPage, setCurrentPage, onOpenConsultation
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [coursesDropdownOpen, setCoursesDropdownOpen] = useState(false);
+  const [mobileCoursesExpanded, setMobileCoursesExpanded] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,6 +38,18 @@ export default function Navbar({ currentPage, setCurrentPage, onOpenConsultation
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileMenuOpen]);
 
   const handleNav = (pageKey, hash) => {
     setMobileMenuOpen(false);
@@ -467,6 +480,18 @@ export default function Navbar({ currentPage, setCurrentPage, onOpenConsultation
                   )}
                 </div>
 
+                <button onClick={() => handleNav('gallery')} className={`px-3 py-2 rounded-lg transition-all ${currentPage === 'gallery' ? 'text-brand-600 font-bold bg-brand-50 dark:bg-brand-950/60' : 'hover:text-brand-600 hover:bg-slate-50 dark:hover:bg-slate-800'}`}>Gallery</button>
+                <button 
+                  onClick={() => handleNav('careers')} 
+                  className={`px-3 py-2 rounded-lg font-bold flex items-center space-x-1.5 transition-all ${
+                    currentPage === 'careers' || currentPage === 'internships' || currentPage === 'internship'
+                      ? 'text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-950/60' 
+                      : 'hover:text-brand-600 hover:bg-slate-50 dark:hover:bg-slate-800'
+                  }`}
+                >
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span>Careers & Internships</span>
+                </button>
                 <button onClick={() => handleNav('home', '#services')} className="px-3 py-2 rounded-lg hover:text-brand-600 hover:bg-slate-50 dark:hover:bg-slate-800">Services</button>
                 <button onClick={() => handleNav('home', '#team')} className="px-3 py-2 rounded-lg hover:text-brand-600 hover:bg-slate-50 dark:hover:bg-slate-800">Team</button>
                 <button onClick={() => handleNav('home', '#reviews')} className="px-3 py-2 rounded-lg hover:text-brand-600 hover:bg-slate-50 dark:hover:bg-slate-800">Reviews (4.9★)</button>
@@ -506,57 +531,86 @@ export default function Navbar({ currentPage, setCurrentPage, onOpenConsultation
             About Us
           </button>
 
+          <button
+            onClick={() => handleNav('careers')}
+            className="w-full text-left px-4 py-2.5 rounded-lg text-sm font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 flex items-center justify-between"
+          >
+            <div className="flex items-center space-x-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>Careers & Paid Internships</span>
+            </div>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-200 dark:bg-emerald-900 font-bold">Hiring</span>
+          </button>
+
+          <button
+            onClick={() => handleNav('gallery')}
+            className="w-full text-left px-4 py-2.5 rounded-lg text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+          >
+            Photo & Video Gallery
+          </button>
+
           {/* Mobile Courses Section */}
-          <div className="p-3.5 rounded-2xl bg-brand-50/60 dark:bg-brand-950/40 space-y-2 border border-brand-200/60 dark:border-brand-800/60">
-            <div className="flex items-center justify-between">
-              <p className="text-xs font-black text-brand-600 dark:text-brand-400 uppercase tracking-wider">All 15 Career Tracks</p>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-brand-100 text-brand-700 dark:bg-brand-900 dark:text-brand-300 font-bold">15 Programs</span>
-            </div>
+          <div className="rounded-2xl bg-brand-50/70 dark:bg-brand-950/40 border border-brand-200/70 dark:border-brand-800/70 overflow-hidden">
+            <button
+              onClick={() => setMobileCoursesExpanded(!mobileCoursesExpanded)}
+              className="w-full p-3.5 flex items-center justify-between text-left"
+            >
+              <div className="flex items-center space-x-2">
+                <GraduationCap className="w-4 h-4 text-brand-600 dark:text-brand-400" />
+                <p className="text-xs font-black text-brand-700 dark:text-brand-300 uppercase tracking-wider">All 15 Career Tracks</p>
+              </div>
+              <div className="flex items-center space-x-2">
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-brand-200/70 text-brand-800 dark:bg-brand-900 dark:text-brand-200 font-bold">15 Programs</span>
+                <ChevronDown className={`w-4 h-4 text-brand-600 transition-transform duration-300 ${mobileCoursesExpanded ? 'rotate-180' : ''}`} />
+              </div>
+            </button>
             
-            <div className="grid grid-cols-1 gap-1 pt-1">
-              <button
-                onClick={() => handleNav('course-python')}
-                className="w-full text-left p-2 rounded-lg text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900 flex items-center justify-between"
-              >
-                <span>🐍 Python Programming</span>
-                <span className="text-[10px] text-emerald-600 font-bold">4.5-18 LPA</span>
-              </button>
-              <button
-                onClick={() => handleNav('course-java-fullstack')}
-                className="w-full text-left p-2 rounded-lg text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900 flex items-center justify-between"
-              >
-                <span>☕ Java Full Stack & Microservices</span>
-                <span className="text-[10px] text-emerald-600 font-bold">6-24 LPA</span>
-              </button>
-              <button
-                onClick={() => handleNav('course-ai-fullstack')}
-                className="w-full text-left p-2 rounded-lg text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900 flex items-center justify-between"
-              >
-                <span>🤖 AI Full Stack Development</span>
-                <span className="text-[10px] text-emerald-600 font-bold">7-24 LPA</span>
-              </button>
-              <button
-                onClick={() => handleNav('course-mern-stack')}
-                className="w-full text-left p-2 rounded-lg text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900 flex items-center justify-between"
-              >
-                <span>🌐 MERN Stack Development</span>
-                <span className="text-[10px] text-emerald-600 font-bold">5-16 LPA</span>
-              </button>
-              <button
-                onClick={() => handleNav('course-dsa')}
-                className="w-full text-left p-2 rounded-lg text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900 flex items-center justify-between"
-              >
-                <span>⚡ DSA & System Design (FAANG)</span>
-                <span className="text-[10px] text-emerald-600 font-bold">12-42 LPA</span>
-              </button>
-              <button
-                onClick={() => handleNav('courses')}
-                className="w-full text-left p-2.5 mt-1 rounded-xl text-xs font-extrabold bg-brand-600 text-white flex items-center justify-between shadow-sm"
-              >
-                <span>Explore All 15 Courses & Full Syllabus</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
+            {mobileCoursesExpanded && (
+              <div className="px-3 pb-3 space-y-1 border-t border-brand-200/50 dark:border-brand-800/50 pt-2 animate-fadeIn">
+                <button
+                  onClick={() => handleNav('course-python')}
+                  className="w-full text-left p-2 rounded-xl text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900 flex items-center justify-between transition-colors"
+                >
+                  <span>🐍 Python Programming</span>
+                  <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold">₹4.5-18 LPA</span>
+                </button>
+                <button
+                  onClick={() => handleNav('course-java-fullstack')}
+                  className="w-full text-left p-2 rounded-xl text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900 flex items-center justify-between transition-colors"
+                >
+                  <span>☕ Java Full Stack & Microservices</span>
+                  <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold">₹6-24 LPA</span>
+                </button>
+                <button
+                  onClick={() => handleNav('course-ai-fullstack')}
+                  className="w-full text-left p-2 rounded-xl text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900 flex items-center justify-between transition-colors"
+                >
+                  <span>🤖 AI Full Stack & Agents</span>
+                  <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold">₹7-24 LPA</span>
+                </button>
+                <button
+                  onClick={() => handleNav('course-mern-stack')}
+                  className="w-full text-left p-2 rounded-xl text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900 flex items-center justify-between transition-colors"
+                >
+                  <span>🌐 MERN Stack Development</span>
+                  <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold">₹5-16 LPA</span>
+                </button>
+                <button
+                  onClick={() => handleNav('course-dsa')}
+                  className="w-full text-left p-2 rounded-xl text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900 flex items-center justify-between transition-colors"
+                >
+                  <span>⚡ DSA & System Design (FAANG)</span>
+                  <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold">₹12-42 LPA</span>
+                </button>
+                <button
+                  onClick={() => handleNav('courses')}
+                  className="w-full text-left p-2.5 mt-1 rounded-xl text-xs font-extrabold bg-brand-600 hover:bg-brand-500 text-white flex items-center justify-between shadow-sm transition-all"
+                >
+                  <span>Explore All 15 Courses & Full Syllabus</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            )}
           </div>
 
           <button

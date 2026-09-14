@@ -2,15 +2,38 @@ import React from 'react';
 import { siteData } from '../data';
 import Icon from './Icon';
 import { getHighlightLogo } from './TechLogos';
-import { Sparkles, CheckCircle2, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Sparkles, CheckCircle2, ShieldCheck, ArrowRight, Award, Users, Code, Star } from 'lucide-react';
+import { useInView } from '../hooks/useInView';
+import { useCountUp } from '../hooks/useCountUp';
+
+function CounterMetric({ value, label, prefix = '', suffix = '', decimals = 0, isVisible }) {
+  const count = useCountUp(value, 1800, isVisible, decimals);
+  return (
+    <div className="p-5 rounded-2xl bg-white/50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-md text-center hover:scale-105 transition-transform duration-300">
+      <div className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-brand-600 via-brand-500 to-accent-primary bg-clip-text text-transparent">
+        {prefix}{count}{suffix}
+      </div>
+      <p className="text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-400 mt-1">{label}</p>
+    </div>
+  );
+}
 
 export default function StatsHighlights({ onOpenConsultation }) {
   const { highlightsSection, storySection } = siteData;
+  const [sectionRef, isInView] = useInView({ threshold: 0.15 });
 
   return (
-    <section className="py-12 sm:py-16 relative overflow-hidden">
+    <section ref={sectionRef} className="py-12 sm:py-16 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         
+        {/* Animated Key Metrics Banner */}
+        <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <CounterMetric value={50} suffix="+" label="Software Solutions Delivered" isVisible={isInView} />
+          <CounterMetric value={98.4} suffix="%" decimals={1} label="Student Placement Success" isVisible={isInView} />
+          <CounterMetric value={15} suffix="+" label="Industry Career Tracks" isVisible={isInView} />
+          <CounterMetric value={4.9} suffix="/5.0" decimals={1} label="Google Verified Rating" isVisible={isInView} />
+        </div>
+
         {/* Key Highlights of Our Services */}
         <div>
           <div className="text-center max-w-3xl mx-auto space-y-3 mb-8 sm:mb-10">
@@ -29,7 +52,10 @@ export default function StatsHighlights({ onOpenConsultation }) {
             {highlightsSection.highlights.map((item, idx) => (
               <div 
                 key={idx}
-                className="p-7 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-xl hover:border-brand-500/50 transition-all duration-300 group flex flex-col justify-between"
+                style={{ transitionDelay: `${idx * 80}ms` }}
+                className={`p-7 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-xl hover:border-brand-500/50 hover-shine transition-all duration-500 group flex flex-col justify-between ${
+                  isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">
@@ -53,7 +79,7 @@ export default function StatsHighlights({ onOpenConsultation }) {
         </div>
 
         {/* Story Banner: Decades of Building Tailored Software Solutions */}
-        <div className="bg-gradient-to-r from-brand-600 via-brand-700 to-accent-primary rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden">
+        <div className="bg-gradient-to-r from-brand-600 via-brand-700 to-accent-primary rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden hover-shine">
           
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8 space-y-6">
@@ -71,7 +97,7 @@ export default function StatsHighlights({ onOpenConsultation }) {
             </div>
 
             <div className="lg:col-span-4 flex flex-col items-center lg:items-end justify-center">
-              <div className="bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-2xl text-center space-y-4 w-full max-w-sm">
+              <div className="bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-2xl text-center space-y-4 w-full max-w-sm shadow-xl">
                 <ShieldCheck className="w-10 h-10 text-white mx-auto" />
                 <h4 className="text-lg font-bold text-white">Need Tailored Software or Training?</h4>
                 <p className="text-xs text-slate-200">
@@ -79,7 +105,7 @@ export default function StatsHighlights({ onOpenConsultation }) {
                 </p>
                 <button
                   onClick={onOpenConsultation}
-                  className="w-full py-3 px-4 rounded-xl bg-white text-brand-700 font-bold text-sm hover:bg-slate-100 shadow-lg transition-transform hover:scale-105"
+                  className="w-full py-3 px-4 rounded-xl bg-white text-brand-700 font-bold text-sm hover:bg-slate-100 shadow-lg transition-transform hover:scale-105 active:scale-95"
                 >
                   Schedule Free Consultation
                 </button>
@@ -93,3 +119,4 @@ export default function StatsHighlights({ onOpenConsultation }) {
     </section>
   );
 }
+
