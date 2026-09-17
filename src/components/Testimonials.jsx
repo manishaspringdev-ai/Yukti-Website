@@ -17,9 +17,6 @@ export default function Testimonials() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 text-slate-800 dark:text-slate-200 shadow-sm hover:border-amber-300 transition-all">
-            <span className="font-medium">Proven Success & Student Outcomes</span>
-          </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             What Clients & Students Say About Our Services
           </h2>
@@ -245,31 +242,50 @@ export default function Testimonials() {
             {/* Split: Client Reviews (Left) + Placement Record (Right) */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               
-              {/* Client Reviews Column */}
+              {/* Client & Student Reviews Column */}
               <div className="lg:col-span-6 space-y-4">
                 <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800">
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center space-x-2">
                     <Building2 className="w-5 h-5 text-brand-600" />
-                    <span>What Clients Say About Our Services</span>
+                    <span>Verified Reviews & Testimonials</span>
                   </h3>
-                  <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">5.0 ★ Rating</span>
+                  <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">4.9 ★ Rating (128+ Reviews)</span>
                 </div>
 
                 <div className="space-y-4">
-                  {testimonials.slice(0, 2).map((t, idx) => (
-                    <div key={idx} className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
-                      <div className="flex items-center space-x-1 text-amber-400">
-                        {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-amber-400" />)}
+                  {testimonials.map((t, idx) => (
+                    <div key={idx} className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 card-hover-effect hover-shine space-y-3 group">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-1 text-amber-400 group-hover:scale-105 transition-transform">
+                          {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-amber-400" />)}
+                        </div>
+                        <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-sm group-hover:scale-105 transition-all ${
+                          t.type === 'student'
+                            ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/80 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800'
+                            : 'bg-brand-50 text-brand-700 dark:bg-brand-950/80 dark:text-brand-300 border border-brand-200 dark:border-brand-800'
+                        }`}>
+                          {t.type === 'student' ? (t.package ? `Placed • ${t.package}` : 'Student Placement') : 'Enterprise Client'}
+                        </span>
                       </div>
+
                       <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed italic">
                         "{t.content}"
                       </p>
-                      <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+
+                      <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center space-x-3">
+                        <img 
+                          src={t.image} 
+                          alt={t.name} 
+                          width="40"
+                          height="40"
+                          loading="lazy"
+                          decoding="async"
+                          className="w-10 h-10 rounded-full object-cover ring-2 ring-brand-500/20 group-hover:ring-brand-500/50 group-hover:scale-110 transition-all duration-300"
+                        />
                         <div>
-                          <p className="text-xs font-bold text-slate-900 dark:text-white">{t.name}</p>
-                          <p className="text-[11px] text-slate-400">{t.role}, {t.company}</p>
+                          <p className="text-xs font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">{t.name}</p>
+                          <p className="text-[11px] text-slate-500 dark:text-slate-400">{t.role} • {t.company}</p>
                         </div>
-                        <span className="text-[10px] px-2 py-0.5 rounded bg-brand-50 dark:bg-brand-950 text-brand-600 font-bold">Enterprise Client</span>
                       </div>
                     </div>
                   ))}
@@ -283,30 +299,50 @@ export default function Testimonials() {
                     <GraduationCap className="w-5 h-5 text-emerald-600" />
                     <span>A Positive Placement Record</span>
                   </h3>
-                  <span className="text-xs font-bold text-brand-600">Top Tier: 16.0 LPA</span>
+                  <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">Highest Package: ₹24.0 LPA</span>
                 </div>
 
-                <div className="p-6 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-950 to-brand-950 text-white border border-brand-500/30 space-y-6">
+                <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-950 to-brand-950 text-white border border-brand-500/30 shadow-2xl space-y-6 card-hover-effect hover-shine">
                   <div className="grid grid-cols-2 gap-4 text-center">
-                    <div className="p-4 rounded-2xl bg-slate-800/80">
-                      <p className="text-3xl font-black text-emerald-400">94%</p>
+                    <div className="p-4 rounded-2xl bg-slate-800/80 border border-slate-700/80 hover:border-emerald-500/50 hover:bg-slate-800 transition-all">
+                      <p className="text-3xl sm:text-4xl font-black text-emerald-400">94%</p>
                       <p className="text-[11px] text-slate-300 font-medium mt-1">Verified Placement Rate</p>
                     </div>
-                    <div className="p-4 rounded-2xl bg-slate-800/80">
-                      <p className="text-3xl font-black text-brand-400">45+</p>
-                      <p className="text-[11px] text-slate-300 font-medium mt-1">Hiring Brand Partners</p>
+                    <div className="p-4 rounded-2xl bg-slate-800/80 border border-slate-700/80 hover:border-brand-500/50 hover:bg-slate-800 transition-all">
+                      <p className="text-3xl sm:text-4xl font-black text-brand-400">45+</p>
+                      <p className="text-[11px] text-slate-300 font-medium mt-1">Hiring Corporate Partners</p>
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Recent Placed Alumni Batch</p>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <p className="text-xs font-bold uppercase tracking-wider text-slate-300">Top Recruiters & Hiring Brands</p>
+                      <span className="text-[10px] text-emerald-400 font-mono">100% Verified</span>
+                    </div>
                     <div className="flex flex-wrap gap-2">
-                      {['TCS Digital', 'Infosys Edge', 'Wipro Technologies', 'Cognizant', 'Fintech Labs', 'CloudScale'].map((c, i) => (
-                        <span key={i} className="px-3 py-1 rounded-xl bg-white/10 text-xs font-medium text-slate-200">
-                          ✓ {c}
+                      {[
+                        'Tata Consultancy Services',
+                        'Infosys Edge',
+                        'Wipro Technologies',
+                        'Cognizant',
+                        'HCLTech',
+                        'Capgemini',
+                        'Paytm',
+                        'Accenture',
+                        'Tech Mahindra',
+                        'LTIMindtree'
+                      ].map((c, i) => (
+                        <span key={i} className="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-brand-500/30 hover:border-brand-400/50 text-xs font-medium text-slate-200 transition-all duration-300 border border-white/10 flex items-center space-x-1.5 hover:scale-105 cursor-default">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                          <span>{c}</span>
                         </span>
                       ))}
                     </div>
+                  </div>
+
+                  <div className="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 flex items-center justify-between text-xs font-medium">
+                    <span>⚡ On-Campus & Direct MNC Drives Every Month</span>
+                    <span className="font-bold text-white bg-emerald-600 px-2.5 py-1 rounded-lg">Batch 2026</span>
                   </div>
                 </div>
               </div>

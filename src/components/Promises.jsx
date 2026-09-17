@@ -49,17 +49,17 @@ export default function Promises({ onOpenConsultation }) {
 
         {/* Business Promises Grid (7 items) */}
         {activeTab === 'business' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fadeIn">
             {promisesBusiness.promises.map((p, idx) => (
               <div
                 key={idx}
-                className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-xl hover:border-brand-500/40 transition-all duration-300 flex flex-col justify-between group"
+                className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 card-hover-effect hover-shine flex flex-col justify-between group"
               >
                 <div>
-                  <div className="w-14 h-14 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 p-2.5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-md">
+                  <div className="w-14 h-14 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 p-2.5 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-md">
                     {getPromiseLogo(idx, false, "w-9 h-9")}
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors mb-3">
                     {p.title}
                   </h3>
                   <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -77,17 +77,17 @@ export default function Promises({ onOpenConsultation }) {
 
         {/* Student Promises Grid (4 items) */}
         {activeTab === 'students' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto animate-fadeIn">
             {promisesStudents.promises.map((p, idx) => (
               <div
                 key={idx}
-                className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/40 transition-all duration-300 flex flex-col justify-between group"
+                className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 card-hover-effect hover-shine flex flex-col justify-between group"
               >
                 <div>
-                  <div className="w-14 h-14 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 p-2.5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-md">
+                  <div className="w-14 h-14 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 p-2.5 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-md">
                     {getPromiseLogo(idx, true, "w-9 h-9")}
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors mb-3">
                     {p.title}
                   </h3>
                   <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -107,10 +107,10 @@ export default function Promises({ onOpenConsultation }) {
         <div className="text-center pt-6">
           <button
             onClick={onOpenConsultation}
-            className="px-8 py-3.5 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-brand-600 to-indigo-600 hover:shadow-lg hover:shadow-brand-500/25 transition-all inline-flex items-center space-x-2"
+            className="px-8 py-3.5 rounded-2xl font-bold text-sm text-white bg-gradient-to-r from-brand-600 to-indigo-600 shadow-lg shadow-brand-500/25 btn-spring inline-flex items-center space-x-2"
           >
-            <span>Experience Our Standard – Book a Call</span>
-            <ArrowRight className="w-4 h-4" />
+            <span>Partner with Yukti Software</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 

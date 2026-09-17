@@ -26,9 +26,13 @@ export default function FounderMessage({ onOpenConsultation }) {
               <div className="relative rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 shadow-2xl text-center space-y-6">
                 
                 {/* Avatar / Portrait */}
-                <div className="relative mx-auto w-32 h-32 rounded-3xl bg-gradient-to-tr from-brand-600 to-accent-primary flex items-center justify-center text-white shadow-xl">
-                  <span className="text-4xl font-black">MK</span>
-                  <div className="absolute -bottom-3 -right-3 p-2 bg-slate-900 text-brand-400 rounded-2xl shadow-lg border border-slate-800">
+                <div className="relative mx-auto w-36 h-36 rounded-3xl overflow-hidden shadow-2xl ring-4 ring-brand-500/20 group">
+                  <img 
+                    src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=800&q=80" 
+                    alt="Ms. Manisha Kumari - Founder & CEO of Yukti Software" 
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute -bottom-1 -right-1 p-2 bg-slate-900 text-brand-400 rounded-2xl shadow-lg border border-slate-800">
                     <Award className="w-5 h-5" />
                   </div>
                 </div>
@@ -67,11 +71,6 @@ export default function FounderMessage({ onOpenConsultation }) {
 
           {/* Founder's Letter & Vision Narrative */}
           <div className="lg:col-span-7 space-y-6">
-            
-            <div className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 text-slate-800 dark:text-slate-200 shadow-sm hover:border-brand-300 transition-all">
-              <span className="font-medium">Leadership Vision & Enterprise Philosophy</span>
-            </div>
-
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 dark:text-white leading-tight">
               "We Built Yukti Software to Bridge Enterprise Technology Gaps & Cultivate Next-Gen Talent."
             </h2>

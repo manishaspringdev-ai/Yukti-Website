@@ -13,10 +13,7 @@ export default function Team() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-6">
-          <div className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 text-slate-800 dark:text-slate-200 shadow-sm hover:border-brand-300 transition-all">
-            <span className="font-medium">{teamSection.badge}</span>
-          </div>
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-8">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             {teamSection.title}
           </h2>
@@ -66,25 +63,53 @@ export default function Team() {
         {/* ========================================================================= */}
         {teamVariant === 'v2_bentoLeadership' && (
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 animate-fadeIn">
-            <div className="md:col-span-6 p-8 rounded-3xl bg-gradient-to-br from-brand-900 via-slate-900 to-slate-950 text-white flex flex-col justify-between space-y-6">
-              <div className="space-y-4">
-                <span className="px-3 py-1 rounded-full bg-brand-500/20 text-brand-300 text-xs font-bold">Founder & Visionary</span>
-                <h3 className="text-3xl font-black">{teamSection.members[0].name}</h3>
-                <p className="text-xs font-bold text-accent-primary">{teamSection.members[0].role} • {teamSection.members[0].experience}</p>
-                <p className="text-sm text-slate-300 leading-relaxed">{teamSection.members[0].bio}</p>
+            <div className="md:col-span-6 p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-950 to-brand-950 text-white flex flex-col justify-between space-y-6 border border-slate-800 shadow-2xl relative overflow-hidden group card-hover-effect hover-shine">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-5">
+                <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-3xl overflow-hidden ring-4 ring-brand-500/30 flex-shrink-0 shadow-lg group-hover:ring-brand-400/50 transition-all duration-300">
+                  <img 
+                    src={teamSection.members[0].image} 
+                    alt={teamSection.members[0].name}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700 ease-out"
+                  />
+                  <span className="absolute bottom-1 right-1 px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-emerald-500 text-white shadow-md">
+                    Verified
+                  </span>
+                </div>
+                <div className="space-y-1">
+                  <span className="px-3 py-1 rounded-full bg-brand-500/20 text-brand-300 text-xs font-bold border border-brand-500/30">Founder & CEO</span>
+                  <h3 className="text-2xl sm:text-3xl font-black text-white">{teamSection.members[0].name}</h3>
+                  <p className="text-xs font-bold text-accent-primary">{teamSection.members[0].role} • {teamSection.members[0].experience}</p>
+                </div>
               </div>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">{teamSection.members[0].bio}</p>
               <div className="pt-4 flex flex-wrap gap-2 border-t border-white/10">
-                {teamSection.members[0].specialties.map((s, i) => <span key={i} className="text-xs bg-white/10 px-2.5 py-1 rounded-lg">{s}</span>)}
+                {teamSection.members[0].specialties.map((s, i) => (
+                  <span key={i} className="text-[11px] font-medium bg-white/10 hover:bg-brand-500/30 transition-colors px-2.5 py-1 rounded-lg">
+                    {s}
+                  </span>
+                ))}
               </div>
             </div>
+
             <div className="md:col-span-6 grid grid-cols-1 gap-4">
               {teamSection.members.slice(1).map((m, idx) => (
-                <div key={idx} className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center space-x-4">
-                  <div className="w-14 h-14 rounded-2xl bg-brand-600 text-white font-black text-lg flex items-center justify-center flex-shrink-0">{m.initials}</div>
-                  <div>
-                    <h4 className="text-base font-bold text-slate-900 dark:text-white">{m.name}</h4>
-                    <p className="text-xs text-brand-600 dark:text-brand-400 font-bold">{m.role} • {m.experience}</p>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 mt-1">{m.bio}</p>
+                <div key={idx} className="p-5 sm:p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center space-x-4 shadow-sm card-hover-effect group">
+                  <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden ring-2 ring-brand-500/20 flex-shrink-0 shadow group-hover:ring-brand-400/50 transition-all">
+                    <img 
+                      src={m.image} 
+                      alt={m.name}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500 ease-out"
+                    />
+                  </div>
+                  <div className="space-y-1 flex-1">
+                    <h4 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">{m.name}</h4>
+                    <p className="text-xs text-brand-600 dark:text-brand-400 font-bold">{m.role}</p>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">{m.experience}</p>
+                    <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-2 mt-0.5">{m.bio}</p>
                   </div>
                 </div>
               ))}

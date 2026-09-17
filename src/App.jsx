@@ -15,7 +15,6 @@ import ConsultationModal from './components/ConsultationModal';
 import FloatingHelpBar from './components/FloatingHelpBar';
 import StructuredData from './components/StructuredData';
 import ScrollProgressBar from './components/ScrollProgressBar';
-import BrandPreloader from './components/BrandPreloader';
 import PageSkeletonLoader from './components/PageSkeletonLoader';
 import { ArrowUp } from 'lucide-react';
 
@@ -165,9 +164,6 @@ export default function App() {
 
   return (
     <ThemeProvider>
-      {/* Brand Initial Splash Preloader */}
-      <BrandPreloader />
-
       {/* Top Window Scroll Progress Bar */}
       <ScrollProgressBar />
 

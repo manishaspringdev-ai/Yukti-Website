@@ -1,408 +1,340 @@
 import React, { useState } from 'react';
 import { siteData } from '../data';
-import Icon from './Icon';
 import { getServiceLogo } from './TechLogos';
 import { 
-  Check, 
   ArrowRight, 
   Sparkles, 
+  Check, 
+  ShieldCheck, 
+  Zap, 
+  Users, 
   ChevronRight, 
   ChevronDown, 
-  CheckCircle2, 
-  Code2, 
-  ShieldCheck, 
-  Zap,
-  Cpu,
-  Layers
+  ExternalLink 
 } from 'lucide-react';
+
+function getServiceImageDetails(serviceId) {
+  const id = (serviceId || '').toLowerCase();
+  
+  if (id.includes('web')) {
+    return {
+      url: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
+      caption: 'Full-Stack Web, React & Node Engineering Workstation',
+      badge: 'Modern Web Stack'
+    };
+  }
+  if (id.includes('mobile')) {
+    return {
+      url: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80',
+      caption: 'Cross-Platform Flutter & Native iOS/Android App Testing',
+      badge: 'iOS & Android'
+    };
+  }
+  if (id.includes('database') || id.includes('data')) {
+    return {
+      url: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80',
+      caption: 'High-Throughput SQL/NoSQL & End-to-End Encryption',
+      badge: 'Data Security'
+    };
+  }
+  if (id.includes('cloud')) {
+    return {
+      url: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80',
+      caption: 'AWS, Azure & GCP Cloud Infrastructure & Migration',
+      badge: '99.99% Uptime'
+    };
+  }
+  if (id.includes('devops') || id.includes('ci')) {
+    return {
+      url: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80',
+      caption: 'Automated CI/CD Pipelines & Kubernetes Deployment',
+      badge: 'Continuous Delivery'
+    };
+  }
+
+  return {
+    url: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
+    caption: 'Full-Stack Web & Next.js Architecture Lab',
+    badge: 'Enterprise Grade'
+  };
+}
 
 export default function Services({ onOpenConsultation }) {
   const { servicesSection } = siteData;
-  const servicesVariant = 'v1_tabs';
   const [activeService, setActiveService] = useState(servicesSection.services[0].id);
-  const [openAccordion, setOpenAccordion] = useState(servicesSection.services[0].id);
 
   const selectedService = servicesSection.services.find(s => s.id === activeService) || servicesSection.services[0];
 
   return (
-    <section id="services" className="py-12 sm:py-16 relative overflow-hidden bg-slate-100/50 dark:bg-slate-900/40">
+    <section id="services" className="py-12 sm:py-16 md:py-20 relative overflow-hidden bg-slate-100/60 dark:bg-slate-900/40">
+      
+      {/* Background Soft Blurs */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-brand-500/5 rounded-full blur-3xl pointer-events-none -z-10" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-6">
-          <div className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 text-slate-800 dark:text-slate-200 shadow-sm hover:border-brand-300 transition-all">
-            <span className="font-medium">{servicesSection.badge}</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-white leading-tight">
             {servicesSection.title}
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300">
+          <p className="text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
             {servicesSection.description}
           </p>
         </div>
 
-        {/* 10-Variant Switcher Bar */}
-        
-
         {/* ========================================================================= */}
-        {/* V1: INTERACTIVE DEEP TABS */}
+        {/* MOBILE & TABLET VIEW (< lg): Horizontal Tab Selector + In-Place Accordions */}
         {/* ========================================================================= */}
-        {servicesVariant === 'v1_tabs' && (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start animate-fadeIn">
-            <div className="lg:col-span-5 space-y-3">
-              {servicesSection.services.map((service) => {
-                const isActive = activeService === service.id;
-                return (
-                  <button
-                    key={service.id}
-                    onClick={() => setActiveService(service.id)}
-                    className={`w-full text-left p-4 sm:p-5 rounded-2xl transition-all duration-300 flex items-center justify-between group border ${
-                      isActive
-                        ? 'bg-white dark:bg-slate-800/90 border-brand-500 shadow-xl shadow-brand-500/10 scale-[1.01]'
-                        : 'bg-white/60 dark:bg-slate-900/60 border-slate-200/80 dark:border-slate-800/80 hover:bg-white dark:hover:bg-slate-800/50'
-                    }`}
-                  >
-                    <div className="flex items-center space-x-4">
-                      <div className="w-13 h-13 p-2 rounded-2xl bg-slate-50 dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
-                        {getServiceLogo(service.id, "w-8 h-8")}
-                      </div>
-                      <div>
-                        <span className="text-xs font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-wider block">{service.tag}</span>
-                        <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">{service.shortTitle}</h3>
-                      </div>
-                    </div>
-                    <ChevronRight className={`w-5 h-5 transition-transform ${isActive ? 'text-brand-600 dark:text-brand-400 translate-x-1' : 'text-slate-400'}`} />
-                  </button>
-                );
-              })}
-            </div>
-            <div className="lg:col-span-7">
-              <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-xl space-y-6">
-                <div className="flex items-center space-x-4 pb-6 border-b border-slate-100 dark:border-slate-800">
-                  <div className="w-14 h-14 p-2.5 rounded-2xl bg-slate-50 dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-md">
-                    {getServiceLogo(selectedService.id, "w-9 h-9")}
-                  </div>
-                  <div>
-                    <span className="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest">{selectedService.tag}</span>
-                    <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">{selectedService.title}</h3>
-                  </div>
-                </div>
-                <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">{selectedService.description}</p>
-                <div className="space-y-3 pt-2">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Key Deliverables</h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {selectedService.highlights.map((h, idx) => (
-                      <div key={idx} className="flex items-center space-x-2.5 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
-                        <Check className="w-4 h-4 text-emerald-500 flex-shrink-0" />
-                        <span className="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200">{h}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="pt-4 flex items-center justify-between border-t border-slate-100 dark:border-slate-800">
-                  <span className="text-xs text-slate-400">Tailored to your business scale</span>
-                  <button onClick={onOpenConsultation} className="px-5 py-2.5 rounded-xl bg-brand-600 text-white font-bold text-xs flex items-center space-x-1.5 shadow">
-                    <span>Request Quote</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* ========================================================================= */}
-        {/* V2: 3D GLASS GRID */}
-        {/* ========================================================================= */}
-        {servicesVariant === 'v2_3dGrid' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fadeIn">
-            {servicesSection.services.map((service) => (
-              <div key={service.id} className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 p-7 shadow-sm hover:shadow-2xl hover:border-brand-500/50 transition-all flex flex-col justify-between group">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div className="w-14 h-14 p-2.5 rounded-2xl bg-slate-50 dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
-                      {getServiceLogo(service.id, "w-9 h-9")}
-                    </div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-brand-50 dark:bg-brand-950 text-brand-700 dark:text-brand-300">{service.tag}</span>
-                  </div>
-                  <h3 className="text-xl font-black text-slate-900 dark:text-white">{service.shortTitle}</h3>
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{service.description}</p>
-                </div>
-                <button onClick={onOpenConsultation} className="w-full mt-6 py-2.5 px-4 rounded-xl text-xs font-bold text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-950/60 hover:bg-brand-100 transition-colors flex items-center justify-center space-x-1.5">
-                  <span>Request Details</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* ========================================================================= */}
-        {/* V3: ARCHITECTURE ACCORDION */}
-        {/* ========================================================================= */}
-        {servicesVariant === 'v3_accordion' && (
-          <div className="max-w-4xl mx-auto space-y-4 animate-fadeIn">
+        <div className="block lg:hidden space-y-4">
+          
+          {/* Quick Filter Horizontal Scroll Pill Bar */}
+          <div className="flex overflow-x-auto pb-2 gap-2 scrollbar-none no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
             {servicesSection.services.map((service) => {
-              const isOpen = openAccordion === service.id;
+              const isActive = activeService === service.id;
               return (
-                <div key={service.id} className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
-                  <button onClick={() => setOpenAccordion(isOpen ? null : service.id)} className="w-full p-5 text-left flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-800/50">
-                    <div className="flex items-center space-x-4">
-                      <div className="w-12 h-12 p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center">
+                <button
+                  key={service.id}
+                  onClick={() => setActiveService(service.id)}
+                  className={`flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center space-x-2 border ${
+                    isActive
+                      ? 'bg-brand-600 text-white border-brand-600 shadow-md scale-[1.02]'
+                      : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800'
+                  }`}
+                >
+                  <div className="w-4 h-4 shrink-0">
+                    {getServiceLogo(service.id, "w-4 h-4")}
+                  </div>
+                  <span className="whitespace-nowrap">{service.shortTitle}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Accordion Cards Stack for Mobile */}
+          <div className="space-y-3 pt-2">
+            {servicesSection.services.map((service) => {
+              const isOpen = activeService === service.id;
+              return (
+                <div
+                  key={service.id}
+                  className={`rounded-2xl transition-all duration-300 overflow-hidden border ${
+                    isOpen
+                      ? 'bg-white dark:bg-slate-900 border-brand-500 shadow-xl shadow-brand-500/10'
+                      : 'bg-white/70 dark:bg-slate-900/70 border-slate-200/80 dark:border-slate-800/80'
+                  }`}
+                >
+                  <button
+                    onClick={() => setActiveService(isOpen ? null : service.id)}
+                    className="w-full text-left p-4 sm:p-5 flex items-center justify-between"
+                  >
+                    <div className="flex items-center space-x-3.5">
+                      <div className="w-11 h-11 p-1.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 flex items-center justify-center shrink-0">
                         {getServiceLogo(service.id, "w-7 h-7")}
                       </div>
-                      <div><span className="text-[10px] font-bold text-brand-600 uppercase tracking-widest">{service.tag}</span><h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">{service.title}</h4></div>
+                      <div>
+                        <span className="text-[10px] font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wider block">
+                          {service.tag}
+                        </span>
+                        <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
+                          {service.shortTitle}
+                        </h3>
+                      </div>
                     </div>
-                    <ChevronDown className={`w-5 h-5 text-slate-400 transition-transform ${isOpen ? 'rotate-180 text-brand-600' : ''}`} />
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+                      isOpen 
+                        ? 'bg-brand-50 dark:bg-brand-950/60 text-brand-600 dark:text-brand-400 rotate-180' 
+                        : 'text-slate-400'
+                    }`}>
+                      <ChevronDown className="w-4 h-4" />
+                    </div>
                   </button>
+
+                  {/* Expanded Mobile Body */}
                   {isOpen && (
-                    <div className="p-6 pt-0 border-t border-slate-100 dark:border-slate-800 space-y-4">
-                      <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{service.description}</p>
-                      <button onClick={onOpenConsultation} className="px-4 py-2 rounded-xl bg-brand-600 text-white font-bold text-xs">Book Strategy Call</button>
+                    <div className="px-4 pb-5 sm:px-5 sm:pb-6 pt-1 border-t border-slate-100 dark:border-slate-800 space-y-4 animate-fadeIn">
+                      {/* Realistic Service Specific Photo on Mobile */}
+                      {(() => {
+                        const img = getServiceImageDetails(service.id);
+                        return (
+                          <div className="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 dark:border-slate-800 h-40 group mt-3">
+                            <img 
+                              src={img.url} 
+                              alt={img.caption} 
+                              loading="lazy"
+                              decoding="async"
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
+                            <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-white">
+                              <div className="flex items-center space-x-1.5">
+                                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                                <p className="text-[11px] font-bold text-white drop-shadow truncate">{img.caption}</p>
+                              </div>
+                              <span className="px-2 py-0.5 rounded-lg bg-white/20 backdrop-blur-md text-[9px] font-extrabold uppercase text-white border border-white/30 shrink-0">
+                                {img.badge}
+                              </span>
+                            </div>
+                          </div>
+                        );
+                      })()}
+
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                        {service.description}
+                      </p>
+
+                      <div className="space-y-2 pt-1">
+                        <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                          Key Deliverables & Specifications
+                        </h4>
+                        <div className="grid grid-cols-1 gap-2">
+                          {service.highlights.map((h, idx) => (
+                            <div key={idx} className="flex items-start space-x-2 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
+                              <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
+                              <span className="text-xs font-medium text-slate-700 dark:text-slate-200 leading-snug">{h}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 border-t border-slate-100 dark:border-slate-800">
+                        <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
+                          ✓ Custom SLA • 60-Day Post Launch Support
+                        </span>
+                        <button
+                          onClick={onOpenConsultation}
+                          className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-accent-primary text-white font-bold text-xs flex items-center justify-center space-x-2 shadow-md hover:scale-[1.02] active:scale-95 transition-all"
+                        >
+                          <span>Request Free Estimate</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
                     </div>
                   )}
                 </div>
               );
             })}
           </div>
-        )}
+
+        </div>
 
         {/* ========================================================================= */}
-        {/* V4: HORIZONTAL SLIDER */}
+        {/* DESKTOP VIEW (>= lg): Split Interactive Navigation & Detailed Stage */}
         {/* ========================================================================= */}
-        {servicesVariant === 'v4_carousel' && (
-          <div className="overflow-x-auto pb-6 scrollbar-none animate-fadeIn">
-            <div className="flex space-x-6 min-w-[1000px]">
-              {servicesSection.services.map((service) => (
-                <div key={service.id} className="w-80 flex-shrink-0 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 shadow-md flex flex-col justify-between">
-                  <div className="space-y-3">
-                    <div className="w-14 h-14 p-2.5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center">
+        <div className="hidden lg:grid lg:grid-cols-12 gap-8 items-start animate-fadeIn">
+          
+          {/* Left Service Menu */}
+          <div className="lg:col-span-5 space-y-3">
+            {servicesSection.services.map((service) => {
+              const isActive = activeService === service.id;
+              return (
+                <button
+                  key={service.id}
+                  onClick={() => setActiveService(service.id)}
+                  className={`w-full text-left p-5 rounded-2xl transition-all duration-300 flex items-center justify-between group border ${
+                    isActive
+                      ? 'bg-white dark:bg-slate-800/90 border-brand-500 shadow-xl shadow-brand-500/10 scale-[1.01]'
+                      : 'bg-white/60 dark:bg-slate-900/60 border-slate-200/80 dark:border-slate-800/80 hover:bg-white dark:hover:bg-slate-800/50'
+                  }`}
+                >
+                  <div className="flex items-center space-x-4">
+                    <div className="w-13 h-13 p-2 rounded-2xl bg-slate-50 dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
                       {getServiceLogo(service.id, "w-8 h-8")}
                     </div>
-                    <span className="text-[10px] font-bold text-brand-600 uppercase">{service.tag}</span>
-                    <h4 className="text-lg font-bold text-slate-900 dark:text-white">{service.shortTitle}</h4>
-                    <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">{service.description}</p>
+                    <div>
+                      <span className="text-xs font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-wider block">{service.tag}</span>
+                      <h3 className="text-base font-bold text-slate-900 dark:text-white">{service.shortTitle}</h3>
+                    </div>
                   </div>
-                  <button onClick={onOpenConsultation} className="w-full mt-6 py-2 rounded-xl bg-brand-600 text-white font-bold text-xs">Get Proposal</button>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* ========================================================================= */}
-        {/* V5: CAPABILITY MATRIX */}
-        {/* ========================================================================= */}
-        {servicesVariant === 'v5_matrix' && (
-          <div className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden shadow-xl animate-fadeIn">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs sm:text-sm">
-                <thead className="bg-slate-50 dark:bg-slate-800 text-slate-500 uppercase font-mono text-[11px] border-b border-slate-200 dark:border-slate-700">
-                  <tr><th className="p-4">Capability Domain</th><th className="p-4">Engineering Focus</th><th className="p-4">SLA & Security</th><th className="p-4 text-right">Action</th></tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
-                  {servicesSection.services.map((s) => (
-                    <tr key={s.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40">
-                      <td className="p-4 font-bold text-slate-900 dark:text-white flex items-center space-x-3">
-                        <div className="w-8 h-8 p-1 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
-                          {getServiceLogo(s.id, "w-5 h-5")}
-                        </div>
-                        <span>{s.shortTitle}</span>
-                      </td>
-                      <td className="p-4">{s.highlights[0]}</td>
-                      <td className="p-4 text-emerald-600 dark:text-emerald-400 font-medium">100% Encrypted & QA Verified</td>
-                      <td className="p-4 text-right"><button onClick={onOpenConsultation} className="px-3 py-1.5 rounded-lg bg-brand-600 text-white font-bold text-xs">Inquire</button></td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
-
-        {/* ========================================================================= */}
-        {/* V6: ASYMMETRIC BENTO MOSAIC */}
-        {/* ========================================================================= */}
-        {servicesVariant === 'v6_bentoMosaic' && (
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 animate-fadeIn">
-            <div className="md:col-span-7 p-8 rounded-3xl bg-gradient-to-br from-brand-900 to-slate-950 text-white space-y-4 flex flex-col justify-between">
-              <div className="space-y-3">
-                <span className="text-xs font-bold text-accent-primary uppercase tracking-widest">{servicesSection.services[0].tag}</span>
-                <h3 className="text-2xl sm:text-3xl font-extrabold">{servicesSection.services[0].title}</h3>
-                <p className="text-sm text-slate-300 leading-relaxed">{servicesSection.services[0].description}</p>
-              </div>
-              <button onClick={onOpenConsultation} className="px-6 py-3 bg-white text-slate-950 font-bold text-xs rounded-xl self-start">Request Architecture</button>
-            </div>
-            <div className="md:col-span-5 grid grid-cols-1 gap-4">
-              {servicesSection.services.slice(1, 3).map((s) => (
-                <div key={s.id} className="p-6 rounded-3xl glass-card space-y-2">
-                  <h4 className="text-base font-bold text-slate-900 dark:text-white">{s.shortTitle}</h4>
-                  <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-2">{s.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* ========================================================================= */}
-        {/* V7: DEVELOPER CODE API VIEW */}
-        {/* ========================================================================= */}
-        {servicesVariant === 'v7_tabbedCode' && (
-          <div className="rounded-3xl bg-slate-950 text-white border border-slate-800 p-6 sm:p-8 space-y-6 shadow-2xl font-mono animate-fadeIn">
-            <div className="flex flex-wrap gap-2 pb-4 border-b border-slate-800">
-              {servicesSection.services.map((s) => (
-                <button key={s.id} onClick={() => setActiveService(s.id)} className={`px-3 py-1.5 rounded-xl text-xs font-bold ${activeService === s.id ? 'bg-brand-600 text-white' : 'bg-slate-900 text-slate-400'}`}>
-                  {s.id}.ts
+                  <ChevronRight className={`w-5 h-5 transition-transform ${isActive ? 'text-brand-600 dark:text-brand-400 translate-x-1' : 'text-slate-400'}`} />
                 </button>
-              ))}
-            </div>
-            <div className="text-xs text-slate-300 space-y-2">
-              <p className="text-slate-500">// Yukti Software Production Interface</p>
-              <p><span className="text-purple-400">export interface</span> <span className="text-blue-400">{selectedService.shortTitle.replace(/\s+/g, '')}</span> {'{'}</p>
-              <p className="pl-4"><span className="text-emerald-400">scope:</span> <span className="text-amber-400">"{selectedService.title}"</span>;</p>
-              <p className="pl-4"><span className="text-emerald-400">deliverables:</span> [{selectedService.highlights.map(h => `"${h}"`).join(', ')}];</p>
-              <p className="pl-4"><span className="text-emerald-400">supportSLA:</span> <span className="text-amber-400">"24/7 Monitored"</span>;</p>
-              <p>{'}'}</p>
-            </div>
-            <button onClick={onOpenConsultation} className="px-5 py-2.5 rounded-xl bg-brand-600 text-white text-xs font-bold font-sans">
-              Initialize Service Contract →
-            </button>
+              );
+            })}
           </div>
-        )}
 
-        {/* ========================================================================= */}
-        {/* V8: BORDER-GLOW TECH CARDS */}
-        {/* ========================================================================= */}
-        {servicesVariant === 'v8_hoverGlow' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fadeIn">
-            {servicesSection.services.map((s, idx) => (
-              <div key={s.id} className="p-8 rounded-3xl bg-slate-900 text-white border-2 border-brand-500/30 hover:border-brand-500 transition-all shadow-xl space-y-4">
-                <span className="text-xs font-mono font-bold text-brand-400">SERVICE_0{idx + 1}</span>
-                <h4 className="text-xl font-bold">{s.shortTitle}</h4>
-                <p className="text-xs text-slate-300 leading-relaxed">{s.description}</p>
-                <button onClick={onOpenConsultation} className="text-xs font-bold text-brand-400 hover:text-brand-300 flex items-center space-x-1">
-                  <span>Learn more</span><ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* ========================================================================= */}
-        {/* V9: ENGINEERING LIFECYCLE */}
-        {/* ========================================================================= */}
-        {servicesVariant === 'v9_lifecycleTimeline' && (
-          <div className="space-y-6 animate-fadeIn">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                { phase: "Phase 1: Architecture & Prototyping", desc: "Consultation, requirements discovery, high-fidelity UI/UX and database schema design." },
-                { phase: "Phase 2: Agile Engineering & Cloud", desc: "Full stack web & mobile builds, microservices, containerization and automated CI/CD pipelines." },
-                { phase: "Phase 3: QA Verification & 24/7 SLA", desc: "Rigorous testing, zero-downtime deployment, continuous monitoring and post-launch maintenance." }
-              ].map((p, i) => (
-                <div key={i} className="p-8 rounded-3xl glass-card border border-brand-500/20 space-y-3">
-                  <span className="text-xs font-bold text-brand-600 uppercase">Step 0{i + 1}</span>
-                  <h4 className="text-lg font-bold text-slate-900 dark:text-white">{p.phase}</h4>
-                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">{p.desc}</p>
+          {/* Right Selected Detail Pane */}
+          <div className="lg:col-span-7">
+            <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 shadow-xl space-y-6">
+              <div className="flex items-center space-x-4 pb-6 border-b border-slate-100 dark:border-slate-800">
+                <div className="w-14 h-14 p-2.5 rounded-2xl bg-slate-50 dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-md">
+                  {getServiceLogo(selectedService.id, "w-9 h-9")}
                 </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* ========================================================================= */}
-        {/* V10: ENTERPRISE SCOPE TIERS */}
-        {/* ========================================================================= */}
-        {servicesVariant === 'v10_tierComparison' && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fadeIn">
-            {[
-              { tier: "Startup Launchpad", desc: "MVP Full Stack Web / Mobile App with rapid time to market and cloud deployment." },
-              { tier: "Growth Scaleup", desc: "Database scaling, cloud microservices migration, DevOps CI/CD and security audits." },
-              { tier: "Enterprise Suite", desc: "Custom end-to-end software architecture, dedicated engineering pod, and 24/7 SLA support." }
-            ].map((t, i) => (
-              <div key={i} className={`p-8 rounded-3xl flex flex-col justify-between ${i === 2 ? 'bg-slate-900 text-white border-2 border-brand-500' : 'glass-card'}`}>
-                <div className="space-y-4">
-                  <span className="text-xs font-bold text-brand-600 uppercase">Tier 0{i + 1}</span>
-                  <h4 className="text-2xl font-black text-slate-900 dark:text-white">{t.tier}</h4>
-                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">{t.desc}</p>
+                <div>
+                  <span className="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest">{selectedService.tag}</span>
+                  <h3 className="text-2xl font-black text-slate-900 dark:text-white">{selectedService.title}</h3>
                 </div>
-                <button onClick={onOpenConsultation} className="w-full mt-6 py-3 rounded-xl bg-brand-600 text-white font-bold text-xs">
-                  Request Custom Proposal
-                </button>
               </div>
-            ))}
-          </div>
-        )}
 
-        {/* ========================================================================= */}
-        {/* DOCX REFERENCE VARIANT: ITRANSITION 5-PILLAR ENTERPRISE SERVICES */}
-        {/* ========================================================================= */}
-        {servicesVariant === 'v_docx_itransition' && (
-          <div className="space-y-8 animate-fadeIn">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {servicesSection.services.map((srv, idx) => (
-                <div 
-                  key={idx} 
-                  className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-2xl hover:border-brand-500/50 transition-all flex flex-col justify-between group"
-                >
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div className="w-12 h-12 rounded-2xl bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400 flex items-center justify-center font-black group-hover:scale-110 transition-transform">
-                        <Icon name={srv.icon} className="w-6 h-6" />
+              {/* Realistic Photo Banner for Selected Service */}
+              {(() => {
+                const img = getServiceImageDetails(selectedService.id);
+                return (
+                  <div className="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800 group h-48 sm:h-56">
+                    <img 
+                      src={img.url} 
+                      alt={img.caption} 
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
+                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
+                      <div className="flex items-center space-x-2">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                        <p className="text-xs font-bold text-white drop-shadow">{img.caption}</p>
                       </div>
-                      <span className="text-xs font-mono font-bold text-slate-400 dark:text-slate-500">
-                        0{idx + 1} / 05
+                      <span className="px-2.5 py-1 rounded-xl bg-white/20 backdrop-blur-md text-[10px] font-extrabold uppercase tracking-wider text-white border border-white/30">
+                        {img.badge}
                       </span>
                     </div>
+                  </div>
+                );
+              })()}
 
-                    <h3 className="text-xl font-extrabold text-slate-900 dark:text-white group-hover:text-brand-600 transition-colors">
-                      {srv.title}
-                    </h3>
-
-                    <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                      {srv.shortDesc}
-                    </p>
-
-                    <div className="pt-2 space-y-1.5 border-t border-slate-100 dark:border-slate-800">
-                      {(srv.highlights || srv.features || []).slice(0, 3).map((feat, i) => (
-                        <div key={i} className="flex items-center space-x-2 text-[11px] text-slate-600 dark:text-slate-400">
-                          <span className="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
-                          <span>{feat}</span>
-                        </div>
-                      ))}
+              <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">{selectedService.description}</p>
+              
+              <div className="space-y-3 pt-2">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Key Deliverables & Specifications</h4>
+                <div className="grid grid-cols-2 gap-3">
+                  {selectedService.highlights.map((h, idx) => (
+                    <div key={idx} className="flex items-start space-x-2.5 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
+                      <Check className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                      <span className="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200">{h}</span>
                     </div>
-                  </div>
-
-                  <div className="pt-6 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-                    <button 
-                      onClick={onOpenConsultation}
-                      className="text-xs font-bold text-brand-600 dark:text-brand-400 hover:underline flex items-center space-x-1"
-                    >
-                      <span>Request Scope & Estimate</span>
-                      <ChevronRight className="w-3.5 h-3.5" />
-                    </button>
-                    <span className="text-[10px] px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-500 font-semibold">
-                      Enterprise SLA
-                    </span>
-                  </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-
-            <div className="p-6 rounded-2xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex items-center space-x-3">
-                <Sparkles className="w-5 h-5 text-brand-600 shrink-0" />
-                <p className="text-xs text-slate-700 dark:text-slate-300">
-                  <strong>Document Specification:</strong> All services include structured quality assurance, automated CI/CD pipelines, and complimentary 60-day post-launch support.
-                </p>
               </div>
-              <button onClick={onOpenConsultation} className="px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs shrink-0 shadow">
-                Schedule Architecture Call
-              </button>
+
+              {/* Service Trust Strip */}
+              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-600 dark:text-slate-400">
+                <div className="flex items-center space-x-2">
+                  <ShieldCheck className="w-4 h-4 text-brand-600 dark:text-brand-400" />
+                  <span className="font-semibold text-slate-800 dark:text-slate-200">ISO 9001:2015 QA Certified</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Zap className="w-4 h-4 text-amber-500" />
+                  <span>2-Week Agile Sprints</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  <span>60-Day Post-Launch SLA</span>
+                </div>
+              </div>
+
+              <div className="pt-4 flex items-center justify-between border-t border-slate-100 dark:border-slate-800">
+                <span className="text-xs text-slate-400">Tailored to your business scale (Startup to Enterprise)</span>
+                <button onClick={onOpenConsultation} className="px-6 py-3 rounded-xl bg-gradient-to-r from-brand-600 via-brand-500 to-accent-primary text-white font-bold text-xs flex items-center space-x-2 shadow-lg hover:scale-105 active:scale-95 transition-all">
+                  <span>Schedule Strategy Call</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
             </div>
           </div>
-        )}
+
+        </div>
 
       </div>
     </section>
   );
 }
+

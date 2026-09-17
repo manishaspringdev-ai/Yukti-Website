@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { docxPagesData } from '../data/pagesDataFromDocs';
-
-
+import { getCourseImages } from '../data/courseImages';
 import Icon from './Icon';
 import { getCourseLogo } from './TechLogos';
 import { 
@@ -270,9 +269,6 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-6">
-          <div className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 text-slate-800 dark:text-slate-200 shadow-sm hover:border-emerald-300 transition-all">
-            <span className="font-medium">Job-Oriented Training • 15 Master Career Tracks</span>
-          </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             Practical IT Courses & Placement Programs
           </h2>
@@ -344,19 +340,41 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
         {/* Course Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {displayedCourses.map((c) => {
-            const IconComp = c.icon;
+            const courseImages = getCourseImages(c.id);
+            const mainImg = courseImages[0];
             return (
               <div
                 key={c.id}
-                className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-brand-500/50 transition-all flex flex-col justify-between overflow-hidden group"
+                className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 card-hover-effect hover-shine flex flex-col justify-between overflow-hidden group cursor-pointer"
+                onClick={() => handleCourseClick(c.id)}
               >
-                <div className="p-6 sm:p-8 space-y-4">
+                {/* Photo Preview in Card */}
+                <div className="relative rounded-t-3xl overflow-hidden h-40 w-full shadow-sm">
+                  <img 
+                    src={mainImg.url} 
+                    alt={mainImg.title} 
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
+                  <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white">
+                    <span className="text-[11px] font-bold text-white drop-shadow truncate">
+                      {mainImg.title}
+                    </span>
+                    <span className="px-2 py-0.5 rounded-lg bg-white/20 backdrop-blur-md text-[9px] font-extrabold uppercase text-white border border-white/30 shrink-0">
+                      {mainImg.tag}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-6 sm:p-7 space-y-4">
                   {/* Top Bar */}
                   <div className="flex items-center justify-between">
-                    <div className="w-14 h-14 p-2.5 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-sm group-hover:scale-110 group-hover:shadow-md transition-all">
-                      {getCourseLogo(c.id, "w-9 h-9")}
+                    <div className="w-12 h-12 p-2 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-sm group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                      {getCourseLogo(c.id, "w-8 h-8")}
                     </div>
-                    <span className="px-3 py-1 rounded-full text-[10px] font-extrabold bg-brand-50 text-brand-700 dark:bg-brand-950 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
+                    <span className="px-3 py-1 rounded-full text-[10px] font-extrabold bg-brand-50 text-brand-700 dark:bg-brand-950/80 dark:text-brand-300 border border-brand-200 dark:border-brand-800 shadow-sm group-hover:border-brand-400 transition-colors">
                       {c.tag}
                     </span>
                   </div>
@@ -380,8 +398,8 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Curriculum Highlights:</p>
                     <div className="grid grid-cols-2 gap-1.5">
                       {c.highlights.map((h, hIdx) => (
-                        <div key={hIdx} className="flex items-center space-x-1.5 text-[11px] text-slate-700 dark:text-slate-300">
-                          <CheckCircle2 className="w-3 h-3 text-brand-500 flex-shrink-0" />
+                        <div key={hIdx} className="flex items-center space-x-1.5 text-[11px] text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-brand-500 flex-shrink-0" />
                           <span className="truncate">{h}</span>
                         </div>
                       ))}
@@ -390,19 +408,19 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
                 </div>
 
                 {/* Bottom Footer Actions */}
-                <div className="p-6 bg-slate-50/70 dark:bg-slate-950/60 border-t border-slate-100 dark:border-slate-800 flex gap-3">
+                <div className="p-6 bg-slate-50/70 dark:bg-slate-950/60 border-t border-slate-100 dark:border-slate-800 flex gap-3" onClick={(e) => e.stopPropagation()}>
                   <button
                     onClick={() => handleCourseClick(c.id)}
-                    className="flex-1 py-3 px-3 rounded-2xl bg-gradient-to-r from-brand-600 to-accent-primary text-white font-extrabold text-xs shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-1"
+                    className="flex-1 py-3 px-3 rounded-2xl bg-gradient-to-r from-brand-600 to-accent-primary text-white font-extrabold text-xs shadow-md hover:shadow-lg btn-spring flex items-center justify-center space-x-1"
                   >
                     <span>View Full Syllabus</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </button>
                   <button
                     onClick={onOpenConsultation}
-                    className="px-4 py-3 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs hover:bg-slate-100 transition-all"
+                    className="px-4 py-3 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs hover:bg-slate-100 dark:hover:bg-slate-700 btn-spring"
                   >
-                    Book Free Demo
+                    Book Demo
                   </button>
                 </div>
               </div>
@@ -432,6 +450,49 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
             <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
               Every student enrolled in our career programs is backed by our proven training methodology.
             </p>
+          </div>
+
+          {/* Real Lab & Placement Photo Showcase */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <div className="relative rounded-2xl overflow-hidden h-44 sm:h-52 shadow-lg border border-slate-200 dark:border-slate-800 group">
+              <img 
+                src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=500&q=70" 
+                alt="Live Interactive Coding Lab in Greater Noida" 
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
+              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
+                <div>
+                  <p className="text-xs font-bold text-white drop-shadow">Interactive Coding Workstation</p>
+                  <p className="text-[11px] text-slate-300 drop-shadow">Knowledge Park III, Greater Noida</p>
+                </div>
+                <span className="px-2.5 py-1 rounded-xl bg-emerald-500/30 backdrop-blur-md text-[10px] font-bold text-emerald-300 border border-emerald-400/40">
+                  Live Classroom
+                </span>
+              </div>
+            </div>
+
+            <div className="relative rounded-2xl overflow-hidden h-44 sm:h-52 shadow-lg border border-slate-200 dark:border-slate-800 group">
+              <img 
+                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=500&q=70" 
+                alt="Student Placement Drive & Offer Letters Handover" 
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
+              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
+                <div>
+                  <p className="text-xs font-bold text-white drop-shadow">Placement Drive & Offer Celebrations</p>
+                  <p className="text-[11px] text-slate-300 drop-shadow">45+ MNC & Product Startup Hiring Partners</p>
+                </div>
+                <span className="px-2.5 py-1 rounded-xl bg-brand-500/30 backdrop-blur-md text-[10px] font-bold text-brand-300 border border-brand-400/40">
+                  94% Placed
+                </span>
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

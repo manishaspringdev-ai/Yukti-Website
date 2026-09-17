@@ -12,9 +12,6 @@ export default function MissionVision() {
         
         {/* Main Header Narrative */}
         <div className="max-w-4xl mx-auto text-center space-y-4">
-          <div className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 text-slate-800 dark:text-slate-200 shadow-sm hover:border-brand-300 transition-all">
-            <span className="font-medium">{aboutPageData.hero.badge}</span>
-          </div>
           <h1 className="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
             {aboutPageData.hero.title}
           </h1>

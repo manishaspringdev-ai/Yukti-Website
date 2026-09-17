@@ -181,9 +181,6 @@ export default function ContactForm() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-6">
-          <div className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 text-slate-800 dark:text-slate-200 shadow-sm hover:border-brand-300 transition-all">
-            <span className="font-medium">{consultationSection.badge}</span>
-          </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             {consultationSection.title}
           </h2>
@@ -230,6 +227,30 @@ export default function ContactForm() {
         {contactVariant === 'v1_dualMode' && (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start animate-fadeIn">
             <div className="lg:col-span-5 space-y-8">
+              {/* Realistic Greater Noida Campus Visual */}
+              <div className="relative rounded-3xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800 group">
+                <img 
+                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=500&q=70" 
+                  alt="Yukti Software Technology Center & Consultation Office in Greater Noida" 
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-44 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-700" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-transparent"></div>
+                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
+                  <div>
+                    <div className="flex items-center space-x-1.5">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                      <p className="text-[10px] uppercase font-bold text-emerald-400">Open for Walk-in Visits</p>
+                    </div>
+                    <p className="text-xs font-bold text-white drop-shadow">Knowledge Park III, Greater Noida</p>
+                  </div>
+                  <span className="px-2 py-1 rounded-xl bg-white/20 backdrop-blur-md text-[10px] font-bold text-white border border-white/30">
+                    Mon - Sat (9am - 7pm)
+                  </span>
+                </div>
+              </div>
+
               <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-3">
                 <div className="flex items-center space-x-2 text-brand-600 dark:text-brand-400 font-bold text-sm">
                   <Building2 className="w-5 h-5" />

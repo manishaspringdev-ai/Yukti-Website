@@ -239,10 +239,6 @@ export default function CareersPage({ onOpenConsultation }) {
         
         {/* Top Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-brand-500 mr-1.5" />
-            <span className="font-medium">Hiring Full-Time Roles & Paid Student Interns</span>
-          </div>
           <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
             Careers & Paid Internships
           </h1>
@@ -338,21 +334,21 @@ export default function CareersPage({ onOpenConsultation }) {
             {filteredPositions.map((pos) => (
               <div
                 key={pos.id}
-                className={`p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border transition-all flex flex-col md:flex-row md:items-center justify-between gap-6 group ${
+                className={`p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border card-hover-effect hover-shine flex flex-col md:flex-row md:items-center justify-between gap-6 group ${
                   pos.isInternship 
-                    ? 'border-emerald-200 dark:border-emerald-950/60 hover:border-emerald-500 shadow-sm hover:shadow-emerald-500/10' 
+                    ? 'border-emerald-200/80 dark:border-emerald-950/60 hover:border-emerald-500 shadow-sm hover:shadow-emerald-500/10' 
                     : 'border-slate-200 dark:border-slate-800 hover:border-brand-500 shadow-sm hover:shadow-brand-500/10'
                 }`}
               >
                 <div className="space-y-3.5 max-w-2xl">
                   <div className="flex flex-wrap items-center gap-2">
                     {pos.isInternship ? (
-                      <span className="px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider bg-emerald-50 text-emerald-700 dark:bg-emerald-950/80 dark:text-emerald-300 flex items-center space-x-1 border border-emerald-200 dark:border-emerald-800">
+                      <span className="px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider bg-emerald-50 text-emerald-700 dark:bg-emerald-950/80 dark:text-emerald-300 flex items-center space-x-1 border border-emerald-200 dark:border-emerald-800 shadow-sm">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                         <span>Paid Internship</span>
                       </span>
                     ) : (
-                      <span className="px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider bg-brand-50 text-brand-700 dark:bg-brand-950/80 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
+                      <span className="px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider bg-brand-50 text-brand-700 dark:bg-brand-950/80 dark:text-brand-300 border border-brand-200 dark:border-brand-800 shadow-sm">
                         Full-Time Role
                       </span>
                     )}
@@ -387,7 +383,7 @@ export default function CareersPage({ onOpenConsultation }) {
 
                   <div className="flex flex-wrap gap-1.5 pt-1">
                     {pos.skills.map((skill, idx) => (
-                      <span key={idx} className="px-2 py-0.5 rounded-md text-[11px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                      <span key={idx} className="px-2.5 py-0.5 rounded-lg text-[11px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 group-hover:border-brand-300/40 border border-transparent transition-colors">
                         {skill}
                       </span>
                     ))}
@@ -397,14 +393,14 @@ export default function CareersPage({ onOpenConsultation }) {
                 <div className="flex flex-col shrink-0">
                   <button
                     onClick={() => handleOpenApply(pos)}
-                    className={`px-6 py-3 rounded-xl font-bold text-xs sm:text-sm shadow-md hover:scale-105 active:scale-95 transition-all flex items-center justify-center space-x-2 text-white ${
+                    className={`px-6 py-3 rounded-2xl font-bold text-xs sm:text-sm shadow-md btn-spring flex items-center justify-center space-x-2 text-white ${
                       pos.isInternship
                         ? 'bg-emerald-600 hover:bg-emerald-500 shadow-emerald-500/20'
                         : 'bg-brand-600 hover:bg-brand-500 shadow-brand-500/20'
                     }`}
                   >
                     <span>{pos.isInternship ? "Apply for Internship" : "Apply for Role"}</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
               </div>

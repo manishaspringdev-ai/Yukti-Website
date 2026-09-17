@@ -29,9 +29,6 @@ export default function AboutPage({ onOpenConsultation }) {
       <section className="py-20 bg-slate-100/70 dark:bg-slate-900/50 border-y border-slate-200 dark:border-slate-800">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <div className="text-center space-y-3">
-            <div className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 text-slate-800 dark:text-slate-200 shadow-sm hover:border-brand-300 transition-all">
-              <span className="font-medium">Direct Expert Consultation</span>
-            </div>
             <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
               Get Software Solutions that Align With Your Business Goals
             </h2>
@@ -41,12 +38,28 @@ export default function AboutPage({ onOpenConsultation }) {
             {/* Enterprise Business Solutions Card */}
             <div className="p-8 sm:p-10 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl flex flex-col justify-between space-y-6">
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-2xl bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold text-xl shadow">
-                  <Building2 className="w-6 h-6" />
+                <div className="relative rounded-2xl overflow-hidden h-40 sm:h-44 shadow-md group">
+                  <img 
+                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=500&q=70" 
+                    alt="Enterprise Strategic Consultation at Yukti Software" 
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                  <span className="absolute bottom-2.5 left-3 text-xs font-bold text-white drop-shadow">
+                    Executive Strategy & Roadmapping
+                  </span>
                 </div>
-                <h3 className="text-xl font-extrabold text-slate-900 dark:text-white">
-                  For Businesses & Enterprises
-                </h3>
+
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold shadow">
+                    <Building2 className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-xl font-extrabold text-slate-900 dark:text-white">
+                    For Businesses & Enterprises
+                  </h3>
+                </div>
                 <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                   Partner with Yukti Software for software solutions that are designed specially to address your operational pain points and are built to boost your overall working efficiency. We recommend that you start by scheduling a consultation with our experts. This will provide us with a common communication point so that we understand your requirements. At the same time, we will give you key market insights and guide you with our experience.
                 </p>
@@ -62,12 +75,28 @@ export default function AboutPage({ onOpenConsultation }) {
             {/* Student Career Counseling Card */}
             <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-slate-900 via-brand-950 to-slate-950 text-white border border-brand-800/80 shadow-2xl flex flex-col justify-between space-y-6">
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center font-bold text-xl shadow">
-                  <GraduationCap className="w-6 h-6" />
+                <div className="relative rounded-2xl overflow-hidden h-40 sm:h-44 shadow-md group border border-emerald-500/20">
+                  <img 
+                    src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=500&q=70" 
+                    alt="1-on-1 Student Career Counseling at Yukti Software" 
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent"></div>
+                  <span className="absolute bottom-2.5 left-3 text-xs font-bold text-emerald-400 drop-shadow">
+                    1-on-1 Industry Mentor Guidance
+                  </span>
                 </div>
-                <h3 className="text-xl font-extrabold text-white">
-                  For Students & Career Aspirants
-                </h3>
+
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center font-bold shadow">
+                    <GraduationCap className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-xl font-extrabold text-white">
+                    For Students & Career Aspirants
+                  </h3>
+                </div>
                 <p className="text-sm text-slate-300 leading-relaxed">
                   For students who want to enroll in our software development training courses and are confused about the right way, Yukti Software career counselling is the right move. Sit with our experts and learn what’s in-demand and what recruiters are searching for to boost your chances of landing your dream job.
                 </p>

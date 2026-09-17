@@ -81,9 +81,7 @@ export default function Footer({ setCurrentPage, onOpenConsultation }) {
               {/* Brand Info & Socials */}
               <div className="lg:col-span-2 space-y-4">
                 <div className="inline-flex items-center">
-                  <div className="h-14 px-3.5 py-1.5 rounded-2xl bg-white dark:bg-slate-900 shadow-md border border-slate-200/80 dark:border-slate-800 flex items-center justify-center">
-                    <img src={yuktiLogo} alt="Yukti Software - Enterprise Software Development & IT Training Institute" width="160" height="44" loading="lazy" decoding="async" className="h-10 w-auto object-contain" />
-                  </div>
+                  <img src={yuktiLogo} alt="Yukti Software - Enterprise Software Development & IT Training Institute" width="160" height="44" loading="lazy" decoding="async" className="h-10 sm:h-11 w-auto object-contain dark:brightness-0 dark:invert" />
                 </div>
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-sm">
                   {brand.tagline}. {brand.subTagline}
@@ -487,8 +485,8 @@ export default function Footer({ setCurrentPage, onOpenConsultation }) {
             
             {/* Center Brand Identity */}
             <div className="space-y-3">
-              <div className="inline-flex items-center justify-center px-4 py-2 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md">
-                <img src={yuktiLogo} alt="Yukti Software - Enterprise Software Development & IT Training Institute" width="160" height="44" loading="lazy" decoding="async" className="h-11 w-auto object-contain" />
+              <div className="inline-flex items-center justify-center py-2">
+                <img src={yuktiLogo} alt="Yukti Software - Enterprise Software Development & IT Training Institute" width="160" height="44" loading="lazy" decoding="async" className="h-11 sm:h-12 w-auto object-contain dark:brightness-0 dark:invert" />
               </div>
               <p className="text-xs text-slate-600 dark:text-slate-400 max-w-md mx-auto">
                 {brand.tagline} • Greater Noida Tech Campus

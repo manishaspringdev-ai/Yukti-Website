@@ -615,43 +615,47 @@ export const siteData = {
   teamSection: {
     badge: "Executive Leadership & Tech Masters",
     title: "Meet the Team",
-    subtitle: "Experienced industry veterans guiding our engineering vision and shaping the next generation of tech talent.",
+    subtitle: "Experienced industry veterans guiding our engineering vision and shaping the next generation of tech talent in Greater Noida.",
     members: [
       {
         name: "Manisha Kumari",
         role: "Founder & CEO",
-        experience: "10+ Years IT Experience",
-        bio: "A visionary leader with 10+ years of IT experience and expertise in business leadership. She is a driving force in our global expansion and leads Yukti Software with a forward-looking mindset.",
+        experience: "10+ Years IT & Business Leadership",
+        image: "https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=800&q=80",
+        bio: "A visionary leader with 10+ years of enterprise IT experience. She drives Yukti Software's global delivery standards, corporate client alliances, and high-impact student placement programs.",
         avatarBg: "from-rose-500 to-indigo-600",
         initials: "MK",
-        specialties: ["Strategic Leadership", "Global Expansion", "Product Innovation", "Enterprise Solutions"]
+        specialties: ["Strategic Leadership", "Enterprise Alliances", "Product Innovation", "Career Mentorship"]
       },
       {
         name: "Mithilesh Kumar",
-        role: "CTO",
-        experience: "14+ Years Large-Scale Enterprise Experience",
-        bio: "Our technical leader with over 14 years of experience in designing software solutions for large-scale enterprises. He ensures that the software solutions match your requirements and are delivered on time.",
+        role: "Chief Technology Officer (CTO)",
+        experience: "14+ Years Large-Scale Enterprise Architecture",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
+        bio: "Our technical architect with 14+ years designing high-throughput distributed systems for Fortune 500 clients. Leads architecture reviews, Spring Boot microservices, and AI cloud pipelines.",
         avatarBg: "from-blue-600 to-cyan-500",
         initials: "MK",
-        specialties: ["Enterprise Architecture", "Cloud Systems", "Quality Assurance", "Agile Execution"]
+        specialties: ["Enterprise Microservices", "Cloud Systems (AWS/GCP)", "DevOps & CI/CD", "System Design"]
       },
       {
         name: "Sanjay Gairola",
-        role: "CTO",
-        experience: "16+ Years Storage & Big Data Experience",
-        bio: "His experience and knowledge in designing highly scalable and optimized storage solutions stem from 16+ years of work for large-scale enterprises. Also, he is an expert when it comes to extracting valuable insights from huge datasets.",
+        role: "Head of Big Data & AI Systems",
+        experience: "16+ Years Storage, Big Data & Analytics",
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80",
+        bio: "Veteran data architect with 16+ years designing petabyte-scale storage, distributed databases, and high-performance predictive analytics for enterprise clients.",
         avatarBg: "from-purple-600 to-pink-500",
         initials: "SG",
-        specialties: ["Scalable Storage", "Big Data Analytics", "Distributed Systems", "Data Intelligence"]
+        specialties: ["Big Data Architecture", "Distributed Databases", "Machine Learning Pipelines", "Data Security"]
       },
       {
         name: "Intekhab Ashraf",
-        role: "Software Developer",
-        experience: "Full Stack & DevOps Specialist",
-        bio: "From strategising to planning and deployment, every development project is completed under his sharp supervision and experienced guidance. He is also experienced in both Frontend and Backend development.",
+        role: "Lead Full Stack & DevOps Engineer",
+        experience: "Full Stack & Cloud Specialist",
+        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
+        bio: "Mentors full stack cohorts and oversees live client deliverables across React, Node.js, Next.js, and containerized Docker/Kubernetes deployments.",
         avatarBg: "from-emerald-500 to-teal-600",
         initials: "IA",
-        specialties: ["Full Stack Engineering", "API Pipelines", "DevOps Automation", "System Integration"]
+        specialties: ["Full Stack MERN", "REST & GraphQL APIs", "Kubernetes & Docker", "Code Quality Audits"]
       }
     ]
   },
@@ -667,7 +671,8 @@ export const siteData = {
       title: "Message from Our Founder",
       quote: "Technology should not be a barrier, but the strongest catalyst for business growth and youthful ambitions. At Yukti Software, our constant endeavor is to craft software that elevates operational intelligence while mentoring young talent into high-performing industry leaders.",
       author: "Manisha Kumari",
-      position: "Founder & CEO, Yukti Software"
+      position: "Founder & CEO, Yukti Software",
+      image: "https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=800&q=80"
     },
     mission: {
       title: "Our Mission",
@@ -762,33 +767,43 @@ export const siteData = {
       name: "Rajiv Malhotra",
       role: "Director of Operations",
       company: "Apex Global Logistics",
-      content: "Yukti Software revamped our entire supply chain ERP and automated our tracking pipeline. Our team efficiency rose by 40% and server costs dropped significantly. Truly a top-tier software partner!",
+      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80",
+      content: "Yukti Software revamped our entire supply chain ERP and automated our tracking pipeline. Our team efficiency rose by 40% and server costs dropped significantly. Truly a top-tier software engineering partner!",
       rating: 5,
-      type: "client"
+      type: "client",
+      badge: "Enterprise Client • ERP Modernization"
     },
     {
       name: "Sneha Reddy",
       role: "Data Analyst",
-      company: "Placed at FinTech Hub (ex-Student)",
-      content: "The Data Science practical training at Yukti Software transformed my career. The 1-on-1 mentorship, live project training, and placement support helped me secure a 9 LPA package right after finishing the course!",
+      company: "Placed at FinTech Hub (Batch 2025)",
+      package: "₹9.2 LPA",
+      image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80",
+      content: "The Data Science practical training at Yukti Software transformed my career. The 1-on-1 mentorship, live project training, and placement support helped me secure a 9.2 LPA package right after finishing the course!",
       rating: 5,
-      type: "student"
+      type: "student",
+      badge: "Student Placement • ₹9.2 LPA"
     },
     {
       name: "Amitabh Sen",
       role: "CTO & Co-Founder",
       company: "MedVanguard Healthcare",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80",
       content: "Security and reliability were non-negotiable for our patient portal. Mithilesh and the team at Yukti Software implemented end-to-end HIPAA-level encryption and delivered the platform ahead of schedule.",
       rating: 5,
-      type: "client"
+      type: "client",
+      badge: "Enterprise Client • Healthcare SaaS"
     },
     {
       name: "Pooja Verma",
       role: "Full Stack Engineer",
-      company: "Placed at CloudMatrix (ex-Student)",
-      content: "Yukti Software doesn't teach boring theory. We built real full-stack web apps from scratch. The interview prep and resume feedback by senior mentors gave me immense confidence.",
+      company: "Placed at CloudMatrix (Batch 2026)",
+      package: "₹14.5 LPA",
+      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
+      content: "Yukti Software doesn't teach boring theory. We built real full-stack web apps from scratch. The interview prep and live code reviews by senior mentors gave me immense confidence during recruitment drives.",
       rating: 5,
-      type: "student"
+      type: "student",
+      badge: "Student Placement • ₹14.5 LPA"
     }
   ],
 

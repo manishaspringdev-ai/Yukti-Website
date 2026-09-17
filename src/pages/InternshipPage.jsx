@@ -73,10 +73,6 @@ export default function InternshipPage({ onOpenConsultation }) {
         
         {/* Page Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-emerald-500 mr-1.5" />
-            <span className="font-medium">Industry Internship Program • Greater Noida Center</span>
-          </div>
           <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
             Industrial Internship & Training (Paid & Unpaid)
           </h1>

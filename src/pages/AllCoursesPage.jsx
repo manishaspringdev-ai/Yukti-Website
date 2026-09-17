@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { docxPagesData } from '../data/pagesDataFromDocs';
 import { getCourseLogo } from '../components/TechLogos';
+import { getCourseImages } from '../data/courseImages';
 import { 
   Sparkles, 
   GraduationCap, 
@@ -266,9 +267,6 @@ export default function AllCoursesPage({ onOpenConsultation, setCurrentPage }) {
       <section className="bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 text-white py-10 sm:py-12 lg:py-14 border-b border-slate-800 text-center rounded-3xl mx-4 sm:mx-6 lg:mx-8 shadow-2xl relative overflow-hidden">
         <div className="absolute top-0 right-10 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5 relative z-10">
-          <div className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-brand-500/10 text-brand-300 border border-brand-500/30">
-            <span className="font-medium">Industry-Certified Career Programs • Greater Noida</span>
-          </div>
           <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-white">
             Master Career Catalog & Syllabus
           </h1>
@@ -331,6 +329,8 @@ export default function AllCoursesPage({ onOpenConsultation, setCurrentPage }) {
             const IconComp = course.icon || Code2;
             const docxCourse = docxPagesData.courses[course.key] || {};
             const moduleCount = docxCourse.curriculum?.length || 12;
+            const courseImages = getCourseImages(course.key);
+            const mainImg = courseImages[0];
 
             return (
               <div
@@ -338,9 +338,29 @@ export default function AllCoursesPage({ onOpenConsultation, setCurrentPage }) {
                 className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-2xl hover:border-brand-500/50 hover-shine transition-all duration-300 flex flex-col justify-between group space-y-5"
               >
                 <div className="space-y-4">
+                  {/* Photo Preview in Course Card */}
+                  <div className="relative rounded-2xl overflow-hidden h-36 w-full shadow-sm group-hover:shadow-md transition-all">
+                    <img 
+                      src={mainImg.url} 
+                      alt={mainImg.title} 
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
+                    <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between text-white">
+                      <span className="text-[10px] font-bold text-white drop-shadow truncate">
+                        {mainImg.title}
+                      </span>
+                      <span className="px-2 py-0.5 rounded-lg bg-white/20 backdrop-blur-md text-[9px] font-extrabold uppercase text-white border border-white/30 shrink-0">
+                        {mainImg.tag}
+                      </span>
+                    </div>
+                  </div>
+
                   <div className="flex items-center justify-between">
-                    <div className="w-13 h-13 p-2 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
-                      {getCourseLogo(course.id, "w-8 h-8")}
+                    <div className="w-11 h-11 p-1.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                      {getCourseLogo(course.id, "w-7 h-7")}
                     </div>
                     <span className="px-2.5 py-1 rounded-full text-[10px] font-black bg-brand-50 dark:bg-brand-950 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
                       {course.badge}

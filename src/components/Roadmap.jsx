@@ -14,10 +14,7 @@ export default function Roadmap({ onOpenConsultation }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-6">
-          <div className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 text-slate-800 dark:text-slate-200 shadow-sm hover:border-brand-300 transition-all">
-            <span className="font-medium">{roadmapSection.badge}</span>
-          </div>
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-8">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             {roadmapSection.title}
           </h2>
@@ -34,9 +31,10 @@ export default function Roadmap({ onOpenConsultation }) {
         {/* ========================================================================= */}
         {roadmapVariant === 'v1_timeline' && (
           <div className="space-y-8 animate-fadeIn">
-            <div className="overflow-x-auto pb-4 scrollbar-none">
-              <div className="flex items-center justify-between min-w-[720px] relative px-4">
-                <div className="absolute top-1/2 left-8 right-8 h-1 bg-slate-200 dark:bg-slate-800 -translate-y-1/2 -z-0"></div>
+            <div className="overflow-x-auto pb-4 scrollbar-none no-scrollbar">
+              <div className="flex items-center justify-between min-w-[720px] relative px-6 py-2">
+                {/* Precise centered connector line behind icon nodes */}
+                <div className="absolute top-[34px] left-10 right-10 h-1 bg-slate-200 dark:bg-slate-800 -translate-y-1/2 z-0 rounded-full"></div>
                 {roadmapSection.steps.map((step, idx) => {
                   const isSelected = activeStep === idx;
                   const isCompleted = idx < activeStep;
@@ -46,16 +44,16 @@ export default function Roadmap({ onOpenConsultation }) {
                       onClick={() => setActiveStep(idx)}
                       className="relative z-10 flex flex-col items-center group focus:outline-none"
                     >
-                      <div className={`w-13 h-13 rounded-2xl flex items-center justify-center p-2 transition-all duration-300 ${
+                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center p-2.5 transition-all duration-300 ${
                         isSelected
-                          ? 'bg-white dark:bg-slate-800 shadow-xl shadow-brand-500/20 scale-110 ring-4 ring-brand-500/20 border-2 border-brand-500'
+                          ? 'bg-white dark:bg-slate-900 shadow-xl shadow-brand-500/25 scale-110 ring-4 ring-brand-500/25 border-2 border-brand-500'
                           : isCompleted
-                          ? 'bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-400 dark:border-emerald-600 shadow-sm'
-                          : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-brand-400'
+                          ? 'bg-white dark:bg-slate-900 border-2 border-emerald-500 shadow-sm'
+                          : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:border-brand-400'
                       }`}>
                         {getRoadmapLogo(step.stepNumber, "w-7 h-7")}
                       </div>
-                      <span className={`text-xs font-bold mt-2 transition-colors ${
+                      <span className={`text-xs font-bold mt-2.5 transition-colors ${
                         isSelected ? 'text-brand-600 dark:text-brand-400 font-extrabold' : 'text-slate-600 dark:text-slate-400'
                       }`}>
                         {step.title.split(' ')[0]}
@@ -90,7 +88,70 @@ export default function Roadmap({ onOpenConsultation }) {
                         <span>Deliverable: {current.deliverable}</span>
                       </div>
                     </div>
-                    <div className="py-6">
+                    {/* Realistic Engineering Stage Photo */}
+                    {(() => {
+                      const roadmapStageImages = {
+                        '01': {
+                          url: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80',
+                          title: 'Discovery & Requirement Workshops',
+                          caption: 'Client wireframing & technical scoping sessions'
+                        },
+                        '02': {
+                          url: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80',
+                          title: 'System & Cloud Architecture',
+                          caption: 'Microservices topology, database schemas & API contracts'
+                        },
+                        '03': {
+                          url: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
+                          title: 'Agile Full-Stack Engineering',
+                          caption: '2-week sprint cadence with live code audits & PR reviews'
+                        },
+                        '04': {
+                          url: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80',
+                          title: 'Rigorous QA & Security Testing',
+                          caption: 'Automated regression, performance stress testing & OWASP audits'
+                        },
+                        '05': {
+                          url: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80',
+                          title: 'Production Cloud Deployment',
+                          caption: 'Zero-downtime blue/green deployment on AWS & Kubernetes'
+                        },
+                        '06': {
+                          url: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80',
+                          title: 'Client Handover & Documentation',
+                          caption: 'Administrator docs, video walkthroughs & engineering training'
+                        },
+                        '07': {
+                          url: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80',
+                          title: 'Continuous Evolution & SLA Support',
+                          caption: 'Proactive APM monitoring, security patches & feature scaling'
+                        }
+                      };
+                      const stageImg = roadmapStageImages[current.stepNumber] || roadmapStageImages['01'];
+                      return (
+                        <div className="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800 my-4 h-44 sm:h-52 group">
+                          <img 
+                            src={stageImg.url} 
+                            alt={stageImg.title} 
+                            loading="lazy"
+                            decoding="async"
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-transparent"></div>
+                          <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
+                            <div>
+                              <p className="text-xs font-bold text-white drop-shadow">{stageImg.title}</p>
+                              <p className="text-[11px] text-slate-300 drop-shadow">{stageImg.caption}</p>
+                            </div>
+                            <span className="px-2.5 py-1 rounded-xl bg-white/20 backdrop-blur-md text-[10px] font-extrabold uppercase text-white border border-white/30">
+                              Stage {current.stepNumber}
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })()}
+
+                    <div className="py-2">
                       <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">{current.description}</p>
                     </div>
                     <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-100 dark:border-slate-800">

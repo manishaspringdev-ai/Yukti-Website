@@ -29,6 +29,7 @@ import {
   CheckCheck
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { getCourseImages } from '../data/courseImages';
 
 // Helper to get smart icons for benefits
 const getBenefitIcon = (title = '', desc = '', idx = 0) => {
@@ -51,6 +52,7 @@ const getBenefitIcon = (title = '', desc = '', idx = 0) => {
 export default function CourseDetailPage({ courseKey = 'python', onOpenConsultation, setCurrentPage }) {
   // Find course from docxPagesData
   const course = docxPagesData.courses[courseKey] || docxPagesData.courses['python'] || {};
+  const courseImages = getCourseImages(courseKey);
   
   const [openModuleIndex, setOpenModuleIndex] = useState(0);
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
@@ -239,6 +241,53 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* 3-Image Real Lab & Mentorship Showcase Bento */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div className="text-center max-w-2xl mx-auto space-y-2">
+          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+            Hands-On Experience & Career Environment
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+            Real interactive coding labs, senior 1-on-1 code reviews, and guaranteed placement drives in Greater Noida.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {courseImages.map((img, idx) => (
+            <div 
+              key={idx} 
+              className="relative rounded-3xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800 group h-64 sm:h-72 flex flex-col justify-end p-5"
+            >
+              <img 
+                src={img.url} 
+                alt={img.title} 
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent"></div>
+              
+              <div className="relative z-10 space-y-1.5 text-white">
+                <div className="flex items-center justify-between">
+                  <span className="px-2.5 py-1 rounded-xl bg-brand-500/30 backdrop-blur-md text-[10px] font-bold text-brand-300 border border-brand-400/40">
+                    {img.tag}
+                  </span>
+                  <span className="text-[10px] font-mono text-slate-300">
+                    Photo 0{idx + 1}/03
+                  </span>
+                </div>
+                <h3 className="text-sm sm:text-base font-bold text-white drop-shadow leading-snug">
+                  {img.title}
+                </h3>
+                <p className="text-xs text-slate-300 drop-shadow line-clamp-2">
+                  {img.caption}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
