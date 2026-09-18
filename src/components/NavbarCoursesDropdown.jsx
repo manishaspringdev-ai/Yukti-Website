@@ -162,7 +162,7 @@ export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation })
               </div>
               
               <h4 className="text-sm font-black text-white leading-snug">
-                100% Real DOCX Verified Curriculum
+                Industry-Aligned Practical Curriculum
               </h4>
               
               <p className="text-[11px] text-slate-300 leading-relaxed">

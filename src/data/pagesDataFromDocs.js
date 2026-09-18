@@ -334,7 +334,7 @@ export const docxPagesData = {
     },
     "ai-ml": {
       "title": "Webpage for Yukti Software",
-      "headline": "Webpage for Yukti Software | AI & Machine Learning Course Greater Noida",
+      "headline": "AI & Machine Learning Course Greater Noida",
       "keywords": "",
       "description": "Certified AI & Machine Learning Course Greater Noida with Comprehensive Job Support Artificial Intelligence and Machine Learning are rapidly changing how businesses work, make informed decisions, and build smarter digital solutions. Furthermore, the AI & Machine Learning course Greater Noida offered by Yukti Software is designed to help students understand these technologies through practical training, coding, exercises, projects, and professional guidance. From deep learning, NLP, Generative AI, and computer vision to Python and data analysis, this course focuses on building skills that can support long-term growth.",
       "fullDescription": [
@@ -751,7 +751,7 @@ export const docxPagesData = {
     },
     "data-analytics": {
       "title": "Webpage for Yukti Software",
-      "headline": "Webpage for Yukti Software | Data Analytics course Greater Noida",
+      "headline": "Data Analytics course Greater Noida",
       "keywords": "",
       "description": "Get into Your Dream Job After Completing Data Analytics Course Greater Noida Accurate data is the core of almost every business decision, creating strong demand for professionals who can turn raw information into meaningful insights. Furthermore, if you want to enter this growing field, the Data Analytics course Greater Noida at Yukti Software can help you build practical, job-oriented skills from the starting point. The course combines fundamental concepts, tools, career preparation, and hands-on projects so that you can learn data analytics as well as learn how to apply it to real business problems and confidently prepare for your dream job.",
       "fullDescription": [
@@ -1120,7 +1120,7 @@ export const docxPagesData = {
     },
     "dbms": {
       "title": "Webpage for Yukti Software",
-      "headline": "Webpage for Yukti Software | DBMS Course in Greater Noida",
+      "headline": "DBMS Course in Greater Noida",
       "keywords": "",
       "description": "DBMS Course in Greater Noida - Complete Mastery and Job Preparations Learning DBMS is about memorising database terms or writing a few SQL queries. At Yukti Software, the DBMS course in Greater Noida focuses on helping learners understand how databases actually work in professional environments. Moreover, the training is a mix of vast concepts, practical exercises, assignments, real-world projects, and SQL practice so that students can gradually build confidence, solve database-related problems, and develop skills that are useful for starting or advancing an IT career.",
       "fullDescription": [
@@ -1527,7 +1527,7 @@ export const docxPagesData = {
     },
     "dsa": {
       "title": "Webpage for Yukti Software",
-      "headline": "Webpage for Yukti Software | DSA Course Greater Noida",
+      "headline": "DSA Course Greater Noida",
       "keywords": "",
       "description": "DSA Course Greater Noida- Job-Oriented Learning with Placement Assistance Data Structures and Algorithms (DSA) have become one of the most important skills to be possessed by an individual who wants to have a successful career in software development. DSA Course Greater Noida offered by Yukti Software is focused on making individuals better problem solvers by engaging them in hands-on coding sessions and practical challenges. It enables individuals to gain proficiency in basic DSA skills, whether they are beginners or preparing for their technical interviews. In addition to that, for a reputable Training Institute, we are the best option for you.",
       "fullDescription": [
@@ -1896,7 +1896,7 @@ export const docxPagesData = {
     },
     "fullstack": {
       "title": "Webpage for Yukti Software",
-      "headline": "Webpage for Yukti Software | Full Stack Development Course Greater Noida",
+      "headline": "Full Stack Development Course Greater Noida",
       "keywords": "",
       "description": "Full Stack Development Course Greater Noida with Advanced Lab Training Build practical web development skills with the Full Stack Development course Greater Noida offered by Yukti Software. Learn HTML, CSS, React.js, JavaScript, GIT, deployment, MongoDB, APIs, and Express.js through hands-on training. Furthermore, with advanced lab practice, coding assignments, career guidance, live projects, and expert mentoring, the course helps students prepare for modern full stack and MERN development roles.",
       "fullDescription": [
@@ -2281,7 +2281,7 @@ export const docxPagesData = {
     },
     "html-css": {
       "title": "Webpage for Yukti Software",
-      "headline": "Webpage for Yukti Software | HTML and CSS Course Greater Noida",
+      "headline": "HTML and CSS Course Greater Noida",
       "keywords": "",
       "description": "Advanced Web Development with HTML and CSS Course Greater Noida The HTML and CSS course Greater Noida offered by Yukti Software is created for candidates who want to establish a robust foundation in front-end web development through practical training. From designing basic web pages to developing responsive layouts, students learn HTML and CSS with hands-on coding, projects, and expert guidance. Moreover, this precise course focuses on industry-relevant skills that help students confidently create modern, visually appealing, and functional websites.",
       "fullDescription": [
@@ -2667,7 +2667,7 @@ export const docxPagesData = {
     },
     "java": {
       "title": "Webpage for Yukti Software",
-      "headline": "Webpage for Yukti Software | Java Training Institute Greater Noida",
+      "headline": "Java Training Institute Greater Noida",
       "keywords": "",
       "description": "Professional, Job-oriented Java Training Institute Greater Noida At Yukti Software, Java Training Courses have been designed and developed by industry experts, which emphasize providing programming skills, as well as development skills. Our Java Training Institute Greater Noida provides training in the latest concepts of Java, Object Oriented Programming, Frameworks, Database Connectivity, and Project Development to make you an industry-ready developer. Through our classes and live project training, you can be confident enough to develop applications at the level of the industry. If you are searching for a reliable Java Training Institute, Yukti Software is the right place for you.",
       "fullDescription": [
@@ -2998,7 +2998,7 @@ export const docxPagesData = {
     },
     "mern-stack": {
       "title": "Webpage for Yukti Software",
-      "headline": "Webpage for Yukti Software | MERN Stack training institute Greater Noida",
+      "headline": "MERN Stack training institute Greater Noida",
       "keywords": "",
       "description": "MERN Stack Training Institute Greater Noida - Build Job-Ready Skills for Your Dream Career Finding the right technology course can make a big difference when you want to build your career in web development. Our MERN Stack training institute Greater Noida program at Yukti Software is created to assist candidates in moving beyond theoretical concepts and developing practical, job-oriented skills. Furthermore, the training covers MongoDB, Express.js, React.js, and Node.js along with HTML, CSS, APIs, authentication, GIT, JavaScript, databases, project development, and deployment. With practical assignments and expert assistance, live projects, and career preparation, candidates can build the confidence and technical foundation needed to start their journey as MERN Stack developers.",
       "fullDescription": [
@@ -3429,7 +3429,7 @@ export const docxPagesData = {
     },
     "spring-boot": {
       "title": "Webpage for Yukti Software",
-      "headline": "Webpage for Yukti Software | Spring Boot Training Course in Greater Noida",
+      "headline": "Spring Boot Training Course in Greater Noida",
       "keywords": "Spring Boot Training course in Greater Noida",
       "description": "Complete Spring Boot Training Course in Greater Noida with Java Basics Industry-Oriented Syllabus: Learn Spring Boot, Spring Framework, REST APIs, Dependency Injection, Database Integration, Microservices, and other related concepts based on current industry needs.",
       "fullDescription": [

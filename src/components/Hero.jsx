@@ -26,7 +26,7 @@ export default function Hero({ onOpenConsultation, onNavigateServices, onNavigat
   const [activeTab, setActiveTab] = useState('all'); // 'all', 'services', 'training'
 
   return (
-    <section id="hero" className="relative py-4 sm:py-6 lg:py-6 xl:py-8 lg:min-h-[calc(100vh-70px)] lg:flex lg:flex-col lg:justify-between overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+    <section id="hero" className="relative pt-6 pb-6 sm:pt-8 sm:pb-8 lg:py-6 xl:py-8 lg:min-h-[calc(100vh-70px)] lg:flex lg:flex-col lg:justify-between overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
       
       {/* Background Soft Glows */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-brand-500/10 dark:bg-brand-500/15 rounded-full blur-3xl pointer-events-none -z-10"></div>

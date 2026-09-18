@@ -53,6 +53,12 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
   // Find course from docxPagesData
   const course = docxPagesData.courses[courseKey] || docxPagesData.courses['python'] || {};
   const courseImages = getCourseImages(courseKey);
+
+  // Clean headline from any legacy doc prefixes
+  const rawHeadline = course.headline || course.title || '';
+  const cleanHeadline = rawHeadline
+    .replace(/^Webpage for Yukti Software\s*[\|\-:]?\s*/i, '')
+    .trim() || course.title;
   
   const [openModuleIndex, setOpenModuleIndex] = useState(0);
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
@@ -77,45 +83,43 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
   };
 
   return (
-    <div className="pt-4 sm:pt-6 space-y-10 sm:space-y-12 animate-fadeIn text-slate-900 dark:text-slate-100">
+    <div className="pt-0 sm:pt-1 space-y-8 sm:space-y-10 animate-fadeIn text-slate-900 dark:text-slate-100 pb-12">
       
-      {/* Navigation Breadcrumb Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <button
-          onClick={() => setCurrentPage && setCurrentPage('courses')}
-          className="inline-flex items-center space-x-2 text-xs font-bold text-brand-600 dark:text-brand-400 hover:text-brand-700 transition-all group"
-        >
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          <span>Back to All 15 Career Tracks & Courses</span>
-        </button>
-      </div>
+      {/* Top Header & Breadcrumb Container */}
+      <div className="space-y-2 sm:space-y-2.5">
+        {/* Navigation Breadcrumb Bar */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <button
+            onClick={() => setCurrentPage && setCurrentPage('courses')}
+            className="inline-flex items-center space-x-2 text-xs font-bold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-all group"
+          >
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            <span>Back to All 15 Career Tracks & Courses</span>
+          </button>
+        </div>
 
-      {/* 1. Hero Header Section */}
-      <section className="relative overflow-hidden py-10 sm:py-12 lg:py-14 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 text-white border-b border-slate-800 rounded-3xl mx-4 sm:mx-6 lg:mx-8 shadow-2xl">
-        <div className="absolute top-1/2 right-10 w-96 h-96 bg-brand-500/15 rounded-full blur-3xl pointer-events-none"></div>
+        {/* 1. Hero Header Section */}
+        <section className="relative overflow-hidden py-8 sm:py-12 lg:py-14 bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 text-slate-900 dark:text-white border border-slate-200/80 dark:border-slate-800/80 rounded-3xl mx-4 sm:mx-6 lg:mx-8 shadow-xl dark:shadow-2xl">
+        <div className="absolute top-1/2 right-10 w-96 h-96 bg-brand-500/10 dark:bg-brand-500/15 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute bottom-0 left-10 w-96 h-96 bg-accent-primary/10 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-bold bg-brand-500/20 text-brand-300 border border-brand-500/30">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>100% Real DOCX Verified Curriculum • Greater Noida</span>
-              </div>
 
-              <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight">
-                {course.headline || course.title}
+              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-white leading-tight">
+                {cleanHeadline}
               </h1>
 
-              <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+              <p className="text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
                 {course.description || "Master enterprise-grade engineering with live project capstones, verified mentorship, and 100% placement support."}
               </p>
 
               {course.keywords && (
                 <div className="flex flex-wrap gap-2 pt-1">
                   {course.keywords.split(',').slice(0, 4).map((kw, i) => (
-                    <span key={i} className="text-[11px] px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-slate-300 font-medium">
+                    <span key={i} className="text-[11px] px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium">
                       🏷️ {kw.trim()}
                     </span>
                   ))}
@@ -124,25 +128,25 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
 
               {/* Quick Assurances */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
-                <div className="flex items-center space-x-2 text-xs font-bold text-emerald-400">
+                <div className="flex items-center space-x-2 text-xs font-bold text-emerald-600 dark:text-emerald-400">
                   <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
                   <span>100% Practical Labs</span>
                 </div>
-                <div className="flex items-center space-x-2 text-xs font-bold text-emerald-400">
+                <div className="flex items-center space-x-2 text-xs font-bold text-emerald-600 dark:text-emerald-400">
                   <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
                   <span>Interview Prep & Mocks</span>
                 </div>
-                <div className="flex items-center space-x-2 text-xs font-bold text-emerald-400">
+                <div className="flex items-center space-x-2 text-xs font-bold text-emerald-600 dark:text-emerald-400">
                   <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
                   <span>Placement Assurance</span>
                 </div>
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-wrap gap-4 pt-4">
+              <div className="flex flex-wrap gap-3 sm:gap-4 pt-4">
                 <button
                   onClick={onOpenConsultation}
-                  className="px-7 py-3.5 rounded-2xl bg-gradient-to-r from-brand-600 to-accent-primary text-white font-extrabold text-sm shadow-xl shadow-brand-500/25 hover:scale-105 active:scale-95 transition-all flex items-center space-x-2"
+                  className="px-6 sm:px-7 py-3.5 rounded-2xl bg-gradient-to-r from-brand-600 to-accent-primary text-white font-extrabold text-xs sm:text-sm shadow-xl shadow-brand-500/25 hover:scale-105 active:scale-95 transition-all flex items-center space-x-2"
                 >
                   <span>Book Free 1-on-1 Demo Session</span>
                   <ArrowRight className="w-4 h-4" />
@@ -152,7 +156,7 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
                     const el = document.querySelector('#syllabus-section');
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="px-6 py-3.5 rounded-2xl bg-white/10 hover:bg-white/15 text-white font-bold text-sm border border-white/20 transition-all flex items-center space-x-2"
+                  className="px-5 sm:px-6 py-3.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 dark:bg-white/10 dark:hover:bg-white/15 dark:text-white font-bold text-xs sm:text-sm border border-slate-200 dark:border-white/20 transition-all flex items-center space-x-2"
                 >
                   <BookOpen className="w-4 h-4" />
                   <span>View Full Syllabus ({course.curriculum?.length || 12} Modules)</span>
@@ -162,65 +166,65 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
 
             {/* Quick Enrollment Card */}
             <div className="lg:col-span-5">
-              <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/90 border border-slate-800 shadow-2xl backdrop-blur-xl relative">
+              <div className="p-5 sm:p-7 rounded-3xl bg-white/95 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-xl dark:shadow-2xl backdrop-blur-xl relative">
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+                  <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
                     <div>
-                      <h3 className="text-lg font-black text-white">Enroll in Upcoming Batch</h3>
-                      <p className="text-xs text-slate-400">Limited seats • 1-on-1 Faculty Mentorship</p>
+                      <h3 className="text-base sm:text-lg font-black text-slate-900 dark:text-white">Enroll in Upcoming Batch</h3>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">Limited seats • 1-on-1 Faculty Mentorship</p>
                     </div>
-                    <span className="px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 animate-pulse">
+                    <span className="px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-emerald-50 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30 animate-pulse">
                       Admissions Open
                     </span>
                   </div>
 
                   {enquirySuccess ? (
-                    <div className="p-6 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-center space-y-2">
-                      <CheckCircle2 className="w-10 h-10 text-emerald-400 mx-auto" />
-                      <h4 className="text-base font-bold text-white">Request Received!</h4>
-                      <p className="text-xs text-emerald-300">Our senior career counselor will call you within 15 minutes with syllabus PDF & scholarship details.</p>
+                    <div className="p-6 rounded-2xl bg-emerald-50 dark:bg-emerald-500/20 border border-emerald-200 dark:border-emerald-500/40 text-center space-y-2">
+                      <CheckCircle2 className="w-10 h-10 text-emerald-600 dark:text-emerald-400 mx-auto" />
+                      <h4 className="text-base font-bold text-slate-900 dark:text-white">Request Received!</h4>
+                      <p className="text-xs text-emerald-700 dark:text-emerald-300">Our senior career counselor will call you within 15 minutes with syllabus PDF & scholarship details.</p>
                     </div>
                   ) : (
                     <form onSubmit={handleLeadSubmit} className="space-y-3.5">
                       <div>
-                        <label className="block text-xs font-bold text-slate-300 mb-1">Your Full Name</label>
+                        <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Your Full Name</label>
                         <input
                           type="text"
                           required
                           placeholder="e.g. Manish Sharma"
                           value={leadForm.name}
                           onChange={(e) => setLeadForm({ ...leadForm, name: e.target.value })}
-                          className="w-full p-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-brand-500 outline-none"
+                          className="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:ring-2 focus:ring-brand-500 outline-none placeholder:text-slate-400"
                         />
                       </div>
                       <div>
-                        <label className="block text-xs font-bold text-slate-300 mb-1">Email Address</label>
+                        <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Email Address</label>
                         <input
                           type="email"
                           required
                           placeholder="manish@example.com"
                           value={leadForm.email}
                           onChange={(e) => setLeadForm({ ...leadForm, email: e.target.value })}
-                          className="w-full p-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-brand-500 outline-none"
+                          className="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:ring-2 focus:ring-brand-500 outline-none placeholder:text-slate-400"
                         />
                       </div>
                       <div>
-                        <label className="block text-xs font-bold text-slate-300 mb-1">WhatsApp / Phone Number</label>
+                        <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">WhatsApp / Phone Number</label>
                         <input
                           type="tel"
                           required
                           placeholder="+91 98765 43210"
                           value={leadForm.phone}
                           onChange={(e) => setLeadForm({ ...leadForm, phone: e.target.value })}
-                          className="w-full p-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-brand-500 outline-none"
+                          className="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:ring-2 focus:ring-brand-500 outline-none placeholder:text-slate-400"
                         />
                       </div>
                       <div>
-                        <label className="block text-xs font-bold text-slate-300 mb-1">Training Mode</label>
+                        <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Training Mode</label>
                         <select
                           value={leadForm.mode}
                           onChange={(e) => setLeadForm({ ...leadForm, mode: e.target.value })}
-                          className="w-full p-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs font-medium focus:ring-2 focus:ring-brand-500 outline-none"
+                          className="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-xs font-medium focus:ring-2 focus:ring-brand-500 outline-none"
                         >
                           <option value="Classroom Greater Noida">Classroom (Greater Noida Center)</option>
                           <option value="Live Online Interactive">Live Online Interactive (Global)</option>
@@ -243,6 +247,7 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
           </div>
         </div>
       </section>
+      </div>
 
       {/* 3-Image Real Lab & Mentorship Showcase Bento */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
