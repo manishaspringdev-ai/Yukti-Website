@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import yuktiLogo from '../assets/yukti-logo.svg';
+import brandLogo from '../assets/brandlogo.svg';
 import { siteData } from '../data';
 import { 
   Menu, 
@@ -126,7 +126,7 @@ export default function Navbar({ currentPage, setCurrentPage, onOpenConsultation
                   onClick={() => handleNav('home')}
                   className="flex items-center group text-left focus:outline-none"
                 >
-                  <img src={yuktiLogo} alt="Yukti Software Logo" width="160" height="44" decoding="async" className="h-10 sm:h-11 w-auto object-contain dark:brightness-0 dark:invert transition-transform group-hover:scale-105" />
+                  <img src={brandLogo} alt="Yukti Software Logo" width="168" height="44" decoding="async" className="h-10 sm:h-11 w-auto object-contain transition-transform group-hover:scale-105" />
                 </button>
 
                 {/* Desktop Navigation Links with Courses Mega Dropdown */}
@@ -442,12 +442,12 @@ export default function Navbar({ currentPage, setCurrentPage, onOpenConsultation
               {/* Brand Logo */}
               <button onClick={() => handleNav('home')} className="flex items-center group focus:outline-none py-1">
                 <img 
-                  src={yuktiLogo} 
+                  src={brandLogo} 
                   alt="Yukti Software - Enterprise Software Development & IT Training Institute" 
-                  width="160" 
+                  width="168" 
                   height="44" 
                   decoding="async" 
-                  className="h-9 sm:h-10 w-auto object-contain dark:brightness-0 dark:invert transition-transform group-hover:scale-105" 
+                  className="h-9 sm:h-10 w-auto object-contain transition-transform group-hover:scale-105" 
                 />
               </button>
 

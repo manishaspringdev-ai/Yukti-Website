@@ -1,5 +1,5 @@
 import React from 'react';
-import yuktiLogo from '../assets/yukti-logo.svg';
+import brandLogo from '../assets/brandlogo.svg';
 import { siteData } from '../data';
 import { 
   Phone, 
@@ -129,23 +129,21 @@ export default function Footer({ setCurrentPage, onOpenConsultation }) {
                     </button>
                   </li>
                 ))}
-                <li className="pt-2 space-y-2">
+                <li className="pt-3 mt-2 border-t border-slate-200/80 dark:border-slate-800/80 space-y-2">
                   <button 
                     onClick={() => handleNav('training-institute')} 
-                    className="inline-flex items-center space-x-1 text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors group"
+                    className="w-full flex items-center space-x-1.5 text-left text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 hover:translate-x-1 transition-all group"
                   >
-                    <span>🏢 Software Training Institute Greater Noida</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-3.5 h-3.5 text-emerald-500 shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <span className="leading-snug">Software Training Institute</span>
                   </button>
-                  <div>
-                    <button 
-                      onClick={() => handleNav('courses')} 
-                      className="inline-flex items-center space-x-1 text-xs font-bold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-colors group"
-                    >
-                      <span>Explore All 15 Career Tracks</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                    </button>
-                  </div>
+                  <button 
+                    onClick={() => handleNav('courses')} 
+                    className="w-full flex items-center space-x-1.5 text-left text-xs font-bold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 hover:translate-x-1 transition-all group"
+                  >
+                    <ArrowRight className="w-3.5 h-3.5 text-brand-500 shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <span className="leading-snug">Explore All 15 Career Tracks</span>
+                  </button>
                 </li>
               </ul>
             </div>

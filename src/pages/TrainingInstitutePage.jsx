@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   GraduationCap, 
   Award, 
@@ -32,23 +32,30 @@ import {
   FileCheck,
   UserCheck
 } from 'lucide-react';
-import { WhatsAppIcon } from '../components/SocialIcons';
 import { siteData } from '../data';
 
 export default function TrainingInstitutePage({ onOpenConsultation, setCurrentPage }) {
   const { brand } = siteData;
   const [openFaq, setOpenFaq] = useState(0);
 
+  useEffect(() => {
+    document.title = "Software Training Institute Greater Noida | Accredited IT Courses & Placements - Yukti Software";
+    
+    let metaDesc = document.querySelector("meta[name='description']");
+    if (metaDesc) {
+      metaDesc.setAttribute("content", "Yukti Software is an accredited Software Training Institute in Greater Noida providing practical, career-focused IT training, live projects, accredited certification, and complete placement assistance.");
+    }
+    let metaKeywords = document.querySelector("meta[name='keywords']");
+    if (metaKeywords) {
+      metaKeywords.setAttribute("content", "Software Training Institute Greater Noida, Software Training Course Greater Noida, Java Training Greater Noida, Python Training, Data Analytics, Full Stack, Placement Assistance, Yukti Software");
+    }
+  }, []);
+
   const handleNav = (pageKey) => {
     if (setCurrentPage) {
       setCurrentPage(pageKey);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  };
-
-  const handleWhatsApp = () => {
-    const text = encodeURIComponent("Hello Yukti Software, I want to inquire about your Software Training Institute in Greater Noida and explore available IT courses.");
-    window.open(`https://wa.me/919876543210?text=${text}`, '_blank');
   };
 
   // 7 Institute Highlights from Doc
@@ -299,72 +306,65 @@ export default function TrainingInstitutePage({ onOpenConsultation, setCurrentPa
   return (
     <div className="space-y-0 animate-fadeIn">
       {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-brand-950 via-slate-950 to-slate-900 text-white pt-12 pb-20 px-4 sm:px-6 lg:px-8 border-b border-brand-800/50">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(59,130,246,0.15),transparent_70%)] pointer-events-none"></div>
-        <div className="max-w-6xl mx-auto relative z-10 space-y-8 text-center sm:text-left">
+      <section className="relative overflow-hidden bg-gradient-to-b from-brand-50/40 via-white to-slate-50 dark:from-brand-950/30 dark:via-slate-950 dark:to-slate-900 text-slate-900 dark:text-slate-100 pt-8 sm:pt-12 pb-14 sm:pb-18 px-4 sm:px-6 lg:px-8 border-b border-slate-200/80 dark:border-slate-800">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.08),transparent_60%)] pointer-events-none"></div>
+        <div className="max-w-6xl mx-auto relative z-10 space-y-7 text-center sm:text-left">
           
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-500/20 border border-brand-400/30 text-brand-300 text-xs font-bold uppercase tracking-wider backdrop-blur-md">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Keyword: Software Training Institute Greater Noida</span>
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-50 dark:bg-brand-950/80 border border-brand-200 dark:border-brand-800 text-brand-700 dark:text-brand-300 text-xs font-bold uppercase tracking-wider shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+            <span>Accredited IT Training & Career Hub</span>
           </div>
 
-          <div className="space-y-4 max-w-4xl">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight sm:leading-none text-white">
-              Accredited <span className="bg-gradient-to-r from-brand-400 via-sky-300 to-indigo-300 bg-clip-text text-transparent">Software Training Institute</span> Greater Noida
+          <div className="space-y-3 max-w-4xl">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight text-slate-900 dark:text-white">
+              Accredited <span className="bg-gradient-to-r from-brand-600 via-teal-600 to-indigo-600 dark:from-brand-400 dark:via-teal-300 dark:to-indigo-300 bg-clip-text text-transparent">Software Training Institute</span> Greater Noida
             </h1>
-            <p className="text-lg sm:text-xl font-medium text-brand-200">
+            <p className="text-base sm:text-lg lg:text-xl font-bold text-brand-700 dark:text-brand-300">
               Career-Focused Practical IT Training, Live Projects & Complete Placement Assistance
             </p>
           </div>
 
-          <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/80 border border-slate-800 backdrop-blur-xl shadow-2xl max-w-4xl">
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-              Yukti Software is transforming IT education by taking a practical approach and introducing high-level projects along with comprehensive job preparation. Our <strong className="text-white">Software Training Institute Greater Noida</strong> covers all prominent IT courses that are in high demand and taught by experienced mentors. Each course is divided into different phases, providing you with structured learning that is highly efficient. In our training institute, we aim to prepare candidates for the modern job market and help them develop in-demand skills, boosting their employability. Yukti Software's course catalogue includes <span className="text-brand-300 font-semibold">Java, Python, SQL, NoSQL, Data Analytics, Data Science</span>, along with other prominent ones.
+          <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-xl max-w-4xl">
+            <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
+              Yukti Software is transforming IT education by taking a practical approach and introducing high-level projects along with comprehensive job preparation. Our <strong className="text-slate-900 dark:text-white font-bold">Software Training Institute Greater Noida</strong> covers all prominent IT courses that are in high demand and taught by experienced mentors. Each course is divided into different phases, providing you with structured learning that is highly efficient. In our training institute, we aim to prepare candidates for the modern job market and help them develop in-demand skills, boosting their employability. Yukti Software's course catalogue includes <span className="text-brand-600 dark:text-brand-400 font-semibold">Java, Python, SQL, NoSQL, Data Analytics, Data Science</span>, along with other prominent ones.
             </p>
           </div>
 
           {/* CTAs */}
-          <div className="flex flex-wrap items-center gap-4 pt-2">
+          <div className="flex flex-row items-center gap-2 sm:gap-4 pt-1 w-full max-w-xl">
             <button
               onClick={onOpenConsultation}
-              className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-brand-600 via-brand-500 to-accent-primary hover:from-brand-500 hover:to-accent-primary text-white font-black text-sm sm:text-base shadow-xl hover:shadow-brand-500/25 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center space-x-2"
+              className="flex-1 sm:flex-none px-4 sm:px-8 py-3.5 rounded-2xl bg-gradient-to-r from-brand-600 via-brand-500 to-accent-primary hover:from-brand-500 hover:to-accent-primary text-white font-black text-xs sm:text-base shadow-xl hover:shadow-brand-500/25 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center space-x-1.5 sm:space-x-2 whitespace-nowrap text-center"
             >
-              <Calendar className="w-5 h-5" />
-              <span>Book Free Career Consultation</span>
+              <Calendar className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+              <span>Book Consultation</span>
             </button>
             <button
               onClick={() => handleNav('courses')}
-              className="w-full sm:w-auto px-6 py-4 rounded-2xl bg-slate-800/90 hover:bg-slate-700 text-white font-bold text-sm border border-slate-700 shadow-lg hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center space-x-2"
+              className="flex-1 sm:flex-none px-3.5 sm:px-6 py-3.5 rounded-2xl bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-white font-bold text-xs sm:text-sm border border-slate-200 dark:border-slate-800 shadow-md hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center space-x-1.5 sm:space-x-2 whitespace-nowrap text-center"
             >
-              <GraduationCap className="w-5 h-5 text-brand-400" />
-              <span>Explore All 15+ IT Tracks</span>
-            </button>
-            <button
-              onClick={handleWhatsApp}
-              className="w-full sm:w-auto px-6 py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-lg hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center space-x-2"
-            >
-              <WhatsAppIcon className="w-4 h-4" />
-              <span>Chat on WhatsApp</span>
+              <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5 text-brand-600 dark:text-brand-400 shrink-0" />
+              <span>Explore 15+ Tracks</span>
             </button>
           </div>
 
           {/* Quick Metrics */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-800/80">
-            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-center sm:text-left">
-              <p className="text-2xl font-black text-brand-400">15+ Tracks</p>
-              <p className="text-xs text-slate-400">Industry-Aligned Courses</p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-200/80 dark:border-slate-800">
+            <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-center sm:text-left">
+              <p className="text-2xl font-black text-brand-600 dark:text-brand-400">15+ Tracks</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400">Industry-Aligned Courses</p>
             </div>
-            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-center sm:text-left">
-              <p className="text-2xl font-black text-emerald-400">100% Practical</p>
-              <p className="text-xs text-slate-400">Real-World Project Labs</p>
+            <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-center sm:text-left">
+              <p className="text-2xl font-black text-emerald-600 dark:text-emerald-400">100% Practical</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400">Real-World Project Labs</p>
             </div>
-            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-center sm:text-left">
-              <p className="text-2xl font-black text-amber-400">ISO 9001:2015</p>
-              <p className="text-xs text-slate-400">Accredited Institute</p>
+            <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-center sm:text-left">
+              <p className="text-2xl font-black text-amber-600 dark:text-amber-400">ISO 9001:2015</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400">Accredited Institute</p>
             </div>
-            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-center sm:text-left">
-              <p className="text-2xl font-black text-sky-400">4.9 ★ Rating</p>
-              <p className="text-xs text-slate-400">Google Verified Reviews</p>
+            <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-center sm:text-left">
+              <p className="text-2xl font-black text-sky-600 dark:text-sky-400">4.9 ★ Rating</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400">Google Verified Reviews</p>
             </div>
           </div>
 
@@ -658,47 +658,39 @@ export default function TrainingInstitutePage({ onOpenConsultation, setCurrentPa
       </section>
 
       {/* 7. JOIN YUKTI SOFTWARE EXPERTS FOR A FREE CONSULTATION (CTA) */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-brand-950 to-slate-950 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(59,130,246,0.15),transparent_60%)] pointer-events-none"></div>
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-brand-50/70 via-slate-50 to-teal-50/60 dark:from-slate-900 dark:via-brand-950 dark:to-slate-950 text-slate-900 dark:text-white relative overflow-hidden border-b border-slate-200 dark:border-slate-800">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8">
           
-          <div className="text-center space-y-4 max-w-3xl mx-auto">
-            <span className="px-3.5 py-1 rounded-full bg-brand-500/20 border border-brand-400/30 text-brand-300 text-xs font-bold uppercase tracking-wider backdrop-blur-md">
+          <div className="text-center space-y-3 max-w-3xl mx-auto">
+            <span className="px-3.5 py-1 rounded-full bg-brand-100 dark:bg-brand-950/80 border border-brand-200 dark:border-brand-800 text-brand-700 dark:text-brand-300 text-xs font-bold uppercase tracking-wider">
               1-on-1 Personalized Guidance
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
               Join Yukti Software Experts for a Free Consultation
             </h2>
           </div>
 
-          <div className="p-8 sm:p-10 rounded-3xl bg-slate-900/90 border border-brand-800/60 shadow-2xl backdrop-blur-xl space-y-6 text-center sm:text-left">
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+          <div className="p-8 sm:p-10 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6 text-center sm:text-left">
+            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
               Receive professional guidance from Yukti Software experts and pick the right software development course. Our experts will help you avoid the confusion and give you personalized advice. Thus, you will be able to pursue the course that aligns with your current skill set and future goals. The consultation is free of cost but is extremely valuable, as your profile will be evaluated by Yukti Software experts who have spent a considerable amount of time in the IT industry.
             </p>
 
-            <div className="p-4 rounded-2xl bg-brand-950/60 border border-brand-800/80 text-xs sm:text-sm text-brand-200">
+            <div className="p-4 rounded-2xl bg-brand-50 dark:bg-brand-950/60 border border-brand-200 dark:border-brand-800/80 text-xs sm:text-sm text-brand-800 dark:text-brand-200">
               💡 <strong>Next Step:</strong> Start your IT journey by scheduling an online consultation or visit our Software Training Institute Greater Noida.
             </div>
 
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 pt-2">
               <button
                 onClick={onOpenConsultation}
-                className="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-gradient-to-r from-brand-500 to-accent-primary hover:from-brand-600 hover:to-accent-primary text-white font-black text-sm shadow-xl hover:scale-105 active:scale-95 transition-all"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-gradient-to-r from-brand-600 to-accent-primary hover:from-brand-500 hover:to-accent-primary text-white font-black text-sm shadow-xl hover:scale-105 active:scale-95 transition-all"
               >
                 Schedule Free Consultation Now
               </button>
-              <button
-                onClick={handleWhatsApp}
-                className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center justify-center space-x-2"
-              >
-                <WhatsAppIcon className="w-4 h-4" />
-                <span>WhatsApp Career Advisor</span>
-              </button>
               <a
                 href={`tel:${brand.phone}`}
-                className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm border border-slate-700 shadow-md flex items-center justify-center space-x-2"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-white font-bold text-sm border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center space-x-2"
               >
-                <Phone className="w-4 h-4 text-brand-400" />
+                <Phone className="w-4 h-4 text-brand-600 dark:text-brand-400" />
                 <span>Call {brand.phone}</span>
               </a>
             </div>
@@ -776,13 +768,6 @@ export default function TrainingInstitutePage({ onOpenConsultation, setCurrentPa
                 className="px-6 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs shadow-md transition-all"
               >
                 Book Campus Visit
-              </button>
-              <button
-                onClick={handleWhatsApp}
-                className="p-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-all"
-                aria-label="WhatsApp"
-              >
-                <WhatsAppIcon className="w-4 h-4" />
               </button>
             </div>
           </div>

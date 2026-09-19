@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import yuktiLogo from '../assets/yukti-logo.svg';
+import brandLogo from '../assets/brandlogo.svg';
 
 export default function BrandPreloader() {
   const [loading, setLoading] = useState(true);
@@ -33,7 +33,7 @@ export default function BrandPreloader() {
           <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-brand-500/30 to-accent-primary/30 blur-lg animate-pulse" />
           <div className="relative px-7 py-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-xl shadow-brand-500/10 flex items-center justify-center">
             <img 
-              src={yuktiLogo} 
+              src={brandLogo} 
               alt="Yukti Software" 
               className="h-11 w-auto object-contain animate-float"
             />
