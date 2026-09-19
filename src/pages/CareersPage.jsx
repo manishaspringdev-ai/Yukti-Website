@@ -1,561 +1,660 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { 
   Briefcase, 
   MapPin, 
   Clock, 
-  DollarSign, 
   Sparkles, 
   CheckCircle2, 
   ArrowRight, 
   X, 
   Send, 
-  Building2, 
   Users, 
-  HeartHandshake, 
   TrendingUp,
   Laptop,
   GraduationCap,
   Award,
   Zap,
-  Code2
+  Code2,
+  Database,
+  Layers,
+  HeartHandshake,
+  FolderGit2,
+  Globe,
+  Check,
+  Star,
+  Quote
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
-const ALL_POSITIONS = [
-  // PAID INTERNSHIPS
+const INTERNSHIP_ROLES = [
   {
-    id: "intern-1",
-    title: "Full Stack Web Development Intern (Paid)",
-    department: "Software Engineering",
-    category: "internship",
-    location: "Greater Noida / Hybrid",
-    type: "Paid Internship",
-    experience: "College Students / Freshers",
-    compensation: "₹10,000 – ₹20,000 / Month + PPO",
-    duration: "3 – 6 Months",
-    skills: ["React.js", "Node.js", "MongoDB", "Express", "Tailwind CSS", "Git"],
-    description: "Work directly on live client portals and internal SaaS tools. Collaborate with senior architects, write clean modular code, build REST APIs, and receive a guaranteed Pre-Placement Offer (PPO) based on performance.",
-    isInternship: true,
-    perks: ["Monthly Stipend", "Live Client Projects", "Industry ISO Certificate", "Letter of Recommendation", "PPO Conversion Opportunity"]
+    id: "role-frontend",
+    title: "1. Frontend Development Intern",
+    tagline: "Make a seamless, user-friendly interface that is easy to navigate for modern web applications.",
+    department: "Frontend Engineering",
+    icon: Code2,
+    badge: "UI / Web Track",
+    keyFocus: [
+      "Bring UI/UX design to life by coding interactive and responsive web components.",
+      "Make websites responsive, so they are compatible across several devices and browsers.",
+      "Make the websites lightweight with optimized loading times and improved performance."
+    ],
+    technologies: ["HTML5", "CSS3", "Tailwind CSS", "JavaScript", "React.js", "Material-UI"],
+    description: "In the Frontend Development Intern role, you’ll be working with a modern tech stack that the industry is using to build responsive and seamless user interfaces. With the use of HTML5 for structure, CSS3 for styling and layouts, Material UI and Tailwind CSS for faster UI development, and React.js and JavaScript for building dynamic and interactive experiences, you’ll gain practical experience in developing intuitive web applications."
   },
   {
-    id: "intern-2",
-    title: "AI & Machine Learning Engineering Intern (Paid)",
-    department: "Enterprise AI Solutions",
-    category: "internship",
-    location: "Greater Noida / Hybrid",
-    type: "Paid Internship",
-    experience: "College Students / Freshers",
-    compensation: "₹12,000 – ₹25,000 / Month + PPO",
-    duration: "3 – 6 Months",
-    skills: ["Python", "PyTorch", "LangChain", "Vector DBs", "RAG Pipelines", "FastAPI"],
-    description: "Assist our AI research wing in fine-tuning open-source LLMs, building custom RAG pipelines, deploying AI agent workflows, and integrating vector databases into enterprise web applications.",
-    isInternship: true,
-    perks: ["Monthly Stipend", "GPU Cloud Compute Access", "Enterprise AI Capstones", "PPO Conversion Pathway", "Mentorship from AI Leads"]
+    id: "role-backend",
+    title: "2. Backend Development Intern",
+    tagline: "Build robust server-side solutions that are secure and power real-world applications.",
+    department: "Backend & Systems",
+    icon: Database,
+    badge: "APIs & Databases",
+    keyFocus: [
+      "Building and implementing scalable APIs for smooth and efficient data exchange.",
+      "Working with databases to maintain data integrity and effective retrieval.",
+      "Building application security with authentication and authorization, while optimizing server performance."
+    ],
+    technologies: ["Java", "JDBC", "SpringBoot", "Node.js", "Express.js", "MongoDB", "PostgreSQL / SQL", "RESTful APIs"],
+    description: "In this role, you will work on building reliable server-side solutions to ensure fast, secure, and scalable performance. Using Node.js and Express.js to build scalable backend systems, while MongoDB ensures a flexible NoSQL database solution and PostgreSQL maintains data with relational storage. This stack combined allows you to provide authentication, effective server performance, and manage data, while seamlessly integrating with the frontend."
   },
   {
-    id: "intern-3",
-    title: "Java Enterprise Backend Intern (Paid)",
-    department: "Backend Engineering",
-    category: "internship",
-    location: "Greater Noida (On-Site)",
-    type: "Paid Internship",
-    experience: "College Students / Freshers",
-    compensation: "₹10,000 – ₹20,000 / Month + PPO",
-    duration: "3 – 6 Months",
-    skills: ["Java 17+", "Spring Boot 3", "Hibernate", "PostgreSQL / MySQL", "REST APIs"],
-    description: "Develop enterprise-grade microservices, implement JWT security filters, optimize complex SQL queries, and design scalable backend microservices under experienced MNC architects.",
-    isInternship: true,
-    perks: ["Monthly Stipend", "Live MNC Microservices Architecture", "ISO Experience Certificate", "PPO Conversion Pathway"]
-  },
-  {
-    id: "intern-4",
-    title: "Cloud & DevOps Engineering Intern (Paid)",
-    department: "Infrastructure & Cloud",
-    category: "internship",
-    location: "Greater Noida / Remote",
-    type: "Paid Internship",
-    experience: "College Students / Freshers",
-    compensation: "₹10,000 – ₹18,000 / Month + PPO",
-    duration: "3 – 6 Months",
-    skills: ["AWS", "Docker", "Kubernetes", "GitHub Actions", "Linux", "Nginx"],
-    description: "Assist DevOps leads in containerizing applications, writing CI/CD automated deployment pipelines, configuring reverse proxies, and monitoring cloud infrastructure uptime.",
-    isInternship: true,
-    perks: ["Monthly Stipend", "AWS Sandbox Access", "Real Cloud Deployments", "Placement Assistance"]
-  },
-  {
-    id: "intern-5",
-    title: "UI/UX Design & Frontend Intern (Paid)",
-    department: "Product & UI Design",
-    category: "internship",
-    location: "Greater Noida / Hybrid",
-    type: "Paid Internship",
-    experience: "Designers / Frontends",
-    compensation: "₹8,000 – ₹15,000 / Month + PPO",
-    duration: "3 – 6 Months",
-    skills: ["Figma", "Tailwind CSS", "React.js", "Design Systems", "Prototyping"],
-    description: "Design pixel-perfect user flows, component libraries, design systems in Figma, and build responsive web pages in React with sleek animations.",
-    isInternship: true,
-    perks: ["Monthly Stipend", "Live UI Portfolio Projects", "Figma Design System Mastery", "Direct Client Feedback"]
-  },
+    id: "role-fullstack",
+    title: "3. Full Stack Development Intern",
+    tagline: "Combined the knowledge and skills of both frontend and backend to master end-to-end solutions.",
+    department: "Full Stack Engineering",
+    icon: Layers,
+    badge: "End-to-End MERN / Java",
+    keyFocus: [
+      "Building a complete solution from a user-friendly webpage to its backend management.",
+      "Managing deployment pipelines to ensure smooth releases and application stability.",
+      "Working with other teams such as designers and developers for holistic solutions."
+    ],
+    technologies: ["MERN Stack", "Java Full-Stack", "React.js", "Node.js", "Express.js", "MongoDB", "Next.js", "GraphQL"],
+    description: "In this Full-Stack Development Intern role, you’ll be working with both frontend and backend technologies to build the application end-to-end. The MERN stack used here (MongoDB, Express.js, React.js, Node.js) will help in building user interfaces and server-side logic. With GraphQL, you’ll be able to streamline data fetching, while Next.js will help with server-side rendering and application performance. Together, these technologies will give you practical experience in handling the complete application flow and building smooth, integrated web applications."
+  }
+];
 
-  // FULL-TIME ROLES
+const GROWTH_PILLARS = [
   {
-    id: "job-1",
-    title: "Senior Full Stack Engineering Mentor",
-    department: "IT Training & Development",
-    category: "fulltime",
-    location: "Greater Noida (On-Site / Hybrid)",
-    type: "Full-Time",
-    experience: "3 - 6 Years",
-    compensation: "₹8.0 – ₹16.0 LPA",
-    duration: "Permanent Role",
-    skills: ["React.js", "Node.js", "Python / Java", "System Design", "Microservices"],
-    description: "Lead classroom training and real-world capstone development for full-stack batches. Mentor aspiring developers through live code audits, architecture reviews, and technical interview prep.",
-    isInternship: false,
-    perks: ["High Growth Incentives", "Health Insurance", "Flexible Hybrid Schedule", "Annual Tech Allowance"]
+    icon: Laptop,
+    title: "Industry / Practical Experience",
+    desc: "Collaborate on a live project to be a part of it from design to development. Gain practical skills in the latest technology."
   },
   {
-    id: "job-2",
-    title: "Lead AI & Machine Learning Specialist",
-    department: "Enterprise Solutions & AI",
-    category: "fulltime",
-    location: "Greater Noida / Hybrid",
-    type: "Full-Time",
-    experience: "4 - 8 Years",
-    compensation: "₹12.0 – ₹24.0 LPA",
-    duration: "Permanent Role",
-    skills: ["Python", "PyTorch", "LLMs & LangChain", "Vector DBs", "Docker"],
-    description: "Architect AI software modules for enterprise clients and deliver masterclasses on Generative AI, LangChain agents, and modern predictive pipelines.",
-    isInternship: false,
-    perks: ["GPU Rigs & Compute Budget", "Conference Sponsorship", "Quarterly Bonuses", "Leadership Equity"]
+    icon: Users,
+    title: "Mentorship & Support",
+    desc: "Get support and guidance with senior expertise every step of the way."
   },
   {
-    id: "job-3",
-    title: "Java Spring Boot & Cloud Architect",
-    department: "Enterprise Software Services",
-    category: "fulltime",
-    location: "Greater Noida (On-Site)",
-    type: "Full-Time",
-    experience: "3 - 7 Years",
-    compensation: "₹10.0 – ₹20.0 LPA",
-    duration: "Permanent Role",
-    skills: ["Java 17+", "Spring Boot 3", "AWS", "Kafka", "Kubernetes", "PostgreSQL"],
-    description: "Design high-availability enterprise backend architectures and mentor advanced Java candidates for top Tier-1 MNC placement drives.",
-    isInternship: false,
-    perks: ["Annual Performance Bonus", "MNC Client Exposure", "Health Coverage", "Relocation Support"]
+    icon: HeartHandshake,
+    title: "Collaborative Culture / Team-Based Learning",
+    desc: "Grow and nurture in a supportive environment surrounded by experts who value creativity and knowledge sharing."
   },
   {
-    id: "job-4",
-    title: "Business Development & Corporate Placement Manager",
-    department: "Corporate Relations",
-    category: "fulltime",
-    location: "Greater Noida & NCR",
-    type: "Full-Time",
-    experience: "2 - 5 Years",
-    compensation: "₹6.0 – ₹12.0 LPA + Incentives",
-    duration: "Permanent Role",
-    skills: ["Corporate Relations", "Campus Hiring", "MNC Partnerships", "Negotiation"],
-    description: "Forge tie-ups with Tier-1 IT companies, schedule on-campus placement drives, and expand client software service contracts across Delhi NCR.",
-    isInternship: false,
-    perks: ["Uncapped Deal Incentives", "Travel Allowance", "Executive Networking", "Rapid Promotion"]
+    icon: TrendingUp,
+    title: "Career Advancement",
+    desc: "Advance your career immensely with networking events, expert development resources, and career counselling with top leaders."
   },
   {
-    id: "job-5",
-    title: "UI/UX & Frontend Designer (React)",
-    department: "Product Design",
-    category: "fulltime",
-    location: "Greater Noida / Remote",
-    type: "Full-Time",
-    experience: "2 - 4 Years",
-    compensation: "₹5.5 – ₹11.0 LPA",
-    duration: "Permanent Role",
-    skills: ["Figma", "Tailwind CSS", "React.js", "UI Animation", "Design Systems"],
-    description: "Create world-class interfaces, design tokens, and interactive landing pages for Yukti Software products and client web platforms.",
-    isInternship: false,
-    perks: ["MacBook Pro Provided", "Remote-Friendly", "Design Tool Subscriptions", "Creative Freedom"]
+    icon: Globe,
+    title: "Diverse Learning Opportunities",
+    desc: "Dive into various branches of the tech world, from UI/UX design and software development to cloud solutions."
+  },
+  {
+    icon: FolderGit2,
+    title: "Showcase Your Work",
+    desc: "Build a solid portfolio by showcasing the projects you contributed to, earning a competitive edge in the job market."
+  }
+];
+
+const INTERN_TESTIMONIALS = [
+  {
+    name: "Aditya Verma",
+    role: "Full Stack Intern → SDE-1",
+    college: "AKTU Noida",
+    avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80",
+    quote: "Working on Yukti Software's live production microservices helped me master React and Spring Boot. I converted my internship into a full-time software engineering role with 100% confidence!"
+  },
+  {
+    name: "Rhea Sharma",
+    role: "Frontend Development Intern",
+    college: "Galgotias University",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
+    quote: "The 1-on-1 code reviews from senior leads transformed my UI development skills. I built 3 verified GitHub capstones and learned how real software development teams collaborate."
+  },
+  {
+    name: "Saurabh Mishra",
+    role: "Backend Engineering Intern",
+    college: "Sharda University",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    quote: "Handling database indexing, REST APIs, and JWT authentication on actual client projects gave me practical exposure that college theory never taught. Highly recommend Yukti Software!"
   }
 ];
 
 export default function CareersPage({ onOpenConsultation }) {
-  const [activeFilter, setActiveFilter] = useState('all'); // 'all', 'internship', 'fulltime'
-  const [selectedPosition, setSelectedPosition] = useState(null);
-  const [applicationData, setApplicationData] = useState({
+  const [selectedRole, setSelectedRole] = useState(null);
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    applicantType: 'student', // 'student' or 'professional'
-    collegeOrCompany: '',
-    experienceOrYear: '',
-    resumeUrl: '',
-    note: ''
+    college: '',
+    rolePreference: 'Frontend Development Intern',
+    githubOrPortfolio: '',
+    message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const filteredPositions = ALL_POSITIONS.filter(pos => {
-    if (activeFilter === 'all') return true;
-    return pos.category === activeFilter;
-  });
-
-  const internshipCount = ALL_POSITIONS.filter(p => p.category === 'internship').length;
-  const fulltimeCount = ALL_POSITIONS.filter(p => p.category === 'fulltime').length;
-
-  const handleApplySubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-      confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
+      confetti({ particleCount: 90, spread: 75, origin: { y: 0.6 } });
       setTimeout(() => {
         setIsSubmitted(false);
-        setSelectedPosition(null);
-        setApplicationData({
+        if (selectedRole) setSelectedRole(null);
+        setFormData({
           name: '',
           email: '',
           phone: '',
-          applicantType: 'student',
-          collegeOrCompany: '',
-          experienceOrYear: '',
-          resumeUrl: '',
-          note: ''
+          college: '',
+          rolePreference: 'Frontend Development Intern',
+          githubOrPortfolio: '',
+          message: ''
         });
-      }, 2500);
-    }, 700);
+      }, 3500);
+    }, 1000);
   };
 
-  const handleOpenApply = (pos) => {
-    setSelectedPosition(pos);
-    setApplicationData(prev => ({
-      ...prev,
-      applicantType: pos.isInternship ? 'student' : 'professional'
-    }));
+  const handleApplyClick = (roleTitle) => {
+    setFormData(prev => ({ ...prev, rolePreference: roleTitle }));
+    const formEl = document.getElementById('apply-form-section');
+    if (formEl) {
+      formEl.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
-    <div className="py-10 sm:py-16 animate-fadeIn">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        
-        {/* Top Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
-            Careers & Paid Internships
-          </h1>
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-            Join Yukti Software in Greater Noida. Whether you are an experienced software engineer looking for high-impact full-time roles or a talented student looking for a <span className="font-bold text-emerald-600 dark:text-emerald-400">stipend-backed industrial internship with PPO</span>, we have a place for you.
+    <div className="pt-2 sm:pt-4 pb-14 space-y-10 sm:space-y-12 animate-fadeIn text-slate-900 dark:text-slate-100">
+      
+      {/* 1. HERO SECTION */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative p-6 sm:p-10 lg:p-12 rounded-3xl bg-gradient-to-br from-brand-900 via-slate-900 to-indigo-950 text-white overflow-hidden shadow-2xl border border-brand-500/20">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20"></div>
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none -ml-20 -mb-20"></div>
+
+          <div className="relative z-10 max-w-3xl space-y-5">
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-500/20 border border-brand-400/30 text-brand-300 text-xs font-black uppercase tracking-wider backdrop-blur-md">
+              <Sparkles className="w-3.5 h-3.5 text-brand-400" />
+              <span>Yukti Software • Career & Internship Program</span>
+            </div>
+
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
+              Internship Opportunities at Yukti Software – <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 via-emerald-300 to-teal-200">Learn, Grow, and Advance</span>
+            </h1>
+
+            <p className="text-xs sm:text-sm lg:text-base text-slate-300 leading-relaxed font-medium">
+              Be a part of Yukti’s software team and start your journey under the guidance of industry experts and their mentorship, while working on real-world live projects.
+            </p>
+
+            <div className="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-xs sm:text-sm font-bold text-emerald-300 flex items-center space-x-2.5">
+              <Zap className="w-4 h-4 text-amber-400 shrink-0" />
+              <span>Start with an internship in your dream job role and level up by improving your skills!</span>
+            </div>
+
+            <div className="flex flex-row items-center gap-2 sm:gap-3 pt-1 w-full max-w-lg">
+              <button
+                onClick={() => handleApplyClick('Full Stack Development Intern')}
+                className="flex-1 sm:flex-none px-3 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-extrabold text-[11px] sm:text-sm shadow-xl shadow-emerald-500/25 transition-all flex items-center justify-center space-x-1.5 sm:space-x-2 hover:scale-105 active:scale-95 whitespace-nowrap text-center"
+              >
+                <span>Apply for Internship</span>
+                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
+              </button>
+              <button
+                onClick={() => {
+                  const roleEl = document.getElementById('roles-section');
+                  if (roleEl) roleEl.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="flex-1 sm:flex-none px-2.5 sm:px-5 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-[11px] sm:text-sm border border-white/20 transition-all backdrop-blur-sm whitespace-nowrap text-center flex items-center justify-center"
+              >
+                <span>Explore Tracks</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. LIMITLESS GROWTH WITH OUR INTERNSHIP PROGRAM (6 PILLARS) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div className="text-center max-w-3xl mx-auto space-y-2">
+          <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400 border border-brand-200 dark:border-brand-800">
+            <TrendingUp className="w-3.5 h-3.5" />
+            <span>Why Choose Yukti Software</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 dark:text-white">
+            Limitless Growth with Our Internship Program
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            With us, you don’t just intern! You learn and implement skills that transform you from a fresher with potential into a software expert. Let’s explore why Yukti Software is your gateway to tech.
           </p>
         </div>
 
-        {/* Culture & Internship Highlights */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
-              <DollarSign className="w-6 h-6" />
-            </div>
-            <h3 className="text-base font-bold text-slate-900 dark:text-white">Paid Internships (₹8k - ₹25k/mo)</h3>
-            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-              Every qualified intern receives a guaranteed monthly stipend, real client project exposure, and high-performer Pre-Placement Offers (PPOs).
-            </p>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {GROWTH_PILLARS.map((pillar, idx) => {
+            const IconComp = pillar.icon;
+            return (
+              <div 
+                key={idx}
+                className="p-5 sm:p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-brand-500/40 transition-all space-y-3 group flex flex-col justify-between"
+              >
+                <div className="space-y-2.5">
+                  <div className="w-11 h-11 rounded-2xl bg-brand-50 dark:bg-brand-950/80 text-brand-600 dark:text-brand-400 flex items-center justify-center group-hover:scale-110 group-hover:bg-brand-600 group-hover:text-white transition-all shadow-sm border border-brand-200/60 dark:border-brand-800/60">
+                    <IconComp className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                    {pillar.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    {pillar.desc}
+                  </p>
+                </div>
+                <div className="pt-2.5 border-t border-slate-100 dark:border-slate-800 flex items-center space-x-1.5 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  <span>Yukti Professional Standard</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
 
-          <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
-            <div className="w-12 h-12 rounded-2xl bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400 flex items-center justify-center">
-              <TrendingUp className="w-6 h-6" />
-            </div>
-            <h3 className="text-base font-bold text-slate-900 dark:text-white">Competitive Full-Time Packages</h3>
-            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-              Industry-leading CTC packages (₹6 LPA – ₹24 LPA), performance bonuses, health insurance, and fast-track leadership promotions.
-            </p>
+      {/* 3. ROLE-BASED INTERNSHIP PROGRAMS FOR SPECIALIZED SKILL DEVELOPMENT */}
+      <section id="roles-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div className="text-center max-w-3xl mx-auto space-y-2">
+          <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
+            <GraduationCap className="w-3.5 h-3.5" />
+            <span>Specialized Skill Development</span>
           </div>
-
-          <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
-            <div className="w-12 h-12 rounded-2xl bg-purple-50 dark:bg-purple-950 text-purple-600 dark:text-purple-400 flex items-center justify-center">
-              <Laptop className="w-6 h-6" />
-            </div>
-            <h3 className="text-base font-bold text-slate-900 dark:text-white">Modern Tech Stack & Lab Access</h3>
-            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-              Build with the latest AI agents, PyTorch, LangChain, Spring Boot 3, Next.js, and multi-cloud Kubernetes architectures.
-            </p>
-          </div>
+          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+            Role-based Internship Programs
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            Apply today to be a part of the Yukti Software team as an Intern. Here, you learn, grow, and get your first industry experience to kickstart your journey with professional guidance.
+          </p>
         </div>
 
-        {/* Filter Controls & List Header */}
-        <div className="space-y-6 pt-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
-            <div>
-              <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
-                Open Positions ({filteredPositions.length})
-              </h2>
-              <p className="text-xs text-slate-500 font-medium">📍 Greater Noida Knowledge Park & Hybrid</p>
-            </div>
-
-            {/* Filter Pills */}
-            <div className="flex items-center p-1 bg-slate-100 dark:bg-slate-800 rounded-2xl">
-              <button
-                onClick={() => setActiveFilter('all')}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                  activeFilter === 'all'
-                    ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-                }`}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+          {INTERNSHIP_ROLES.map((role) => {
+            const IconComp = role.icon;
+            return (
+              <div 
+                key={role.id}
+                className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-2xl hover:border-brand-500/50 transition-all flex flex-col justify-between h-full group"
               >
-                All Positions ({ALL_POSITIONS.length})
-              </button>
-              
-              <button
-                onClick={() => setActiveFilter('internship')}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 ${
-                  activeFilter === 'internship'
-                    ? 'bg-emerald-600 text-white shadow-sm'
-                    : 'text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300'
-                }`}
-              >
-                <GraduationCap className="w-3.5 h-3.5" />
-                <span>Paid Internships ({internshipCount})</span>
-              </button>
-
-              <button
-                onClick={() => setActiveFilter('fulltime')}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 ${
-                  activeFilter === 'fulltime'
-                    ? 'bg-brand-600 text-white shadow-sm'
-                    : 'text-brand-700 dark:text-brand-400 hover:text-brand-800 dark:hover:text-brand-300'
-                }`}
-              >
-                <Briefcase className="w-3.5 h-3.5" />
-                <span>Full-Time Roles ({fulltimeCount})</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Position Cards Grid */}
-          <div className="grid grid-cols-1 gap-5">
-            {filteredPositions.map((pos) => (
-              <div
-                key={pos.id}
-                className={`p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border card-hover-effect hover-shine flex flex-col md:flex-row md:items-center justify-between gap-6 group ${
-                  pos.isInternship 
-                    ? 'border-emerald-200/80 dark:border-emerald-950/60 hover:border-emerald-500 shadow-sm hover:shadow-emerald-500/10' 
-                    : 'border-slate-200 dark:border-slate-800 hover:border-brand-500 shadow-sm hover:shadow-brand-500/10'
-                }`}
-              >
-                <div className="space-y-3.5 max-w-2xl">
-                  <div className="flex flex-wrap items-center gap-2">
-                    {pos.isInternship ? (
-                      <span className="px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider bg-emerald-50 text-emerald-700 dark:bg-emerald-950/80 dark:text-emerald-300 flex items-center space-x-1 border border-emerald-200 dark:border-emerald-800 shadow-sm">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <span>Paid Internship</span>
-                      </span>
-                    ) : (
-                      <span className="px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider bg-brand-50 text-brand-700 dark:bg-brand-950/80 dark:text-brand-300 border border-brand-200 dark:border-brand-800 shadow-sm">
-                        Full-Time Role
-                      </span>
-                    )}
-
-                    <span className="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
-                      {pos.department}
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="w-11 h-11 rounded-2xl bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400 flex items-center justify-center border border-brand-200 dark:border-brand-800 shadow-sm group-hover:bg-brand-600 group-hover:text-white transition-all">
+                      <IconComp className="w-5 h-5" />
+                    </div>
+                    <span className="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                      {role.badge}
                     </span>
                   </div>
 
-                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
-                    {pos.title}
-                  </h3>
-
-                  <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500 dark:text-slate-400">
-                    <span className="flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5 text-slate-400" />
-                      <span>{pos.location}</span>
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="w-3.5 h-3.5 text-slate-400" />
-                      <span>{pos.isInternship ? pos.duration : pos.experience}</span>
-                    </span>
-                    <span className="font-extrabold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
-                      <DollarSign className="w-3.5 h-3.5" />
-                      <span>{pos.compensation}</span>
-                    </span>
+                  <div className="space-y-1">
+                    <h3 className="text-base sm:text-lg font-black text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                      {role.title}
+                    </h3>
+                    <p className="text-xs font-semibold text-brand-600 dark:text-brand-400">
+                      {role.tagline}
+                    </p>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                    {pos.description}
-                  </p>
+                  <div className="space-y-1.5 pt-1">
+                    <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Key Focus:</h4>
+                    <ul className="space-y-1.5">
+                      {role.keyFocus.map((focus, fIdx) => (
+                        <li key={fIdx} className="flex items-start space-x-2 text-xs text-slate-600 dark:text-slate-300">
+                          <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
+                          <span>{focus}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-                  <div className="flex flex-wrap gap-1.5 pt-1">
-                    {pos.skills.map((skill, idx) => (
-                      <span key={idx} className="px-2.5 py-0.5 rounded-lg text-[11px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 group-hover:border-brand-300/40 border border-transparent transition-colors">
-                        {skill}
-                      </span>
-                    ))}
+                  <div className="space-y-1.5 pt-1">
+                    <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Technologies:</h4>
+                    <div className="flex flex-wrap gap-1.5">
+                      {role.technologies.map((tech, tIdx) => (
+                        <span key={tIdx} className="px-2 py-0.5 rounded-lg text-[11px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="pt-1">
+                    <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Job Description:</h4>
+                    <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+                      {role.description}
+                    </p>
                   </div>
                 </div>
 
-                <div className="flex flex-col shrink-0">
+                <div className="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800">
                   <button
-                    onClick={() => handleOpenApply(pos)}
-                    className={`px-6 py-3 rounded-2xl font-bold text-xs sm:text-sm shadow-md btn-spring flex items-center justify-center space-x-2 text-white ${
-                      pos.isInternship
-                        ? 'bg-emerald-600 hover:bg-emerald-500 shadow-emerald-500/20'
-                        : 'bg-brand-600 hover:bg-brand-500 shadow-brand-500/20'
-                    }`}
+                    onClick={() => handleApplyClick(role.title)}
+                    className="w-full py-3 rounded-2xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs shadow-md transition-all flex items-center justify-center space-x-2 hover:scale-[1.02] active:scale-95"
                   >
-                    <span>{pos.isInternship ? "Apply for Internship" : "Apply for Role"}</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <span>Apply for this Role</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
               </div>
-            ))}
+            );
+          })}
+        </div>
+      </section>
+
+      {/* 4. HEAR FROM OUR INTERNS */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div className="text-center max-w-3xl mx-auto space-y-2">
+          <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 dark:bg-amber-950 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800">
+            <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
+            <span>Intern Success Stories</span>
           </div>
+          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+            Hear From Our Interns
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+            Real feedback from graduates who started with our internship program and accelerated into IT careers.
+          </p>
         </div>
 
-      </div>
-
-      {/* Application Modal */}
-      {selectedPosition && (
-        <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fadeIn"
-          onClick={() => setSelectedPosition(null)}
-        >
-          <div 
-            className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4 max-h-[90vh] overflow-y-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setSelectedPosition(null)}
-              className="absolute top-4 right-4 p-2 rounded-xl text-slate-400 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-slate-800"
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {INTERN_TESTIMONIALS.map((item, idx) => (
+            <div 
+              key={idx}
+              className="p-5 sm:p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between space-y-4"
             >
-              <X className="w-5 h-5" />
-            </button>
+              <div className="space-y-3">
+                <Quote className="w-7 h-7 text-brand-500/30" />
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed italic">
+                  "{item.quote}"
+                </p>
+              </div>
 
-            <div className="space-y-1">
-              <span className={`text-[10px] font-black uppercase tracking-wider ${
-                selectedPosition.isInternship ? 'text-emerald-600 dark:text-emerald-400' : 'text-brand-600 dark:text-brand-400'
-              }`}>
-                {selectedPosition.isInternship ? '🎓 Internship Application' : '💼 Job Application'}
-              </span>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white">{selectedPosition.title}</h3>
-              <p className="text-xs text-slate-500">{selectedPosition.compensation} • {selectedPosition.location}</p>
+              <div className="flex items-center space-x-3 pt-3 border-t border-slate-100 dark:border-slate-800">
+                <img 
+                  src={item.avatar} 
+                  alt={item.name} 
+                  className="w-10 h-10 rounded-full object-cover border border-brand-500/30 shadow-sm" 
+                />
+                <div>
+                  <h4 className="text-xs font-bold text-slate-900 dark:text-white">{item.name}</h4>
+                  <p className="text-[10px] text-brand-600 dark:text-brand-400 font-semibold">{item.role}</p>
+                  <p className="text-[10px] text-slate-400">{item.college}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 5. GET CERTIFIED FOR INDUSTRY RECOGNITION */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-emerald-600 via-teal-700 to-indigo-800 text-white shadow-xl space-y-4 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+            <div className="space-y-2 max-w-2xl">
+              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/15 text-xs font-bold border border-white/20">
+                <Award className="w-4 h-4 text-amber-300" />
+                <span>ISO 9001:2015 Recognized Credential</span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-black">
+                Get Certified for Industry Recognition
+              </h3>
+              <p className="text-xs sm:text-sm text-emerald-100 leading-relaxed">
+                Upon completion of your internship, you will receive an industry-recognized professional certificate. It will prove your skills and contributions, enhancing your portfolio and becoming a stepping stone in your career prospects.
+              </p>
+            </div>
+
+            <div className="shrink-0 p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-center space-y-1 shadow-lg">
+              <Award className="w-10 h-10 text-amber-300 mx-auto" />
+              <p className="text-xs font-bold text-white uppercase tracking-wider">Professional</p>
+              <p className="text-[10px] text-emerald-200">Internship Credential</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. WE LOOK FORWARD TO HAVING YOU – APPLY NOW! (RICH 2-COLUMN FULL-SPACE APPLICATION SECTION) */}
+      <section id="apply-form-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          
+          {/* Left Column: Internship Perks & What Happens Next (Fills Space) */}
+          <div className="lg:col-span-5 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-brand-950 to-slate-950 text-white border border-brand-800/60 shadow-xl flex flex-col justify-between space-y-6">
+            <div className="space-y-5">
+              <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-500/20 text-brand-300 border border-brand-400/30">
+                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                <span>Join Yukti Software Team</span>
+              </div>
+
+              <div className="space-y-2">
+                <h3 className="text-xl sm:text-2xl font-black text-white">
+                  Fast-Track Your Tech Career
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Submit your application to collaborate directly with our engineering teams on client-grade software products.
+                </p>
+              </div>
+
+              {/* Step-by-Step Selection Flow */}
+              <div className="space-y-3 pt-2">
+                <h4 className="text-xs font-black uppercase tracking-wider text-brand-300">
+                  What Happens After You Apply:
+                </h4>
+                
+                <div className="space-y-3 text-xs">
+                  <div className="flex items-start space-x-3 p-3 rounded-2xl bg-white/5 border border-white/10">
+                    <span className="w-6 h-6 rounded-full bg-brand-500 text-white font-bold flex items-center justify-center shrink-0 text-[11px]">
+                      1
+                    </span>
+                    <div>
+                      <p className="font-bold text-white">Profile & Resume Screening</p>
+                      <p className="text-slate-400 text-[11px] mt-0.5">Our hiring mentors review your technical interest within 24-48 hours.</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-3 p-3 rounded-2xl bg-white/5 border border-white/10">
+                    <span className="w-6 h-6 rounded-full bg-emerald-500 text-white font-bold flex items-center justify-center shrink-0 text-[11px]">
+                      2
+                    </span>
+                    <div>
+                      <p className="font-bold text-white">Technical 1-on-1 Discussion</p>
+                      <p className="text-slate-400 text-[11px] mt-0.5">Short discussion on project aspirations, coding concepts, and goals.</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-3 p-3 rounded-2xl bg-white/5 border border-white/10">
+                    <span className="w-6 h-6 rounded-full bg-cyan-500 text-white font-bold flex items-center justify-center shrink-0 text-[11px]">
+                      3
+                    </span>
+                    <div>
+                      <p className="font-bold text-white">Offer Letter & Live Project Allocation</p>
+                      <p className="text-slate-400 text-[11px] mt-0.5">Immediate onboarding with senior architect guidance and live sprints.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Key Highlights Pill Box */}
+              <div className="grid grid-cols-2 gap-2.5 pt-2">
+                <div className="p-3 rounded-2xl bg-white/5 border border-white/10 text-center">
+                  <p className="text-sm font-black text-emerald-400">100% Practical</p>
+                  <p className="text-[10px] text-slate-400">Live Client Systems</p>
+                </div>
+                <div className="p-3 rounded-2xl bg-white/5 border border-white/10 text-center">
+                  <p className="text-sm font-black text-amber-400">PPO Option</p>
+                  <p className="text-[10px] text-slate-400">Full-Time Conversion</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-4 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between">
+              <span>📍 Greater Noida & Sector 62</span>
+              <span className="text-emerald-400 font-bold">● Active 2026 Hiring</span>
+            </div>
+          </div>
+
+          {/* Right Column: Application Form */}
+          <div className="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl space-y-5">
+            <div className="space-y-1.5">
+              <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400 border border-brand-200 dark:border-brand-800">
+                <Send className="w-3.5 h-3.5" />
+                <span>Fast-Track Application</span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+                We Look Forward to Having You – Apply Now!
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                Fill out the form below to submit your profile for review by our talent acquisition team.
+              </p>
             </div>
 
             {isSubmitted ? (
-              <div className="py-8 text-center space-y-3 animate-fadeIn">
-                <div className="w-14 h-14 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mx-auto shadow-inner">
-                  <CheckCircle2 className="w-8 h-8 stroke-[2.5]" />
+              <div className="py-12 text-center space-y-4 animate-fadeIn">
+                <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mx-auto shadow-inner">
+                  <CheckCircle2 className="w-10 h-10 stroke-[2.5]" />
                 </div>
-                <h4 className="text-lg font-bold text-slate-900 dark:text-white">Application Submitted!</h4>
-                <p className="text-xs text-slate-500 dark:text-slate-400 max-w-xs mx-auto">
-                  Our talent acquisition team will review your profile and contact you within 24 to 48 hours.
+                <h4 className="text-2xl font-black text-slate-900 dark:text-white">Application Received!</h4>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-sm mx-auto">
+                  Thank you for applying. Our talent coordinator will review your profile and reach out via Email / WhatsApp with interview details.
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleApplySubmit} className="space-y-3.5">
-                <div>
-                  <label className="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-400 mb-1">Full Name *</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Your Full Name"
-                    value={applicationData.name}
-                    onChange={(e) => setApplicationData({...applicationData, name: e.target.value})}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 outline-none"
-                  />
-                </div>
-
-                <div className="grid grid-cols-2 gap-3">
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-400 mb-1">Email *</label>
+                    <label className="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-400 mb-1">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g., Rohit Sharma"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-400 mb-1">
+                      Email Address *
+                    </label>
                     <input
                       type="email"
                       required
                       placeholder="name@email.com"
-                      value={applicationData.email}
-                      onChange={(e) => setApplicationData({...applicationData, email: e.target.value})}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 outline-none"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-400 mb-1">Phone / WhatsApp *</label>
-                    <input
-                      type="tel"
-                      required
-                      placeholder="+91..."
-                      value={applicationData.phone}
-                      onChange={(e) => setApplicationData({...applicationData, phone: e.target.value})}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 outline-none"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 outline-none"
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-400 mb-1">
-                      {selectedPosition.isInternship ? 'College / University *' : 'Current Company / Last Role'}
+                      Phone / WhatsApp Number *
                     </label>
                     <input
-                      type="text"
-                      required={selectedPosition.isInternship}
-                      placeholder={selectedPosition.isInternship ? "e.g., AKTU / Galgotias / Amity" : "e.g., TCS / Infosys / Fresher"}
-                      value={applicationData.collegeOrCompany}
-                      onChange={(e) => setApplicationData({...applicationData, collegeOrCompany: e.target.value})}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 outline-none"
+                      type="tel"
+                      required
+                      placeholder="+91..."
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 outline-none"
                     />
                   </div>
+
                   <div>
                     <label className="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-400 mb-1">
-                      {selectedPosition.isInternship ? 'Current Semester / Batch' : 'Total Experience'}
+                      College / University / Qualification *
                     </label>
                     <input
                       type="text"
-                      placeholder={selectedPosition.isInternship ? "e.g. 6th Sem / 2025 Batch" : "e.g. 3 Years"}
-                      value={applicationData.experienceOrYear}
-                      onChange={(e) => setApplicationData({...applicationData, experienceOrYear: e.target.value})}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 outline-none"
+                      required
+                      placeholder="e.g., AKTU / Galgotias / B.Tech CSE"
+                      value={formData.college}
+                      onChange={(e) => setFormData({ ...formData, college: e.target.value })}
+                      className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-400 mb-1">
+                      Role Preference *
+                    </label>
+                    <select
+                      value={formData.rolePreference}
+                      onChange={(e) => setFormData({ ...formData, rolePreference: e.target.value })}
+                      className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 outline-none"
+                    >
+                      <option value="Frontend Development Intern">Frontend Development Intern</option>
+                      <option value="Backend Development Intern">Backend Development Intern</option>
+                      <option value="Full Stack Development Intern">Full Stack Development Intern</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-400 mb-1">
+                      GitHub / LinkedIn / Resume Link
+                    </label>
+                    <input
+                      type="url"
+                      placeholder="https://github.com/... or Google Drive link"
+                      value={formData.githubOrPortfolio}
+                      onChange={(e) => setFormData({ ...formData, githubOrPortfolio: e.target.value })}
+                      className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 outline-none"
                     />
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-400 mb-1">
-                    LinkedIn / GitHub / Resume Link *
+                    Why do you want to intern at Yukti Software?
                   </label>
-                  <input
-                    type="url"
-                    required
-                    placeholder="https://linkedin.com/in/... or Google Drive / GitHub link"
-                    value={applicationData.resumeUrl}
-                    onChange={(e) => setApplicationData({...applicationData, resumeUrl: e.target.value})}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-400 mb-1">Why should we select you?</label>
                   <textarea
-                    rows="2"
-                    placeholder="Briefly describe your relevant tech skills or project experience..."
-                    value={applicationData.note}
-                    onChange={(e) => setApplicationData({...applicationData, note: e.target.value})}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 outline-none resize-none"
+                    rows="3"
+                    placeholder="Share a short note about your coding experience, current projects, or learning goals..."
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 outline-none resize-none"
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full py-3 rounded-xl font-bold text-xs text-white transition-all flex items-center justify-center space-x-2 shadow-md ${
-                    selectedPosition.isInternship
-                      ? 'bg-emerald-600 hover:bg-emerald-500'
-                      : 'bg-brand-600 hover:bg-brand-500'
-                  }`}
+                  className="w-full py-3.5 rounded-2xl bg-brand-600 hover:bg-brand-500 text-white font-extrabold text-xs sm:text-sm shadow-xl shadow-brand-500/20 transition-all flex items-center justify-center space-x-2 hover:scale-[1.01] active:scale-95 disabled:opacity-60"
                 >
-                  <Send className="w-3.5 h-3.5" />
-                  <span>{isSubmitting ? "Submitting Application..." : "Submit Application"}</span>
+                  <Send className="w-4 h-4" />
+                  <span>{isSubmitting ? "Submitting Application..." : "Submit Internship Application"}</span>
                 </button>
               </form>
             )}
           </div>
+
         </div>
-      )}
+      </section>
 
     </div>
   );

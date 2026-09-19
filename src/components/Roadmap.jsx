@@ -1,435 +1,209 @@
-import React, { useState } from 'react';
-import { siteData } from '../data';
-import Icon from './Icon';
+import React, { useState, useRef, useEffect } from 'react';
 import { getRoadmapLogo } from './TechLogos';
-import { Sparkles, CheckCircle2, ArrowRight, GitCommit, LayoutGrid, Check, Clock, ChevronDown, Layers, Milestone } from 'lucide-react';
+import { ArrowRight, ArrowLeft } from 'lucide-react';
 
-export default function Roadmap({ onOpenConsultation }) {
-  const { roadmapSection } = siteData;
-  const roadmapVariant = 'v1_timeline';
+const steps = [
+  {
+    stepNumber: "01",
+    title: "Requirement Analysis",
+    description: "Our software experts will sit with you to understand your requirements and your business goals. We will also evaluate your profile during this initial consultation, which will help us configure customizations as required.",
+    image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80",
+    imageCaption: "Scoping & Requirement Analysis Workshop"
+  },
+  {
+    stepNumber: "02",
+    title: "Strategy & Planning",
+    description: "After the initial consultation, we move to the planning phase, where we use the insights and the intel we gathered during the consultation to design highly effective and cost-efficient strategies.",
+    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+    imageCaption: "Architecture Strategy & Sprint Planning"
+  },
+  {
+    stepNumber: "03",
+    title: "UI/UX Design",
+    description: "We will create intuitive wireframes, prototypes, and user-friendly interfaces all according to what’s right for your business and what fits best. You will also receive the prototypes for review and feedback.",
+    image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=800&q=80",
+    imageCaption: "Wireframes, Design Tokens & Figma Prototypes"
+  },
+  {
+    stepNumber: "04",
+    title: "Software Development",
+    description: "Now comes the most important part: based on the finalized UI and your requirements, we will build scalable, secure, and high-performance software solutions.",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
+    imageCaption: "Clean Codebase & Scalable Full-Stack Engineering"
+  },
+  {
+    stepNumber: "05",
+    title: "Testing & Quality Assurance",
+    description: "In order to ensure reliability and long-term solutions, we conduct testing through rigorous methods. Automated tools and software are used to reduce time and ensure maximum accuracy.",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
+    imageCaption: "Rigorous QA Verification & Automated Testing"
+  },
+  {
+    stepNumber: "06",
+    title: "Deployment & Go-Live",
+    description: "After strict testing and fixing the bugs, your project is deployed. Our deployment services are designed for maximum security and minimum errors to ensure that neither your time nor money is wasted.",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
+    imageCaption: "Production Cloud Deployment & Zero-Downtime Release"
+  },
+  {
+    stepNumber: "07",
+    title: "Maintenance & Support",
+    description: "Our services do not end with the software deployment. At Yukti Software, we cover post-deployment maintenance and offer continuous support to ensure the software solutions are working as intended.",
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80",
+    imageCaption: "Continuous Maintenance & 24/7 Dedicated Support"
+  }
+];
+
+export default function Roadmap() {
   const [activeStep, setActiveStep] = useState(0);
+  const current = steps[activeStep];
+  const scrollContainerRef = useRef(null);
+  const stepRefs = useRef([]);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    const activeEl = stepRefs.current[activeStep];
+    if (container && activeEl) {
+      const scrollLeft = activeEl.offsetLeft - (container.clientWidth / 2) + (activeEl.clientWidth / 2);
+      container.scrollTo({
+        left: Math.max(0, scrollLeft),
+        behavior: 'smooth'
+      });
+    }
+  }, [activeStep]);
 
   return (
-    <section id="roadmap" className="py-12 sm:py-16 relative overflow-hidden bg-slate-100/50 dark:bg-slate-900/40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="roadmap" className="pt-2 sm:pt-4 pb-8 sm:pb-12 relative overflow-hidden bg-slate-50/70 dark:bg-slate-950/60">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-7">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-8">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-            {roadmapSection.title}
-          </h2>
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300">
-            {roadmapSection.subtitle}
-          </p>
+        <div className="text-center max-w-3xl mx-auto">
+          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white">
+            Software Solution Delivery Roadmap
+          </h3>
         </div>
 
-        {/* 10-Variant Switcher Bar */}
-        
-
-        {/* ========================================================================= */}
-        {/* V1: HORIZONTAL INTERACTIVE TIMELINE */}
-        {/* ========================================================================= */}
-        {roadmapVariant === 'v1_timeline' && (
-          <div className="space-y-8 animate-fadeIn">
-            <div className="overflow-x-auto pb-4 scrollbar-none no-scrollbar">
-              <div className="flex items-center justify-between min-w-[720px] relative px-6 py-2">
-                {/* Precise centered connector line behind icon nodes */}
-                <div className="absolute top-[34px] left-10 right-10 h-1 bg-slate-200 dark:bg-slate-800 -translate-y-1/2 z-0 rounded-full"></div>
-                {roadmapSection.steps.map((step, idx) => {
-                  const isSelected = activeStep === idx;
-                  const isCompleted = idx < activeStep;
-                  return (
-                    <button
-                      key={idx}
-                      onClick={() => setActiveStep(idx)}
-                      className="relative z-10 flex flex-col items-center group focus:outline-none"
-                    >
-                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center p-2.5 transition-all duration-300 ${
-                        isSelected
-                          ? 'bg-white dark:bg-slate-900 shadow-xl shadow-brand-500/25 scale-110 ring-4 ring-brand-500/25 border-2 border-brand-500'
-                          : isCompleted
-                          ? 'bg-white dark:bg-slate-900 border-2 border-emerald-500 shadow-sm'
-                          : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:border-brand-400'
-                      }`}>
-                        {getRoadmapLogo(step.stepNumber, "w-7 h-7")}
-                      </div>
-                      <span className={`text-xs font-bold mt-2.5 transition-colors ${
-                        isSelected ? 'text-brand-600 dark:text-brand-400 font-extrabold' : 'text-slate-600 dark:text-slate-400'
-                      }`}>
-                        {step.title.split(' ')[0]}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div className="max-w-4xl mx-auto">
-              {(() => {
-                const current = roadmapSection.steps[activeStep];
-                return (
-                  <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 sm:p-10 shadow-xl relative overflow-hidden">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-slate-100 dark:border-slate-800">
-                      <div className="flex items-center space-x-4">
-                        <div className="w-16 h-16 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center p-2.5 shadow-md flex-shrink-0">
-                          {getRoadmapLogo(current.stepNumber, "w-10 h-10")}
-                        </div>
-                        <div>
-                          <div className="flex items-center space-x-2">
-                            <span className="text-xs font-black text-brand-600 dark:text-brand-400 uppercase tracking-widest">Stage {current.stepNumber} of 07</span>
-                            <span className="text-slate-300 dark:text-slate-700">•</span>
-                            <span className="text-xs font-medium text-slate-500">{current.subtitle}</span>
-                          </div>
-                          <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">{current.title}</h3>
-                        </div>
-                      </div>
-                      <div className="inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-brand-50 dark:bg-brand-950/60 border border-brand-200 dark:border-brand-800 text-brand-700 dark:text-brand-300 text-xs font-bold">
-                        <CheckCircle2 className="w-4 h-4 text-brand-600 dark:text-brand-400" />
-                        <span>Deliverable: {current.deliverable}</span>
-                      </div>
-                    </div>
-                    {/* Realistic Engineering Stage Photo */}
-                    {(() => {
-                      const roadmapStageImages = {
-                        '01': {
-                          url: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80',
-                          title: 'Discovery & Requirement Workshops',
-                          caption: 'Client wireframing & technical scoping sessions'
-                        },
-                        '02': {
-                          url: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80',
-                          title: 'System & Cloud Architecture',
-                          caption: 'Microservices topology, database schemas & API contracts'
-                        },
-                        '03': {
-                          url: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
-                          title: 'Agile Full-Stack Engineering',
-                          caption: '2-week sprint cadence with live code audits & PR reviews'
-                        },
-                        '04': {
-                          url: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80',
-                          title: 'Rigorous QA & Security Testing',
-                          caption: 'Automated regression, performance stress testing & OWASP audits'
-                        },
-                        '05': {
-                          url: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80',
-                          title: 'Production Cloud Deployment',
-                          caption: 'Zero-downtime blue/green deployment on AWS & Kubernetes'
-                        },
-                        '06': {
-                          url: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80',
-                          title: 'Client Handover & Documentation',
-                          caption: 'Administrator docs, video walkthroughs & engineering training'
-                        },
-                        '07': {
-                          url: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80',
-                          title: 'Continuous Evolution & SLA Support',
-                          caption: 'Proactive APM monitoring, security patches & feature scaling'
-                        }
-                      };
-                      const stageImg = roadmapStageImages[current.stepNumber] || roadmapStageImages['01'];
-                      return (
-                        <div className="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800 my-4 h-44 sm:h-52 group">
-                          <img 
-                            src={stageImg.url} 
-                            alt={stageImg.title} 
-                            loading="lazy"
-                            decoding="async"
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-transparent"></div>
-                          <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
-                            <div>
-                              <p className="text-xs font-bold text-white drop-shadow">{stageImg.title}</p>
-                              <p className="text-[11px] text-slate-300 drop-shadow">{stageImg.caption}</p>
-                            </div>
-                            <span className="px-2.5 py-1 rounded-xl bg-white/20 backdrop-blur-md text-[10px] font-extrabold uppercase text-white border border-white/30">
-                              Stage {current.stepNumber}
-                            </span>
-                          </div>
-                        </div>
-                      );
-                    })()}
-
-                    <div className="py-2">
-                      <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">{current.description}</p>
-                    </div>
-                    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-100 dark:border-slate-800">
-                      <div className="flex items-center space-x-2">
-                        <button disabled={activeStep === 0} onClick={() => setActiveStep(prev => Math.max(0, prev - 1))} className="px-4 py-2 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 disabled:opacity-40 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">← Previous</button>
-                        <button disabled={activeStep === roadmapSection.steps.length - 1} onClick={() => setActiveStep(prev => Math.min(roadmapSection.steps.length - 1, prev + 1))} className="px-4 py-2 rounded-xl text-xs font-bold text-slate-900 dark:text-white bg-slate-200 dark:bg-slate-700 disabled:opacity-40 hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors">Next →</button>
-                      </div>
-                      <button onClick={onOpenConsultation} className="text-xs font-bold text-brand-600 dark:text-brand-400 flex items-center space-x-1 hover:underline">
-                        <span>Discuss with engineering team</span><ArrowRight className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
+        {/* Interactive Top Timeline Stepper */}
+        <div ref={scrollContainerRef} className="overflow-x-auto pb-2 scrollbar-none no-scrollbar scroll-smooth">
+          <div className="flex items-center justify-between min-w-[700px] relative px-4 py-1.5">
+            {/* Horizontal Timeline Connector Bar */}
+            <div className="absolute top-[28px] sm:top-[30px] left-10 right-10 h-0.5 bg-slate-200 dark:bg-slate-800 -translate-y-1/2 z-0 rounded-full"></div>
+            
+            {steps.map((step, idx) => {
+              const isSelected = activeStep === idx;
+              const isCompleted = idx < activeStep;
+              return (
+                <button
+                  key={idx}
+                  ref={(el) => (stepRefs.current[idx] = el)}
+                  onClick={() => setActiveStep(idx)}
+                  className="relative z-10 flex flex-col items-center group focus:outline-none cursor-pointer"
+                >
+                  <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center p-2 transition-all duration-300 ${
+                    isSelected
+                      ? 'bg-white dark:bg-slate-900 shadow-lg shadow-brand-500/20 scale-110 ring-4 ring-brand-500/20 border-2 border-brand-500'
+                      : isCompleted
+                      ? 'bg-white dark:bg-slate-900 border-2 border-emerald-500 shadow-sm'
+                      : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:border-brand-400'
+                  }`}>
+                    {getRoadmapLogo(step.stepNumber, "w-5 h-5 sm:w-6 sm:h-6")}
                   </div>
-                );
-              })()}
-            </div>
-          </div>
-        )}
-
-        {/* ========================================================================= */}
-        {/* V2: STAGE MATRIX GRID */}
-        {/* ========================================================================= */}
-        {roadmapVariant === 'v2_matrix' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fadeIn">
-            {roadmapSection.steps.map((step, idx) => (
-              <div key={idx} className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 p-7 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div className="w-12 h-12 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-2 flex items-center justify-center shadow-sm">
-                      {getRoadmapLogo(step.stepNumber, "w-7 h-7")}
-                    </div>
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{step.subtitle}</span>
-                  </div>
-                  <h3 className="text-xl font-extrabold text-slate-900 dark:text-white">{step.title}</h3>
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{step.description}</p>
-                </div>
-                <div className="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center space-x-2 text-[11px] font-bold text-brand-600 dark:text-brand-400">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
-                  <span className="truncate">Deliverable: {step.deliverable}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* ========================================================================= */}
-        {/* V3: CIRCULAR PROCESS WHEEL */}
-        {/* ========================================================================= */}
-        {roadmapVariant === 'v3_circular' && (
-          <div className="p-8 rounded-3xl bg-slate-900 text-white border border-slate-800 animate-fadeIn space-y-8">
-            <div className="flex flex-wrap justify-center gap-2">
-              {roadmapSection.steps.map((step, idx) => (
-                <button key={idx} onClick={() => setActiveStep(idx)} className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center space-x-2 transition-all ${activeStep === idx ? 'bg-brand-600 text-white shadow-lg scale-105' : 'bg-slate-800 text-slate-400 hover:text-white'}`}>
-                  {getRoadmapLogo(step.stepNumber, "w-4 h-4")}
-                  <span>Step {step.stepNumber}: {step.title.split(' ')[0]}</span>
+                  <span className={`text-[11px] sm:text-xs font-bold mt-2 transition-colors text-center ${
+                    isSelected ? 'text-brand-600 dark:text-brand-400 font-extrabold' : 'text-slate-600 dark:text-slate-400'
+                  }`}>
+                    {step.title}
+                  </span>
                 </button>
-              ))}
-            </div>
-            <div className="max-w-2xl mx-auto text-center space-y-4 py-4">
-              <div className="flex justify-center">
-                <div className="w-16 h-16 rounded-2xl bg-white/10 p-2.5 flex items-center justify-center shadow-lg">
-                  {getRoadmapLogo(roadmapSection.steps[activeStep].stepNumber, "w-10 h-10")}
-                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Active Stage Detailed 2-Column Card */}
+        <div className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl border border-slate-200/80 dark:border-slate-800 p-5 sm:p-7 lg:p-8 shadow-xl relative overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+            
+            {/* Left Side: Stage Image Showcase */}
+            <div className="lg:col-span-5 relative rounded-xl sm:rounded-2xl overflow-hidden shadow-md border border-slate-200 dark:border-slate-800 h-52 sm:h-64 lg:h-72 group">
+              <img 
+                src={current.image} 
+                alt={current.title} 
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
+              <div className="absolute bottom-3 left-3 right-3 text-white">
+                <span className="px-2.5 py-0.5 rounded-full bg-brand-600 text-white text-[10px] sm:text-xs font-bold shadow">
+                  Stage {current.stepNumber} of 07
+                </span>
+                <p className="text-xs sm:text-sm font-semibold text-slate-200 mt-1 drop-shadow line-clamp-1">
+                  {current.imageCaption}
+                </p>
               </div>
-              <span className="text-xs font-mono font-bold text-accent-primary uppercase">Stage {roadmapSection.steps[activeStep].stepNumber}</span>
-              <h3 className="text-3xl font-black text-white">{roadmapSection.steps[activeStep].title}</h3>
-              <p className="text-sm text-slate-300 leading-relaxed">{roadmapSection.steps[activeStep].description}</p>
-              <div className="inline-block px-4 py-2 rounded-full bg-white/10 text-xs font-bold text-emerald-400">Guaranteed: {roadmapSection.steps[activeStep].deliverable}</div>
             </div>
-          </div>
-        )}
 
-        {/* ========================================================================= */}
-        {/* V4: AGILE KANBAN SPRINT */}
-        {/* ========================================================================= */}
-        {roadmapVariant === 'v4_kanban' && (
-          <div className="overflow-x-auto pb-4 scrollbar-none animate-fadeIn">
-            <div className="flex space-x-4 min-w-[1100px]">
-              {roadmapSection.steps.map((step, idx) => (
-                <div key={idx} className="w-64 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm flex flex-col justify-between">
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center text-[10px] font-bold text-slate-400">
-                      <div className="flex items-center space-x-2">
-                        {getRoadmapLogo(step.stepNumber, "w-5 h-5")}
-                        <span>SPRINT 0{step.stepNumber}</span>
-                      </div>
-                      <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                    </div>
-                    <h4 className="text-sm font-bold text-slate-900 dark:text-white">{step.title}</h4>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-normal">{step.description}</p>
-                  </div>
-                  <div className="pt-3 mt-3 border-t border-slate-100 dark:border-slate-800 text-[10px] font-bold text-brand-600 dark:text-brand-400">{step.deliverable}</div>
+            {/* Right Side: Step Title, Description & Controls */}
+            <div className="lg:col-span-7 flex flex-col justify-between space-y-4">
+              <div className="space-y-3">
+                <div className="flex items-center space-x-2">
+                  <span className="px-2.5 py-0.5 rounded-lg bg-brand-50 dark:bg-brand-950/60 text-brand-600 dark:text-brand-400 font-mono font-bold text-xs border border-brand-200/60 dark:border-brand-800/60">
+                    Step {current.stepNumber}
+                  </span>
+                  <span className="text-brand-500 font-bold text-sm">↬</span>
                 </div>
-              ))}
-            </div>
-          </div>
-        )}
 
-        {/* ========================================================================= */}
-        {/* V5: VERTICAL DOSSIER */}
-        {/* ========================================================================= */}
-        {roadmapVariant === 'v5_verticalDossier' && (
-          <div className="max-w-3xl mx-auto space-y-6 animate-fadeIn">
-            {roadmapSection.steps.map((step, idx) => (
-              <div key={idx} className="flex space-x-4">
-                <div className="flex flex-col items-center">
-                  <div className="w-12 h-12 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-2 flex items-center justify-center shadow">
-                    {getRoadmapLogo(step.stepNumber, "w-7 h-7")}
-                  </div>
-                  {idx !== roadmapSection.steps.length - 1 && <div className="w-0.5 h-full bg-slate-200 dark:bg-slate-800 my-2"></div>}
-                </div>
-                <div className="flex-1 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
-                  <div className="flex justify-between items-center">
-                    <h4 className="text-base font-bold text-slate-900 dark:text-white">{step.title}</h4>
-                    <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-950 px-2 py-0.5 rounded">{step.deliverable}</span>
-                  </div>
-                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">{step.description}</p>
-                </div>
+                <h4 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-slate-900 dark:text-white leading-tight">
+                  {current.title}
+                </h4>
+
+                <p className="text-xs sm:text-sm lg:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                  {current.description}
+                </p>
               </div>
-            ))}
-          </div>
-        )}
 
-        {/* ========================================================================= */}
-        {/* V6: SPRINT GANTT CHART */}
-        {/* ========================================================================= */}
-        {roadmapVariant === 'v6_ganttChart' && (
-          <div className="p-6 rounded-3xl bg-slate-950 text-white border border-slate-800 overflow-x-auto animate-fadeIn">
-            <div className="min-w-[700px] space-y-3 font-mono text-xs">
-              <div className="flex justify-between text-slate-500 pb-2 border-b border-slate-800">
-                <span>Phase / Milestone</span>
-                <span>Sprint Duration</span>
-              </div>
-              {roadmapSection.steps.map((s, i) => (
-                <div key={i} className="flex items-center justify-between p-2 rounded-xl bg-slate-900">
-                  <div className="flex items-center space-x-2">
-                    {getRoadmapLogo(s.stepNumber, "w-5 h-5")}
-                    <span className="text-slate-200">{s.stepNumber}. {s.title}</span>
-                  </div>
-                  <div className="w-48 bg-slate-800 h-3 rounded-full overflow-hidden">
-                    <div className="bg-brand-500 h-full rounded-full" style={{ width: `${(i + 1) * 14}%` }}></div>
-                  </div>
+              {/* Stage Progress & Step Switchers */}
+              <div className="pt-3 border-t border-slate-100 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div className="flex items-center space-x-1.5">
+                  {steps.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setActiveStep(i)}
+                      className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 ${
+                        activeStep === i 
+                          ? 'w-7 bg-brand-600 dark:bg-brand-400' 
+                          : 'w-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600'
+                      }`}
+                      aria-label={`Go to Step ${i + 1}`}
+                    />
+                  ))}
                 </div>
-              ))}
-            </div>
-          </div>
-        )}
 
-        {/* ========================================================================= */}
-        {/* V7: 3-PHASE MACRO PIPELINE */}
-        {/* ========================================================================= */}
-        {roadmapVariant === 'v7_splitPhases' && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fadeIn">
-            {[
-              { phase: "Phase 1: Inception & Prototype", steps: "Requirement Analysis + Strategy & UI/UX" },
-              { phase: "Phase 2: Core Engineering", steps: "Software Development + Rigorous QA Testing" },
-              { phase: "Phase 3: Production & SLA", steps: "Deployment Go-Live + 24/7 Continuous Maintenance" }
-            ].map((p, i) => (
-              <div key={i} className="p-8 rounded-3xl glass-card border border-brand-500/30 space-y-3">
-                <span className="text-xs font-bold text-brand-600 uppercase">Stage 0{i + 1}</span>
-                <h4 className="text-xl font-bold text-slate-900 dark:text-white">{p.phase}</h4>
-                <p className="text-xs text-slate-500 dark:text-slate-400">{p.steps}</p>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* ========================================================================= */}
-        {/* V8: ACCORDION MILESTONE LIST */}
-        {/* ========================================================================= */}
-        {roadmapVariant === 'v8_accordionSteps' && (
-          <div className="max-w-3xl mx-auto space-y-3 animate-fadeIn">
-            {roadmapSection.steps.map((s, i) => (
-              <div key={i} className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex justify-between items-center">
-                <div className="flex items-center space-x-3">
-                  {getRoadmapLogo(s.stepNumber, "w-6 h-6")}
-                  <span className="font-bold text-sm text-slate-800 dark:text-slate-200">{s.stepNumber}. {s.title}</span>
-                </div>
-                <span className="text-xs text-brand-600 dark:text-brand-400 font-medium">{s.deliverable}</span>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* ========================================================================= */}
-        {/* V9: SWIPEABLE MILESTONE DECK */}
-        {/* ========================================================================= */}
-        {roadmapVariant === 'v9_cardDeck' && (
-          <div className="overflow-x-auto pb-4 scrollbar-none animate-fadeIn">
-            <div className="flex space-x-4 min-w-[900px]">
-              {roadmapSection.steps.map((s, i) => (
-                <div key={i} className="w-72 p-6 rounded-3xl bg-slate-900 text-white border border-slate-800 space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-brand-400 font-mono">0{i + 1} / 07</span>
-                    {getRoadmapLogo(s.stepNumber, "w-6 h-6")}
-                  </div>
-                  <h4 className="text-base font-bold">{s.title}</h4>
-                  <p className="text-xs text-slate-400 leading-relaxed">{s.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* ========================================================================= */}
-        {/* V10: CONNECTED NODE FLOWCHART */}
-        {/* ========================================================================= */}
-        {roadmapVariant === 'v10_nodeFlowchart' && (
-          <div className="p-8 rounded-3xl glass-card border border-brand-500/20 text-center space-y-6 animate-fadeIn">
-            <div className="flex flex-wrap justify-center items-center gap-3">
-              {roadmapSection.steps.map((s, i) => (
-                <React.Fragment key={i}>
-                  <div className="px-4 py-2.5 rounded-2xl bg-brand-600 text-white text-xs font-bold shadow-md flex items-center space-x-2">
-                    {getRoadmapLogo(s.stepNumber, "w-4 h-4")}
-                    <span>{s.title}</span>
-                  </div>
-                  {i !== roadmapSection.steps.length - 1 && <span className="text-slate-400 font-bold">→</span>}
-                </React.Fragment>
-              ))}
-            </div>
-            <p className="text-xs text-slate-500">Every milestone backed by formal deliverables and verified QA signatures.</p>
-          </div>
-        )}
-
-        {/* ========================================================================= */}
-        {/* DOCX REFERENCE VARIANT: 011BQ 7-STAGE PROCESS FLOW */}
-        {/* ========================================================================= */}
-        {roadmapVariant === 'v_docx_011bq' && (
-          <div className="space-y-8 animate-fadeIn">
-            <div className="relative">
-              
-              {/* Central connecting horizontal line (desktop) */}
-              <div className="hidden lg:block absolute top-1/2 left-8 right-8 h-1 bg-gradient-to-r from-brand-500 via-accent-primary to-brand-600 -translate-y-1/2 z-0 opacity-40"></div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-4 relative z-10">
-                {roadmapSection.steps.map((step, idx) => (
-                  <div 
-                    key={idx}
-                    className="p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:border-brand-500/50 transition-all flex flex-col justify-between group text-left"
+                {/* Navigation Buttons */}
+                <div className="flex items-center space-x-2.5 w-full sm:w-auto justify-between sm:justify-end">
+                  <button 
+                    disabled={activeStep === 0} 
+                    onClick={() => setActiveStep(prev => Math.max(0, prev - 1))} 
+                    className="px-3.5 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 disabled:opacity-40 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors flex items-center space-x-1.5 cursor-pointer disabled:cursor-not-allowed shadow-sm"
                   >
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <div className="w-12 h-12 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-2 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                          {getRoadmapLogo(step.stepNumber, "w-7 h-7")}
-                        </div>
-                        <span className="text-[10px] font-mono font-bold text-brand-600 dark:text-brand-400">
-                          STAGE {step.stepNumber}
-                        </span>
-                      </div>
-
-                      <h4 className="text-sm font-extrabold text-slate-900 dark:text-white leading-tight group-hover:text-brand-600 transition-colors">
-                        {step.title}
-                      </h4>
-
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-4">
-                        {step.description}
-                      </p>
-                    </div>
-
-                    <div className="pt-3 mt-3 border-t border-slate-100 dark:border-slate-800">
-                      <p className="text-[9px] font-bold uppercase tracking-wider text-slate-400">Key Output</p>
-                      <p className="text-[10px] font-bold text-slate-800 dark:text-slate-200 truncate">{step.deliverable}</p>
-                    </div>
-                  </div>
-                ))}
+                    <ArrowLeft className="w-3.5 h-3.5" />
+                    <span>Previous</span>
+                  </button>
+                  <button 
+                    disabled={activeStep === steps.length - 1} 
+                    onClick={() => setActiveStep(prev => Math.min(steps.length - 1, prev + 1))} 
+                    className="px-4 py-2 rounded-xl text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 disabled:opacity-40 transition-colors flex items-center space-x-1.5 cursor-pointer disabled:cursor-not-allowed shadow-md"
+                  >
+                    <span>Next</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
               </div>
+
             </div>
 
-            <div className="p-6 rounded-2xl bg-slate-900 text-white border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div>
-                <h4 className="text-sm font-bold text-white">011BQ Document Reference Standard</h4>
-                <p className="text-xs text-slate-400">Full transparency across every sprint demo with sign-off before production go-live.</p>
-              </div>
-              <button onClick={onOpenConsultation} className="px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs shrink-0 shadow">
-                Start Stage 01 Analysis
-              </button>
-            </div>
           </div>
-        )}
+        </div>
 
       </div>
     </section>

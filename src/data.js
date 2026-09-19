@@ -562,7 +562,7 @@ export const siteData = {
   highlightsSection: {
     badge: "Why Businesses & Students Trust Us",
     title: "Key Highlights of Our Services",
-    subtitle: "Built upon reliability, technical expertise, and continuous innovation.",
+    subtitle: "",
     highlights: [
       {
         title: "Over 50 Successful Software Solutions Delivered",
@@ -620,41 +620,69 @@ export const siteData = {
       {
         name: "Manisha Kumari",
         role: "Founder & CEO",
+        education: "NIT Alumna",
         experience: "10+ Years IT & Business Leadership",
-        image: "https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=800&q=80",
+        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
         bio: "A visionary leader with 10+ years of enterprise IT experience. She drives Yukti Software's global delivery standards, corporate client alliances, and high-impact student placement programs.",
+        quote: "Committed to delivering enterprise-grade software solutions while empowering the youth with career-defining IT education.",
         avatarBg: "from-rose-500 to-indigo-600",
         initials: "MK",
+        stats: [
+          { label: "Leadership", value: "10+ Yrs" },
+          { label: "Solutions Delivered", value: "50+ Built" },
+          { label: "Mentorship", value: "100% Focus" }
+        ],
         specialties: ["Strategic Leadership", "Enterprise Alliances", "Product Innovation", "Career Mentorship"]
       },
       {
         name: "Mithilesh Kumar",
         role: "Chief Technology Officer (CTO)",
+        education: "Enterprise Architect",
         experience: "14+ Years Large-Scale Enterprise Architecture",
         image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
         bio: "Our technical architect with 14+ years designing high-throughput distributed systems for Fortune 500 clients. Leads architecture reviews, Spring Boot microservices, and AI cloud pipelines.",
+        quote: "Architecting zero-downtime distributed systems with resilient microservices and automated cloud pipelines.",
         avatarBg: "from-blue-600 to-cyan-500",
         initials: "MK",
+        stats: [
+          { label: "Architecture", value: "14+ Yrs" },
+          { label: "Enterprise Scale", value: "Fortune 500" },
+          { label: "System Uptime", value: "99.99%" }
+        ],
         specialties: ["Enterprise Microservices", "Cloud Systems (AWS/GCP)", "DevOps & CI/CD", "System Design"]
       },
       {
         name: "Sanjay Gairola",
         role: "Head of Big Data & AI Systems",
+        education: "Big Data & AI Architect",
         experience: "16+ Years Storage, Big Data & Analytics",
         image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80",
         bio: "Veteran data architect with 16+ years designing petabyte-scale storage, distributed databases, and high-performance predictive analytics for enterprise clients.",
+        quote: "Transforming complex enterprise data streams into actionable intelligence and high-performance database clusters.",
         avatarBg: "from-purple-600 to-pink-500",
         initials: "SG",
+        stats: [
+          { label: "Data Systems", value: "16+ Yrs" },
+          { label: "Cluster Scale", value: "Petabyte" },
+          { label: "AI Pipelines", value: "Production" }
+        ],
         specialties: ["Big Data Architecture", "Distributed Databases", "Machine Learning Pipelines", "Data Security"]
       },
       {
         name: "Intekhab Ashraf",
         role: "Lead Full Stack & DevOps Engineer",
+        education: "Cloud & DevOps Specialist",
         experience: "Full Stack & Cloud Specialist",
-        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
+        image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80",
         bio: "Mentors full stack cohorts and oversees live client deliverables across React, Node.js, Next.js, and containerized Docker/Kubernetes deployments.",
+        quote: "Bridging modern reactive frontend architectures with scalable containerized deployments and high-quality codebases.",
         avatarBg: "from-emerald-500 to-teal-600",
         initials: "IA",
+        stats: [
+          { label: "Engineering", value: "Lead Dev" },
+          { label: "Deployment", value: "Kubernetes" },
+          { label: "Core Stack", value: "MERN / Next" }
+        ],
         specialties: ["Full Stack MERN", "REST & GraphQL APIs", "Kubernetes & Docker", "Code Quality Audits"]
       }
     ]

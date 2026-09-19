@@ -414,8 +414,8 @@ export default function Navbar({ currentPage, setCurrentPage, onOpenConsultation
           <div className="bg-gradient-to-r from-brand-700 via-brand-600 to-accent-primary text-white py-1.5 px-4 text-xs font-bold shadow-inner">
             <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
               <div className="flex items-center space-x-2 shrink-0">
-                <span className="hidden md:inline">🚀 Admissions Open for 2026 Batches | 100% Placement Assistance</span>
-                <span className="md:hidden">🚀 Admissions Open 2026:</span>
+                <span className="hidden md:inline">🎓 Admissions Open for 2026 Batches</span>
+                <span className="md:hidden">🎓 Admissions Open 2026:</span>
               </div>
               
               <div className="flex items-center gap-1.5 overflow-x-auto py-0.5 no-scrollbar text-[11px]">
@@ -486,14 +486,13 @@ export default function Navbar({ currentPage, setCurrentPage, onOpenConsultation
                 <button onClick={() => handleNav('gallery')} className={`px-3 py-2 rounded-lg transition-all ${currentPage === 'gallery' ? 'text-brand-600 font-bold bg-brand-50 dark:bg-brand-950/60' : 'hover:text-brand-600 hover:bg-slate-50 dark:hover:bg-slate-800'}`}>Gallery</button>
                 <button 
                   onClick={() => handleNav('careers')} 
-                  className={`px-3 py-2 rounded-lg font-bold flex items-center space-x-1.5 transition-all ${
+                  className={`px-3 py-2 rounded-lg font-bold transition-all ${
                     currentPage === 'careers' || currentPage === 'internships' || currentPage === 'internship'
                       ? 'text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-950/60' 
                       : 'hover:text-brand-600 hover:bg-slate-50 dark:hover:bg-slate-800'
                   }`}
                 >
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                  <span>Careers & Internships</span>
+                  <span>Internship</span>
                 </button>
                 <button onClick={() => handleNav('home', '#services')} className="px-3 py-2 rounded-lg hover:text-brand-600 hover:bg-slate-50 dark:hover:bg-slate-800">Services</button>
                 <button onClick={() => handleNav('home', '#team')} className="px-3 py-2 rounded-lg hover:text-brand-600 hover:bg-slate-50 dark:hover:bg-slate-800">Team</button>
@@ -536,13 +535,13 @@ export default function Navbar({ currentPage, setCurrentPage, onOpenConsultation
 
           <button
             onClick={() => handleNav('careers')}
-            className="w-full text-left px-4 py-2.5 rounded-lg text-sm font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 flex items-center justify-between"
+            className={`w-full text-left px-4 py-2.5 rounded-lg text-sm font-bold transition-colors ${
+              currentPage === 'careers' || currentPage === 'internships' || currentPage === 'internship'
+                ? 'text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-950/60'
+                : 'text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
+            }`}
           >
-            <div className="flex items-center space-x-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>Careers & Paid Internships</span>
-            </div>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-200 dark:bg-emerald-900 font-bold">Hiring</span>
+            <span>Internship</span>
           </button>
 
           <button
@@ -575,35 +574,35 @@ export default function Navbar({ currentPage, setCurrentPage, onOpenConsultation
                   className="w-full text-left p-2 rounded-xl text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900 flex items-center justify-between transition-colors"
                 >
                   <span>🐍 Python Programming</span>
-                  <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold">₹4.5-18 LPA</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
                 </button>
                 <button
                   onClick={() => handleNav('course-java-fullstack')}
                   className="w-full text-left p-2 rounded-xl text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900 flex items-center justify-between transition-colors"
                 >
                   <span>☕ Java Full Stack & Microservices</span>
-                  <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold">₹6-24 LPA</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
                 </button>
                 <button
                   onClick={() => handleNav('course-ai-fullstack')}
                   className="w-full text-left p-2 rounded-xl text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900 flex items-center justify-between transition-colors"
                 >
                   <span>🤖 AI Full Stack & Agents</span>
-                  <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold">₹7-24 LPA</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
                 </button>
                 <button
                   onClick={() => handleNav('course-mern-stack')}
                   className="w-full text-left p-2 rounded-xl text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900 flex items-center justify-between transition-colors"
                 >
                   <span>🌐 MERN Stack Development</span>
-                  <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold">₹5-16 LPA</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
                 </button>
                 <button
                   onClick={() => handleNav('course-dsa')}
                   className="w-full text-left p-2 rounded-xl text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900 flex items-center justify-between transition-colors"
                 >
                   <span>⚡ DSA & System Design (FAANG)</span>
-                  <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold">₹12-42 LPA</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
                 </button>
                 <button
                   onClick={() => handleNav('courses')}

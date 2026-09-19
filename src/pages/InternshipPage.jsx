@@ -114,7 +114,7 @@ export default function InternshipPage({ onOpenConsultation }) {
                   "Monthly performance-linked stipend (₹8k–₹25k/mo)",
                   "Direct contribution to client SaaS & web products",
                   "1-on-1 Code reviews by Technical Directors",
-                  "Pre-Placement Offer (PPO) opportunities (₹6–₹18 LPA)",
+                  "Pre-Placement Offer (PPO) and full-time career conversion opportunities",
                   "Verified Work Experience Certificate & Letter of Recommendation"
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start space-x-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">

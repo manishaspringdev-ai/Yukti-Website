@@ -27,14 +27,24 @@ import {
 
 const MASTER_COURSES = [
   {
+    id: "course-software-development",
+    key: "software-development",
+    title: "Software Development & Testing Course",
+    category: "programming",
+    badge: "Accredited Certification",
+    duration: "4 - 6 Months",
+    icon: Code2,
+    color: "from-blue-600 to-indigo-600",
+    description: "Comprehensive software engineering program covering SDLC, OOPs, Data Structures, DBMS, Web APIs, Testing, Debugging, Git, and Live Projects.",
+    highlights: ["SDLC & Agile Development", "OOPs & Data Structures", "Software Testing & QA", "Live Industry Project"]
+  },
+  {
     id: "course-ai-fullstack",
     key: "ai-fullstack",
-    title: "AI Full Stack Development Course",
+    title: "AI Full Stack Web Development",
     category: "ai",
     badge: "Next-Gen AI",
     duration: "6 Months",
-    avgSalary: "₹7.0 – ₹24 LPA",
-    highestSalary: "₹32.0 LPA",
     icon: Sparkles,
     color: "from-purple-600 to-indigo-600",
     description: "Build intelligent full stack web applications integrating Generative AI, LLMs, LangChain, AI Agents, React.js and modern backend APIs.",
@@ -43,12 +53,10 @@ const MASTER_COURSES = [
   {
     id: "course-java-fullstack",
     key: "java-fullstack",
-    title: "Java Full Stack Development & Microservices",
+    title: "Java Full Stack Development Course",
     category: "fullstack",
     badge: "Enterprise Standard",
     duration: "5 - 6 Months",
-    avgSalary: "₹6.0 – ₹24 LPA",
-    highestSalary: "₹28.0 LPA",
     icon: Code2,
     color: "from-indigo-600 to-blue-600",
     description: "Become an enterprise developer mastering React.js frontend, Core & Advanced Java, Spring Boot 3, Microservices, Kafka, Docker and AWS cloud.",
@@ -57,12 +65,10 @@ const MASTER_COURSES = [
   {
     id: "course-mern-stack",
     key: "mern-stack",
-    title: "MERN Stack Development Course",
+    title: "MERN Stack Web Development",
     category: "fullstack",
     badge: "High Job Demand",
     duration: "4 - 6 Months",
-    avgSalary: "₹5.0 – ₹16 LPA",
-    highestSalary: "₹20.0 LPA",
     icon: Layers,
     color: "from-teal-600 to-emerald-600",
     description: "Master full stack JavaScript from scratch with MongoDB database, Express.js backend, React.js UI, Node.js runtime, and cloud deployment.",
@@ -71,12 +77,10 @@ const MASTER_COURSES = [
   {
     id: "course-python-fullstack",
     key: "python-fullstack",
-    title: "Python Full Stack Developer Course",
+    title: "Python Full Stack Development",
     category: "fullstack",
     badge: "Most Popular",
     duration: "4 - 6 Months",
-    avgSalary: "₹5.0 – ₹18 LPA",
-    highestSalary: "₹22.0 LPA",
     icon: Terminal,
     color: "from-blue-600 to-cyan-600",
     description: "Comprehensive end-to-end full stack training featuring Python 3, Django REST framework, Flask, React.js frontend, and PostgreSQL databases.",
@@ -85,12 +89,10 @@ const MASTER_COURSES = [
   {
     id: "course-fullstack",
     key: "fullstack",
-    title: "Full Stack Web Engineering Course",
+    title: "Full Stack Software Engineering",
     category: "fullstack",
     badge: "Job-Ready",
     duration: "4 - 6 Months",
-    avgSalary: "₹5.0 – ₹15 LPA",
-    highestSalary: "₹18.0 LPA",
     icon: Globe,
     color: "from-cyan-600 to-blue-600",
     description: "Full spectrum web engineering covering modern HTML5, CSS3, JavaScript ES6+, React.js, Node.js, REST APIs, Git version control, and CI/CD.",
@@ -99,12 +101,10 @@ const MASTER_COURSES = [
   {
     id: "course-dsa",
     key: "dsa",
-    title: "Data Structures & Algorithms (FAANG Mastery)",
+    title: "Data Structures & Algorithms (DSA)",
     category: "dsa",
     badge: "FAANG Tier",
     duration: "3 - 4 Months",
-    avgSalary: "₹8.0 – ₹28 LPA",
-    highestSalary: "₹42.0 LPA",
     icon: Binary,
     color: "from-emerald-600 to-teal-500",
     description: "Crack product company and FAANG coding rounds. Master algorithmic optimization, DP, Trees, Graphs, and System Design with 350+ LeetCode patterns.",
@@ -113,12 +113,10 @@ const MASTER_COURSES = [
   {
     id: "course-python",
     key: "python",
-    title: "Python Core & Advanced Programming",
+    title: "Complete Python Training Course",
     category: "programming",
     badge: "Top Rated",
     duration: "3 - 4 Months",
-    avgSalary: "₹4.5 – ₹14 LPA",
-    highestSalary: "₹18.0 LPA",
     icon: Terminal,
     color: "from-sky-600 to-indigo-600",
     description: "Master Python programming from syntax basics to OOP, multi-threading, automated scripting, web scraping, and database integrations.",
@@ -127,12 +125,10 @@ const MASTER_COURSES = [
   {
     id: "course-java",
     key: "java",
-    title: "Core & Enterprise Java Programming",
+    title: "Core & Advanced Java Training",
     category: "programming",
     badge: "Industry Core",
     duration: "3 - 4 Months",
-    avgSalary: "₹5.0 – ₹14 LPA",
-    highestSalary: "₹18.0 LPA",
     icon: Code2,
     color: "from-amber-600 to-orange-600",
     description: "Build robust enterprise fundamentals with Core Java, OOP architecture, Exception Handling, Collections Framework, JDBC, and multithreading.",
@@ -141,12 +137,10 @@ const MASTER_COURSES = [
   {
     id: "course-spring-boot",
     key: "spring-boot",
-    title: "Spring Boot & Microservices Course",
+    title: "Spring Boot & Microservices",
     category: "programming",
     badge: "Backend Pro",
     duration: "3 - 4 Months",
-    avgSalary: "₹6.0 – ₹22 LPA",
-    highestSalary: "₹26.0 LPA",
     icon: Server,
     color: "from-emerald-600 to-green-600",
     description: "Master enterprise backend engineering with Spring Boot 3, Spring Data JPA, Hibernate ORM, Spring Security with JWT, and Microservices architecture.",
@@ -155,12 +149,10 @@ const MASTER_COURSES = [
   {
     id: "course-react-js",
     key: "react-js",
-    title: "React JS & Modern Frontend Development",
+    title: "React JS Frontend Engineering",
     category: "fullstack",
     badge: "Essential UI",
     duration: "2 - 3 Months",
-    avgSalary: "₹4.5 – ₹14 LPA",
-    highestSalary: "₹16.0 LPA",
     icon: Zap,
     color: "from-blue-500 to-cyan-500",
     description: "Master the most popular UI library with React 19, Hooks, Redux Toolkit, Context API, Tailwind CSS, TypeScript, and modern SPA architecture.",
@@ -169,12 +161,10 @@ const MASTER_COURSES = [
   {
     id: "course-html-css",
     key: "html-css",
-    title: "HTML5, Modern CSS3 & UI/UX Foundations",
+    title: "HTML5, CSS3 & Responsive Web",
     category: "fullstack",
     badge: "Beginner Friendly",
     duration: "2 Months",
-    avgSalary: "₹3.5 – ₹8 LPA",
-    highestSalary: "₹10.0 LPA",
     icon: Globe,
     color: "from-rose-500 to-orange-500",
     description: "Start your web journey mastering modern semantic HTML5, CSS Grid, Flexbox, responsive layouts, Tailwind CSS, CSS animations, and UI best practices.",
@@ -183,12 +173,10 @@ const MASTER_COURSES = [
   {
     id: "course-ai-ml",
     key: "ai-ml",
-    title: "Artificial Intelligence & Machine Learning",
+    title: "AI & Machine Learning Specialist",
     category: "ai",
     badge: "High Growth",
     duration: "5 - 6 Months",
-    avgSalary: "₹7.5 – ₹26 LPA",
-    highestSalary: "₹34.0 LPA",
     icon: Cpu,
     color: "from-violet-600 to-purple-600",
     description: "Deep dive into Supervised & Unsupervised ML algorithms, Neural Networks, Deep Learning with TensorFlow & PyTorch, NLP, and Computer Vision.",
@@ -197,12 +185,10 @@ const MASTER_COURSES = [
   {
     id: "course-data-analytics",
     key: "data-analytics",
-    title: "Data Analytics & Business Intelligence",
+    title: "Data Analytics & Python",
     category: "ai",
     badge: "Top Placement",
     duration: "4 Months",
-    avgSalary: "₹5.0 – ₹16 LPA",
-    highestSalary: "₹20.0 LPA",
     icon: TrendingUp,
     color: "from-emerald-600 to-cyan-600",
     description: "Transform business data into insights using Advanced Excel, SQL queries, Python for Data Analysis (Pandas/NumPy), Power BI, and Tableau dashboards.",
@@ -211,12 +197,10 @@ const MASTER_COURSES = [
   {
     id: "course-dbms",
     key: "dbms",
-    title: "Database Management Systems (DBMS) & SQL",
+    title: "Relational DBMS & SQL Mastery",
     category: "databases",
     badge: "Core Foundation",
     duration: "2 - 3 Months",
-    avgSalary: "₹4.5 – ₹14 LPA",
-    highestSalary: "₹16.0 LPA",
     icon: Database,
     color: "from-blue-600 to-indigo-600",
     description: "Master relational database architecture, ER modeling, complex SQL joins, indexing, query optimization, transactions, stored procedures, and triggers.",
@@ -225,12 +209,10 @@ const MASTER_COURSES = [
   {
     id: "course-nosql",
     key: "nosql",
-    title: "NoSQL & MongoDB Distributed Database",
+    title: "NoSQL Database & MongoDB",
     category: "databases",
     badge: "Cloud Scale",
     duration: "2 - 3 Months",
-    avgSalary: "₹5.0 – ₹15 LPA",
-    highestSalary: "₹18.0 LPA",
     icon: Database,
     color: "from-emerald-600 to-teal-600",
     description: "Master modern document and NoSQL databases with MongoDB CRUD operations, aggregation pipelines, schema modeling, indexing, Redis caching, and scaling.",
@@ -358,26 +340,25 @@ export default function AllCoursesPage({ onOpenConsultation, setCurrentPage }) {
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center">
                     <div className="w-11 h-11 p-1.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
                       {getCourseLogo(course.id, "w-7 h-7")}
                     </div>
-                    <span className="px-2.5 py-1 rounded-full text-[10px] font-black bg-brand-50 dark:bg-brand-950 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
-                      {course.badge}
-                    </span>
                   </div>
 
                   <div>
                     <h3 className="text-lg font-black text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
                       {course.title}
                     </h3>
-                    <div className="flex items-center space-x-3 text-xs text-slate-500 dark:text-slate-400 mt-1">
+                    <div className="flex items-center space-x-2 text-xs text-slate-500 dark:text-slate-400 mt-1">
                       <span className="flex items-center space-x-1">
                         <Clock className="w-3.5 h-3.5 text-slate-400" />
                         <span>{course.duration}</span>
                       </span>
                       <span>•</span>
-                      <span className="font-extrabold text-emerald-600 dark:text-emerald-400">{course.avgSalary}</span>
+                      <span className="px-2 py-0.5 rounded-md bg-brand-50 dark:bg-brand-950/60 text-[10px] font-bold text-brand-600 dark:text-brand-400 border border-brand-200/50 dark:border-brand-800/50">
+                        {course.badge}
+                      </span>
                     </div>
                   </div>
 
@@ -411,7 +392,7 @@ export default function AllCoursesPage({ onOpenConsultation, setCurrentPage }) {
                     }}
                     className="flex-1 py-2.5 px-3 rounded-xl bg-gradient-to-r from-brand-600 to-accent-primary text-white font-black text-xs shadow-md hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center space-x-1"
                   >
-                    <span>View Full Syllabus</span>
+                    <span>Explore Course</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
 
@@ -419,7 +400,7 @@ export default function AllCoursesPage({ onOpenConsultation, setCurrentPage }) {
                     onClick={onOpenConsultation}
                     className="py-2.5 px-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-bold text-slate-700 dark:text-slate-300 transition-colors"
                   >
-                    Demo
+                    Enroll Now →
                   </button>
                 </div>
               </div>

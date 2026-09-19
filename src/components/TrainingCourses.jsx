@@ -1,38 +1,36 @@
 import React, { useState } from 'react';
 import { docxPagesData } from '../data/pagesDataFromDocs';
 import { getCourseImages } from '../data/courseImages';
-import Icon from './Icon';
 import { getCourseLogo } from './TechLogos';
 import { 
-  Sparkles, 
   ArrowRight, 
   CheckCircle2, 
-  Clock, 
-  Award, 
-  Users, 
-  BookOpen, 
-  TrendingUp, 
-  Check,
-  GraduationCap,
-  Briefcase,
-  Layers,
-  Terminal,
-  Code2,
-  Binary,
-  Database,
-  Search,
-  Zap,
-  Globe
+  Terminal, 
+  Code2, 
+  Binary, 
+  Sparkles, 
+  Globe,
+  Database
 } from 'lucide-react';
 
 export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) {
-  const trainingVariant = 'v1_bento';
-  const [filter, setFilter] = useState('all');
-  const [searchQuery, setSearchQuery] = useState('');
   const [showAll, setShowAll] = useState(false);
 
   // All 15 Master Courses from DOCX
   const allMasterCourses = [
+    {
+      id: "course-software-development",
+      docxKey: "software-development",
+      title: "Software Development & Testing Course",
+      tag: "Accredited Certification",
+      category: "programming",
+      duration: "4 - 6 Months",
+      icon: Code2,
+      color: "from-blue-600 to-indigo-600",
+      description: docxPagesData.courses['software-development']?.description || "Master software engineering fundamentals, SDLC, OOPs, DBMS, REST APIs, manual & automated testing, Git, and live projects.",
+      modulesCount: docxPagesData.courses['software-development']?.curriculum?.length || 14,
+      highlights: ["SDLC & Agile Development", "OOPs & Data Structures", "Software Testing & Debugging", "Live Industry Project"]
+    },
     {
       id: "course-python",
       docxKey: "python",
@@ -40,7 +38,6 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
       tag: "Highest Placements",
       category: "python",
       duration: "4 - 6 Months",
-      avgSalary: "₹4.5 – ₹12 LPA",
       icon: Terminal,
       color: "from-blue-600 to-cyan-500",
       description: docxPagesData.courses['python']?.description || "Master Python programming from zero to advanced web development, task automation, and data analytics with real capstone projects.",
@@ -54,7 +51,6 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
       tag: "Enterprise Standard",
       category: "java",
       duration: "5 - 6 Months",
-      avgSalary: "₹6.0 – ₹18 LPA",
       icon: Code2,
       color: "from-indigo-600 to-purple-600",
       description: docxPagesData.courses['advanced-java']?.description || "Become a full-spectrum developer mastering React.js frontend, Core & Advanced Java, Spring Boot microservices, and MySQL.",
@@ -64,11 +60,10 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
     {
       id: "course-dsa",
       docxKey: "dsa",
-      title: "Data Structures and Algorithms (DSA)",
+      title: "Data Structures & Algorithms (DSA)",
       tag: "FAANG & Product Crack",
       category: "dsa",
       duration: "3 - 4 Months",
-      avgSalary: "₹8.0 – ₹28 LPA",
       icon: Binary,
       color: "from-emerald-600 to-teal-500",
       description: docxPagesData.courses['dsa']?.description || "Crack technical coding rounds. Master problem-solving, algorithmic Big-O optimization, and System Design with 350+ LeetCode problems.",
@@ -82,7 +77,6 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
       tag: "Next-Gen AI Era",
       category: "ai",
       duration: "6 Months",
-      avgSalary: "₹7.0 – ₹24 LPA",
       icon: Sparkles,
       color: "from-purple-600 to-pink-600",
       description: docxPagesData.courses['ai-fullstack']?.description || "Future-proof your career by building full stack applications powered by Generative AI, LLMs, AI Agents, and Vector DBs.",
@@ -96,7 +90,6 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
       tag: "Certified Track",
       category: "python",
       duration: "6 Months",
-      avgSalary: "₹5.5 – ₹16 LPA",
       icon: Terminal,
       color: "from-sky-600 to-indigo-600",
       description: docxPagesData.courses['python-fullstack']?.description || "Complete frontend to backend mastery with HTML5, CSS3, JavaScript, React.js, Python, Django, and PostgreSQL.",
@@ -110,7 +103,6 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
       tag: "Startup & SaaS Favorite",
       category: "fullstack",
       duration: "5 Months",
-      avgSalary: "₹5.0 – ₹15 LPA",
       icon: Globe,
       color: "from-teal-600 to-emerald-600",
       description: docxPagesData.courses['mern-stack']?.description || "Build end-to-end cloud applications using MongoDB, Express.js, React.js, and Node.js with state management and authentication.",
@@ -124,7 +116,6 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
       tag: "UI Architecture",
       category: "fullstack",
       duration: "3 Months",
-      avgSalary: "₹4.5 – ₹12 LPA",
       icon: Code2,
       color: "from-cyan-600 to-blue-600",
       description: docxPagesData.courses['react-js']?.description || "Master modern component design, hooks, state machines, Tailwind CSS, API caching, and high-performance UI architecture.",
@@ -138,7 +129,6 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
       tag: "Banking & Fintech",
       category: "java",
       duration: "3 - 4 Months",
-      avgSalary: "₹6.0 – ₹18 LPA",
       icon: Code2,
       color: "from-green-600 to-emerald-700",
       description: docxPagesData.courses['spring-boot']?.description || "Architect robust cloud-native microservices, secure RESTful APIs with OAuth2/JWT, and configure Kafka message brokers.",
@@ -152,7 +142,6 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
       tag: "Business Intelligence",
       category: "ai",
       duration: "4 Months",
-      avgSalary: "₹5.0 – ₹14 LPA",
       icon: Database,
       color: "from-amber-600 to-orange-600",
       description: docxPagesData.courses['data-analytics']?.description || "Transform messy data into actionable business intelligence using Python, Pandas, NumPy, SQL, PowerBI, and Tableau.",
@@ -166,7 +155,6 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
       tag: "Campus to Corporate",
       category: "java",
       duration: "4 Months",
-      avgSalary: "₹4.5 – ₹10 LPA",
       icon: Code2,
       color: "from-amber-600 to-rose-600",
       description: docxPagesData.courses['java']?.description || "Solidify Java OOPs concepts, multithreading, collections framework, JDBC, and enterprise architecture.",
@@ -180,7 +168,6 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
       tag: "High Growth",
       category: "ai",
       duration: "5 Months",
-      avgSalary: "₹6.5 – ₹20 LPA",
       icon: Sparkles,
       color: "from-rose-600 to-violet-600",
       description: docxPagesData.courses['ai-ml']?.description || "Master supervised & unsupervised ML, deep neural networks, computer vision, NLP, and model deployment.",
@@ -194,7 +181,6 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
       tag: "Core Backend Foundation",
       category: "database",
       duration: "2 - 3 Months",
-      avgSalary: "₹4.0 – ₹9 LPA",
       icon: Database,
       color: "from-blue-700 to-slate-800",
       description: docxPagesData.courses['dbms']?.description || "Master relational database architecture, ER modeling, complex SQL joins, indexing, query optimization, and transactions.",
@@ -208,7 +194,6 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
       tag: "Big Data & Scalability",
       category: "database",
       duration: "2 - 3 Months",
-      avgSalary: "₹4.5 – ₹11 LPA",
       icon: Database,
       color: "from-emerald-700 to-teal-800",
       description: docxPagesData.courses['nosql']?.description || "Harness high-volume document databases with MongoDB, aggregation pipelines, caching with Redis, and horizontal scaling.",
@@ -222,7 +207,6 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
       tag: "Beginner Friendly",
       category: "fullstack",
       duration: "2 Months",
-      avgSalary: "₹3.5 – ₹7 LPA",
       icon: Globe,
       color: "from-orange-500 to-rose-500",
       description: docxPagesData.courses['html-css']?.description || "Build pixel-perfect responsive websites from scratch with semantic HTML5, modern CSS Grid/Flexbox, animations, and Tailwind CSS.",
@@ -236,7 +220,6 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
       tag: "Complete Developer",
       category: "fullstack",
       duration: "6 Months",
-      avgSalary: "₹6.0 – ₹18 LPA",
       icon: Code2,
       color: "from-indigo-600 to-teal-600",
       description: docxPagesData.courses['fullstack']?.description || "Comprehensive software engineering program covering frontend, backend, databases, testing, CI/CD pipelines, and cloud hosting.",
@@ -245,14 +228,8 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
     }
   ];
 
-  const filteredCourses = allMasterCourses.filter(c => {
-    const matchesFilter = filter === 'all' || c.category === filter;
-    const matchesSearch = c.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          c.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesFilter && matchesSearch;
-  });
-
-  const displayedCourses = showAll ? filteredCourses : filteredCourses.slice(0, 6);
+  const filteredCourses = allMasterCourses;
+  const displayedCourses = showAll ? allMasterCourses : allMasterCourses.slice(0, 6);
 
   const handleCourseClick = (courseId) => {
     if (setCurrentPage) {
@@ -261,84 +238,21 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
   };
 
   return (
-    <section id="training" className="py-12 sm:py-16 relative overflow-hidden bg-slate-50/50 dark:bg-slate-950">
+    <section id="training" className="pt-4 sm:pt-6 md:pt-8 pb-4 sm:pb-6 relative overflow-hidden bg-slate-50/50 dark:bg-slate-950">
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
       <div className="absolute bottom-0 right-10 w-96 h-96 bg-accent-primary/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-6">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             Practical IT Courses & Placement Programs
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300">
-            Learn from senior engineers with live production capstone projects, 1-on-1 mentor code audits, and guaranteed interview opportunities.
-          </p>
-
-          {/* Live Search Bar */}
-          <div className="max-w-md mx-auto pt-3">
-            <div className="relative">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => { setSearchQuery(e.target.value); setShowAll(true); }}
-                placeholder="Search Python, Java, DSA, AI, MERN, AWS..."
-                className="w-full pl-10 pr-10 py-2.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 shadow-sm transition-all"
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
-                >
-                  Clear
-                </button>
-              )}
-            </div>
-            {searchQuery && (
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1.5 font-medium">
-                Found {filteredCourses.length} {filteredCourses.length === 1 ? 'course' : 'courses'} matching "{searchQuery}"
-              </p>
-            )}
-          </div>
-
-          {/* Interactive Category Filter Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2 pt-3">
-            {[
-              { id: 'all', label: 'All 15 Courses' },
-              { id: 'python', label: 'Python Programming', logoId: 'python' },
-              { id: 'java', label: 'Java Full Stack', logoId: 'java' },
-              { id: 'dsa', label: 'Data Structures & Algorithms', logoId: 'dsa' },
-              { id: 'ai', label: 'Data Science & AI', logoId: 'ai' },
-              { id: 'fullstack', label: 'MERN & Web Development', logoId: 'mern' },
-              { id: 'database', label: 'SQL & NoSQL Databases', logoId: 'dbms' }
-            ].map(btn => (
-              <button
-                key={btn.id}
-                onClick={() => { setFilter(btn.id); setShowAll(true); }}
-                className={`px-3.5 py-2 rounded-2xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-2 ${
-                  filter === btn.id
-                    ? 'bg-brand-600 text-white shadow-lg shadow-brand-500/25 scale-105'
-                    : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-800 hover:border-brand-500/50 hover:bg-slate-50'
-                }`}
-              >
-                {btn.logoId && (
-                  <span className="w-4 h-4 flex items-center justify-center shrink-0">
-                    {getCourseLogo(btn.logoId, "w-4 h-4")}
-                  </span>
-                )}
-                <span>{btn.label}</span>
-              </button>
-            ))}
-          </div>
         </div>
 
-        {/* 10-Variant Switcher Bar */}
-        
-
         {/* Course Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {displayedCourses.map((c) => {
             const courseImages = getCourseImages(c.id);
             const mainImg = courseImages[0];
@@ -368,59 +282,37 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
                   </div>
                 </div>
 
-                <div className="p-6 sm:p-7 space-y-4">
+                <div className="p-6 sm:p-7 space-y-3.5">
                   {/* Top Bar */}
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center">
                     <div className="w-12 h-12 p-2 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-sm group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
                       {getCourseLogo(c.id, "w-8 h-8")}
                     </div>
-                    <span className="px-3 py-1 rounded-full text-[10px] font-extrabold bg-brand-50 text-brand-700 dark:bg-brand-950/80 dark:text-brand-300 border border-brand-200 dark:border-brand-800 shadow-sm group-hover:border-brand-400 transition-colors">
-                      {c.tag}
-                    </span>
                   </div>
 
-                  <h3 className="text-xl font-extrabold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                  <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
                     {c.title}
                   </h3>
 
-                  <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-                    <span className="font-semibold">Duration: {c.duration}</span>
-                    <span>•</span>
-                    <span className="font-bold text-emerald-600 dark:text-emerald-400">{c.avgSalary}</span>
-                  </div>
-
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-2">
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-3">
                     {c.description}
                   </p>
-
-                  {/* Highlights Pill List */}
-                  <div className="space-y-1.5 pt-2">
-                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Curriculum Highlights:</p>
-                    <div className="grid grid-cols-2 gap-1.5">
-                      {c.highlights.map((h, hIdx) => (
-                        <div key={hIdx} className="flex items-center space-x-1.5 text-[11px] text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-brand-500 flex-shrink-0" />
-                          <span className="truncate">{h}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
                 </div>
 
                 {/* Bottom Footer Actions */}
-                <div className="p-6 bg-slate-50/70 dark:bg-slate-950/60 border-t border-slate-100 dark:border-slate-800 flex gap-3" onClick={(e) => e.stopPropagation()}>
+                <div className="p-5 sm:p-6 bg-slate-50/70 dark:bg-slate-950/60 border-t border-slate-100 dark:border-slate-800 flex gap-3" onClick={(e) => e.stopPropagation()}>
                   <button
                     onClick={() => handleCourseClick(c.id)}
                     className="flex-1 py-3 px-3 rounded-2xl bg-gradient-to-r from-brand-600 to-accent-primary text-white font-extrabold text-xs shadow-md hover:shadow-lg btn-spring flex items-center justify-center space-x-1"
                   >
-                    <span>View Full Syllabus</span>
+                    <span>Explore Course</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </button>
                   <button
                     onClick={onOpenConsultation}
-                    className="px-4 py-3 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs hover:bg-slate-100 dark:hover:bg-slate-700 btn-spring"
+                    className="px-4 py-3 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs hover:bg-slate-100 dark:hover:bg-slate-700 btn-spring flex items-center space-x-1"
                   >
-                    Book Demo
+                    <span>Enroll Now →</span>
                   </button>
                 </div>
               </div>
@@ -430,10 +322,10 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
 
         {/* View All 15 Courses Button */}
         {!showAll && filteredCourses.length > 6 && (
-          <div className="text-center pt-10">
+          <div className="text-center pt-5 sm:pt-6">
             <button
               onClick={() => setShowAll(true)}
-              className="px-8 py-4 rounded-2xl bg-slate-900 dark:bg-slate-800 text-white font-extrabold text-sm border border-slate-700 shadow-xl hover:scale-105 active:scale-95 transition-all inline-flex items-center space-x-2"
+              className="px-8 py-3.5 rounded-2xl bg-slate-900 dark:bg-slate-800 text-white font-extrabold text-sm border border-slate-700 shadow-xl hover:scale-105 active:scale-95 transition-all inline-flex items-center space-x-2"
             >
               <span>Explore All 15 Master Career Tracks</span>
               <ArrowRight className="w-4 h-4 text-brand-400" />
@@ -441,77 +333,90 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
           </div>
         )}
 
-        {/* 6 Core Student Assurances Bento */}
-        <div className="mt-16 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 sm:p-10 shadow-xl">
-          <div className="text-center max-w-2xl mx-auto mb-8 space-y-2">
-            <h3 className="text-2xl font-black text-slate-900 dark:text-white">
-              The Yukti 6-Pillar Student Guarantee
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-              Every student enrolled in our career programs is backed by our proven training methodology.
-            </p>
-          </div>
-
-          {/* Real Lab & Placement Photo Showcase */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            <div className="relative rounded-2xl overflow-hidden h-44 sm:h-52 shadow-lg border border-slate-200 dark:border-slate-800 group">
+        {/* Software Training Courses and Placements for the Youth */}
+        <div className="mt-6 sm:mt-8 bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl border border-slate-200/80 dark:border-slate-800 p-5 sm:p-8 lg:p-10 shadow-xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
+            
+            {/* Left Image Showcase */}
+            <div className="lg:col-span-5 h-full min-h-[300px] sm:min-h-[380px] relative rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800 group">
               <img 
-                src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=500&q=70" 
-                alt="Live Interactive Coding Lab in Greater Noida" 
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" 
+                alt="Software Training Courses and Placements at Yukti Software" 
                 loading="lazy"
                 decoding="async"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
-              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
-                <div>
-                  <p className="text-xs font-bold text-white drop-shadow">Interactive Coding Workstation</p>
-                  <p className="text-[11px] text-slate-300 drop-shadow">Knowledge Park III, Greater Noida</p>
-                </div>
-                <span className="px-2.5 py-1 rounded-xl bg-emerald-500/30 backdrop-blur-md text-[10px] font-bold text-emerald-300 border border-emerald-400/40">
-                  Live Classroom
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <span className="px-3 py-1 rounded-full bg-brand-600 text-white text-[11px] font-bold shadow">
+                  Interactive Learning Hub
                 </span>
+                <p className="text-xs text-slate-200 font-medium mt-1">Noida & Greater Noida Campus</p>
               </div>
             </div>
 
-            <div className="relative rounded-2xl overflow-hidden h-44 sm:h-52 shadow-lg border border-slate-200 dark:border-slate-800 group">
-              <img 
-                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=500&q=70" 
-                alt="Student Placement Drive & Offer Letters Handover" 
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
-              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
-                <div>
-                  <p className="text-xs font-bold text-white drop-shadow">Placement Drive & Offer Celebrations</p>
-                  <p className="text-[11px] text-slate-300 drop-shadow">45+ MNC & Product Startup Hiring Partners</p>
-                </div>
-                <span className="px-2.5 py-1 rounded-xl bg-brand-500/30 backdrop-blur-md text-[10px] font-bold text-brand-300 border border-brand-400/40">
-                  94% Placed
-                </span>
+            {/* Right Content & Highlights */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="flex items-start justify-between gap-4">
+                <h2 
+                  onClick={() => setCurrentPage && setCurrentPage('courses')}
+                  className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-tight cursor-pointer hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+                >
+                  Software Training Courses and Placements for the Youth
+                </h2>
+                <button
+                  onClick={() => setCurrentPage && setCurrentPage('courses')}
+                  title="Explore All Master Courses"
+                  aria-label="Explore All Master Courses"
+                  className="w-10 h-10 rounded-xl border border-rose-200 dark:border-rose-900/50 bg-rose-50 dark:bg-rose-950/40 text-rose-500 hover:bg-rose-500 hover:text-white dark:hover:bg-rose-600 dark:hover:text-white transition-all duration-300 flex items-center justify-center flex-shrink-0 shadow-sm mt-1 cursor-pointer hover:scale-110 active:scale-95 group"
+                >
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
+                </button>
               </div>
-            </div>
-          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { title: '100% Placement Assurance', desc: 'Unlimited interview drives with 150+ hiring partners until you sign your offer letter.' },
-              { title: 'Live Production Capstones', desc: 'Push real code to production GitHub repos with code reviews by senior architects.' },
-              { title: '1-on-1 Senior Mentorship', desc: 'Direct access to architects with 10+ years experience in top MNCs & product firms.' },
-              { title: 'Small Batch Size (Max 15)', desc: 'Guaranteed personalized attention, interactive live labs, and weekly doubt sprints.' },
-              { title: 'ISO 9001:2015 Certification', desc: 'Recognized industry certification to elevate your corporate resume credibility.' },
-              { title: 'Lifetime Alumni Access', desc: 'Free access to curriculum updates, community hackathons, and lifetime job referrals.' }
-            ].map((ass, aIdx) => (
-              <div key={aIdx} className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 space-y-2 hover:border-brand-500/40 transition-all">
-                <div className="flex items-center gap-2 font-extrabold text-sm text-slate-900 dark:text-slate-100">
-                  <CheckCircle2 className="w-4 h-4 text-brand-500 flex-shrink-0" />
-                  <span>{ass.title}</span>
-                </div>
-                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{ass.desc}</p>
+              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+                Yukti Software is shaping up the future for young minds, giving them the right guidance to help them develop the right skills and find great career opportunities. The IT courses that we offer are carefully curated to cover the most in-demand programming languages and IT domains to help you start your career on a high note. In addition to offering high-level IT courses, Yukti Software also conducts placement drives that offer job opportunities at top IT companies.
+              </p>
+
+              {/* 6 Key Highlights in 2 Columns */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
+                {[
+                  "Advanced lab sessions for practical education",
+                  "Job-oriented courses",
+                  "Comprehensive study material for all candidates",
+                  "Personalized learning with 1-on-1 doubt sessions",
+                  "Career support and guidance by professionals",
+                  "No hidden fees"
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-start space-x-2.5">
+                    <ArrowRight className="w-4 h-4 text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
+                    <span className="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 leading-snug">
+                      {item}
+                    </span>
+                  </div>
+                ))}
               </div>
-            ))}
+
+              {/* Action Buttons */}
+              <div className="pt-2 flex flex-row items-center gap-2 sm:gap-3 w-full">
+                <button
+                  onClick={() => setCurrentPage && setCurrentPage('training-institute')}
+                  className="flex-1 sm:flex-none px-3 sm:px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-[11px] sm:text-xs shadow-md transition-all flex items-center justify-center space-x-1 sm:space-x-1.5 whitespace-nowrap text-center"
+                >
+                  <span><span className="hidden sm:inline">Accredited </span>Institute Overview</span>
+                  <ArrowRight className="w-3.5 h-3.5 shrink-0" />
+                </button>
+                <button
+                  onClick={() => setCurrentPage && setCurrentPage('courses')}
+                  className="flex-1 sm:flex-none px-3 sm:px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-[11px] sm:text-xs border border-slate-200 dark:border-slate-700 transition-all flex items-center justify-center space-x-1 sm:space-x-1.5 whitespace-nowrap text-center"
+                >
+                  <span>Explore 15+ Tracks</span>
+                  <ArrowRight className="w-3.5 h-3.5 shrink-0" />
+                </button>
+              </div>
+
+            </div>
+
           </div>
         </div>
 

@@ -40,35 +40,107 @@ export default function StructuredData() {
       {
         "@type": "Course",
         "position": 1,
-        "name": "Python, Data Science & AI Mastery",
-        "description": "Comprehensive 16-week industrial Python and Artificial Intelligence training with placement assistance.",
-        "provider": {
-          "@type": "Organization",
-          "name": "Yukti Software",
-          "sameAs": "https://yuktisoftware.com"
-        }
+        "name": "Python Training Institute Greater Noida",
+        "description": "Comprehensive industrial Python programming and web development training with placement assistance in Greater Noida.",
+        "provider": { "@type": "Organization", "name": "Yukti Software", "sameAs": "https://yuktisoftware.com" }
       },
       {
         "@type": "Course",
         "position": 2,
-        "name": "Java Full Stack & Microservices",
-        "description": "Production-grade Java 21, Spring Boot 3, React 18, and Cloud Microservices program with 100% placement assurance.",
-        "provider": {
-          "@type": "Organization",
-          "name": "Yukti Software",
-          "sameAs": "https://yuktisoftware.com"
-        }
+        "name": "Java Full Stack Course Greater Noida",
+        "description": "Production-grade Java, Spring Boot microservices, React.js, and Cloud program with 100% placement assurance in Greater Noida.",
+        "provider": { "@type": "Organization", "name": "Yukti Software", "sameAs": "https://yuktisoftware.com" }
       },
       {
         "@type": "Course",
         "position": 3,
-        "name": "Data Structures, Algorithms & System Design",
-        "description": "Advanced problem solving and architecture design curriculum tailored for FAANG and Tier-1 product companies.",
-        "provider": {
-          "@type": "Organization",
-          "name": "Yukti Software",
-          "sameAs": "https://yuktisoftware.com"
-        }
+        "name": "DSA Course Greater Noida",
+        "description": "Data Structures & Algorithms problem solving and system design curriculum tailored for FAANG and Tier-1 product companies in Greater Noida.",
+        "provider": { "@type": "Organization", "name": "Yukti Software", "sameAs": "https://yuktisoftware.com" }
+      },
+      {
+        "@type": "Course",
+        "position": 4,
+        "name": "AI full stack development in greater Noida",
+        "description": "Next-Gen Generative AI, LLMs, LangChain, and full stack web development course in Greater Noida.",
+        "provider": { "@type": "Organization", "name": "Yukti Software", "sameAs": "https://yuktisoftware.com" }
+      },
+      {
+        "@type": "Course",
+        "position": 5,
+        "name": "Python Full Stack Course Greater Noida",
+        "description": "Full stack Python, Django, Flask, React.js and PostgreSQL training institute in Greater Noida.",
+        "provider": { "@type": "Organization", "name": "Yukti Software", "sameAs": "https://yuktisoftware.com" }
+      },
+      {
+        "@type": "Course",
+        "position": 6,
+        "name": "MERN Stack training institute Greater Noida",
+        "description": "Full stack JavaScript, MongoDB, Express, React and Node.js development in Greater Noida.",
+        "provider": { "@type": "Organization", "name": "Yukti Software", "sameAs": "https://yuktisoftware.com" }
+      },
+      {
+        "@type": "Course",
+        "position": 7,
+        "name": "React JS Training Institute in Greater Noida",
+        "description": "Advanced React JS, Redux Toolkit, Tailwind CSS and modern frontend UI architecture in Greater Noida.",
+        "provider": { "@type": "Organization", "name": "Yukti Software", "sameAs": "https://yuktisoftware.com" }
+      },
+      {
+        "@type": "Course",
+        "position": 8,
+        "name": "Spring Boot Training Course in Greater Noida",
+        "description": "Enterprise Spring Boot, Microservices, Spring Security and Cloud Kubernetes deployments in Greater Noida.",
+        "provider": { "@type": "Organization", "name": "Yukti Software", "sameAs": "https://yuktisoftware.com" }
+      },
+      {
+        "@type": "Course",
+        "position": 9,
+        "name": "Data Analytics course Greater Noida",
+        "description": "Business intelligence, Python for data science, Pandas, SQL, PowerBI and Tableau in Greater Noida.",
+        "provider": { "@type": "Organization", "name": "Yukti Software", "sameAs": "https://yuktisoftware.com" }
+      },
+      {
+        "@type": "Course",
+        "position": 10,
+        "name": "Advanced Java Training Institute Greater Noida",
+        "description": "Core and Advanced Java, multithreading, JDBC, collections framework and corporate interview training in Greater Noida.",
+        "provider": { "@type": "Organization", "name": "Yukti Software", "sameAs": "https://yuktisoftware.com" }
+      },
+      {
+        "@type": "Course",
+        "position": 11,
+        "name": "AI & Machine Learning Course Greater Noida",
+        "description": "Machine learning algorithms, deep neural networks, computer vision, NLP and TensorFlow training in Greater Noida.",
+        "provider": { "@type": "Organization", "name": "Yukti Software", "sameAs": "https://yuktisoftware.com" }
+      },
+      {
+        "@type": "Course",
+        "position": 12,
+        "name": "Database Management System Course Greater Noida",
+        "description": "Relational DBMS, ER modeling, SQL indexing, query optimization and ACID transactions in Greater Noida.",
+        "provider": { "@type": "Organization", "name": "Yukti Software", "sameAs": "https://yuktisoftware.com" }
+      },
+      {
+        "@type": "Course",
+        "position": 13,
+        "name": "NoSQL Database Course Greater Noida",
+        "description": "NoSQL database, MongoDB aggregation pipelines, Redis caching and distributed data architecture in Greater Noida.",
+        "provider": { "@type": "Organization", "name": "Yukti Software", "sameAs": "https://yuktisoftware.com" }
+      },
+      {
+        "@type": "Course",
+        "position": 14,
+        "name": "HTML and CSS Course Greater Noida",
+        "description": "Responsive web design, semantic HTML5, CSS Grid, Flexbox and Tailwind CSS course in Greater Noida.",
+        "provider": { "@type": "Organization", "name": "Yukti Software", "sameAs": "https://yuktisoftware.com" }
+      },
+      {
+        "@type": "Course",
+        "position": 15,
+        "name": "Full Stack Development Course Greater Noida",
+        "description": "Complete full stack software engineering program covering frontend, backend, databases and cloud hosting in Greater Noida.",
+        "provider": { "@type": "Organization", "name": "Yukti Software", "sameAs": "https://yuktisoftware.com" }
       }
     ]
   };

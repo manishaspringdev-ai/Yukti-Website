@@ -3,14 +3,8 @@ import { siteData } from '../data';
 import { getServiceLogo } from './TechLogos';
 import { 
   ArrowRight, 
-  Sparkles, 
-  Check, 
-  ShieldCheck, 
-  Zap, 
-  Users, 
   ChevronRight, 
-  ChevronDown, 
-  ExternalLink 
+  ChevronDown 
 } from 'lucide-react';
 
 function getServiceImageDetails(serviceId) {
@@ -66,7 +60,7 @@ export default function Services({ onOpenConsultation }) {
   const selectedService = servicesSection.services.find(s => s.id === activeService) || servicesSection.services[0];
 
   return (
-    <section id="services" className="py-12 sm:py-16 md:py-20 relative overflow-hidden bg-slate-100/60 dark:bg-slate-900/40">
+    <section id="services" className="pt-3 sm:pt-4 md:pt-6 pb-6 sm:pb-8 md:pb-10 relative overflow-hidden bg-slate-100/60 dark:bg-slate-900/40">
       
       {/* Background Soft Blurs */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-brand-500/5 rounded-full blur-3xl pointer-events-none -z-10" />
@@ -74,13 +68,10 @@ export default function Services({ onOpenConsultation }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-8 sm:mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-3 sm:mb-5">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-white leading-tight">
             {servicesSection.title}
           </h2>
-          <p className="text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
-            {servicesSection.description}
-          </p>
         </div>
 
         {/* ========================================================================= */}
@@ -183,20 +174,6 @@ export default function Services({ onOpenConsultation }) {
                         {service.description}
                       </p>
 
-                      <div className="space-y-2 pt-1">
-                        <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-                          Key Deliverables & Specifications
-                        </h4>
-                        <div className="grid grid-cols-1 gap-2">
-                          {service.highlights.map((h, idx) => (
-                            <div key={idx} className="flex items-start space-x-2 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
-                              <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
-                              <span className="text-xs font-medium text-slate-700 dark:text-slate-200 leading-snug">{h}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
                       <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 border-t border-slate-100 dark:border-slate-800">
                         <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
                           ✓ Custom SLA • 60-Day Post Launch Support
@@ -221,29 +198,29 @@ export default function Services({ onOpenConsultation }) {
         {/* ========================================================================= */}
         {/* DESKTOP VIEW (>= lg): Split Interactive Navigation & Detailed Stage */}
         {/* ========================================================================= */}
-        <div className="hidden lg:grid lg:grid-cols-12 gap-8 items-start animate-fadeIn">
+        <div className="hidden lg:grid lg:grid-cols-12 gap-8 items-stretch animate-fadeIn">
           
           {/* Left Service Menu */}
-          <div className="lg:col-span-5 space-y-3">
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-2.5 h-full">
             {servicesSection.services.map((service) => {
               const isActive = activeService === service.id;
               return (
                 <button
                   key={service.id}
                   onClick={() => setActiveService(service.id)}
-                  className={`w-full text-left p-5 rounded-2xl transition-all duration-300 flex items-center justify-between group border ${
+                  className={`w-full flex-1 text-left p-4 rounded-2xl transition-all duration-300 flex items-center justify-between group border ${
                     isActive
                       ? 'bg-white dark:bg-slate-800/90 border-brand-500 shadow-xl shadow-brand-500/10 scale-[1.01]'
                       : 'bg-white/60 dark:bg-slate-900/60 border-slate-200/80 dark:border-slate-800/80 hover:bg-white dark:hover:bg-slate-800/50'
                   }`}
                 >
-                  <div className="flex items-center space-x-4">
-                    <div className="w-13 h-13 p-2 rounded-2xl bg-slate-50 dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
-                      {getServiceLogo(service.id, "w-8 h-8")}
+                  <div className="flex items-center space-x-3.5">
+                    <div className="w-11 h-11 p-2 rounded-2xl bg-slate-50 dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform shrink-0">
+                      {getServiceLogo(service.id, "w-6 h-6")}
                     </div>
                     <div>
-                      <span className="text-xs font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-wider block">{service.tag}</span>
-                      <h3 className="text-base font-bold text-slate-900 dark:text-white">{service.shortTitle}</h3>
+                      <span className="text-[11px] font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-wider block">{service.tag}</span>
+                      <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">{service.shortTitle}</h3>
                     </div>
                   </div>
                   <ChevronRight className={`w-5 h-5 transition-transform ${isActive ? 'text-brand-600 dark:text-brand-400 translate-x-1' : 'text-slate-400'}`} />
@@ -253,76 +230,50 @@ export default function Services({ onOpenConsultation }) {
           </div>
 
           {/* Right Selected Detail Pane */}
-          <div className="lg:col-span-7">
-            <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 shadow-xl space-y-6">
-              <div className="flex items-center space-x-4 pb-6 border-b border-slate-100 dark:border-slate-800">
-                <div className="w-14 h-14 p-2.5 rounded-2xl bg-slate-50 dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-md">
-                  {getServiceLogo(selectedService.id, "w-9 h-9")}
-                </div>
-                <div>
-                  <span className="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest">{selectedService.tag}</span>
-                  <h3 className="text-2xl font-black text-slate-900 dark:text-white">{selectedService.title}</h3>
-                </div>
-              </div>
-
-              {/* Realistic Photo Banner for Selected Service */}
-              {(() => {
-                const img = getServiceImageDetails(selectedService.id);
-                return (
-                  <div className="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800 group h-48 sm:h-56">
-                    <img 
-                      src={img.url} 
-                      alt={img.caption} 
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
-                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
-                      <div className="flex items-center space-x-2">
-                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                        <p className="text-xs font-bold text-white drop-shadow">{img.caption}</p>
-                      </div>
-                      <span className="px-2.5 py-1 rounded-xl bg-white/20 backdrop-blur-md text-[10px] font-extrabold uppercase tracking-wider text-white border border-white/30">
-                        {img.badge}
-                      </span>
-                    </div>
+          <div className="lg:col-span-7 flex flex-col">
+            <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-7 shadow-xl h-full flex flex-col justify-between">
+              <div>
+                <div className="flex items-center space-x-4 pb-4 border-b border-slate-100 dark:border-slate-800">
+                  <div className="w-12 h-12 p-2 rounded-2xl bg-slate-50 dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-md shrink-0">
+                    {getServiceLogo(selectedService.id, "w-7 h-7")}
                   </div>
-                );
-              })()}
+                  <div>
+                    <span className="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest">{selectedService.tag}</span>
+                    <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">{selectedService.title}</h3>
+                  </div>
+                </div>
 
-              <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">{selectedService.description}</p>
-              
-              <div className="space-y-3 pt-2">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Key Deliverables & Specifications</h4>
-                <div className="grid grid-cols-2 gap-3">
-                  {selectedService.highlights.map((h, idx) => (
-                    <div key={idx} className="flex items-start space-x-2.5 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
-                      <Check className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
-                      <span className="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200">{h}</span>
+                {/* Realistic Photo Banner for Selected Service */}
+                {(() => {
+                  const img = getServiceImageDetails(selectedService.id);
+                  return (
+                    <div className="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800 group h-40 sm:h-44 mt-4">
+                      <img 
+                        src={img.url} 
+                        alt={img.caption} 
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
+                      <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
+                        <div className="flex items-center space-x-2">
+                          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                          <p className="text-xs font-bold text-white drop-shadow">{img.caption}</p>
+                        </div>
+                        <span className="px-2.5 py-1 rounded-xl bg-white/20 backdrop-blur-md text-[10px] font-extrabold uppercase tracking-wider text-white border border-white/30">
+                          {img.badge}
+                        </span>
+                      </div>
                     </div>
-                  ))}
-                </div>
+                  );
+                })()}
+
+                <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed mt-4">{selectedService.description}</p>
               </div>
 
-              {/* Service Trust Strip */}
-              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-600 dark:text-slate-400">
-                <div className="flex items-center space-x-2">
-                  <ShieldCheck className="w-4 h-4 text-brand-600 dark:text-brand-400" />
-                  <span className="font-semibold text-slate-800 dark:text-slate-200">ISO 9001:2015 QA Certified</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Zap className="w-4 h-4 text-amber-500" />
-                  <span>2-Week Agile Sprints</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                  <span>60-Day Post-Launch SLA</span>
-                </div>
-              </div>
-
-              <div className="pt-4 flex items-center justify-between border-t border-slate-100 dark:border-slate-800">
-                <span className="text-xs text-slate-400">Tailored to your business scale (Startup to Enterprise)</span>
+              <div className="pt-4 flex items-center justify-between border-t border-slate-100 dark:border-slate-800 mt-4">
+                <span className="text-xs text-slate-500 dark:text-slate-400">Tailored to your business scale (Startup to Enterprise)</span>
                 <button onClick={onOpenConsultation} className="px-6 py-3 rounded-xl bg-gradient-to-r from-brand-600 via-brand-500 to-accent-primary text-white font-bold text-xs flex items-center space-x-2 shadow-lg hover:scale-105 active:scale-95 transition-all">
                   <span>Schedule Strategy Call</span>
                   <ArrowRight className="w-4 h-4" />

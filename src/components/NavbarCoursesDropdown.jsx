@@ -29,27 +29,28 @@ import {
 
 const ALL_15_COURSES = [
   // Full Stack & Web
-  { id: 'course-ai-fullstack', name: 'AI Full Stack Development', category: 'AI & Next-Gen', badge: 'Trending', ctc: '₹7-24 LPA', icon: Sparkles, desc: 'GenAI, LLMs, AI Agents, React & Node.js' },
-  { id: 'course-java-fullstack', name: 'Java Full Stack & Microservices', category: 'Full Stack', badge: 'High Demand', ctc: '₹6-24 LPA', icon: Code2, desc: 'React, Spring Boot 3, Kafka, Docker & AWS' },
-  { id: 'course-mern-stack', name: 'MERN Stack Development', category: 'Full Stack', badge: 'Hot', ctc: '₹5-16 LPA', icon: Layers, desc: 'MongoDB, Express, React, Node.js & Next.js' },
-  { id: 'course-python-fullstack', name: 'Python Full Stack Developer', category: 'Full Stack', badge: 'Popular', ctc: '₹5-18 LPA', icon: Terminal, desc: 'Python, Django REST, React & PostgreSQL' },
-  { id: 'course-fullstack', name: 'Full Stack Web Engineering', category: 'Full Stack', badge: 'Job-Ready', ctc: '₹5-15 LPA', icon: Globe, desc: 'HTML, CSS, JS, React, Node & Live Capstone' },
-  { id: 'course-react-js', name: 'React JS & Modern Frontend', category: 'Frontend', badge: 'Essential', ctc: '₹4.5-14 LPA', icon: Zap, desc: 'React 19, Redux Toolkit, Tailwind & APIs' },
-  { id: 'course-html-css', name: 'HTML5 & Modern CSS3 UI', category: 'Frontend', badge: 'Beginner', ctc: '₹3.5-8 LPA', icon: Globe, desc: 'Responsive Design, Flexbox, Grid & Animation' },
+  { id: 'course-software-development', name: 'Software Development & Testing', category: 'Programming', badge: 'Accredited', mode: 'Job-Ready Track', icon: Code2, desc: 'SDLC, OOPs, DBMS, APIs, Testing, Git & Cloud' },
+  { id: 'course-ai-fullstack', name: 'AI Full Stack Development', category: 'AI & Next-Gen', badge: 'Trending', mode: 'Live Practical', icon: Sparkles, desc: 'GenAI, LLMs, AI Agents, React & Node.js' },
+  { id: 'course-java-fullstack', name: 'Java Full Stack & Microservices', category: 'Full Stack', badge: 'High Demand', mode: 'Enterprise Standard', icon: Code2, desc: 'React, Spring Boot 3, Kafka, Docker & AWS' },
+  { id: 'course-mern-stack', name: 'MERN Stack Development', category: 'Full Stack', badge: 'Hot', mode: 'Full Stack JavaScript', icon: Layers, desc: 'MongoDB, Express, React, Node.js & Next.js' },
+  { id: 'course-python-fullstack', name: 'Python Full Stack Developer', category: 'Full Stack', badge: 'Popular', mode: 'Web & APIs', icon: Terminal, desc: 'Python, Django REST, React & PostgreSQL' },
+  { id: 'course-fullstack', name: 'Full Stack Web Engineering', category: 'Full Stack', badge: 'Job-Ready', mode: 'Production Capstone', icon: Globe, desc: 'HTML, CSS, JS, React, Node & Live Capstone' },
+  { id: 'course-react-js', name: 'React JS & Modern Frontend', category: 'Frontend', badge: 'Essential', mode: 'Modern UI/UX', icon: Zap, desc: 'React 19, Redux Toolkit, Tailwind & APIs' },
+  { id: 'course-html-css', name: 'HTML5 & Modern CSS3 UI', category: 'Frontend', badge: 'Beginner', mode: 'Responsive Design', icon: Globe, desc: 'Responsive Design, Flexbox, Grid & Animation' },
 
   // Programming & Core
-  { id: 'course-python', name: 'Python Core & Advanced', category: 'Programming', badge: 'Top Rated', ctc: '₹4.5-18 LPA', icon: Terminal, desc: 'Core Python, OOP, Automation & REST APIs' },
-  { id: 'course-java', name: 'Core & Enterprise Java', category: 'Programming', badge: 'Core', ctc: '₹5-16 LPA', icon: Code2, desc: 'OOP, Multithreading, JDBC & Collections' },
-  { id: 'course-spring-boot', name: 'Spring Boot & Microservices', category: 'Programming', badge: 'Enterprise', ctc: '₹6-22 LPA', icon: Server, desc: 'REST APIs, Hibernate, Security & Cloud' },
-  { id: 'course-dsa', name: 'DSA & System Design', category: 'Programming', badge: 'FAANG Tier', ctc: '₹12-42 LPA', icon: Binary, desc: '350+ LeetCode Patterns, DP, Trees & Graphs' },
+  { id: 'course-python', name: 'Python Core & Advanced', category: 'Programming', badge: 'Top Rated', mode: 'Core to Advanced', icon: Terminal, desc: 'Core Python, OOP, Automation & REST APIs' },
+  { id: 'course-java', name: 'Core & Enterprise Java', category: 'Programming', badge: 'Core', mode: 'Enterprise Java', icon: Code2, desc: 'OOP, Multithreading, JDBC & Collections' },
+  { id: 'course-spring-boot', name: 'Spring Boot & Microservices', category: 'Programming', badge: 'Enterprise', mode: 'Cloud Microservices', icon: Server, desc: 'REST APIs, Hibernate, Security & Cloud' },
+  { id: 'course-dsa', name: 'DSA & System Design', category: 'Programming', badge: 'FAANG Tier', mode: 'Interview Focused', icon: Binary, desc: '350+ LeetCode Patterns, DP, Trees & Graphs' },
 
   // AI & Data
-  { id: 'course-ai-ml', name: 'AI & Machine Learning', category: 'AI & Data', badge: 'Next-Gen', ctc: '₹8-26 LPA', icon: Cpu, desc: 'ML Algorithms, Deep Learning & PyTorch' },
-  { id: 'course-data-analytics', name: 'Data Analytics & BI', category: 'AI & Data', badge: 'High Growth', ctc: '₹5-16 LPA', icon: TrendingUp, desc: 'SQL, Python, Power BI, Excel & Tableau' },
+  { id: 'course-ai-ml', name: 'AI & Machine Learning', category: 'AI & Data', badge: 'Next-Gen', mode: 'AI Specialist', icon: Cpu, desc: 'ML Algorithms, Deep Learning & PyTorch' },
+  { id: 'course-data-analytics', name: 'Data Analytics & BI', category: 'AI & Data', badge: 'High Growth', mode: 'Business Intelligence', icon: TrendingUp, desc: 'SQL, Python, Power BI, Excel & Tableau' },
 
   // Databases
-  { id: 'course-dbms', name: 'DBMS & Advanced SQL', category: 'Databases', badge: 'Foundation', ctc: '₹4.5-12 LPA', icon: Database, desc: 'Relational DBs, Query Optimization & Stored Procs' },
-  { id: 'course-nosql', name: 'NoSQL & MongoDB Database', category: 'Databases', badge: 'Cloud DB', ctc: '₹5-15 LPA', icon: Database, desc: 'Document DBs, Aggregations, Redis & Scaling' }
+  { id: 'course-dbms', name: 'DBMS & Advanced SQL', category: 'Databases', badge: 'Foundation', mode: 'Database Architecture', icon: Database, desc: 'Relational DBs, Query Optimization & Stored Procs' },
+  { id: 'course-nosql', name: 'NoSQL & MongoDB Database', category: 'Databases', badge: 'Cloud DB', mode: 'Distributed NoSQL', icon: Database, desc: 'Document DBs, Aggregations, Redis & Scaling' }
 ];
 
 export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation }) {
@@ -137,7 +138,7 @@ export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation })
                         {c.desc}
                       </p>
                       <div className="flex items-center justify-between mt-1 pt-1 border-t border-slate-200/40 dark:border-slate-700/40 text-[9px]">
-                        <span className="font-extrabold text-emerald-600 dark:text-emerald-400">{c.ctc}</span>
+                        <span className="font-bold text-emerald-600 dark:text-emerald-400">{c.mode}</span>
                         <span className="text-slate-400 group-hover:text-brand-600 flex items-center space-x-0.5">
                           <span>Syllabus</span>
                           <ChevronRight className="w-2.5 h-2.5" />
@@ -176,7 +177,7 @@ export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation })
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
-                  <span>Average CTC ₹8.4 LPA</span>
+                  <span>100% Practical Training & Projects</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
@@ -194,6 +195,14 @@ export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation })
                 <span>Book Free 1-on-1 Demo</span>
               </button>
               
+              <button
+                onClick={() => handleNav('training-institute')}
+                className="w-full py-2 rounded-xl bg-brand-600/30 hover:bg-brand-600/50 border border-brand-500/30 text-brand-200 font-bold text-[11px] text-center transition-all flex items-center justify-center space-x-1"
+              >
+                <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
+                <span>Accredited Institute Overview</span>
+              </button>
+
               <button
                 onClick={() => handleNav('courses')}
                 className="w-full py-2 rounded-xl bg-white/10 hover:bg-white/15 text-white font-bold text-[11px] text-center transition-all"

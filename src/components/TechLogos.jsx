@@ -265,10 +265,28 @@ export function DevopsServiceLogo({ className = "w-6 h-6" }) {
   );
 }
 
+export function SoftwareDevLogo({ className = "w-6 h-6" }) {
+  return (
+    <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="sd_grad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#2563EB" />
+          <stop offset="1" stopColor="#06B6D4" />
+        </linearGradient>
+      </defs>
+      <rect width="100" height="100" rx="22" fill="url(#sd_grad)" />
+      <path d="M36 34L20 50L36 66" stroke="#ffffff" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M64 34L80 50L64 66" stroke="#ffffff" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M56 26L44 74" stroke="#FDE047" strokeWidth="8" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 // Master resolver function
 export function getCourseLogo(courseIdOrKey, className = "w-7 h-7") {
   const id = (courseIdOrKey || '').toLowerCase();
   
+  if (id.includes('software')) return <SoftwareDevLogo className={className} />;
   if (id.includes('python')) return <PythonLogo className={className} />;
   if (id.includes('spring')) return <SpringBootLogo className={className} />;
   if (id.includes('java')) return <JavaLogo className={className} />;
@@ -880,9 +898,9 @@ export function TechMarqueeTicker({ title = "Trusted by 50+ Enterprises & Powere
   ];
 
   return (
-    <div className="w-full py-6 sm:py-8 overflow-hidden">
+    <div className="w-full pt-2 pb-2 sm:pt-3 sm:pb-3 overflow-hidden">
       {title && (
-        <p className="text-center text-[11px] sm:text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-5">
+        <p className="text-center text-[10px] sm:text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-3">
           {title}
         </p>
       )}

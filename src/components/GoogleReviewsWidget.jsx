@@ -1,12 +1,17 @@
 import React from 'react';
 import { siteData } from '../data';
 import { Sparkles, Star, ShieldCheck, CheckCircle2, MessageSquare, ExternalLink, ArrowRight } from 'lucide-react';
+import { useGoogleReviews } from '../hooks/useGoogleReviews';
 
 export default function GoogleReviewsWidget({ onOpenConsultation }) {
-  const { googleReviews, brand } = siteData;
+  const liveData = useGoogleReviews();
+  const googleReviews = liveData || siteData.googleReviews;
+  const { brand } = siteData;
+
+  const starCount = Math.min(5, Math.max(1, Math.round(googleReviews.overallScore || 5)));
 
   return (
-    <section id="reviews" className="py-12 sm:py-14 relative overflow-hidden bg-slate-100/60 dark:bg-slate-900/50 border-y border-slate-200/80 dark:border-slate-800/80">
+    <section id="reviews" className="pt-2 sm:pt-4 pb-4 sm:pb-6 relative overflow-hidden bg-slate-100/60 dark:bg-slate-900/50 border-y border-slate-200/80 dark:border-slate-800/80">
       
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 left-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
@@ -32,7 +37,7 @@ export default function GoogleReviewsWidget({ onOpenConsultation }) {
                 {googleReviews.overallScore}
               </p>
               <div className="flex text-amber-400 mt-1">
-                {[...Array(5)].map((_, i) => (
+                {[...Array(starCount)].map((_, i) => (
                   <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                 ))}
               </div>

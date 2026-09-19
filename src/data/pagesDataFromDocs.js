@@ -1,5 +1,322 @@
 export const docxPagesData = {
   "courses": {
+    "software-development": {
+      "title": "Software Development Course Greater Noida",
+      "headline": "Software Training Course Greater Noida with Accredited Certification",
+      "keywords": "Software Training Course Greater Noida, Software Development Course, Accredited IT Certification",
+      "description": "When it comes to choosing the right Software Training Course Greater Noida can make a significant difference in building a successful IT career. Furthermore, the Software Training Course at Yukti Software provides practical, industry-oriented knowledge along with accredited certification. The course combines programming fundamentals, web technologies, testing, APIs, and live projects. With expert trainers, coding exercises, and career guidance, candidates can develop the technical confidence and job-ready skills needed to pursue better opportunities in the software development industry.",
+      "fullDescription": [
+        "When it comes to choosing the right Software Training Course Greater Noida can make a significant difference in building a successful IT career. Furthermore, the Software Training Course at Yukti Software provides practical, industry-oriented knowledge along with accredited certification.",
+        "The course combines programming fundamentals, web technologies, testing, APIs, and live projects. With expert trainers, coding exercises, and career guidance, candidates can develop the technical confidence and job-ready skills needed to pursue better opportunities in the software development industry.",
+        "How This Software Training Course Greater Noida Takes a Different Approach",
+        "Unlike general training schools, the Software Training Course Greater Noida offered by Yukti Software aims to impart practical software training to the learners. Through practical guidance, practice, projects, coding, and preparation for a career in the IT industry, we offer you the opportunity to learn all about software development and gain job-ready software skills.",
+        "Industry-Based Curriculum: Learn about software programming, web development, software development, APIs, and many other software concepts based on industry requirements.",
+        "Expert Trainers: Learn about difficult software concepts through simplified explanations, practical examples, and guidance from expert trainers.",
+        "Project-based learning: Learn software applications through working on projects.",
+        "Coding Practice: Improve your programming skills through coding practice and database coding.",
+        "Practical Exposure: Gain exposure to various development situations.",
+        "Doubt Clearance Sessions: Clarify all your questions and technical doubts in doubt clearance sessions.",
+        "Mock Technical Interviews: Prepare yourself technically for an interview by asking programming, database, development, problem-solving, and project-based questions.",
+        "Career Guidance: Guidance related to resume building, interview preparation, career planning, and other aspects of a software development career.",
+        "Job-Ready Skills: Get practical knowledge, technical skills, and problem-solving capabilities."
+      ],
+      "courseBenefits": [
+        {
+          "title": "1. Learn Real-World Coding Skills",
+          "desc": "Learn by coding, practicing, assignments, and projects. Learn practical knowledge of Java, Spring Boot, and Backend Development with industry-based training."
+        },
+        {
+          "title": "2. Learn Difficult Concepts Easily",
+          "desc": "Learning programming gets easier with practical training. Experienced trainers at our institute make concepts clear to you with live classes, interactive sessions, coding practices, and doubt-clearing."
+        },
+        {
+          "title": "3. Prepare for a Career",
+          "desc": "Prepare yourself for the software developer role in real life with the help of technical and problem-solving skills. Learn practical knowledge about Java, Spring Boot, and backend technologies for software development."
+        },
+        {
+          "title": "4. Complete Full-Lifecycle Engineering",
+          "desc": "Master everything from SDLC, OOP, DBMS, Web APIs, testing, Git collaboration to cloud deployment and live project delivery."
+        }
+      ],
+      "keyHighlights": [
+        {
+          "title": "Expert Trainers",
+          "desc": "Expert trainers give learners guidance and industry insight during the training sessions."
+        },
+        {
+          "title": "Industry-Oriented Curriculum",
+          "desc": "Learners are trained in current technologies and industry practices used in the IT industry."
+        },
+        {
+          "title": "Real-World Projects",
+          "desc": "Participants get practical project work that will let them put their technical knowledge into practice."
+        },
+        {
+          "title": "Individual Support",
+          "desc": "Trainers individually help learners overcome problems related to technical skills."
+        },
+        {
+          "title": "Job-Specific Skills",
+          "desc": "This training helps learners develop practical and job-specific skills and enables them to have successful careers in the IT industry."
+        }
+      ],
+      "targetAudience": [
+        "The Certified Software Training Course Greater Noida from Yukti Software is specially designed for people who are aspiring to be IT professionals and want practical training in software that will enable them to build their careers in the IT industry. With the help of experienced tutors, hands-on training, practical projects, and career guidance, we provide complete training to the learner to make them more confident in gaining skills in software development.",
+        "Newbie learners who wish to learn software development skills from scratch.",
+        "Students who want to learn practical skills in software development along with their education.",
+        "Graduates who are looking for training that will make them industry-ready to become software developers.",
+        "Learners who are interested in developing software and want hands-on experience with different tools and technologies used for software development.",
+        "People who are preparing for interviews and want to have practical knowledge and good technical skills.",
+        "Things You Need to Know Before Enrolling in the Software Training Course Greater Noida:",
+        "Find the subjects in the software training course, such as software basics, programming, database, web development, testing, and other technologies.",
+        "Beginners, students, graduates, and professionals have different learning needs, so select the course according to your present technical level.",
+        "Select the course that offers practical projects, assignments, and hands-on activities to enhance your technical skills.",
+        "Make sure the trainer has teaching and industry experience, and ensure that you receive proper technical guidance during the training.",
+        "Find what kind of programming language, frameworks, tools, and technologies are included in the course and match them with your IT career plan."
+      ],
+      "curriculum": [
+        {
+          "moduleTitle": "Module 1: Introduction to Software Development",
+          "topics": [
+            "Basics of software and applications",
+            "Categories of software systems",
+            "Software Development Life Cycle (SDLC)",
+            "Introduction to software development processes",
+            "Introduction to Agile & Scrum",
+            "Environment Setup for Development"
+          ]
+        },
+        {
+          "moduleTitle": "Module 2: Fundamentals of Programming",
+          "topics": [
+            "Variables and Data Types",
+            "Operators and Expressions",
+            "Conditional Statements",
+            "Looping and Iterations",
+            "Functions and Methods",
+            "Arrays & Strings",
+            "Basics of Problem-Solving"
+          ]
+        },
+        {
+          "moduleTitle": "Module 3: Object-Oriented Programming (OOP)",
+          "topics": [
+            "Classes & Objects",
+            "Constructors and Methods",
+            "Encapsulation",
+            "Inheritance",
+            "Polymorphism",
+            "Abstraction",
+            "Interface & Access Modifiers"
+          ]
+        },
+        {
+          "moduleTitle": "Module 4: Data Structures & Algorithms",
+          "topics": [
+            "Arrays and Linked Lists",
+            "Stack and Queues",
+            "Trees and Graphs",
+            "Searching Methods",
+            "Sorting Algorithms",
+            "Complexity of Algorithms",
+            "Problem Solving and Coding"
+          ]
+        },
+        {
+          "moduleTitle": "Module 5: Database Management Systems",
+          "topics": [
+            "Introduction to DBMS",
+            "Concepts of Relational Database",
+            "SQL Basics",
+            "Table Creation and Management",
+            "Perform CRUD operations",
+            "Joins & Subqueries",
+            "Database Normalization",
+            "Introduction to MySQL"
+          ]
+        },
+        {
+          "moduleTitle": "Module 6: Web Development Basics",
+          "topics": [
+            "HTML Basic Structure",
+            "CSS Basic & Layout",
+            "Basics of JavaScript",
+            "Forms & Form Validation",
+            "Responsive Web Design",
+            "Interactive Web Interface Introduction"
+          ]
+        },
+        {
+          "moduleTitle": "Module 7: Back-End Development",
+          "topics": [
+            "Concepts of Server-Side Programming",
+            "Application Architecture",
+            "Database Connection",
+            "User Authentication & Authorization",
+            "CRUD Application Development",
+            "REST API Basics",
+            "Communication between Client and Server"
+          ]
+        },
+        {
+          "moduleTitle": "Module 8: Software Testing and Debugging",
+          "topics": [
+            "Basics of Software Testing",
+            "Manual and Automated Testing",
+            "Unit Testing",
+            "Functional Testing",
+            "Creation of Test Cases",
+            "Debugging Techniques",
+            "Identification and Resolution of Software Errors"
+          ]
+        },
+        {
+          "moduleTitle": "Module 9: Version Control with Git & GitHub",
+          "topics": [
+            "Basics of Version Control",
+            "Git Installation & Configuration",
+            "Creation and Management of Repositories",
+            "Commit, Push, Pull, and Merge",
+            "Branch Management",
+            "Resolution of Merge Conflicts",
+            "Collaborative Development Using GitHub"
+          ]
+        },
+        {
+          "moduleTitle": "Module 10: Software Development Tools",
+          "topics": [
+            "Working with IDEs and Code Editors",
+            "Build and Dependency Management",
+            "Package Management Basics",
+            "API Testing Tools",
+            "Debugging Tools",
+            "Basics of Development Workflow"
+          ]
+        },
+        {
+          "moduleTitle": "Module 11: Web Application Development",
+          "topics": [
+            "Integration of Front-End & Back-End",
+            "Database-Driven Applications",
+            "User Registration & Login",
+            "Form Handling & Validation",
+            "API Integration",
+            "Basics of Application Security",
+            "Web Application Deployment"
+          ]
+        },
+        {
+          "moduleTitle": "Module 12: Cloud & Deployment Basics",
+          "topics": [
+            "Introduction to Cloud Computing",
+            "Cloud Platforms Basics",
+            "Basics of Application Hosting",
+            "Deployment Environments",
+            "Basics of Servers & Hosting",
+            "Introduction to CI/CD",
+            "Application Monitoring Basic"
+          ]
+        },
+        {
+          "moduleTitle": "Module 13: Live Project Development",
+          "topics": [
+            "Planning a Real-World Software Project",
+            "Requirement Analysis",
+            "Design of Database",
+            "Front-End and Back-End Development",
+            "Testing and Debugging",
+            "Deployment of Project",
+            "Documentation and Presentation"
+          ]
+        },
+        {
+          "moduleTitle": "Module 14: Additional Skills & Placement Support",
+          "topics": [
+            "Programming Assignments & Problem Solving Activities",
+            "Live Project Development Experience",
+            "Resume Building Assistance",
+            "1-on-1 Mock Technical Interviews",
+            "Interview Preparation & Coding Practice",
+            "Career & Placement Assistance"
+          ]
+        }
+      ],
+      "careerTable": [
+        {
+          "role": "Software Developer",
+          "skills": "Application Development, Testing, Debugging, and Maintenance",
+          "package": "High Demand • Job-Ready"
+        },
+        {
+          "role": "Full Stack Developer",
+          "skills": "Create, Maintain, back-end, Databases, and APIs",
+          "package": "High Demand • Job-Ready"
+        },
+        {
+          "role": "Java Developer",
+          "skills": "Application Development using Java, APIs, Enterprise Solutions",
+          "package": "High Demand • Job-Ready"
+        },
+        {
+          "role": "Python Developer",
+          "skills": "Application Development, Automation, APIs, and Backend Development",
+          "package": "High Demand • Job-Ready"
+        },
+        {
+          "role": "Data Analyst",
+          "skills": "Data Analysis, Report Generation, and Business Insights",
+          "package": "High Demand • Job-Ready"
+        },
+        {
+          "role": "Database Developer",
+          "skills": "Database Design, Development, Optimization, and Query Management",
+          "package": "High Demand • Job-Ready"
+        },
+        {
+          "role": "DevOps Engineer",
+          "skills": "Infrastructure Management, Deployment, CI/CD, and Automation",
+          "package": "High Demand • Job-Ready"
+        },
+        {
+          "role": "Software Test Engineer",
+          "skills": "Software Testing and Defect Identification",
+          "package": "High Demand • Job-Ready"
+        }
+      ],
+      "careerOpportunities": [
+        "Software Developer",
+        "Junior Software Engineer",
+        "Web Developer",
+        "Application Developer",
+        "Front-End Developer",
+        "Back-End Developer",
+        "Software Tester",
+        "QA Engineer",
+        "Technical Support Engineer"
+      ],
+      "faqs": [
+        {
+          "q": "Why is software training different from learning programming via YouTube?",
+          "a": "YouTube videos cover certain topics related to programming, but software training provides a systematic way to connect these concepts according to a curriculum."
+        },
+        {
+          "q": "Is a computer science degree necessary for learning software development?",
+          "a": "Not necessarily. It might be beneficial, but software development skills could be obtained by learning step-by-step through structured training and practice. Beginner-level courses would start with programming basics and gradually shift to databases, application development, APIs, testing, and deployment."
+        },
+        {
+          "q": "How does the course help me see how software development works?",
+          "a": "It covers not only the programming aspect but also allows learners to get familiar with requirements, debugging, API integration, basic deployment, and more. Thus, candidates learn the stages that take the software development process from requirements to the final application."
+        },
+        {
+          "q": "Could I learn problem solving with software training?",
+          "a": "Yes. Programming is closely associated with logic and systematic problem solving. Therefore, with sufficient practice, one could become better at problem-solving."
+        },
+        {
+          "q": "How do mock interviews help me prepare for a job in software?",
+          "a": "Interviewing is a completely different thing compared to class sessions. Through mock interviews, learners get an opportunity to practice answering questions related to programming, databases, projects, and problem-solving in the environment of an interview."
+        }
+      ]
+    },
     "python": {
       "title": "Web Page for Yukti Software",
       "headline": "Web Page for Yukti Software | Python Training Institute Greater Noida",
@@ -1119,29 +1436,15 @@ export const docxPagesData = {
       ]
     },
     "dbms": {
-      "title": "Webpage for Yukti Software",
-      "headline": "DBMS Course in Greater Noida",
-      "keywords": "",
-      "description": "DBMS Course in Greater Noida - Complete Mastery and Job Preparations Learning DBMS is about memorising database terms or writing a few SQL queries. At Yukti Software, the DBMS course in Greater Noida focuses on helping learners understand how databases actually work in professional environments. Moreover, the training is a mix of vast concepts, practical exercises, assignments, real-world projects, and SQL practice so that students can gradually build confidence, solve database-related problems, and develop skills that are useful for starting or advancing an IT career.",
+      "title": "DBMS Course in Greater Noida – Complete Mastery and Job Preparations",
+      "headline": "DBMS Course in Greater Noida – Complete Mastery and Job Preparations",
+      "keywords": "DBMS Course in Greater Noida, Database Management System Training, SQL Course, MySQL, Relational Database, Placements, Yukti Software",
+      "description": "Learning DBMS is about memorising database terms or writing a few SQL queries. At Yukti Software, the DBMS course in Greater Noida focuses on helping learners understand how databases actually work in professional environments. Moreover, the training is a mix of vast concepts, practical exercises, assignments, real-world projects, and SQL practice so that students can gradually build confidence, solve database-related problems, and develop skills that are useful for starting or advancing an IT career.",
       "fullDescription": [
-        "DBMS Course in Greater Noida - Complete Mastery and Job Preparations",
-        "Learning DBMS is about memorising database terms or writing a few SQL queries. At Yukti Software, the DBMS course in Greater Noida focuses on helping learners understand how databases actually work in professional environments. Moreover, the training is a mix of vast concepts, practical exercises, assignments, real-world projects, and SQL practice so that students can gradually build confidence, solve database-related problems, and develop skills that are useful for starting or advancing an IT career.",
-        "How This DBMS Course in Greater Noida Takes a Different Approach",
-        "At Yukti Software, the DBMS course in Greater Noida is an example of a career-oriented course rather than just sticking to bookish knowledge. The course offers expert mentorship, practical assignments, and industry-oriented teaching, which enables learners to gain confidence in understanding databases and implement them according to the needs of their workplace.",
-        "Industry-Oriented Curriculum: Gain SQL knowledge, basic understanding of databases, normalization, data management, etc., as per the present-day industry needs.",
-        "Expert Mentorship: Understand the complexities involved in database systems through easy explanation and practical examples along with guidance from expert trainers.",
-        "Practical Assignments: Develop understanding through practical assignments that demonstrate application of the DBMS concepts in practice.",
-        "SQL Practice Sessions: Build confidence in executing database-related tasks by means of regular practice sessions.",
-        "Doubt Clearance Sessions: Clarify your doubts through interactive sessions wherein trainers clear your doubts and make difficult concepts easy.",
-        "Mock Interviews: Prepare yourself for interviews by means of mock interviews and understand technical as well as HR related queries.",
-        "Career Assistance: Get useful assistance regarding resume preparation and job interview preparations.",
-        "Syllabus: Ensure that the syllabus includes the fundamental concepts of DBMS, SQL, database handling, etc.",
-        "Practical training: It is recommended to go for a course that strikes a perfect balance between theory and practical training, including exercises related to SQL and databases.",
-        "Trainer's experience: Experts can help understand complicated database management concepts through practical examples.",
-        "Learning mode: One should opt for a class timing and learning process according to their availability and preferences.",
-        "Project work: It is always beneficial for a student if the course offers project training along with other aspects for understanding the real requirements of databases.",
-        "Career assistance: Assistance in resume preparation, interview preparation, and career growth would help in getting career-oriented training.",
-        "Training for beginners: Beginners should choose a course that begins with the basics and gradually introduces advanced database concepts."
+        "Learning DBMS is about memorising database terms or writing a few SQL queries.",
+        "At Yukti Software, the DBMS course in Greater Noida focuses on helping learners understand how databases actually work in professional environments.",
+        "Moreover, the training is a mix of vast concepts, practical exercises, assignments, real-world projects, and SQL practice so that students can gradually build confidence, solve database-related problems, and develop skills that are useful for starting or advancing an IT career.",
+        "How This DBMS Course in Greater Noida Takes a Different Approach: At Yukti Software, the DBMS course in Greater Noida is an example of a career-oriented course rather than just sticking to bookish knowledge. The course offers expert mentorship, practical assignments, and industry-oriented teaching, which enables learners to gain confidence in understanding databases and implement them according to the needs of their workplace."
       ],
       "courseBenefits": [
         {
@@ -1154,104 +1457,66 @@ export const docxPagesData = {
         },
         {
           "title": "Make a Career in DBMS",
-          "desc": "Make a career in database management through the DBMS course in Greater Noida by enhancing your practical knowledge and working on database projects."
+          "desc": "Make a career in database management through the DBMS course in Greater Noida by enhancing your practical knowledge, mastering SQL, and working on live enterprise database projects."
         },
         {
-          "title": "Different types of databases",
-          "desc": ""
-        },
-        {
-          "title": "Architecture of DBMS",
-          "desc": ""
-        },
-        {
-          "title": "Users and administrators of database",
-          "desc": ""
-        },
-        {
-          "title": "DBMS versus traditional file system",
-          "desc": "DBMS Course in Greater Noida by Yukti Software is a program that emphasizes practical learning, experienced teaching, and career-oriented education. Through practical exercises, industrial projects, and industry-related concepts, the candidates can develop the core DBMS concepts and gain the courage to implement their knowledge in IT workplaces."
-        },
-        {
-          "title": "Core Conceptual Clarity",
-          "desc": "Learn the concepts of DBMS through clear and easy explanations, examples, and practical exercises in databases."
-        },
-        {
-          "title": "Hands-On Real-World Projects",
-          "desc": "Work on industrial projects to gain knowledge of the practical usage of databases in various sectors."
-        },
-        {
-          "title": "Core Conceptual Clarity (Phase 10)",
-          "desc": "Gain knowledge from experienced instructors who provide you with solutions to complex concepts and answer all your questions."
-        },
-        {
-          "title": "Applied Practical Drills",
-          "desc": "Develop your technical skills through assignments and practical sessions."
+          "title": "Enterprise Optimization & Security",
+          "desc": "Master database performance tuning, indexing, stored procedures, ACID transactions, and robust data security protocols used by top database administrators."
         }
       ],
       "keyHighlights": [
         {
-          "title": "Learn Practical DBMS Skills",
-          "desc": "Enhance your database management skills through the DBMS course in Greater Noida at Yukti Software. Learn how to design, manage, operate, and maintain databases with the help of practical classes, assignments, and real-time projects."
+          "title": "Industry-Oriented Curriculum",
+          "desc": "Gain SQL knowledge, basic understanding of databases, normalization, data management, etc., as per the present-day industry needs."
         },
         {
-          "title": "Get Help from Professional Trainers",
-          "desc": "Get a clear understanding of basic DBMS concepts through the help of professional trainers who will simplify complicated technical concepts and make them easy for you to understand. With interactive sessions and live classes, enhance your database management knowledge and skills."
+          "title": "Expert Mentorship",
+          "desc": "Understand the complexities involved in database systems through easy explanation and practical examples along with guidance from expert trainers."
         },
         {
-          "title": "Make a Career in DBMS",
-          "desc": "Make a career in database management through the DBMS course in Greater Noida by enhancing your practical knowledge and working on database projects."
+          "title": "Practical Assignments",
+          "desc": "Develop understanding through practical assignments that demonstrate application of the DBMS concepts in practice."
         },
         {
-          "title": "Different types of databases",
-          "desc": ""
+          "title": "SQL Practice Sessions",
+          "desc": "Build confidence in executing database-related tasks by means of regular practice sessions."
         },
         {
-          "title": "Architecture of DBMS",
-          "desc": ""
+          "title": "Doubt Clearance Sessions",
+          "desc": "Clarify your doubts through interactive sessions wherein trainers clear your doubts and make difficult concepts easy."
         },
         {
-          "title": "Users and administrators of database",
-          "desc": ""
+          "title": "Mock Interviews",
+          "desc": "Prepare yourself for interviews by means of mock interviews and understand technical as well as HR related queries."
         },
         {
-          "title": "DBMS versus traditional file system",
-          "desc": "DBMS Course in Greater Noida by Yukti Software is a program that emphasizes practical learning, experienced teaching, and career-oriented education. Through practical exercises, industrial projects, and industry-related concepts, the candidates can develop the core DBMS concepts and gain the courage to implement their knowledge in IT workplaces."
+          "title": "Career Assistance",
+          "desc": "Get useful assistance regarding resume preparation, portfolio building, and job interview preparations."
         },
         {
-          "title": "Key Benefit",
-          "desc": "Learn the concepts of DBMS through clear and easy explanations, examples, and practical exercises in databases."
-        },
-        {
-          "title": "Key Benefit",
-          "desc": "Work on industrial projects to gain knowledge of the practical usage of databases in various sectors."
-        },
-        {
-          "title": "Key Benefit",
-          "desc": "Gain knowledge from experienced instructors who provide you with solutions to complex concepts and answer all your questions."
-        },
-        {
-          "title": "Key Benefit",
-          "desc": "Develop your technical skills through assignments and practical sessions."
+          "title": "Interactive Lab Environment",
+          "desc": "Work in state-of-the-art database labs with real client datasets and enterprise database servers."
         }
       ],
       "targetAudience": [
-        "DBMS course in Greater Noida is an ideal course for individuals who seek practical database knowledge along with career-oriented technical skills. Participants will have an opportunity to gain confidence through this course with expert guidance, hands-on training, and relevant learning for the industry.",
-        "Beginners will be able to establish a base for database concepts, SQL, and other basic data management techniques without having any technical skills.",
-        "Students will be able to acquire practical skills related to DBMS that supplement their learning in academics as well as technical understanding.",
-        "Aspiring developers will be able to enhance their database knowledge for application, website, and software development.",
-        "IT professionals will be able to update their skills and get more exposure to contemporary database management methods.",
-        "Students looking for jobs can benefit from developing practical knowledge to prepare themselves for entry-level database and IT jobs.",
-        "Freelancers can benefit from learning some useful database skills for working on projects related to application and website development.",
-        "Career changers will be able to acquire essential knowledge of DBMS and embark on the path towards their career in IT.",
-        "Things You Need to Know Before Enrolling in the DBMS Course in Greater Noida",
-        "The DBMS Course in Greater Noida offered by Yukti Software is ideal for building strong database management skills among students and beginners through practical training."
+        "Beginners looking to establish a strong base in database concepts, SQL, and data management techniques without prior technical background.",
+        "Students looking to acquire practical skills related to DBMS that supplement their academic degree and technical coursework.",
+        "Aspiring developers looking to enhance their database knowledge for application, website, and software development.",
+        "IT professionals seeking to update their skills and gain exposure to contemporary database management and optimization methods.",
+        "Students looking for jobs who can benefit from developing practical knowledge to prepare for entry-level database and IT jobs.",
+        "Freelancers aiming to learn essential database skills for working on projects related to application and website development.",
+        "Career changers seeking to acquire essential knowledge of DBMS and embark on a high-growth career path in IT."
       ],
       "curriculum": [
         {
           "moduleTitle": "Module 1: Introduction to DBMS",
           "topics": [
-            "Introduction to databases and DBMS"
+            "Introduction to databases and DBMS",
+            "Features and benefits of DBMS",
+            "Different types of databases",
+            "Architecture of DBMS",
+            "Users and administrators of database",
+            "DBMS versus traditional file system"
           ]
         },
         {
@@ -1259,8 +1524,7 @@ export const docxPagesData = {
           "topics": [
             "Hierarchical, network, relational and object-oriented models",
             "Three-schema architecture",
-            "Data abstraction",
-            "Data independence",
+            "Data abstraction and data independence",
             "Database instance and schema",
             "Client-server database architecture"
           ]
@@ -1269,7 +1533,7 @@ export const docxPagesData = {
           "moduleTitle": "Module 3: Relational Database Concepts",
           "topics": [
             "Introduction to relational database",
-            "Table, row and column",
+            "Table, row and column concepts",
             "Primary key and foreign key",
             "Candidate key, super key and composite key",
             "Integrity constraints",
@@ -1290,35 +1554,32 @@ export const docxPagesData = {
         {
           "moduleTitle": "Module 5: SQL Basics",
           "topics": [
-            "Introduction to SQL",
-            "SQL commands and syntax",
-            "DDL, DML, DCL, and TCL",
+            "Introduction to SQL syntax",
+            "SQL commands: DDL, DML, DCL, and TCL",
             "Creating and modifying a database",
             "Creating, altering, and deleting tables",
             "Insert, update, and delete records"
           ]
         },
         {
-          "moduleTitle": "Module 6: SQL queries and data retrieval",
+          "moduleTitle": "Module 6: SQL Queries and Data Retrieval",
           "topics": [
-            "SELECT statement",
+            "SELECT statement fundamentals",
             "WHERE, ORDER BY, and GROUP BY clauses",
-            "Filtering and sorting record",
-            "Aggregation function",
-            "DISTINCT and alias",
-            "Operator and condition expression"
+            "Filtering and sorting records",
+            "Aggregate functions (SUM, AVG, COUNT, MIN, MAX)",
+            "DISTINCT and alias expressions",
+            "Operator and condition expressions"
           ]
         },
         {
-          "moduleTitle": "Module 7: SQL Joins and advanced SQL",
+          "moduleTitle": "Module 7: SQL Joins and Advanced SQL",
           "topics": [
             "Introduction to SQL joins",
-            "INNER JOIN",
-            "LEFT and RIGHT JOIN",
-            "FULL OUTER JOIN",
-            "Self and CROSS JOIN",
-            "Sub-query and nested query",
-            "View and its application"
+            "INNER JOIN, LEFT and RIGHT JOIN",
+            "FULL OUTER JOIN, SELF and CROSS JOIN",
+            "Sub-queries and nested queries",
+            "Views and their real-world applications"
           ]
         },
         {
@@ -1326,57 +1587,52 @@ export const docxPagesData = {
           "topics": [
             "Need for database normalization",
             "Functional dependency",
-            "First Normal Form (1 NF)",
-            "Second Normal Form (2 NF)",
-            "Third Normal Form (3 NF)",
-            "BCNF",
-            "Denormalization and its usage"
+            "First Normal Form (1 NF) & Second Normal Form (2 NF)",
+            "Third Normal Form (3 NF) & BCNF",
+            "Denormalization and its usage in high-scale systems"
           ]
         },
         {
           "moduleTitle": "Module 9: Transaction and Concurrency Control",
           "topics": [
-            "Introduction to database transaction",
-            "ACID property",
-            "Transaction state",
-            "Commit and Rollback",
-            "Concurrency issues",
-            "Lock-based protocol",
+            "Introduction to database transactions",
+            "ACID properties (Atomicity, Consistency, Isolation, Durability)",
+            "Transaction states, Commit and Rollback",
+            "Concurrency issues and anomalies",
+            "Lock-based protocols",
             "Deadlock and deadlock prevention"
           ]
         },
         {
-          "moduleTitle": "Module 10: Database Security",
+          "moduleTitle": "Module 10: Database Security & Administration",
           "topics": [
             "Basics of database security",
             "User authentication and authorization",
-            "Access control",
-            "Role and privilege",
-            "Data encryption concept",
-            "Backup and recovery",
+            "Access control, roles and privileges",
+            "Data encryption concepts",
+            "Backup and disaster recovery strategies",
             "Common database security threats"
           ]
         },
         {
           "moduleTitle": "Module 11: Indexing and Query Optimization",
           "topics": [
-            "Introduction to database index",
-            "Types of index",
-            "Clustered and non-clustered index",
+            "Introduction to database indexes",
+            "Types of index: Clustered and non-clustered index",
             "B-Tree and hash indexing",
-            "Basics of query execution",
+            "Basics of query execution plans",
             "Query optimization techniques",
             "Database performance improvement"
           ]
         },
         {
-          "moduleTitle": "Module 12: Stored procedure, function, and trigger",
+          "moduleTitle": "Module 12: Stored Procedure, Function, and Trigger",
           "topics": [
             "Introduction to stored procedures",
             "Creation and use of functions",
-            "Database triggers",
-            "Parameter and variable",
-            "Practical usage"
+            "Database triggers and automation",
+            "Parameters, variables, and control flow",
+            "Practical usage in enterprise systems"
           ]
         },
         {
@@ -1386,163 +1642,113 @@ export const docxPagesData = {
             "Database structure creation",
             "SQL query writing and optimization",
             "Database user management",
-            "Importing and exporting data",
-            "Database backup and restore"
+            "Importing and exporting data (CSV/JSON/SQL)",
+            "Database backup and restore operations"
           ]
         },
         {
           "moduleTitle": "Module 14: Real World DBMS Projects",
           "topics": [
-            "Database design for practical application",
-            "Construction of ER diagram",
+            "Database design for practical applications",
+            "Construction of ER diagrams",
             "Implementation of relational tables",
-            "Normalization",
+            "Normalization pipelines",
             "Complex SQL query writing",
-            "Integration of database with application",
-            "Performance testing and optimization of database",
-            "Additional Skills Acquired",
-            "Practical SQL query writing",
-            "Database design and modeling",
-            "Data validation and integrity",
-            "Problem-solving via database exercises",
-            "Query debugging and optimization",
-            "Work with a practical dataset",
-            "Database Interview and Coding Preparation",
-            "Assignments and projects",
-            "Ans: The syllabus of the course, practical training provided, trainer's experience, mode of training, practical projects, support for beginners, and career guidance must be considered prior to enrolment in a DBMS course. The course must cover basic DBMS concepts along with SQL, security, optimization, etc."
+            "Integration of database with backend applications",
+            "Performance testing and optimization of database"
           ]
         }
       ],
       "careerOpportunities": [
-        "Career Options after DBMS Course",
-        "Database Developer",
-        "SQL Developer",
-        "Database Administrator",
-        "Data Analyst",
-        "Backend Developer",
-        "Database Engineer",
-        "Business Intelligence Developer",
-        "Software Developer",
-        "High-Paying Role after DBMS Course in Greater Noida [Jobs]",
-        "Job Profile",
-        "Key Responsibilities",
-        "Indian Packages",
-        "Global Packages",
         "Database Administrator (DBA)",
-        "Manage databases, security, backups, recovery, and performance",
-        "₹5-15 LPA",
-        "$70K-$120K/year",
         "Database Developer",
-        "Design databases, write SQL queries, and develop database solutions",
-        "₹5-14 LPA",
-        "$65K-$115K/year",
         "Data Analyst",
-        "Analyze data using SQL, prepare reports, and identify useful business insights",
-        "₹4-12 LPA",
-        "$60K-$105K/year",
         "SQL Developer",
-        "Create queries, procedures, functions, and optimize database performance",
-        "₹4.5-13 LPA",
-        "$65K-$110K/year",
         "Data Engineer",
-        "Build data pipelines, manage large datasets, and support data infrastructure",
-        "₹6-18 LPA",
-        "$80K-$140K/year",
         "Database Architect",
-        "Plan database architecture, scalability, security, and system integration",
-        "₹12-30 LPA",
-        "$100K-$160K/year",
         "Business Intelligence Developer",
-        "Develop dashboards, manage data models, and convert data into business insights",
-        "₹6-16 LPA",
-        "$75K-$125K/year",
         "Cloud Database Engineer",
-        "Manage cloud databases, migration, security, and database performance",
-        "₹7-20 LPA",
-        "$85K-$145K/year",
-        "Gain career opportunities through interviews and resumes.",
-        "Learn in an interactive environment."
+        "Backend Developer"
       ],
       "careerRolesTable": [
         {
           "role": "Database Administrator (DBA)",
-          "responsibilities": "Manage databases, security, backups, recovery, and performance",
-          "skillsOrPackage": "₹5-15 LPA"
+          "responsibilities": "Manage databases, security, backups, recovery, and performance tuning.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
           "role": "Database Developer",
-          "responsibilities": "Design databases, write SQL queries, and develop database solutions",
-          "skillsOrPackage": "₹5-14 LPA"
+          "responsibilities": "Design databases, write complex SQL queries, and develop database solutions.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
           "role": "Data Analyst",
-          "responsibilities": "Analyze data using SQL, prepare reports, and identify useful business insights",
-          "skillsOrPackage": "₹4-12 LPA"
+          "responsibilities": "Analyze data using SQL, prepare reports, and identify useful business insights.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
           "role": "SQL Developer",
-          "responsibilities": "Create queries, procedures, functions, and optimize database performance",
-          "skillsOrPackage": "₹4.5-13 LPA"
+          "responsibilities": "Create queries, procedures, functions, and optimize database performance.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
           "role": "Data Engineer",
-          "responsibilities": "Build data pipelines, manage large datasets, and support data infrastructure",
-          "skillsOrPackage": "₹6-18 LPA"
+          "responsibilities": "Build data pipelines, manage large datasets, and support data infrastructure.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
           "role": "Database Architect",
-          "responsibilities": "Plan database architecture, scalability, security, and system integration",
-          "skillsOrPackage": "₹12-30 LPA"
+          "responsibilities": "Plan database architecture, scalability, security, and system integration.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
           "role": "Business Intelligence Developer",
-          "responsibilities": "Develop dashboards, manage data models, and convert data into business insights",
-          "skillsOrPackage": "₹6-16 LPA"
+          "responsibilities": "Develop dashboards, manage data models, and convert data into business insights.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
           "role": "Cloud Database Engineer",
-          "responsibilities": "Manage cloud databases, migration, security, and database performance",
-          "skillsOrPackage": "₹7-20 LPA"
+          "responsibilities": "Manage cloud databases, migration, security, and database performance.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         }
       ],
-      "whyChooseYukti": [],
+      "whyChooseYukti": [
+        "Learn the concepts of DBMS through clear and easy explanations, examples, and practical exercises in databases.",
+        "Work on industrial projects to gain knowledge of the practical usage of databases in various sectors.",
+        "Gain knowledge from experienced instructors who provide you with solutions to complex concepts and answer all your questions.",
+        "Develop your technical skills through assignments and practical sessions.",
+        "Gain career opportunities through mock technical interviews, resume building, and placement support.",
+        "Learn in an interactive classroom and lab environment."
+      ],
       "faqs": [
         {
           "question": "Does the DBMS course have any practical assignments?",
-          "answer": "Yes. The practical learning may involve creation of a database, development of an ER diagram, writing SQL queries, normalization, database management, and completion of projects in real-world scenarios."
+          "answer": "Yes. The practical learning involves creation of a database, development of an ER diagram, writing SQL queries, normalization, database management, and completion of projects in real-world scenarios."
         },
         {
           "question": "What career prospects will be open for me after learning DBMS?",
-          "answer": "Learning DBMS may prepare you for various careers depending on your additional skills and experience. Some common professions include Database Developer, SQL Developer, Database Administrator, Data Analyst, Database Engineer, Backend Developer, Business Intelligence Developer, and Software Developer. Your skills in SQL and project execution may further benefit your career."
+          "answer": "Learning DBMS prepares you for various careers depending on your additional skills and experience. Common professions include Database Developer, SQL Developer, Database Administrator, Data Analyst, Database Engineer, Backend Developer, Business Intelligence Developer, and Cloud Database Engineer."
         },
         {
           "question": "Why should I choose a DBMS course that has practical assignments?",
-          "answer": "Practical assignments allow you to go beyond theoretical understanding of database management. You get the chance to write queries, resolve database issues, handle datasets, detect bugs, etc., and learn about the functioning of the database in practical scenarios."
+          "answer": "Practical assignments allow you to go beyond theoretical understanding of database management. You get the chance to write queries, resolve database issues, handle datasets, detect bugs, and learn about the functioning of databases in real workplace scenarios."
         },
         {
           "question": "How do I choose the best DBMS course in Greater Noida?",
-          "answer": ""
+          "answer": "The syllabus of the course, practical training provided, trainer's experience, mode of training, practical projects, support for beginners, and career guidance must be considered prior to enrolment in a DBMS course. The course at Yukti Software covers basic DBMS concepts along with SQL, security, optimization, and real projects."
         }
       ]
     },
     "dsa": {
-      "title": "Webpage for Yukti Software",
-      "headline": "DSA Course Greater Noida",
-      "keywords": "",
-      "description": "DSA Course Greater Noida- Job-Oriented Learning with Placement Assistance Data Structures and Algorithms (DSA) have become one of the most important skills to be possessed by an individual who wants to have a successful career in software development. DSA Course Greater Noida offered by Yukti Software is focused on making individuals better problem solvers by engaging them in hands-on coding sessions and practical challenges. It enables individuals to gain proficiency in basic DSA skills, whether they are beginners or preparing for their technical interviews. In addition to that, for a reputable Training Institute, we are the best option for you.",
+      "title": "DSA Course Greater Noida - Job-Oriented Learning with Placement Assistance",
+      "headline": "DSA Course Greater Noida - Job-Oriented Learning with Placement Assistance",
+      "keywords": "DSA Course Greater Noida, Data Structures and Algorithms Training, LeetCode, FAANG Interview Preparation, Placements, Yukti Software",
+      "description": "Data Structures and Algorithms (DSA) have become one of the most important skills to be possessed by an individual who wants to have a successful career in software development. DSA Course Greater Noida offered by Yukti Software is focused on making individuals better problem solvers by engaging them in hands-on coding sessions and practical challenges. It enables individuals to gain proficiency in basic DSA skills, whether they are beginners or preparing for their technical interviews. In addition to that, for a reputable Training Institute, we are the best option for you.",
       "fullDescription": [
-        "DSA Course Greater Noida- Job-Oriented Learning with Placement Assistance",
-        "Data Structures and Algorithms (DSA) have become one of the most important skills to be possessed by an individual who wants to have a successful career in software development. DSA Course Greater Noida offered by Yukti Software is focused on making individuals better problem solvers by engaging them in hands-on coding sessions and practical challenges. It enables individuals to gain proficiency in basic DSA skills, whether they are beginners or preparing for their technical interviews. In addition to that, for a reputable Training Institute, we are the best option for you.",
-        "How This DSA Course Takes a Different Approach",
-        "Through our DSA course at Yukti Software, we ensure that you develop excellent problem-solving abilities by making you learn practically as opposed to only learning theoretically. Through mentorship, live coding, technical interview questions, and project work, you are prepared to deal with complex coding problems and land some of the best software developer jobs.",
-        "Industry-Relevant Curriculum - Learn DSA topics that the top tech companies look for in candidates.",
-        "Expert Mentors - Learn from experienced individuals who have industry experience.",
-        "Practical Coding Practice - Practice coding problems every day to sharpen your logical reasoning ability.",
-        "Offline Live Classes - Get interactive offline classes with personal attention.",
-        "Doubt Clearing Sessions - Clear your doubts about coding during mentoring sessions.",
-        "Mock Technical Interview - Improve your confidence through mock technical interviews.",
-        "Career Guidance & Placement - Get career advice, resume building, and placements.",
-        "Lifetime Revision - Get lifelong access to concepts for revisions."
+        "Data Structures and Algorithms (DSA) have become one of the most important skills to be possessed by an individual who wants to have a successful career in software development.",
+        "DSA Course Greater Noida offered by Yukti Software is focused on making individuals better problem solvers by engaging them in hands-on coding sessions and practical challenges.",
+        "It enables individuals to gain proficiency in basic DSA skills, whether they are beginners or preparing for their technical interviews. In addition to that, for a reputable Training Institute, we are the best option for you.",
+        "How This DSA Course Takes a Different Approach: Through our DSA course at Yukti Software, we ensure that you develop excellent problem-solving abilities by making you learn practically as opposed to only learning theoretically. Through mentorship, live coding, technical interview questions, and project work, you are prepared to deal with complex coding problems and land some of the best software developer jobs."
       ],
       "courseBenefits": [
         {
@@ -1554,69 +1760,57 @@ export const docxPagesData = {
           "desc": "We help you grasp DSA concepts by making use of real-time coding problems. With our trainers who have industry experience, you will get individual guidance and doubt-clearing sessions that will help you solve coding problems effectively."
         },
         {
-          "title": "Career-oriented Course Content",
+          "title": "Career-Oriented Course Content",
           "desc": "Apart from imparting technical knowledge, we make sure you get the right career guidance to help you get a job in reputed IT companies. We help you get coding interview preparation, test series, resume building, career guidance, and placement services."
         },
         {
-          "title": "Expert Industry Mentorship",
-          "desc": "We at Yukti Software understand that studying Data Structures and Algorithms is not just theoretical but needs to be fun, engaging, and career-oriented. With our industry-trained mentors who teach the course with good theory as well as coding practices, we ensure that you have good problem-solving skills. The course is aimed at training you for the technical interview and coding assessment that would enable you to make your programming career a success."
-        },
-        {
-          "title": "Reasons why you should enroll in our DSA course",
-          "desc": "Trainers who are experts in the industry."
-        },
-        {
-          "title": "Problem-Solving & Debugging",
-          "desc": "Practical coding classes and problem-solving training."
+          "title": "Competitive Coding & Interview Mastery",
+          "desc": "Master online coding platforms like LeetCode, HackerRank, and CodeChef with optimal time and space complexity strategies designed for tier-1 product companies."
         }
       ],
       "keyHighlights": [
         {
-          "title": "Develop Problem Solving Skills",
-          "desc": "In our DSA Course Greater Noida, we ensure that you learn all aspects of Data Structures and Algorithms using a pragmatic approach in our course content. We help you learn all the concepts from basics like arrays and linked lists to more advanced topics like trees, graphs, dynamic programming, and problem-solving."
+          "title": "Industry-Relevant Curriculum",
+          "desc": "Learn DSA topics that the top tech companies look for in candidates."
         },
         {
-          "title": "Guidance by Experienced Professionals",
-          "desc": "We help you grasp DSA concepts by making use of real-time coding problems. With our trainers who have industry experience, you will get individual guidance and doubt-clearing sessions that will help you solve coding problems effectively."
+          "title": "Expert Mentors",
+          "desc": "Learn from experienced individuals who have industry experience."
         },
         {
-          "title": "Career-oriented Course Content",
-          "desc": "Apart from imparting technical knowledge, we make sure you get the right career guidance to help you get a job in reputed IT companies. We help you get coding interview preparation, test series, resume building, career guidance, and placement services."
+          "title": "Practical Coding Practice",
+          "desc": "Practice coding problems every day to sharpen your logical reasoning ability."
         },
         {
-          "title": "Key Benefit",
-          "desc": "We at Yukti Software understand that studying Data Structures and Algorithms is not just theoretical but needs to be fun, engaging, and career-oriented. With our industry-trained mentors who teach the course with good theory as well as coding practices, we ensure that you have good problem-solving skills. The course is aimed at training you for the technical interview and coding assessment that would enable you to make your programming career a success."
+          "title": "Offline Live Classes",
+          "desc": "Get interactive offline classes with personal attention and hands-on coding."
         },
         {
-          "title": "Reasons why you should enroll in our DSA course",
-          "desc": "Trainers who are experts in the industry."
+          "title": "Doubt Clearing Sessions",
+          "desc": "Clear your doubts about coding during mentoring sessions with expert instructors."
         },
         {
-          "title": "Key Benefit",
-          "desc": "Practical coding classes and problem-solving training."
+          "title": "Mock Technical Interview",
+          "desc": "Improve your confidence through structured mock technical interviews."
+        },
+        {
+          "title": "Career Guidance & Placement",
+          "desc": "Get career advice, resume building, coding contests, and placement assistance."
+        },
+        {
+          "title": "Lifetime Revision",
+          "desc": "Get lifelong access to concepts for revisions and continuous problem-solving support."
         }
       ],
       "targetAudience": [
-        "If you are a beginner programmer or if you wish to enhance your problem-solving abilities, our Certified DSA Course Greater Noida can be extremely helpful for you at any stage of learning:",
-        "For Students of B.Tech, BCA, MCA, and other similar courses",
-        "For Graduates who want to pursue a career in software development",
-        "For beginners with basic knowledge of programming",
-        "For working professionals looking forward to making a career change to IT",
-        "For programmers willing to improve their skills in coding and logical thinking",
-        "For students preparing for an interview in Product-based companies",
-        "For candidates who aim to have good placements",
-        "For learners interested in finding out the best Training Institute with practical learning",
-        "What Do You Need to Know Before Enrolling in the DSA Course",
-        "At Yukti Software, we firmly believe that with the right attitude to learn, everyone can become proficient in Data Structures & Algorithms (DSA). This is because our industry-specific training begins with the basic concepts and progresses to more complex concepts of problem-solving through coding, practical projects, and professional guidance, thus making it a great option for both students and professionals.",
-        "Programming experience in Java, C++, or Python is a bonus, but not required.",
-        "Logical & problem-solving skills will help you learn DSA more effectively.",
-        "Willingness to code on a regular basis is the way to learn DSA effectively.",
-        "Knowledge of basic programming concepts such as loops, arrays & functions helps.",
-        "Benefit from the mentorship of professional experts from the reputed Institute, Yukti Software.",
-        "Hands-on training through coding problems and real-world projects.",
-        "Technical Interview preparation through mock tests and placement-specific sessions.",
-        "Set up for a successful career in the domain of software development and earn well in the field of IT.",
-        "Important Point: These are just the recommended prerequisites. Our DSA Training Course starts with the basics and progresses to advance level."
+        "Students of B.Tech, BCA, MCA, and other similar courses looking for high-impact technical skills.",
+        "Graduates who want to pursue a career in high-paying software development roles.",
+        "Beginners with basic knowledge of programming looking to master data structures and algorithms.",
+        "Working professionals looking forward to making a career change or upgrade in IT.",
+        "Programmers willing to improve their skills in coding and logical thinking.",
+        "Students preparing for interviews in top product-based companies and FAANG tier tech firms.",
+        "Candidates who aim to have top placements with solid algorithmic problem-solving abilities.",
+        "Learners interested in finding the best Training Institute with practical, hands-on learning."
       ],
       "curriculum": [
         {
@@ -1626,7 +1820,7 @@ export const docxPagesData = {
             "Importance of DSA in software development",
             "Time and Space Complexity",
             "Big O, Omega, and Theta Notation",
-            "Problem-solving approach"
+            "Problem-solving approach and complexity trade-offs"
           ]
         },
         {
@@ -1657,28 +1851,28 @@ export const docxPagesData = {
             "Doubly Linked List",
             "Circular Linked List",
             "Insertion and deletion operations",
-            "Reversing and detecting loops",
+            "Reversing and detecting loops (Floyd's Cycle Algorithm)",
             "Practice interview questions"
           ]
         },
         {
           "moduleTitle": "Module 5: Stacks and Queues",
           "topics": [
-            "Stack implementation",
+            "Stack implementation and applications",
             "Queue and Circular Queue",
-            "Priority Queue",
-            "Deque",
+            "Priority Queue and Min/Max Heaps",
+            "Deque (Double-Ended Queue)",
             "Applications of stacks and queues",
-            "Expression evaluation problems"
+            "Expression evaluation (Infix to Postfix/Prefix) problems"
           ]
         },
         {
           "moduleTitle": "Module 6: Trees and Binary Trees",
           "topics": [
-            "Tree terminology",
-            "Binary Tree traversal",
-            "Binary Search Tree (BST)",
-            "AVL Trees",
+            "Tree terminology and properties",
+            "Binary Tree traversals (Inorder, Preorder, Postorder, Level-order)",
+            "Binary Search Tree (BST) operations",
+            "AVL Trees and self-balancing trees",
             "Heap Data Structure",
             "Tree-based interview problems"
           ]
@@ -1686,57 +1880,55 @@ export const docxPagesData = {
         {
           "moduleTitle": "Module 7: Graphs",
           "topics": [
-            "Graph representation",
+            "Graph representation (Adjacency Matrix & List)",
             "Breadth-First Search (BFS)",
             "Depth-First Search (DFS)",
-            "Shortest Path Algorithms",
-            "Minimum Spanning Tree",
-            "Graph traversal problems"
+            "Shortest Path Algorithms (Dijkstra, Bellman-Ford)",
+            "Minimum Spanning Tree (Prim's & Kruskal's Algorithms)",
+            "Graph traversal and cycle detection problems"
           ]
         },
         {
           "moduleTitle": "Module 8: Searching and Sorting Algorithms",
           "topics": [
-            "Linear Search",
-            "Binary Search",
-            "Bubble Sort",
-            "Selection Sort",
+            "Linear Search and Binary Search",
+            "Bubble Sort and Selection Sort",
             "Insertion Sort",
-            "Merge Sort",
-            "Quick Sort",
-            "Heap Sort"
+            "Merge Sort and Quick Sort",
+            "Heap Sort and Counting Sort",
+            "Stability and space/time trade-offs"
           ]
         },
         {
           "moduleTitle": "Module 9: Recursion and Backtracking",
           "topics": [
-            "Recursive thinking",
+            "Recursive thinking and recurrence relations",
             "Recursive problem-solving",
             "Backtracking concepts",
             "N-Queens problem",
             "Sudoku Solver",
-            "Maze and permutation problems"
+            "Maze, subset and permutation problems"
           ]
         },
         {
           "moduleTitle": "Module 10: Dynamic Programming",
           "topics": [
-            "Memoization",
-            "Tabulation",
-            "Knapsack problems",
+            "Memoization (Top-down) vs Tabulation (Bottom-up)",
+            "0/1 Knapsack and Unbounded Knapsack",
             "Longest Common Subsequence (LCS)",
-            "Fibonacci optimization",
-            "DP interview questions"
+            "Longest Increasing Subsequence (LIS)",
+            "Fibonacci and Grid DP optimization",
+            "Top DP interview patterns"
           ]
         },
         {
           "moduleTitle": "Module 11: Greedy Algorithms and Advanced Topics",
           "topics": [
-            "Greedy approach",
+            "Greedy approach and optimality",
             "Huffman Coding",
-            "Activity Selection",
+            "Activity Selection problem",
             "Disjoint Set Union (DSU)",
-            "Trie Data Structure",
+            "Trie Data Structure for String queries",
             "Segment Trees and Fenwick Trees",
             "Introduction to Bit Manipulation"
           ]
@@ -1744,36 +1936,16 @@ export const docxPagesData = {
         {
           "moduleTitle": "Module 12: Competitive Coding & Interview Preparation",
           "topics": [
-            "Coding interview strategies",
-            "Mock technical interviews",
+            "Coding interview strategies and time management",
+            "Mock technical interviews (Live whiteboarding)",
             "Aptitude and logical reasoning",
-            "Coding contests and challenges",
+            "Coding contests and LeetCode challenges",
             "Resume-building guidance",
-            "Placement-focused problem-solving",
-            "Live Projects and Practical Learning",
-            "Daily coding exercises",
-            "Real-world problem-solving sessions",
-            "Coding assignments",
-            "Weekly assessments",
-            "Case studies",
-            "Capstone project",
-            "Additional Skills Covered",
-            "Competitive programming techniques",
-            "Debugging and code optimization",
-            "Git and GitHub basics",
-            "Communication and interview skills",
-            "Online coding platform practice (LeetCode, HackerRank, CodeChef)",
-            "Placement assistance and career guidance",
-            "Up-to-date curriculum with respect to industry standards.",
-            "Mock interviews and coding assessments.",
-            "Smaller batches for individual attention and a good learning experience.",
-            "Flexible class timings along with revision support.",
-            "Career guidance for students."
+            "Placement-focused problem-solving drills"
           ]
         }
       ],
       "careerOpportunities": [
-        "Career Opportunities After DSA Training",
         "Software Development Engineer (SDE)",
         "Java Developer",
         "Python Developer",
@@ -1782,95 +1954,73 @@ export const docxPagesData = {
         "Full Stack Developer",
         "Software Engineer",
         "Application Developer",
-        "Technical Analyst",
-        "High-Paying Role after DSA Course [ Jobs ]",
-        "Job Role",
-        "Average Salary in India (LPA)",
-        "Key Skills Required",
-        "Software Development Engineer (SDE)",
-        "₹6 - ₹25 LPA",
-        "DSA, Java/C++, Problem Solving, OOP",
-        "Full Stack Developer",
-        "₹5 - ₹18 LPA",
-        "DSA, JavaScript, React, Node.js, Databases",
-        "Backend Developer",
-        "₹6 - ₹20 LPA",
-        "DSA, Java, Python, APIs, SQL, System Design",
-        "Frontend Developer",
-        "₹4 - ₹15 LPA",
-        "HTML, CSS, JavaScript, React, DSA Basics",
-        "Mobile App Developer",
-        "₹5 - ₹18 LPA",
-        "Java/Kotlin, Flutter, Android/iOS Development",
         "Data Engineer",
-        "₹8 - ₹25 LPA",
-        "Python, SQL, DSA, ETL, Big Data",
         "DevOps Engineer",
-        "₹6 - ₹20 LPA",
-        "Linux, Docker, Kubernetes, Cloud, Scripting",
         "Machine Learning Engineer",
-        "₹8 - ₹30 LPA",
-        "Python, DSA, Machine Learning, Data Structures",
         "AI Engineer",
-        "₹10 - ₹35 LPA",
-        "DSA, Python, Deep Learning, NLP",
-        "Software Test Engineer (SDET)",
-        "₹6 - ₹18 LPA",
-        "DSA, Automation Testing, Java, Selenium"
+        "Software Test Engineer (SDET)"
       ],
       "careerRolesTable": [
         {
           "role": "Software Development Engineer (SDE)",
-          "responsibilities": "₹6 - ₹25 LPA",
-          "skillsOrPackage": "DSA, Java/C++, Problem Solving, OOP"
+          "responsibilities": "Solve complex computational problems, write efficient algorithms, and develop scalable core systems.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
           "role": "Full Stack Developer",
-          "responsibilities": "₹5 - ₹18 LPA",
-          "skillsOrPackage": "DSA, JavaScript, React, Node.js, Databases"
+          "responsibilities": "Design end-to-end applications with optimized data structures and backend logic.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
           "role": "Backend Developer",
-          "responsibilities": "₹6 - ₹20 LPA",
-          "skillsOrPackage": "DSA, Java, Python, APIs, SQL, System Design"
+          "responsibilities": "Build high-performance APIs, database queries, and distributed system architectures.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
           "role": "Frontend Developer",
-          "responsibilities": "₹4 - ₹15 LPA",
-          "skillsOrPackage": "HTML, CSS, JavaScript, React, DSA Basics"
+          "responsibilities": "Optimize client-side rendering, data manipulation, and responsive UI structures.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
           "role": "Mobile App Developer",
-          "responsibilities": "₹5 - ₹18 LPA",
-          "skillsOrPackage": "Java/Kotlin, Flutter, Android/iOS Development"
+          "responsibilities": "Develop responsive and resource-efficient iOS/Android applications.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
           "role": "Data Engineer",
-          "responsibilities": "₹8 - ₹25 LPA",
-          "skillsOrPackage": "Python, SQL, DSA, ETL, Big Data"
+          "responsibilities": "Build data pipelines, process big datasets, and optimize complex ETL workflows.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
           "role": "DevOps Engineer",
-          "responsibilities": "₹6 - ₹20 LPA",
-          "skillsOrPackage": "Linux, Docker, Kubernetes, Cloud, Scripting"
+          "responsibilities": "Automate infrastructure, manage containerized clusters, and streamline CI/CD pipelines.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
           "role": "Machine Learning Engineer",
-          "responsibilities": "₹8 - ₹30 LPA",
-          "skillsOrPackage": "Python, DSA, Machine Learning, Data Structures"
+          "responsibilities": "Develop machine learning models, optimize numerical algorithms, and process feature vectors.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
           "role": "AI Engineer",
-          "responsibilities": "₹10 - ₹35 LPA",
-          "skillsOrPackage": "DSA, Python, Deep Learning, NLP"
+          "responsibilities": "Design deep learning architectures, intelligent agents, and neural network algorithms.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
           "role": "Software Test Engineer (SDET)",
-          "responsibilities": "₹6 - ₹18 LPA",
-          "skillsOrPackage": "DSA, Automation Testing, Java, Selenium"
+          "responsibilities": "Develop automated test suites, evaluate algorithm correctness, and conduct performance benchmarks.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         }
       ],
-      "whyChooseYukti": [],
+      "whyChooseYukti": [
+        "Trainers who are experts in the industry.",
+        "Practical coding classes and problem-solving training.",
+        "Up-to-date curriculum with respect to industry standards.",
+        "Mock interviews and coding assessments.",
+        "Smaller batches for individual attention and a good learning experience.",
+        "Flexible class timings along with revision support.",
+        "Comprehensive career guidance and placement assistance."
+      ],
       "faqs": [
         {
           "question": "Is this DSA Course Greater Noida for beginners?",
@@ -1890,7 +2040,7 @@ export const docxPagesData = {
         },
         {
           "question": "What will you learn in the DSA course?",
-          "answer": "Here is a quick peek at the DSA course provided by Yukti Software: Arrays, Strings, Linked Lists Stacks, Queues, Trees, Graphs Sorting, Searching, Dynamic Programming Greedy Algorithms, Recursion, Interview Preparation"
+          "answer": "Here is a quick peek at what you will learn: Arrays, Strings, Linked Lists, Stacks, Queues, Trees, Graphs, Sorting & Searching, Dynamic Programming, Greedy Algorithms, Recursion, and technical Interview Preparation."
         }
       ]
     },
@@ -4696,11 +4846,19 @@ export const docxPagesData = {
       "courseBenefits": [
         {
           "title": "Future-proof Skill Development",
-          "desc": "AI is definitely the future of the IT industry. Thus, learning full stack development with AI concepts will ensure that you are ready for future job roles. Skills that you will learn in the AI full stack development course will prepare you for the new job roles that are emerging with AI development."
+          "desc": "AI is definitely the future of the IT industry. Mastering full stack engineering combined with modern AI workflows ensures you are prepared for next-generation developer roles, LLM integration, and intelligent software systems."
         },
         {
-          "title": "Does Not Require Specific Academic Qualification",
-          "desc": ""
+          "title": "Zero Academic Barrier & Beginner-Friendly",
+          "desc": "You do not need a specific computer science degree or prior coding background. Our modular curriculum starts with core fundamentals and progresses step-by-step to production architectures."
+        },
+        {
+          "title": "High Industry & Placement Demand",
+          "desc": "AI-integrated full stack engineers are among the most sought-after talent by tech companies. Master high-impact stacks, APIs, and scalable web architectures with dedicated placement support."
+        },
+        {
+          "title": "Production-Ready Capstone Projects",
+          "desc": "Build, test, and deploy end-to-end full stack web applications with AI capabilities, creating a verified GitHub portfolio that stands out to tech recruiters."
         }
       ],
       "keyHighlights": [
@@ -5773,436 +5931,309 @@ export const docxPagesData = {
       ]
     },
     "java-fullstack": {
-      "title": "Advanced Java Training Institute Greater Noida",
-      "headline": "Advanced Java Training Institute Greater Noida - Learn from Industrial Experts",
-      "keywords": "Advanced Java Training Institute Greater Noida, Yukti Software",
-      "description": "Take your Java skills and knowledge to the next level with our advanced Java training course. Learn to develop advanced skills to make software solutions for medium- to large-scale enterprises through expert training. Yukti Software, a credible advanced Java training institute Greater Noida, has everything you need. We have qualified faculty with industrial experience, an updated curriculum, and job-oriented learning. Our primary focus is to help you build practical skills and hands-on experience with advanced Java tools. By the end of this Advanced Java Training, you will have in-depth conceptual knowledge of enterprise-level Java concepts and a skill set that is in high demand among recruiters.",
+      "title": "Java Full Stack Course Greater Noida with Interview Preparation and Placements",
+      "headline": "Java Full Stack Course Greater Noida with Interview Preparation and Placements",
+      "keywords": "Java Full Stack Course Greater Noida, Java Full Stack Training, Spring Boot, React, MySQL, Placements, Yukti Software",
+      "description": "Java Full Stack course offers a clear picture of what is needed to design a contemporary application on both the front end and back end. At Yukti Software, our professional tutors will guide you to understand the fundamental responsibilities of a full-stack developer, the tools that ease development in the real world, and the modern technology skills required to achieve the final goal. Furthermore, whether you prefer the flexibility of online learning or want to have classroom training experience, our Java Full Stack Course Greater Noida ensures you’re well-equipped to understand the crucial landscape of modern software development. So, it's time to learn advanced software skills with experienced industry experts, either in online classes or live sessions, whichever fits your schedule.",
       "fullDescription": [
-        "Take your Java skills and knowledge to the next level with our advanced Java training course. Learn to develop advanced skills to make software solutions for medium- to large-scale enterprises through expert training. Yukti Software, a credible advanced Java training institute Greater Noida, has everything you need. We have qualified faculty with industrial experience, an updated curriculum, and job-oriented learning. Our primary focus is to help you build practical skills and hands-on experience with advanced Java tools.",
-        "By the end of this Advanced Java Training, you will have in-depth conceptual knowledge of enterprise-level Java concepts and a skill set that is in high demand among recruiters.",
-        "Advanced Java Training Curriculum - Updated"
+        "Java Full Stack course offers a clear picture of what is needed to design a contemporary application on both the front end and back end.",
+        "At Yukti Software, our professional tutors will guide you to understand the fundamental responsibilities of a full-stack developer, the tools that ease development in the real world, and the modern technology skills required to achieve the final goal.",
+        "Furthermore, whether you prefer the flexibility of online learning or want to have classroom training experience, our Java Full Stack Course Greater Noida ensures you’re well-equipped to understand the crucial landscape of modern software development.",
+        "So, it's time to learn advanced software skills with experienced industry experts, either in online classes or live sessions, whichever fits your schedule.",
+        "How This Java Full Stack Course Takes a Different Approach: At Yukti Software, our Java Full Stack course is designed to provide students, fresh graduates, and working professionals with the well-rounded skills required to build complete web applications from scratch to completion. Our working professionals are here to prepare students to confidently design & develop secure, scalable, and end-to-end responsive web applications using modern Java Full Stack technologies while improving their employability in the current competitive IT sector."
       ],
       "courseBenefits": [
         {
-          "title": "Exponential Career Growth",
-          "desc": "Advanced Java is a critical requirement if you want to move up the hierarchical chain. When hiring for expert roles or when promoting junior Java developers, employers require you to show proficiency in advanced concepts. Thus, our Java training by Yukti Software is ideal if you are preparing to grow your career."
+          "title": "Develop Pragmatic Full Stack Knowledge",
+          "desc": "With our Java Full Stack Course Greater Noida, you will be able to develop front-end as well as back-end knowledge using practical training sessions. Be proficient in technologies like Core Java, Spring Boot, React, REST APIs, and MySQL."
         },
         {
-          "title": "Increases Pay Slab",
-          "desc": "Whether you are working for a corporate firm or are self-employed, having advanced Java skills increases your pay scale by a significant margin. We will help you get proficient in advanced Java concepts, which will open high-paying opportunities for you."
+          "title": "Learn from Industry Professionals",
+          "desc": "Learn from professionals who make difficult coding concepts easy for you using live sessions, practical assignments, and doubt resolution sessions. You will learn how things work in the industry and code with confidence."
         },
         {
-          "title": "Higher Employability",
-          "desc": "Enterprises and businesses are always looking for individuals with advanced-level Java skills. This makes the job search easier as you will have plenty of opportunities to choose from. Moreover, if you have certification that proves your skills, your resume will be shortlisted easily."
+          "title": "Job-Oriented Education & Placement",
+          "desc": "We have designed this course to make you a successful IT professional by offering you mock interview preparation, resume building, coding practice, career mentoring, and dedicated placement support."
         },
         {
-          "title": "Who Can and Who Should Enroll in Advanced Java Training",
-          "desc": "Candidates who are considering enrolling in our Advanced Java Training Institute Greater Noida must understand that this is not beginner-friendly. We will be covering advanced concepts assuming that candidates are familiar with the basics of core Java."
-        },
-        {
-          "title": "Our Advanced Training is Ideal for",
-          "desc": ""
-        },
-        {
-          "title": "Java beginners with basic knowledge",
-          "desc": "Learners who understand Core Java and want to move toward advanced development."
-        },
-        {
-          "title": "Java developers",
-          "desc": "Professionals looking to strengthen their skills in enterprise application development."
-        },
-        {
-          "title": "Computer science graduates",
-          "desc": "Fresh graduates who want to build job-ready Java development skills."
-        },
-        {
-          "title": "Software developers",
-          "desc": "Developers who want to work with technologies such as JDBC, Servlets, JSP, Hibernate, Spring, and Spring Boot."
-        },
-        {
-          "title": "Web developers",
-          "desc": "Professionals interested in developing dynamic, database-driven web applications."
-        },
-        {
-          "title": "IT professionals",
-          "desc": "Those planning to transition into Java-based development roles."
-        },
-        {
-          "title": "Who Should Consider Enrolling",
-          "desc": "Who want to build a career as a Java developer."
-        },
-        {
-          "title": "Already Know Core",
-          "desc": "Already know Core Java and want to learn enterprise-level Java technologies."
-        },
-        {
-          "title": "Enterprise Backend Architecture",
-          "desc": "Who want to develop scalable and database-driven applications."
-        },
-        {
-          "title": "Career & Placement Support",
-          "desc": "Are preparing for Java developer job interviews."
+          "title": "Enterprise Project Portfolio",
+          "desc": "Build and deploy production-grade end-to-end web applications with microservices architectures, creating an impressive verified GitHub portfolio for hiring partners."
         }
       ],
       "keyHighlights": [
         {
-          "title": "Standout Feature",
-          "desc": "Yukti Software mentors and industrial experts understand the modern IT infrastructure very well. Thus, they designed the Advanced Java Training course modules to cover every essential Java concept, followed by practical exercises. It plays a huge role in preparing you for the challenges that you will face when building enterprise-level solutions. To further improve your understanding, our Advanced Java Training Institute Greater Noida divides the course into multiple modules. More highlights of the course are listed below:"
+          "title": "Relevant Curriculum to Industry",
+          "desc": "Gain knowledge of Java Full Stack subjects in which the leading IT organizations seek expertise."
         },
         {
-          "title": "Career Assistance by Experts",
-          "desc": "Let our experts help you choose the right career path and provide you with key job-market insights."
+          "title": "Expert Mentors",
+          "desc": "Learn from mentors who possess practical industry experience and enterprise engineering backgrounds."
         },
         {
-          "title": "Personalized Attention",
-          "desc": "Get one-on-one training from experts to resolve your doubts for better in-depth conceptual understanding."
+          "title": "Coding Exercise Practice",
+          "desc": "Solve coding questions daily to develop your logical reasoning and problem-solving skills."
         },
         {
-          "title": "Lectures by Industrial Professionals",
-          "desc": "Learn from well-qualified mentors who will simplify advanced Java concepts for you."
+          "title": "Offline & Interactive Classes",
+          "desc": "Have interactive offline classes with individual attention and hands-on laboratory practice."
         },
         {
-          "title": "Interactive Classes",
-          "desc": "Engage in productive conversation with students and mentors to keep learning fun and exciting."
+          "title": "Sessions for Doubt Clarification",
+          "desc": "Clarify your doubts regarding coding in dedicated 1-on-1 mentoring classes with our experts."
         },
         {
-          "title": "Advanced Lab Setups",
-          "desc": "Use your conceptual knowledge to solve real problems and to build practical projects in our advanced lab setups."
+          "title": "Technical Mock Interviews",
+          "desc": "Build confidence through structured technical mock interviews and HR round preparation."
         },
         {
-          "title": "Study Resources",
-          "desc": "Get access to the lecture videos, notes, and other study resources."
+          "title": "Career Guidance and Job Placement Services",
+          "desc": "Receive career guidance, resume preparation, portfolio building, and job placements."
+        },
+        {
+          "title": "Lifetime Revision & Community Access",
+          "desc": "Enjoy lifetime revision on concepts, updated study resources, and ongoing alumni support."
         }
       ],
       "targetAudience": [
-        "Fresh graduates and engineering students seeking lucrative IT job roles.",
-        "Working developers wanting to upskill into modern high-demand technologies.",
-        "Non-IT professionals seeking a guided transition into software engineering.",
-        "Freelancers looking to build enterprise-scale web and software solutions."
+        "Students pursuing or completing B.Tech, BCA, MCA, B.Sc. (IT/CS), or similar degrees looking to start strong in tech.",
+        "Fresh graduates looking to start a career as a high-demand Java Full Stack Developer.",
+        "Working professionals planning to switch to modern software development with Java & Spring Boot.",
+        "Core Java developers aiming to upgrade to complete end-to-end full stack web development.",
+        "Beginners with basic programming knowledge and a strong passion for coding.",
+        "Software testers and QA engineers who want to transition into development roles.",
+        "Freelancers looking to expand their technical expertise and build full-scale web applications.",
+        "Anyone preparing for Java developer interviews with hands-on project experience.",
+        "Learners seeking industry-recognized training with placement assistance at Yukti Software."
       ],
       "curriculum": [
         {
-          "moduleTitle": "Module 1: Advanced Java Fundamentals",
+          "moduleTitle": "Module 1: Introduction to Full Stack Development",
           "topics": [
-            "Advanced OOP concepts",
-            "Exception handling and custom exceptions",
-            "Collections Framework and Generics",
-            "Multithreading and concurrency",
-            "Lambda expressions and Functional Interfaces",
-            "Stream API",
-            "Optional and modern Java features",
-            "Java I/O and NIO",
-            "Date and Time API"
+            "Overview of Full Stack Development",
+            "Software Development Life Cycle (SDLC)",
+            "Client-Server Architecture",
+            "Setting Up Development Environment",
+            "IDE Installation and Configuration (IntelliJ / Eclipse / VS Code)",
+            "Introduction to Git and GitHub"
           ]
         },
         {
-          "moduleTitle": "Module 2: Database Connectivity with JDBC",
+          "moduleTitle": "Module 2: Front-End Development (HTML, CSS & JavaScript)",
           "topics": [
-            "Introduction to JDBC architecture",
-            "JDBC drivers and connection management",
-            "CRUD operations",
-            "PreparedStatement and CallableStatement",
-            "ResultSet and transaction management",
-            "Batch processing",
-            "Connection pooling",
-            "JDBC best practices"
+            "HTML5 Fundamentals & Semantic Web",
+            "CSS3 Styling and Responsive Design",
+            "Bootstrap & Tailwind Frameworks",
+            "JavaScript Basics & Async Programming",
+            "DOM Manipulation & Event Handling",
+            "ES6+ Modern JavaScript Features",
+            "Client-Side Form Validation"
           ]
         },
         {
-          "moduleTitle": "Module 3: Java Web Development",
+          "moduleTitle": "Module 3: Advanced Front-End Framework (React.js)",
           "topics": [
-            "Web application architecture",
-            "HTTP request-response lifecycle",
-            "Servlets and Servlet API",
-            "Servlet configuration and lifecycle",
-            "Session management and cookies",
-            "Filters and listeners",
-            "JSP fundamentals",
-            "JSTL and Expression Language",
-            "MVC architecture"
+            "Introduction to React.js & SPA Architecture",
+            "Components, JSX, Props and State Management",
+            "React Hooks (useState, useEffect, useContext)",
+            "Routing with React Router DOM",
+            "REST API Integration with Axios / Fetch",
+            "Building Responsive User Interfaces"
           ]
         },
         {
-          "moduleTitle": "Module 4: Hibernate & JPA",
+          "moduleTitle": "Module 4: Core Java Programming",
           "topics": [
-            "ORM concepts",
-            "Hibernate architecture",
-            "Entity mapping",
-            "Relationships and associations",
-            "JPQL and HQL",
-            "CRUD operations with Hibernate",
-            "Lazy and eager loading",
-            "Transactions",
-            "JPA and Hibernate integration",
-            "Pagination and caching"
+            "Java Fundamentals & JVM / JDK Architecture",
+            "Variables, Data Types, and Operators",
+            "Control Statements and Loops",
+            "Arrays and String Manipulation",
+            "Methods, Functions & Memory Allocation",
+            "Object-Oriented Programming (OOPs: Classes, Objects, Inheritance, Polymorphism, Encapsulation, Abstraction)",
+            "Exception Handling & Custom Exceptions"
           ]
         },
         {
-          "moduleTitle": "Module 5: Spring Framework",
+          "moduleTitle": "Module 5: Advanced Java & Modern Features",
           "topics": [
-            "Spring architecture and ecosystem",
-            "Inversion of Control (IoC)",
-            "Dependency Injection",
-            "Spring Beans",
-            "Bean lifecycle and scopes",
-            "Spring configuration",
-            "Spring MVC",
+            "Collections Framework (List, Set, Map)",
+            "Multithreading and Concurrency",
+            "File Handling and Java I/O / NIO",
+            "Lambda Expressions & Functional Interfaces",
+            "Stream API for Data Processing",
+            "Generics and Annotations"
+          ]
+        },
+        {
+          "moduleTitle": "Module 6: Database Management (SQL & MySQL)",
+          "topics": [
+            "Introduction to RDBMS & Relational Models",
+            "SQL Queries (DDL, DML, DQL)",
+            "CRUD Operations & Constraints",
+            "Joins, Subqueries and Aggregations",
+            "Stored Procedures, Triggers & Views",
+            "Database Schema Design & Indexing",
+            "MySQL Integration"
+          ]
+        },
+        {
+          "moduleTitle": "Module 7: JDBC (Java Database Connectivity)",
+          "topics": [
+            "JDBC Architecture & Drivers",
+            "Connecting Java Applications with MySQL",
+            "Statement, PreparedStatement & CallableStatement",
+            "ResultSet Handling & Mapping",
+            "Transaction Management & ACID properties",
+            "Building CRUD-Based Database Applications"
+          ]
+        },
+        {
+          "moduleTitle": "Module 8: Hibernate Framework & JPA",
+          "topics": [
+            "Hibernate Architecture & ORM Concepts",
+            "Hibernate Configuration & SessionFactory",
+            "Entity Mapping & Relationships (@OneToOne, @OneToMany, @ManyToMany)",
+            "HQL (Hibernate Query Language) & Criteria API",
+            "CRUD Operations with Hibernate & JPA",
+            "Caching and Performance Optimization"
+          ]
+        },
+        {
+          "moduleTitle": "Module 9: Spring Framework",
+          "topics": [
+            "Introduction to Spring Framework Ecosystem",
+            "Dependency Injection (DI) & Inversion of Control (IoC)",
+            "Spring Beans, Scopes & Lifecycle",
+            "Spring MVC Architecture",
             "Aspect-Oriented Programming (AOP)",
-            "Spring Data concepts"
+            "Validation and Exception Handling"
           ]
         },
         {
-          "moduleTitle": "Module 6: Spring Boot Development",
+          "moduleTitle": "Module 10: Spring Boot & REST API Development",
           "topics": [
-            "Introduction to Spring Boot",
-            "Spring Boot project structure",
-            "Spring Initializr",
-            "Auto-configuration",
-            "Starter dependencies",
-            "Configuration and profiles",
-            "Building RESTful applications",
-            "Validation and exception handling",
-            "Actuator and application monitoring"
+            "Spring Boot Fundamentals & Auto-Configuration",
+            "Building Scalable RESTful APIs",
+            "CRUD Operations with Spring Data JPA",
+            "JSON Processing with Jackson",
+            "API Testing with Postman & Swagger / OpenAPI",
+            "Authentication & Authorization Basics (JWT / Spring Security)",
+            "Global Exception Handling in REST APIs"
           ]
         },
         {
-          "moduleTitle": "Module 7: REST API Development",
+          "moduleTitle": "Module 11: Version Control, Build Tools & Cloud Deployment",
           "topics": [
-            "REST architecture and principles",
-            "HTTP methods and status codes",
-            "JSON and XML",
-            "REST controllers",
-            "Request parameters and path variables",
-            "Request/response handling",
-            "DTOs",
-            "API validation",
-            "Global exception handling",
-            "API documentation with OpenAPI/Swagger"
+            "Git and GitHub Workflow (Branching, Merging, PRs)",
+            "Maven / Gradle Build Automation",
+            "Project Deployment Basics & Environment Configurations",
+            "Docker Containerization for Spring Boot Apps",
+            "Hosting Java Applications & Introduction to Cloud Deployment (AWS)"
           ]
         },
         {
-          "moduleTitle": "Module 8: Spring Data JPA",
+          "moduleTitle": "Module 12: Live Projects & Industry Capstone Training",
           "topics": [
-            "Repository architecture",
-            "CRUD repositories",
-            "Custom queries",
-            "JPQL and native queries",
-            "Entity relationships",
-            "Pagination and sorting",
-            "Transactions",
-            "Query optimization",
-            "Database integration with MySQL/PostgreSQL"
-          ]
-        },
-        {
-          "moduleTitle": "Module 9: Spring Security",
-          "topics": [
-            "Authentication vs. authorization",
-            "Spring Security architecture",
-            "User authentication",
-            "Password encoding",
-            "Role-based access control",
-            "Securing REST APIs",
-            "JWT-based authentication",
-            "OAuth 2.0 basics",
-            "CORS and CSRF",
-            "Common web security practices"
-          ]
-        },
-        {
-          "moduleTitle": "Module 10: Microservices with Spring Boot",
-          "topics": [
-            "Microservices architecture",
-            "Monolithic vs. microservices applications",
-            "Designing microservices",
-            "Service-to-service communication",
-            "REST-based communication",
-            "Service discovery",
-            "API Gateway",
-            "Centralized configuration",
-            "Fault tolerance and resilience",
-            "Distributed tracing concepts"
-          ]
-        },
-        {
-          "moduleTitle": "Module 11: Testing Java Applications",
-          "topics": [
-            "Unit testing fundamentals",
-            "JUnit",
-            "Mockito",
-            "Integration testing",
-            "Spring Boot testing",
-            "REST API testing",
-            "Test-driven development (TDD) basics",
-            "Test coverage",
-            "Postman for API testing"
-          ]
-        },
-        {
-          "moduleTitle": "Module 12: Build Tools & Version Control",
-          "topics": [
-            "Maven fundamentals",
-            "pom.xml and dependency management",
-            "Maven lifecycle",
-            "Gradle basics",
-            "Git fundamentals",
-            "Branching and merging",
-            "Pull requests",
-            "GitHub/GitLab workflow"
-          ]
-        },
-        {
-          "moduleTitle": "Module 13: Deployment & DevOps Basics",
-          "topics": [
-            "Application packaging",
-            "JAR and WAR deployment",
-            "Environment-specific configurations",
-            "Docker fundamentals",
-            "Containerizing Spring Boot applications",
-            "CI/CD concepts",
-            "Deploying Java applications to cloud platforms",
-            "Basic application monitoring"
-          ]
-        },
-        {
-          "moduleTitle": "Module 14: Capstone Project & Job Preparation",
-          "topics": [
-            "Requirement analysis",
-            "Application architecture and database design",
-            "Backend development using Java + Spring Boot",
-            "REST API implementation",
-            "Authentication and authorization",
-            "Database integration",
-            "Unit and integration testing",
-            "Docker-based deployment",
-            "Git-based project management",
-            "Resume and portfolio preparation",
-            "Advanced Java interview preparation",
-            "Yukti Software - Latest Curriculum, Accredited Certification, and More",
-            "Yukti Software is an accredited software training provider with a proven track record. We have helped thousands of students with practical training and job opportunities, ensuring great career growth. We are a company that offers software solutions for small, medium, and large-scale businesses. Using this experience, we maintain a professional atmosphere during our lectures to help candidates understand the pressure and challenges of an actual professional workspace.",
-            "Why You Should Join Yukti Software",
-            "At Yukti Software, you will learn from instructors with industry experience who understand modern technologies, development practices, and real-world challenges.",
-            "Access updated course content that reflects the latest technologies, tools, frameworks, and industry requirements.",
-            "Gain hands-on experience through practical exercises, projects, case studies, and lab sessions.",
-            "Develop industry-relevant and job-oriented skills that can help you prepare for roles in the IT sector.",
-            "Improve your interview performance through mock interviews, technical assessments, resume guidance, and interview preparation.",
-            "Receive career guidance to help you choose suitable IT roles, certifications, and professional growth paths.",
-            "Benefit from structured learning resources, doubt-clearing sessions, study materials, and ongoing support throughout the course.",
-            "A: The duration depends on the course provider and curriculum. Most job-oriented programs can range from a few weeks to several months, depending on the depth of practical training."
+            "Full Stack Java Project Development (React + Spring Boot + MySQL)",
+            "Admin Dashboard & Management Portal",
+            "E-Commerce Web Application with Payment Integration",
+            "Employee Management System & Microservices Architecture",
+            "Real-Time Project Implementation & Team Collaboration",
+            "Debugging, Code Optimization & Unit Testing with JUnit",
+            "Live Project Demonstration & Code Review"
           ]
         }
       ],
       "careerOpportunities": [
-        "Want to upgrade your existing programming skills for better career opportunities.",
-        "Plan to work with popular Java frameworks such as Spring and Spring Boot.",
-        "Job Roles After Completing the Java Training",
-        "Job Role",
-        "Key Responsibilities",
-        "Relevant Skills",
-        "Java Developer",
-        "Develop, test, and maintain Java-based applications",
-        "Core Java, OOP, JDBC, Spring",
-        "Backend Developer",
-        "Build server-side applications, APIs, and database integrations",
-        "Java, Spring Boot, REST APIs, SQL",
-        "Full-Stack Java Developer",
-        "Develop both frontend and backend components of web applications",
-        "Java, Spring Boot, HTML, CSS, JavaScript",
+        "Java Full Stack Developer",
+        "Java Backend Developer",
         "Spring Boot Developer",
-        "Build scalable enterprise applications and microservices",
-        "Spring Boot, REST, JPA, Hibernate",
-        "Java Web Developer",
-        "Create and maintain dynamic Java-based web applications",
-        "Servlets, JSP, JDBC, JavaScript",
-        "Java Application Developer",
-        "Design and implement business applications for organizations",
-        "Java, databases, APIs, software design",
-        "Java Microservices Developer",
-        "Develop and manage independent, scalable microservices",
-        "Java, Spring Boot, REST, Docker",
-        "Software Engineer",
-        "Design, develop, test, and optimize software solutions",
-        "Java, DSA, Git, testing, databases",
-        "Java QA/Automation Engineer",
-        "Automate software testing and identify application defects",
-        "Java, Selenium, JUnit, TestNG",
-        "Java Technical Consultant",
-        "Help organizations design and implement Java-based solutions",
-        "Java, Spring, architecture, problem-solving"
+        "Front-End Developer (React.js)",
+        "Web Application Developer",
+        "Software Engineer (Java)",
+        "REST API Developer",
+        "Microservices Developer",
+        "Full Stack Software Engineer",
+        "Cloud Java Developer",
+        "Technical Consultant (Java)"
       ],
       "careerRolesTable": [
         {
-          "role": "Java Developer",
-          "responsibilities": "Develop, test, and maintain Java-based applications",
-          "skillsOrPackage": "Core Java, OOP, JDBC, Spring"
+          "role": "Java Full Stack Developer",
+          "responsibilities": "Design and develop end-to-end front-end and back-end applications using React, Spring Boot, and MySQL.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
-          "role": "Backend Developer",
-          "responsibilities": "Build server-side applications, APIs, and database integrations",
-          "skillsOrPackage": "Java, Spring Boot, REST APIs, SQL"
-        },
-        {
-          "role": "Full-Stack Java Developer",
-          "responsibilities": "Develop both frontend and backend components of web applications",
-          "skillsOrPackage": "Java, Spring Boot, HTML, CSS, JavaScript"
+          "role": "Java Backend Developer",
+          "responsibilities": "Design and develop robust APIs, business logic, and server-side applications.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
           "role": "Spring Boot Developer",
-          "responsibilities": "Build scalable enterprise applications and microservices",
-          "skillsOrPackage": "Spring Boot, REST, JPA, Hibernate"
+          "responsibilities": "Develop scalable enterprise applications and microservices using Spring Boot.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
-          "role": "Java Web Developer",
-          "responsibilities": "Create and maintain dynamic Java-based web applications",
-          "skillsOrPackage": "Servlets, JSP, JDBC, JavaScript"
+          "role": "Software Engineer (Java)",
+          "responsibilities": "Develop Java software that is designed, developed, tested, and deployed across enterprise infrastructure.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
-          "role": "Java Application Developer",
-          "responsibilities": "Design and implement business applications for organizations",
-          "skillsOrPackage": "Java, databases, APIs, software design"
+          "role": "Web Application Developer",
+          "responsibilities": "Design and develop modern, dynamic web applications with interactive front-end interfaces.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
-          "role": "Java Microservices Developer",
-          "responsibilities": "Develop and manage independent, scalable microservices",
-          "skillsOrPackage": "Java, Spring Boot, REST, Docker"
+          "role": "REST API Developer",
+          "responsibilities": "Design and develop secure, high-performance RESTful APIs and database integrations.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
-          "role": "Software Engineer",
-          "responsibilities": "Design, develop, test, and optimize software solutions",
-          "skillsOrPackage": "Java, DSA, Git, testing, databases"
+          "role": "Microservices Developer",
+          "responsibilities": "Develop cloud-ready applications using distributed microservices architecture.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
-          "role": "Java QA/Automation Engineer",
-          "responsibilities": "Automate software testing and identify application defects",
-          "skillsOrPackage": "Java, Selenium, JUnit, TestNG"
+          "role": "Full Stack Software Engineer",
+          "responsibilities": "Handle end-to-end software development from interactive UI to database architecture and cloud deployment.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         },
         {
-          "role": "Java Technical Consultant",
-          "responsibilities": "Help organizations design and implement Java-based solutions",
-          "skillsOrPackage": "Java, Spring, architecture, problem-solving"
+          "role": "Cloud Java Developer",
+          "responsibilities": "Develop, containerize with Docker, and deploy Java applications on cloud platforms.",
+          "skillsOrPackage": "High Demand • Job-Ready"
+        },
+        {
+          "role": "Technical Consultant (Java)",
+          "responsibilities": "Provide technical architecture support and enterprise solutions for complex business projects.",
+          "skillsOrPackage": "High Demand • Job-Ready"
         }
       ],
-      "whyChooseYukti": [],
+      "whyChooseYukti": [
+        "Learn from experienced professionals in the industry, who will share their practical knowledge and experience.",
+        "Develop practical skills through live projects, coding exercises, mock interviews, and other lab activities.",
+        "Get guidance on career and placements, resume building, and interview skills to land jobs in top firms.",
+        "Study in small groups with focused attention and get flexible timings as well as lifetime access to revision classes."
+      ],
       "faqs": [
         {
-          "question": "1: What is Advanced Java training, and what will I learn?",
-          "answer": "A: Advanced Java training focuses on enterprise and web application development using technologies such as JDBC, Servlets, JSP, Hibernate, Spring, Spring Boot, REST APIs, and databases."
+          "question": "Which is the best Java Full Stack Course in Greater Noida?",
+          "answer": "At Yukti Software, the Java Full Stack course is considered the most effective program. It includes comprehensive practical training, live enterprise projects, industry mentors, technical mock interviews, and dedicated job placement assistance."
         },
         {
-          "question": "2: What are the prerequisites for joining an Advanced Java course?",
-          "answer": "A: Basic knowledge of Core Java, object-oriented programming, and fundamental programming concepts is generally recommended before starting Advanced Java training."
+          "question": "Is this Java Full Stack course suitable for beginners?",
+          "answer": "Yes, the course starts with the fundamentals of programming and step-by-step advances to enterprise Java Full Stack technologies. With minimal prior knowledge of computers, anyone can gain complete skills through guided practicals."
         },
         {
-          "question": "3: How long does it take to complete Advanced Java training?",
-          "answer": ""
+          "question": "What career options are available after completion of the course?",
+          "answer": "You can pursue roles such as Java Full Stack Developer, Backend Developer, Spring Boot Developer, Software Engineer, REST API Developer, and Web Application Developer in high-growth startups as well as leading MNCs."
         },
         {
-          "question": "4: What job opportunities are available after Advanced Java training?",
-          "answer": "A: You can pursue roles such as Java Developer, Backend Developer, Spring Boot Developer, Java Web Developer, Full-Stack Java Developer, and Software Engineer."
+          "question": "Are Live Projects included in the training?",
+          "answer": "Yes! Live projects included in the training cover: Real-world web application development (React + Spring Boot), industry-based coding assignments, team-based enterprise implementations, and professional project presentations."
         },
         {
-          "question": "5: Is Advanced Java training useful for getting a Java developer job?",
-          "answer": "A: Yes. A practical Advanced Java course can help you develop industry-relevant skills in Spring Boot, REST APIs, databases, Hibernate, testing, and application development, which are commonly used in Java development roles."
+          "question": "Is this course suitable for working professionals?",
+          "answer": "Yes, flexible batch timings (including weekend batches and evening slots) are available at Yukti Software for college students as well as working professionals."
         }
       ]
     }

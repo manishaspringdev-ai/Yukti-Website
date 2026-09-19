@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { 
   Sparkles, 
   Image as ImageIcon, 
@@ -29,7 +30,7 @@ const PHOTO_ITEMS = [
     title: "Placement Celebration Batch 2026",
     category: "placements",
     categoryLabel: "Placement Drives",
-    caption: "Congratulating our 38 placed candidates who received offer letters from top MNCs with up to ₹24 LPA.",
+    caption: "Congratulating our 38 placed candidates who received offer letters from leading IT firms and global MNCs.",
     image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=80",
     badge: "38 Placements"
   },
@@ -74,7 +75,7 @@ const PHOTO_ITEMS = [
 const VIDEO_ITEMS = [
   {
     id: "vid-1",
-    title: "From Non-CS Background to ₹14.5 LPA Software Engineer",
+    title: "From Non-CS Background to Full Stack Software Engineer",
     student: "Rahul Sharma",
     role: "Full Stack Developer at Infosys",
     duration: "4:25 min",
@@ -124,12 +125,34 @@ export default function GalleryPage({ onOpenConsultation }) {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
 
+  // Lock body scroll and handle Escape key on active modal
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setSelectedPhoto(null);
+        setSelectedVideo(null);
+      }
+    };
+
+    if (selectedPhoto || selectedVideo) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedPhoto, selectedVideo]);
+
   const filteredPhotos = photoFilter === 'all' 
     ? PHOTO_ITEMS 
     : PHOTO_ITEMS.filter(p => p.category === photoFilter);
 
   return (
-    <div className="py-10 sm:py-16 animate-fadeIn">
+    <div className="py-10 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* Page Header */}
@@ -316,99 +339,117 @@ export default function GalleryPage({ onOpenConsultation }) {
 
       </div>
 
-      {/* Lightbox Modal for Photos */}
-      {selectedPhoto && (
+      {/* Responsive Lightbox Modal for Photos (Portal to body for flawless overlay) */}
+      {selectedPhoto && typeof document !== 'undefined' && createPortal(
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md animate-fadeIn"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-slate-950/85 backdrop-blur-md"
           onClick={() => setSelectedPhoto(null)}
         >
           <div 
-            className="relative w-full max-w-3xl bg-white dark:bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 space-y-0"
+            className="relative w-full max-w-4xl max-h-[90vh] flex flex-col bg-slate-900 text-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-slate-800"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Close Button */}
             <button
               onClick={() => setSelectedPhoto(null)}
-              className="absolute top-4 right-4 z-20 p-2.5 rounded-full text-white hover:text-white bg-slate-950/70 backdrop-blur-md hover:bg-slate-900 border border-white/20 transition-all"
+              aria-label="Close modal"
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 z-40 p-2 sm:p-2.5 rounded-full text-white bg-slate-950/80 backdrop-blur-md hover:bg-slate-800 border border-white/20 transition-all cursor-pointer shadow-lg hover:scale-110 active:scale-95"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="relative h-72 sm:h-96 w-full bg-slate-950 overflow-hidden">
+            {/* Photo Container - Responsive Object Contain */}
+            <div className="relative flex-1 min-h-[180px] max-h-[58vh] sm:max-h-[64vh] bg-black flex items-center justify-center overflow-hidden p-2">
               <img 
                 src={selectedPhoto.image} 
                 alt={selectedPhoto.title}
-                className="w-full h-full object-cover"
+                className="max-h-[54vh] sm:max-h-[60vh] w-auto max-w-full object-contain select-none rounded-lg"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-black/30" />
-              <div className="absolute bottom-4 left-6 right-6 flex items-center justify-between text-white">
-                <span className="px-3 py-1 rounded-full text-xs font-bold uppercase bg-brand-600 shadow-md">
+              <div className="absolute bottom-3 left-3 sm:left-4 sm:bottom-4 flex items-center space-x-2">
+                <span className="px-2.5 py-1 rounded-lg text-[10px] sm:text-xs font-bold uppercase bg-brand-600/90 backdrop-blur-md text-white shadow-md">
                   {selectedPhoto.badge}
                 </span>
-                <span className="text-xs text-slate-300 font-medium">📍 Greater Noida Campus</span>
+                <span className="hidden sm:inline-block px-2.5 py-1 rounded-lg text-[11px] font-medium bg-slate-900/80 backdrop-blur-md text-slate-200 border border-white/10">
+                  📍 Greater Noida Campus
+                </span>
               </div>
             </div>
 
-            <div className="p-6 sm:p-8 space-y-3">
+            {/* Photo Details / Caption Footer */}
+            <div className="p-4 sm:p-5 bg-slate-900 border-t border-slate-800 space-y-1 sm:space-y-1.5 shrink-0">
               <div className="flex items-center space-x-2">
-                <span className="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wider">{selectedPhoto.categoryLabel}</span>
+                <span className="text-[10px] sm:text-[11px] font-bold text-brand-400 uppercase tracking-wider">{selectedPhoto.categoryLabel}</span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">{selectedPhoto.title}</h3>
-              <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+              <h3 className="text-sm sm:text-lg font-bold text-white leading-snug">{selectedPhoto.title}</h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-h-[14vh] overflow-y-auto pr-1">
                 {selectedPhoto.caption}
               </p>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
-      {/* Video Modal Player Simulator */}
-      {selectedVideo && (
+      {/* Responsive Video Modal Player Simulator (Portal to body for flawless overlay) */}
+      {selectedVideo && typeof document !== 'undefined' && createPortal(
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md animate-fadeIn"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-slate-950/85 backdrop-blur-md"
           onClick={() => setSelectedVideo(null)}
         >
           <div 
-            className="relative w-full max-w-3xl bg-white dark:bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 space-y-0"
+            className="relative w-full max-w-4xl max-h-[90vh] flex flex-col bg-slate-900 text-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-slate-800"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Close Button */}
             <button
               onClick={() => setSelectedVideo(null)}
-              className="absolute top-4 right-4 z-20 p-2.5 rounded-full text-white hover:text-white bg-slate-950/70 backdrop-blur-md hover:bg-slate-900 border border-white/20 transition-all"
+              aria-label="Close modal"
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 z-40 p-2 sm:p-2.5 rounded-full text-white bg-slate-950/80 backdrop-blur-md hover:bg-slate-800 border border-white/20 transition-all cursor-pointer shadow-lg hover:scale-110 active:scale-95"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="relative h-72 sm:h-80 w-full bg-slate-950 flex flex-col items-center justify-center p-6 text-center overflow-hidden">
+            {/* Video Container (16:9 Aspect Ratio) */}
+            <div className="relative aspect-video w-full bg-black flex flex-col items-center justify-center p-4 text-center overflow-hidden">
               <img 
                 src={selectedVideo.thumbnail} 
                 alt={selectedVideo.title}
-                className="absolute inset-0 w-full h-full object-cover opacity-35"
+                className="absolute inset-0 w-full h-full object-cover opacity-40"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-slate-950/70" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-slate-950/80" />
 
-              <div className="relative z-10 space-y-3 flex flex-col items-center">
-                <div className="w-16 h-16 rounded-full bg-brand-600 flex items-center justify-center text-white shadow-2xl border-2 border-white/30 animate-pulse cursor-pointer hover:scale-110 transition-transform">
-                  <Play className="w-7 h-7 fill-white ml-1" />
+              <div className="relative z-10 space-y-3 flex flex-col items-center px-4">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-brand-600 flex items-center justify-center text-white shadow-2xl border-2 border-white/40 animate-pulse cursor-pointer hover:scale-110 active:scale-95 transition-transform">
+                  <Play className="w-5 h-5 sm:w-7 sm:h-7 fill-white ml-1" />
                 </div>
-                <p className="text-xs text-slate-300 max-w-md">Playing High Definition Masterclass: <span className="text-white font-bold block mt-1">{selectedVideo.title}</span></p>
-                <span className="text-[10px] px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 font-mono">1080p Ultra HD • Duration: {selectedVideo.duration}</span>
+                <div className="space-y-1">
+                  <p className="text-xs sm:text-sm text-slate-200 font-bold max-w-lg leading-snug">
+                    {selectedVideo.title}
+                  </p>
+                  <p className="text-[10px] sm:text-[11px] text-brand-300 font-semibold">{selectedVideo.student} • {selectedVideo.role}</p>
+                </div>
+                <span className="text-[9px] sm:text-[10px] px-3 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 font-mono">
+                  1080p Full HD • Duration: {selectedVideo.duration}
+                </span>
               </div>
             </div>
 
-            <div className="p-6 sm:p-8 space-y-3">
+            {/* Video Details Footer */}
+            <div className="p-4 sm:p-5 bg-slate-900 border-t border-slate-800 space-y-1 sm:space-y-1.5 shrink-0">
               <div className="flex items-center justify-between">
-                <span className="px-2.5 py-0.5 rounded-md text-[11px] font-extrabold uppercase bg-brand-50 dark:bg-brand-950/50 text-brand-600 dark:text-brand-400 border border-brand-200 dark:border-brand-800">
+                <span className="px-2 py-0.5 rounded-md text-[10px] sm:text-[11px] font-extrabold uppercase bg-brand-500/20 text-brand-300 border border-brand-500/30">
                   {selectedVideo.badge}
                 </span>
-                <p className="text-xs text-brand-600 dark:text-brand-400 font-bold">{selectedVideo.student} • {selectedVideo.role}</p>
+                <p className="text-[10px] sm:text-[11px] text-slate-400">⏱ {selectedVideo.duration}</p>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white">{selectedVideo.title}</h3>
-              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              <h3 className="text-sm sm:text-base font-bold text-white leading-snug">{selectedVideo.title}</h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-h-[14vh] overflow-y-auto pr-1">
                 {selectedVideo.description}
               </p>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
     </div>

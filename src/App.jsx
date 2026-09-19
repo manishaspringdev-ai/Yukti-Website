@@ -8,7 +8,6 @@ import Roadmap from './components/Roadmap';
 import StatsHighlights from './components/StatsHighlights';
 import Team from './components/Team';
 import GoogleReviewsWidget from './components/GoogleReviewsWidget';
-import Testimonials from './components/Testimonials';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import ConsultationModal from './components/ConsultationModal';
@@ -24,6 +23,7 @@ const AllCoursesPage = lazy(() => import('./pages/AllCoursesPage'));
 const CourseDetailPage = lazy(() => import('./pages/CourseDetailPage'));
 const GalleryPage = lazy(() => import('./pages/GalleryPage'));
 const CareersPage = lazy(() => import('./pages/CareersPage'));
+const TrainingInstitutePage = lazy(() => import('./pages/TrainingInstitutePage'));
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -75,13 +75,16 @@ export default function App() {
       const keyMap = {
         'python-fullstack': 'python-fullstack',
         'python': 'python',
-        'java-fullstack': 'advanced-java',
+        'java-fullstack': 'java-fullstack',
         'java': 'java',
-        'advanced-java': 'advanced-java',
+        'advanced-java': 'java-fullstack',
         'dsa': 'dsa',
         'ai-fullstack': 'ai-fullstack',
         'ai-ml': 'ai-ml',
         'fullstack': 'fullstack',
+        'software-development': 'software-development',
+        'software-training': 'software-development',
+        'software-development-course': 'software-development',
         'mern-stack': 'mern-stack',
         'react-js': 'react-js',
         'spring-boot': 'spring-boot',
@@ -129,6 +132,18 @@ export default function App() {
             <CareersPage onOpenConsultation={() => setIsConsultationOpen(true)} />
           </Suspense>
         );
+      case 'training-institute':
+      case 'institute':
+      case 'software-training-institute':
+      case 'software-training-institute-greater-noida':
+        return (
+          <Suspense fallback={<PageSkeletonLoader type="about" />}>
+            <TrainingInstitutePage 
+              onOpenConsultation={() => setIsConsultationOpen(true)} 
+              setCurrentPage={handlePageChange} 
+            />
+          </Suspense>
+        );
       case 'home':
       default:
         return (
@@ -153,8 +168,6 @@ export default function App() {
             <Team onOpenConsultation={() => setIsConsultationOpen(true)} />
             
             <GoogleReviewsWidget onOpenConsultation={() => setIsConsultationOpen(true)} />
-            
-            <Testimonials onOpenConsultation={() => setIsConsultationOpen(true)} />
             
             <ContactForm />
           </>

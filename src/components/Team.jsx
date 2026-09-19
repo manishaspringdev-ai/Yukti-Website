@@ -6,113 +6,159 @@ import { LinkedInIcon } from './SocialIcons';
 export default function Team() {
   const { teamSection } = siteData;
   const teamVariant = 'v2_bentoLeadership';
+  const [selectedMemberIndex, setSelectedMemberIndex] = useState(0);
   const [flippedIndex, setFlippedIndex] = useState(null);
 
+  const currentMember = teamSection.members[selectedMemberIndex] || teamSection.members[0];
+
   return (
-    <section id="team" className="py-12 sm:py-16 relative overflow-hidden bg-slate-100/50 dark:bg-slate-900/40">
+    <section id="team" className="pt-2 sm:pt-4 pb-6 sm:pb-8 relative overflow-hidden bg-slate-100/50 dark:bg-slate-900/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-8">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        <div className="text-center max-w-3xl mx-auto mb-5 sm:mb-7">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white">
             {teamSection.title}
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300">
-            {teamSection.subtitle}
-          </p>
         </div>
-
-        {/* 10-Variant Switcher Bar */}
-        
-
-        {/* ========================================================================= */}
-        {/* V1: MODERN GLASS BADGES */}
-        {/* ========================================================================= */}
-        {teamVariant === 'v1_glassCards' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 animate-fadeIn">
-            {teamSection.members.map((member, idx) => (
-              <div key={idx} className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 p-6 shadow-sm hover:shadow-2xl transition-all flex flex-col justify-between group">
-                <div className="space-y-5">
-                  <div className="relative">
-                    <div className={`w-20 h-20 rounded-2xl bg-gradient-to-tr ${member.avatarBg} text-white flex items-center justify-center font-extrabold text-2xl shadow-lg group-hover:scale-105 transition-transform`}>
-                      {member.initials}
-                    </div>
-                    <span className="absolute -bottom-2 -right-2 px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-900 text-white dark:bg-brand-500 shadow">Verified</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-extrabold text-slate-900 dark:text-white">{member.name}</h3>
-                    <p className="text-xs font-bold text-brand-600 dark:text-brand-400 mt-0.5">{member.role}</p>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 font-medium">{member.experience}</p>
-                  </div>
-                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">{member.bio}</p>
-                </div>
-                <div className="pt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-slate-400">
-                  <span className="text-[11px] font-medium text-slate-500">Leadership</span>
-                  <div className="flex items-center space-x-2">
-                    <a href={siteData.brand.socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-brand-600 transition-colors" aria-label="LinkedIn"><LinkedInIcon className="w-4 h-4" /></a>
-                    <a href={`mailto:${siteData.brand.email}`} className="hover:text-brand-600 transition-colors" aria-label="Email"><Mail className="w-4 h-4" /></a>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
 
         {/* ========================================================================= */}
         {/* V2: BENTO LEADERSHIP SPOTLIGHT */}
         {/* ========================================================================= */}
         {teamVariant === 'v2_bentoLeadership' && (
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 animate-fadeIn">
-            <div className="md:col-span-6 p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-950 to-brand-950 text-white flex flex-col justify-between space-y-6 border border-slate-800 shadow-2xl relative overflow-hidden group card-hover-effect hover-shine">
-              <div className="flex flex-col sm:flex-row sm:items-center gap-5">
-                <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-3xl overflow-hidden ring-4 ring-brand-500/30 flex-shrink-0 shadow-lg group-hover:ring-brand-400/50 transition-all duration-300">
-                  <img 
-                    src={teamSection.members[0].image} 
-                    alt={teamSection.members[0].name}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700 ease-out"
-                  />
-                  <span className="absolute bottom-1 right-1 px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-emerald-500 text-white shadow-md">
-                    Verified
-                  </span>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 animate-fadeIn items-stretch">
+            
+            {/* Dynamic Spotlight Card (Active Member) */}
+            <div className="md:col-span-6 p-6 sm:p-7 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xl flex flex-col justify-between space-y-4 relative overflow-hidden group card-hover-effect">
+              <div className="space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                  <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden ring-2 ring-brand-500/30 flex-shrink-0 shadow-md group-hover:ring-brand-500/60 transition-all duration-300">
+                    <img 
+                      src={currentMember.image} 
+                      alt={currentMember.name}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
+                    />
+                    <span className="absolute bottom-1 right-1 px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-emerald-500 text-white shadow-md">
+                      Verified
+                    </span>
+                  </div>
+                  <div className="space-y-1.5">
+                    <div className="flex flex-wrap items-center gap-1.5">
+                      <span className="px-2.5 py-0.5 rounded-lg bg-brand-50 dark:bg-brand-950/60 text-brand-600 dark:text-brand-400 text-xs font-bold border border-brand-200/60 dark:border-brand-800/60">
+                        {currentMember.role}
+                      </span>
+                      {currentMember.education && (
+                        <span className="px-2.5 py-0.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs font-bold border border-emerald-200/60 dark:border-emerald-800/60">
+                          🎓 {currentMember.education}
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+                      {currentMember.name}
+                    </h3>
+                    <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                      {currentMember.experience}
+                    </p>
+                  </div>
                 </div>
-                <div className="space-y-1">
-                  <span className="px-3 py-1 rounded-full bg-brand-500/20 text-brand-300 text-xs font-bold border border-brand-500/30">Founder & CEO</span>
-                  <h3 className="text-2xl sm:text-3xl font-black text-white">{teamSection.members[0].name}</h3>
-                  <p className="text-xs font-bold text-accent-primary">{teamSection.members[0].role} • {teamSection.members[0].experience}</p>
-                </div>
+
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+                  {currentMember.bio}
+                </p>
+
+                {/* Member Leadership / Philosophy Quote */}
+                {currentMember.quote && (
+                  <div className="bg-slate-50 dark:bg-slate-800/60 rounded-2xl p-3.5 border border-slate-100 dark:border-slate-800 flex items-start space-x-2.5">
+                    <Quote className="w-4 h-4 text-brand-500 flex-shrink-0 mt-0.5" />
+                    <p className="text-xs text-slate-700 dark:text-slate-300 font-medium italic leading-snug">
+                      "{currentMember.quote}"
+                    </p>
+                  </div>
+                )}
+
+                {/* 3-Column Credential Highlights Strip to eliminate empty whitespace */}
+                {currentMember.stats && (
+                  <div className="grid grid-cols-3 gap-2 pt-1">
+                    {currentMember.stats.map((stat, i) => (
+                      <div key={i} className="px-2.5 py-2 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800/80 text-center">
+                        <p className="text-xs sm:text-sm font-extrabold text-brand-600 dark:text-brand-400 leading-tight">
+                          {stat.value}
+                        </p>
+                        <p className="text-[10px] text-slate-500 dark:text-slate-400 font-semibold mt-0.5 truncate">
+                          {stat.label}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">{teamSection.members[0].bio}</p>
-              <div className="pt-4 flex flex-wrap gap-2 border-t border-white/10">
-                {teamSection.members[0].specialties.map((s, i) => (
-                  <span key={i} className="text-[11px] font-medium bg-white/10 hover:bg-brand-500/30 transition-colors px-2.5 py-1 rounded-lg">
+
+              {/* Specialties Badges */}
+              <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex flex-wrap gap-1.5">
+                {currentMember.specialties.map((s, i) => (
+                  <span key={i} className="text-[11px] font-semibold bg-brand-50/70 dark:bg-brand-950/50 text-brand-700 dark:text-brand-300 px-2.5 py-1 rounded-lg border border-brand-200/50 dark:border-brand-800/50">
                     {s}
                   </span>
                 ))}
               </div>
             </div>
 
-            <div className="md:col-span-6 grid grid-cols-1 gap-4">
-              {teamSection.members.slice(1).map((m, idx) => (
-                <div key={idx} className="p-5 sm:p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center space-x-4 shadow-sm card-hover-effect group">
-                  <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden ring-2 ring-brand-500/20 flex-shrink-0 shadow group-hover:ring-brand-400/50 transition-all">
-                    <img 
-                      src={m.image} 
-                      alt={m.name}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500 ease-out"
-                    />
+            {/* Team Members List (Click to switch spotlight) */}
+            <div className="md:col-span-6 grid grid-cols-1 gap-3.5">
+              {teamSection.members.map((m, idx) => {
+                const isSelected = selectedMemberIndex === idx;
+                return (
+                  <div 
+                    key={idx} 
+                    onClick={() => setSelectedMemberIndex(idx)}
+                    className={`p-4 rounded-3xl border transition-all duration-300 flex items-center space-x-4 shadow-sm cursor-pointer group ${
+                      isSelected 
+                        ? 'bg-brand-50/40 dark:bg-brand-950/30 border-brand-500 dark:border-brand-500 ring-2 ring-brand-500/20 shadow-md' 
+                        : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-brand-300 dark:hover:border-brand-700'
+                    }`}
+                  >
+                    <div className={`relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden ring-2 flex-shrink-0 shadow transition-all ${
+                      isSelected ? 'ring-brand-500' : 'ring-slate-200 dark:ring-slate-700 group-hover:ring-brand-400'
+                    }`}>
+                      <img 
+                        src={m.image} 
+                        alt={m.name}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
+                      />
+                    </div>
+                    <div className="space-y-0.5 flex-1">
+                      <div className="flex items-center justify-between">
+                        <h4 className={`text-sm sm:text-base font-bold transition-colors ${
+                          isSelected ? 'text-brand-600 dark:text-brand-400' : 'text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400'
+                        }`}>
+                          {m.name}
+                        </h4>
+                        {isSelected ? (
+                          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-xs">
+                            <Sparkles className="w-3 h-3 text-amber-300" />
+                            <span>Spotlight</span>
+                          </span>
+                        ) : (
+                          <span className="text-[11px] text-brand-600 dark:text-brand-400 font-bold opacity-0 group-hover:opacity-100 transition-opacity flex items-center space-x-0.5">
+                            <span>Select</span>
+                            <ChevronRight className="w-3 h-3" />
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs text-brand-600 dark:text-brand-400 font-bold">
+                        {m.role}
+                      </p>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
+                        {m.experience}
+                      </p>
+                    </div>
                   </div>
-                  <div className="space-y-1 flex-1">
-                    <h4 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">{m.name}</h4>
-                    <p className="text-xs text-brand-600 dark:text-brand-400 font-bold">{m.role}</p>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">{m.experience}</p>
-                    <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-2 mt-0.5">{m.bio}</p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}

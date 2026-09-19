@@ -1,4 +1,4 @@
-﻿// 3 High-Quality Contextual Photographic Images per Course Track
+// 3 High-Quality Contextual Photographic Images per Course Track
 export const courseImageGalleries = {
   python: [
     {
@@ -138,12 +138,26 @@ export const courseImageGalleries = {
       title: "Query Optimization, Indexing & ACID Transactions",
       caption: "Performance tuning, execution plan audits, indexing strategies & replication.",
       tag: "Performance Tuning"
+    }
+  ],
+  software: [
+    {
+      url: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80",
+      title: "Software Engineering & Architecture Lab",
+      caption: "SDLC, OOP design patterns, data structures, and enterprise architecture in Greater Noida.",
+      tag: "Software Engineering"
     },
     {
-      url: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80",
-      title: "Database Administrator (DBA) Career Placement",
-      caption: "Career readiness for certified SQL Server, PostgreSQL, and MongoDB database engineers.",
-      tag: "DBA Placement"
+      url: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
+      title: "Manual & Automated Testing & Debugging Hub",
+      caption: "Unit testing, integration testing, defect tracking, and API testing with modern tools.",
+      tag: "Testing & QA"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80",
+      title: "Live Capstone Project & Placement Drive",
+      caption: "End-to-end software product development, Git collaboration, and mock interview preparation.",
+      tag: "Job Placement"
     }
   ]
 };
@@ -152,6 +166,7 @@ export const courseImageGalleries = {
 export function getCourseImages(courseKey = '') {
   const key = (courseKey || '').toLowerCase();
   
+  if (key.includes('software')) return courseImageGalleries.software;
   if (key.includes('python')) return courseImageGalleries.python;
   if (key.includes('java') || key.includes('spring')) return courseImageGalleries.java;
   if (key.includes('dsa') || key.includes('algorithm')) return courseImageGalleries.dsa;
@@ -160,5 +175,5 @@ export function getCourseImages(courseKey = '') {
   if (key.includes('analytic') || key.includes('bi')) return courseImageGalleries.analytics;
   if (key.includes('dbms') || key.includes('sql') || key.includes('database') || key.includes('nosql')) return courseImageGalleries.database;
   
-  return courseImageGalleries.python;
+  return courseImageGalleries.software || courseImageGalleries.python;
 }
