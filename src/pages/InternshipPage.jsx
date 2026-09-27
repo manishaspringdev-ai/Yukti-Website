@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { submitEnquiry } from '../services/leadService';
+import { getInternshipDomains } from '../services/contentService';
 import { 
   GraduationCap, 
   Sparkles, 
@@ -29,8 +31,25 @@ const INTERNSHIP_DOMAINS = [
 ];
 
 export default function InternshipPage({ onOpenConsultation }) {
+  const [domains, setDomains] = useState(INTERNSHIP_DOMAINS);
   const [activeTab, setActiveTab] = useState('paid');
   const [selectedDomain, setSelectedDomain] = useState('fullstack');
+
+  React.useEffect(() => {
+    let isMounted = true;
+    async function loadDomains() {
+      try {
+        const dynamicDomains = await getInternshipDomains(INTERNSHIP_DOMAINS);
+        if (isMounted && dynamicDomains && dynamicDomains.length > 0) {
+          setDomains(dynamicDomains);
+        }
+      } catch (err) {
+        console.warn('Could not fetch dynamic internship domains:', err);
+      }
+    }
+    loadDomains();
+    return () => { isMounted = false; };
+  }, []);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -44,10 +63,30 @@ export default function InternshipPage({ onOpenConsultation }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+
+    try {
+      await submitEnquiry({
+        type: 'career_apply',
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        service: `${formData.trackType} - ${formData.domain}`,
+        message: `Internship application for ${formData.domain} (${formData.trackType}). College: ${formData.college || 'N/A'}, Semester: ${formData.semester}, Resume/GitHub: ${formData.githubOrResume || 'N/A'}`,
+        metadata: {
+          college: formData.college,
+          semester: formData.semester,
+          trackType: formData.trackType,
+          domain: formData.domain,
+          githubOrResume: formData.githubOrResume,
+          formSource: 'Internship Track Page Application Form'
+        }
+      });
+    } catch (err) {
+      console.error('Internship submit error:', err);
+    } finally {
       setIsSubmitting(false);
       setIsSubmitted(true);
       confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
@@ -64,7 +103,7 @@ export default function InternshipPage({ onOpenConsultation }) {
           githubOrResume: ''
         });
       }, 3000);
-    }, 700);
+    }
   };
 
   return (
@@ -200,8 +239,8 @@ export default function InternshipPage({ onOpenConsultation }) {
             Available Technology Tracks
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            {INTERNSHIP_DOMAINS.map((domain) => {
-              const IconComp = domain.icon;
+            {domains.map((domain) => {
+              const IconComp = domain.icon || Code2;
               return (
                 <div
                   key={domain.id}

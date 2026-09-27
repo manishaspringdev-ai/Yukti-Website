@@ -1,5 +1,5 @@
 import React from 'react';
-import brandLogo from '../assets/brandlogo.svg';
+import brandLogo from '../assets/yukti-logo.svg';
 import { siteData } from '../data';
 import { 
   Phone, 
@@ -142,7 +142,7 @@ export default function Footer({ setCurrentPage, onOpenConsultation }) {
                     className="w-full flex items-center space-x-1.5 text-left text-xs font-bold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 hover:translate-x-1 transition-all group"
                   >
                     <ArrowRight className="w-3.5 h-3.5 text-brand-500 shrink-0 group-hover:translate-x-1 transition-transform" />
-                    <span className="leading-snug">Explore All 15 Career Tracks</span>
+                    <span className="leading-snug">Explore All 16 Career Tracks</span>
                   </button>
                 </li>
               </ul>
@@ -184,7 +184,7 @@ export default function Footer({ setCurrentPage, onOpenConsultation }) {
                 <li className="flex items-start space-x-2.5">
                   <MapPin className="w-4 h-4 text-brand-600 dark:text-brand-400 flex-shrink-0 mt-0.5" />
                   <span className="leading-relaxed">
-                    Alpha 1 Commercial Belt / Knowledge Park Campus, Greater Noida & Sector 62, Noida, NCR, India
+                    Alpha 1 Commercial Belt, Greater Noida, NCR, India
                   </span>
                 </li>
                 
@@ -261,7 +261,7 @@ export default function Footer({ setCurrentPage, onOpenConsultation }) {
           </div>
 
           {/* Bottom Copyright & Back to Top */}
-          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400 pb-16 sm:pb-0 sm:pr-72 lg:pr-80">
             <div className="flex items-center space-x-2">
               <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               <p>© {new Date().getFullYear()} {brand.name} Private Limited. All Rights Reserved.</p>

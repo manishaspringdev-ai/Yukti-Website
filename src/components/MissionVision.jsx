@@ -65,8 +65,7 @@ export default function MissionVision() {
           <Quote className="absolute -bottom-10 -right-10 w-52 h-52 text-white/5 pointer-events-none" />
           
           <div className="relative z-10 max-w-3xl space-y-6">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-bold bg-white/10 text-brand-300 backdrop-blur-md">
-              <Sparkles className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-white/10 text-brand-300 backdrop-blur-md">
               <span>{aboutPageData.founderMessage.title}</span>
             </div>
             

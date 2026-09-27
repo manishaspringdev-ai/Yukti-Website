@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { submitEnquiry } from '../services/leadService';
 import { docxPagesData } from '../data/pagesDataFromDocs';
 import { 
   Sparkles, 
@@ -65,7 +66,9 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
   // Clean headline from any legacy doc prefixes
   const rawHeadline = course.headline || course.title || '';
   const cleanHeadline = rawHeadline
-    .replace(/^Webpage for Yukti Software\s*[\|\-:]?\s*/i, '')
+    .replace(/^Web\s*Page\s+for\s+Yukti\s+(Software|Solutions|Tech)?\s*[\|\-:]?\s*/i, '')
+    .replace(/^Webpage\s+for\s+Yukti\s+(Software|Solutions|Tech)?\s*[\|\-:]?\s*/i, '')
+    .replace(/^Yukti\s+(Software|Solutions)\s*[\|\-:]?\s*/i, '')
     .trim() || course.title;
   
   const [openModuleIndex, setOpenModuleIndex] = useState(0);
@@ -73,10 +76,29 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
   const [enquirySuccess, setEnquirySuccess] = useState(false);
   const [leadForm, setLeadForm] = useState({ name: '', email: '', phone: '', mode: 'Classroom Greater Noida' });
 
-  const handleLeadSubmit = (e) => {
+  const handleLeadSubmit = async (e) => {
     e.preventDefault();
     setEnquirySuccess(true);
     confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
+
+    try {
+      await submitEnquiry({
+        type: 'course_enquiry',
+        name: leadForm.name,
+        email: leadForm.email,
+        phone: leadForm.phone,
+        course: course.title || courseKey,
+        mode: leadForm.mode,
+        message: `Course Enrollment enquiry for ${course.title || courseKey} (${leadForm.mode})`,
+        metadata: {
+          courseKey,
+          formSource: 'Course Detail Page - Batch Enrollment Form'
+        }
+      });
+    } catch (err) {
+      console.error('Course lead submit error:', err);
+    }
+
     setTimeout(() => {
       setLeadForm({ name: '', email: '', phone: '', mode: 'Classroom Greater Noida' });
     }, 500);
@@ -102,7 +124,7 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
             className="inline-flex items-center space-x-2 text-xs font-bold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-all group bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 px-3.5 py-1.5 rounded-xl shadow-sm hover:shadow"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span>Back to All 15 Career Tracks & Courses</span>
+            <span>Back to All 16 Career Tracks & Courses</span>
           </button>
         </div>
 
@@ -117,11 +139,6 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
             <div className="lg:col-span-7 flex flex-col justify-between space-y-4">
               
               <div className="space-y-2.5">
-                <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[11px] font-bold bg-brand-50 dark:bg-brand-950/80 text-brand-600 dark:text-brand-400 border border-brand-200 dark:border-brand-800/60">
-                  <Sparkles className="w-3.5 h-3.5 text-brand-500" />
-                  <span>Verified Master Track • Greater Noida & Live Online</span>
-                </div>
-
                 <h1 className="text-xl sm:text-3xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white leading-snug">
                   {cleanHeadline}
                 </h1>
@@ -263,9 +280,10 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
 
                       <button
                         type="submit"
-                        className="w-full py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-accent-primary text-white font-black text-xs shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all"
+                        className="w-full py-3 rounded-xl bg-gradient-to-r from-brand-600 to-accent-primary text-white font-black text-xs sm:text-sm shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-2 cursor-pointer"
                       >
-                        Get Syllabus PDF & Claim Scholarship
+                        <span>Enroll Now in Batch</span>
+                        <ArrowRight className="w-4 h-4" />
                       </button>
                     </form>
                   )}
@@ -327,104 +345,69 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
 
       {/* 2. REAL COURSE BENEFITS SECTION (Parsed from DOCX) */}
       {course.courseBenefits && course.courseBenefits.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          <div className="text-center max-w-3xl mx-auto space-y-3">
-            <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
-              <Flame className="w-3.5 h-3.5 text-emerald-500" />
-              <span>Real Career Impact</span>
-            </div>
-            <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white">
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+          <div className="text-left space-y-1">
+            <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
               Benefits of Enrolling in This Course
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
-              Detailed breakdown of practical skills, industry advantages, and career outcomes guaranteed from this training.
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+              Practical skills, industry advantages, and career outcomes guaranteed from this training.
             </p>
           </div>
 
-          <div className={getCardGridClass(course.courseBenefits.length)}>
-            {course.courseBenefits.map((b, idx) => {
-              const IconComp = getBenefitIcon(b.title, b.desc, idx);
-              const benefitDesc = b.desc || "Master industry-grade concepts with hands-on coding labs, mentor reviews, and structured practical assignments.";
-              return (
-                <div 
-                  key={idx}
-                  className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-emerald-500/40 dark:hover:border-emerald-500/30 transition-all space-y-4 group flex flex-col justify-between"
-                >
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <div className="w-10 h-10 rounded-2xl bg-emerald-50 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white transition-all shadow-sm border border-emerald-200/60 dark:border-emerald-800/60">
-                        <IconComp className="w-5 h-5" />
-                      </div>
-                      <span className="text-xs font-mono font-black text-slate-400 dark:text-slate-500 px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800">
-                        0{idx + 1}
-                      </span>
+          <div className="p-5 sm:p-7 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3.5">
+              {course.courseBenefits.map((b, idx) => {
+                const isGenericTitle = !b.title || /^key benefit|^benefit/i.test(b.title.trim());
+                const displayTitle = !isGenericTitle && b.title !== b.desc ? b.title : null;
+                const displayText = b.desc || b.title;
+
+                return (
+                  <div key={idx} className="flex items-start space-x-3 text-slate-700 dark:text-slate-300">
+                    <div className="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 border border-emerald-200 dark:border-emerald-800">
+                      <ArrowRight className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                     </div>
-                    
-                    <h3 className="text-base font-extrabold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                      {b.title}
-                    </h3>
-                    
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                      {benefitDesc}
+                    <p className="text-xs sm:text-sm leading-relaxed">
+                      {displayTitle && <strong className="text-slate-900 dark:text-white mr-1.5">{displayTitle}:</strong>}
+                      <span>{displayText}</span>
                     </p>
                   </div>
-                  
-                  <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
-                    <div className="flex items-center space-x-1.5">
-                      <CheckCircle2 className="w-3.5 h-3.5" />
-                      <span>Verified Outcome</span>
-                    </div>
-                    <span className="text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-wider font-semibold">
-                      Skill Module
-                    </span>
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </section>
       )}
 
       {/* 3. Key Highlights & Approach Section (from DOCX) */}
       {course.keyHighlights && course.keyHighlights.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          <div className="text-center max-w-3xl mx-auto space-y-2">
-            <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400 border border-brand-200 dark:border-brand-800">
-              <Zap className="w-3.5 h-3.5" />
-              <span>Standout Advantages</span>
-            </div>
-            <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white">
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+          <div className="text-left space-y-1">
+            <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
               Why This Course Takes a Different Approach
             </h2>
           </div>
 
-          <div className={getCardGridClass(course.keyHighlights.length)}>
-            {course.keyHighlights.map((hl, idx) => {
-              const IconComp = getBenefitIcon(hl.title, hl.desc, idx + 3);
-              const highlightDesc = hl.desc || "Personalized learning framework engineered to deliver high conceptual clarity and industry readiness.";
-              return (
-                <div 
-                  key={idx}
-                  className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-brand-500/40 transition-all space-y-3.5 group flex flex-col justify-between"
-                >
-                  <div className="space-y-3">
-                    <div className="w-10 h-10 rounded-2xl bg-brand-50 dark:bg-brand-950/80 text-brand-600 dark:text-brand-400 flex items-center justify-center group-hover:scale-110 group-hover:bg-brand-600 group-hover:text-white transition-all shadow-sm border border-brand-200/60 dark:border-brand-800/60">
-                      <IconComp className="w-5 h-5" />
+          <div className="p-5 sm:p-7 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3.5">
+              {course.keyHighlights.map((hl, idx) => {
+                const isGenericTitle = !hl.title || /^key highlight|^key benefit|^highlight/i.test(hl.title.trim());
+                const displayTitle = !isGenericTitle && hl.title !== hl.desc ? hl.title : null;
+                const displayText = hl.desc || hl.title;
+
+                return (
+                  <div key={idx} className="flex items-start space-x-3 text-slate-700 dark:text-slate-300">
+                    <div className="w-5 h-5 rounded-full bg-brand-100 dark:bg-brand-950 text-brand-600 dark:text-brand-400 flex items-center justify-center shrink-0 mt-0.5 border border-brand-200 dark:border-brand-800">
+                      <ArrowRight className="w-3 h-3 text-brand-600 dark:text-brand-400" />
                     </div>
-                    <h3 className="text-base font-extrabold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
-                      {hl.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                      {highlightDesc}
+                    <p className="text-xs sm:text-sm leading-relaxed">
+                      {displayTitle && <strong className="text-slate-900 dark:text-white mr-1.5">{displayTitle}:</strong>}
+                      <span>{displayText}</span>
                     </p>
                   </div>
-                  <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center space-x-1.5 text-[11px] font-bold text-brand-600 dark:text-brand-400">
-                    <Sparkles className="w-3.5 h-3.5" />
-                    <span>Yukti Pedagogical Standard</span>
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </section>
       )}
@@ -451,12 +434,8 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
 
       {/* 5. Deep Curriculum Syllabus Accordions (Strictly M1 to Mn from DOCX) */}
       {course.curriculum && course.curriculum.length > 0 && (
-        <section id="syllabus-section" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <section id="syllabus-section" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
           <div className="text-center space-y-2">
-            <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800">
-              <BookOpen className="w-3.5 h-3.5" />
-              <span>Complete Step-by-Step Curriculum</span>
-            </div>
             <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white">
               Industry Curated Training Syllabus ({course.curriculum.length} Modules)
             </h2>
@@ -513,7 +492,7 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
         </section>
       )}
 
-      {/* 6. Career Roles & Industry Scope Table (from DOCX) */}
+      {/* 6. Career Roles & Industry Scope (Fully Responsive Mobile Cards & Desktop Table) */}
       {(() => {
         const rawRoles = course.careerRolesTable || course.careerTable || [];
         if (rawRoles.length === 0) return null;
@@ -521,36 +500,35 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
         return (
           <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
             <div className="text-center space-y-2">
-              <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
-                <Briefcase className="w-3.5 h-3.5" />
-                <span>Career Opportunities</span>
-              </div>
               <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white">
                 Target Job Roles & Industry Scope
               </h2>
             </div>
 
-            <div className="overflow-x-auto rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl bg-white dark:bg-slate-900">
+            {/* Desktop Table Layout (md and up) */}
+            <div className="hidden md:block overflow-x-auto rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl bg-white dark:bg-slate-900">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
                   <tr className="bg-slate-100 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-extrabold">
-                    <th className="p-4 sm:p-5">Target Job Profile</th>
+                    <th className="p-4 sm:p-5 whitespace-nowrap w-1/4">Target Job Profile</th>
                     <th className="p-4 sm:p-5">Key Responsibilities</th>
-                    <th className="p-4 sm:p-5">Placement Readiness</th>
+                    <th className="p-4 sm:p-5 whitespace-nowrap w-56 text-right pr-6">Placement Readiness</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
                   {rawRoles.map((role, rIdx) => (
                     <tr key={rIdx} className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
-                      <td className="p-4 sm:p-5 font-bold text-brand-600 dark:text-brand-400 flex items-center space-x-2">
-                        <Award className="w-4 h-4 flex-shrink-0 text-amber-500" />
-                        <span>{role.role}</span>
+                      <td className="p-4 sm:p-5 font-bold text-brand-600 dark:text-brand-400 whitespace-nowrap">
+                        <div className="flex items-center space-x-2">
+                          <Award className="w-4 h-4 flex-shrink-0 text-amber-500" />
+                          <span>{role.role}</span>
+                        </div>
                       </td>
-                      <td className="p-4 sm:p-5 text-slate-600 dark:text-slate-300">
+                      <td className="p-4 sm:p-5 text-slate-600 dark:text-slate-300 leading-relaxed">
                         {role.responsibilities || role.skills || "Application Development & Architecture"}
                       </td>
-                      <td className="p-4 sm:p-5 font-medium text-slate-800 dark:text-slate-200">
-                        <span className="px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-bold border border-emerald-200 dark:border-emerald-800">
+                      <td className="p-4 sm:p-5 whitespace-nowrap text-right pr-6">
+                        <span className="inline-flex items-center whitespace-nowrap px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-bold border border-emerald-200 dark:border-emerald-800 text-xs">
                           High Demand • Job-Ready
                         </span>
                       </td>
@@ -558,6 +536,29 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
                   ))}
                 </tbody>
               </table>
+            </div>
+
+            {/* Mobile Responsive Cards Layout (below md) */}
+            <div className="md:hidden grid grid-cols-1 gap-3.5">
+              {rawRoles.map((role, rIdx) => (
+                <div 
+                  key={rIdx}
+                  className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-2.5"
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center space-x-2 font-bold text-xs sm:text-sm text-brand-600 dark:text-brand-400">
+                      <Award className="w-4 h-4 flex-shrink-0 text-amber-500" />
+                      <span>{role.role}</span>
+                    </div>
+                    <span className="px-2.5 py-1 rounded-md bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-bold border border-emerald-200 dark:border-emerald-800 text-[10px] shrink-0 whitespace-nowrap">
+                      High Demand • Job-Ready
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed pl-6">
+                    {role.responsibilities || role.skills || "Application Development & Architecture"}
+                  </p>
+                </div>
+              ))}
             </div>
           </section>
         );
@@ -576,10 +577,6 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
         return (
           <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
             <div className="text-center space-y-2">
-              <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 dark:bg-amber-950 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800">
-                <HelpCircle className="w-3.5 h-3.5" />
-                <span>Questions & Answers</span>
-              </div>
               <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
                 Frequently Asked Questions
               </h2>
@@ -623,7 +620,6 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
       {/* 8. Bottom Free Consultation Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
         <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-brand-600 via-brand-700 to-indigo-800 text-white text-center space-y-6 shadow-2xl relative overflow-hidden">
-          <Sparkles className="absolute -top-10 -left-10 w-40 h-40 text-white/10" />
           <h2 className="text-2xl sm:text-4xl font-black tracking-tight">
             Ready to Accelerate Your Career with Yukti Software?
           </h2>
@@ -641,7 +637,7 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
               onClick={() => setCurrentPage && setCurrentPage('courses')}
               className="px-6 py-4 rounded-2xl bg-black/20 hover:bg-black/30 text-white font-bold text-sm border border-white/30 transition-all"
             >
-              Explore Other 14 Courses
+              Explore All 16 Career Tracks
             </button>
           </div>
         </div>

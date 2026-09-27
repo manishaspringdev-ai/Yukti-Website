@@ -124,18 +124,13 @@ export default function GoogleReviewsWidget({ onOpenConsultation }) {
 
         {/* Bottom CTA Banner */}
         <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-2xl bg-brand-600 text-white flex items-center justify-center font-bold">
-              ★
-            </div>
-            <div>
-              <p className="text-xs font-bold text-slate-900 dark:text-white">
-                Join 500+ Placed Students and 50+ Satisfied Enterprise Clients
-              </p>
-              <p className="text-[11px] text-slate-500">
-                Direct classroom training in Greater Noida with dedicated placement support.
-              </p>
-            </div>
+          <div>
+            <p className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">
+              Join 500+ Placed Students and 15+ Satisfied Enterprise Clients
+            </p>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400">
+              Direct classroom training in Greater Noida with dedicated placement support.
+            </p>
           </div>
 
           <button

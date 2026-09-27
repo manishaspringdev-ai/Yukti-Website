@@ -318,8 +318,8 @@ export const docxPagesData = {
       ]
     },
     "python": {
-      "title": "Web Page for Yukti Software",
-      "headline": "Web Page for Yukti Software | Python Training Institute Greater Noida",
+      "title": "Complete Python Training Course",
+      "headline": "Python Training Institute Greater Noida",
       "keywords": "",
       "description": "Get 100% Course Guidance at the best Python Training Institute Greater Noida In this technology-oriented world, programming languages have become an imperative skill across a wide range of different industries. Among all programming languages, Python stands out as one of the most robust, beginner-friendly, and versatile languages. Whether you want to automate your tasks, develop intelligent systems, build different applications, or study data, a Python training course is the foundation for all of it!",
       "fullDescription": [
@@ -650,7 +650,7 @@ export const docxPagesData = {
       ]
     },
     "ai-ml": {
-      "title": "Webpage for Yukti Software",
+      "title": "AI & Machine Learning Course Greater Noida",
       "headline": "AI & Machine Learning Course Greater Noida",
       "keywords": "",
       "description": "Certified AI & Machine Learning Course Greater Noida with Comprehensive Job Support Artificial Intelligence and Machine Learning are rapidly changing how businesses work, make informed decisions, and build smarter digital solutions. Furthermore, the AI & Machine Learning course Greater Noida offered by Yukti Software is designed to help students understand these technologies through practical training, coding, exercises, projects, and professional guidance. From deep learning, NLP, Generative AI, and computer vision to Python and data analysis, this course focuses on building skills that can support long-term growth.",
@@ -1067,7 +1067,7 @@ export const docxPagesData = {
       ]
     },
     "data-analytics": {
-      "title": "Webpage for Yukti Software",
+      "title": "Data Analytics Course Greater Noida",
       "headline": "Data Analytics course Greater Noida",
       "keywords": "",
       "description": "Get into Your Dream Job After Completing Data Analytics Course Greater Noida Accurate data is the core of almost every business decision, creating strong demand for professionals who can turn raw information into meaningful insights. Furthermore, if you want to enter this growing field, the Data Analytics course Greater Noida at Yukti Software can help you build practical, job-oriented skills from the starting point. The course combines fundamental concepts, tools, career preparation, and hands-on projects so that you can learn data analytics as well as learn how to apply it to real business problems and confidently prepare for your dream job.",
@@ -1441,221 +1441,223 @@ export const docxPagesData = {
       "keywords": "DBMS Course in Greater Noida, Database Management System Training, SQL Course, MySQL, Relational Database, Placements, Yukti Software",
       "description": "Learning DBMS is about memorising database terms or writing a few SQL queries. At Yukti Software, the DBMS course in Greater Noida focuses on helping learners understand how databases actually work in professional environments. Moreover, the training is a mix of vast concepts, practical exercises, assignments, real-world projects, and SQL practice so that students can gradually build confidence, solve database-related problems, and develop skills that are useful for starting or advancing an IT career.",
       "fullDescription": [
-        "Learning DBMS is about memorising database terms or writing a few SQL queries.",
-        "At Yukti Software, the DBMS course in Greater Noida focuses on helping learners understand how databases actually work in professional environments.",
-        "Moreover, the training is a mix of vast concepts, practical exercises, assignments, real-world projects, and SQL practice so that students can gradually build confidence, solve database-related problems, and develop skills that are useful for starting or advancing an IT career.",
-        "How This DBMS Course in Greater Noida Takes a Different Approach: At Yukti Software, the DBMS course in Greater Noida is an example of a career-oriented course rather than just sticking to bookish knowledge. The course offers expert mentorship, practical assignments, and industry-oriented teaching, which enables learners to gain confidence in understanding databases and implement them according to the needs of their workplace."
+        "Learning DBMS is about memorising database terms or writing a few SQL queries. At Yukti Software, the DBMS course in Greater Noida focuses on helping learners understand how databases actually work in professional environments. Moreover, the training is a mix of vast concepts, practical exercises, assignments, real-world projects, and SQL practice so that students can gradually build confidence, solve database-related problems, and develop skills that are useful for starting or advancing an IT career.",
+        "How This DBMS Course in Greater Noida Takes a Different Approach",
+        "At Yukti Software, the DBMS course in Greater Noida is an example of a career-oriented course rather than just sticking to bookish knowledge. The course offers expert mentorship, practical assignments, and industry-oriented teaching, which enables learners to gain confidence in understanding databases and implement them according to the needs of their workplace."
       ],
       "courseBenefits": [
         {
-          "title": "Learn Practical DBMS Skills",
-          "desc": "Enhance your database management skills through the DBMS course in Greater Noida at Yukti Software. Learn how to design, manage, operate, and maintain databases with the help of practical classes, assignments, and real-time projects."
+          "title": "1. Learn Practical DBMS Skills",
+          "desc": "Build strong practical knowledge of database design, schema architecture, normalization, and relational databases through hands-on exercises and assignments."
         },
         {
-          "title": "Get Help from Professional Trainers",
-          "desc": "Get a clear understanding of basic DBMS concepts through the help of professional trainers who will simplify complicated technical concepts and make them easy for you to understand. With interactive sessions and live classes, enhance your database management knowledge and skills."
+          "title": "2. Get Help from Professional Trainers",
+          "desc": "Learn important DBMS and SQL concepts from experienced trainers who simplify complex technical topics through interactive sessions."
         },
         {
-          "title": "Make a Career in DBMS",
-          "desc": "Make a career in database management through the DBMS course in Greater Noida by enhancing your practical knowledge, mastering SQL, and working on live enterprise database projects."
+          "title": "3. Make a Career in DBMS",
+          "desc": "Open doors to rewarding careers such as Database Administrator, Database Developer, SQL Developer, and Data Analyst with a strong project portfolio."
         },
         {
-          "title": "Enterprise Optimization & Security",
-          "desc": "Master database performance tuning, indexing, stored procedures, ACID transactions, and robust data security protocols used by top database administrators."
+          "title": "4. Production Database Mastery",
+          "desc": "Master ACID transactions, indexing, query optimization, security, stored procedures, triggers, and backup & recovery for enterprise workloads."
         }
       ],
       "keyHighlights": [
         {
           "title": "Industry-Oriented Curriculum",
-          "desc": "Gain SQL knowledge, basic understanding of databases, normalization, data management, etc., as per the present-day industry needs."
+          "desc": "Learn SQL, database architecture, relational models, normalization, and database administration with hands-on practice."
         },
         {
           "title": "Expert Mentorship",
-          "desc": "Understand the complexities involved in database systems through easy explanation and practical examples along with guidance from expert trainers."
+          "desc": "Get guided by experienced instructors who explain complex database concepts in simple, practical terms."
         },
         {
           "title": "Practical Assignments",
-          "desc": "Develop understanding through practical assignments that demonstrate application of the DBMS concepts in practice."
+          "desc": "Work on real-world database assignments and scenarios to see how databases operate in real environments."
         },
         {
           "title": "SQL Practice Sessions",
-          "desc": "Build confidence in executing database-related tasks by means of regular practice sessions."
+          "desc": "Strengthen your querying skills with structured SQL exercises, joins, subqueries, and views."
         },
         {
           "title": "Doubt Clearance Sessions",
-          "desc": "Clarify your doubts through interactive sessions wherein trainers clear your doubts and make difficult concepts easy."
+          "desc": "Clear concepts and resolve doubts with interactive query sessions and 1-on-1 mentorship."
         },
         {
           "title": "Mock Interviews",
-          "desc": "Prepare yourself for interviews by means of mock interviews and understand technical as well as HR related queries."
+          "desc": "Prepare for technical interviews with DBMS interview questions, query tests, and resume tips."
         },
         {
           "title": "Career Assistance",
-          "desc": "Get useful assistance regarding resume preparation, portfolio building, and job interview preparations."
-        },
-        {
-          "title": "Interactive Lab Environment",
-          "desc": "Work in state-of-the-art database labs with real client datasets and enterprise database servers."
+          "desc": "Receive job guidance, resume preparation, portfolio building, and interview preparation support."
         }
       ],
       "targetAudience": [
-        "Beginners looking to establish a strong base in database concepts, SQL, and data management techniques without prior technical background.",
-        "Students looking to acquire practical skills related to DBMS that supplement their academic degree and technical coursework.",
-        "Aspiring developers looking to enhance their database knowledge for application, website, and software development.",
-        "IT professionals seeking to update their skills and gain exposure to contemporary database management and optimization methods.",
-        "Students looking for jobs who can benefit from developing practical knowledge to prepare for entry-level database and IT jobs.",
-        "Freelancers aiming to learn essential database skills for working on projects related to application and website development.",
-        "Career changers seeking to acquire essential knowledge of DBMS and embark on a high-growth career path in IT."
+        "Beginners looking to start a career in IT with foundational database and SQL knowledge.",
+        "College students and graduates wanting to strengthen academic DBMS concepts with practical experience.",
+        "Aspiring software developers needing database design and SQL querying skills for application backends.",
+        "Working professionals looking to transition to database administration, data engineering, or business intelligence.",
+        "IT professionals who want to upskill in enterprise database management, optimization, and administration.",
+        "Freelancers and web developers who need to design reliable, scalable databases for client projects.",
+        "Career switchers from non-technical backgrounds seeking entry into database and analytics roles."
       ],
       "curriculum": [
         {
           "moduleTitle": "Module 1: Introduction to DBMS",
           "topics": [
-            "Introduction to databases and DBMS",
-            "Features and benefits of DBMS",
-            "Different types of databases",
-            "Architecture of DBMS",
-            "Users and administrators of database",
-            "DBMS versus traditional file system"
+            "Understanding data, databases, and Database Management Systems (DBMS)",
+            "Evolution and history of database systems",
+            "File processing system vs DBMS",
+            "Characteristics and advantages of DBMS",
+            "DBMS architecture (1-Tier, 2-Tier, 3-Tier)",
+            "Data abstraction and data independence"
           ]
         },
         {
           "moduleTitle": "Module 2: Database Models and Architecture",
           "topics": [
-            "Hierarchical, network, relational and object-oriented models",
-            "Three-schema architecture",
-            "Data abstraction and data independence",
-            "Database instance and schema",
-            "Client-server database architecture"
+            "Types of database models (Hierarchical, Network, Relational, Object-Oriented)",
+            "Relational model concepts and schema diagrams",
+            "Three-schema architecture (Internal, Conceptual, External)",
+            "Database users, interfaces, and DBA roles",
+            "DBMS component modules and storage structure"
           ]
         },
         {
           "moduleTitle": "Module 3: Relational Database Concepts",
           "topics": [
-            "Introduction to relational database",
-            "Table, row and column concepts",
-            "Primary key and foreign key",
-            "Candidate key, super key and composite key",
-            "Integrity constraints",
-            "Relationship between tables"
+            "Relational model terminology (Tuples, Attributes, Domains, Degree, Cardinality)",
+            "Relational integrity constraints (Domain, Key, Entity, Referential)",
+            "Candidate key, Primary key, Foreign key, Super key, Alternate key, Composite key",
+            "Codd’s 12 rules for relational databases",
+            "Relational algebra operations (Select, Project, Join, Set operations)"
           ]
         },
         {
           "moduleTitle": "Module 4: Entity Relationship (ER) Model",
           "topics": [
-            "Introduction to ER diagrams",
-            "Entity and attribute",
-            "Relation and relation type",
-            "Cardinality and participation constraint",
-            "Weak and strong entity",
-            "ER diagram construction for practical examples"
+            "Introduction to ER modeling and database design process",
+            "Entities, attributes, entity sets, and attribute types",
+            "Relationship types, degrees, and cardinality ratios",
+            "Enhanced ER (EER) concepts: Specialization, Generalization, Aggregation",
+            "Converting ER diagrams into relational schemas"
           ]
         },
         {
           "moduleTitle": "Module 5: SQL Basics",
           "topics": [
-            "Introduction to SQL syntax",
-            "SQL commands: DDL, DML, DCL, and TCL",
-            "Creating and modifying a database",
-            "Creating, altering, and deleting tables",
-            "Insert, update, and delete records"
+            "Overview and history of Structured Query Language (SQL)",
+            "SQL data types, literals, and operators",
+            "Data Definition Language (DDL): CREATE, ALTER, DROP, TRUNCATE, RENAME",
+            "Data Manipulation Language (DML): INSERT, UPDATE, DELETE",
+            "Data Query Language (DQL): SELECT statement syntax and execution order",
+            "Basic filtering with WHERE, AND, OR, NOT, BETWEEN, IN, LIKE, IS NULL"
           ]
         },
         {
-          "moduleTitle": "Module 6: SQL Queries and Data Retrieval",
+          "moduleTitle": "Module 6: SQL queries and data retrieval",
           "topics": [
-            "SELECT statement fundamentals",
-            "WHERE, ORDER BY, and GROUP BY clauses",
-            "Filtering and sorting records",
-            "Aggregate functions (SUM, AVG, COUNT, MIN, MAX)",
-            "DISTINCT and alias expressions",
-            "Operator and condition expressions"
+            "Sorting query results with ORDER BY (ASC, DESC)",
+            "Limiting and offsetting results",
+            "Aggregate functions (COUNT, SUM, AVG, MIN, MAX)",
+            "Grouping data with GROUP BY and filtering groups with HAVING",
+            "String, numeric, and date/time built-in functions",
+            "Pattern matching and regular expressions in SQL"
           ]
         },
         {
-          "moduleTitle": "Module 7: SQL Joins and Advanced SQL",
+          "moduleTitle": "Module 7: SQL Joins and advanced SQL",
           "topics": [
-            "Introduction to SQL joins",
-            "INNER JOIN, LEFT and RIGHT JOIN",
-            "FULL OUTER JOIN, SELF and CROSS JOIN",
-            "Sub-queries and nested queries",
-            "Views and their real-world applications"
+            "Understanding relational joins and Cartesian product",
+            "INNER JOIN, LEFT OUTER JOIN, RIGHT OUTER JOIN, FULL OUTER JOIN",
+            "CROSS JOIN, SELF JOIN, and NATURAL JOIN",
+            "Subqueries: Single-row, multi-row, and correlated subqueries",
+            "EXISTS and NOT EXISTS operators",
+            "Set operations: UNION, UNION ALL, INTERSECT, EXCEPT / MINUS",
+            "Common Table Expressions (CTEs) and Window Functions"
           ]
         },
         {
           "moduleTitle": "Module 8: Database Normalization",
           "topics": [
-            "Need for database normalization",
-            "Functional dependency",
-            "First Normal Form (1 NF) & Second Normal Form (2 NF)",
-            "Third Normal Form (3 NF) & BCNF",
-            "Denormalization and its usage in high-scale systems"
+            "Pitfalls in relational database design and update anomalies",
+            "Functional dependencies (FDs) and inference rules (Armstrong's axioms)",
+            "First Normal Form (1NF)",
+            "Second Normal Form (2NF)",
+            "Third Normal Form (3NF)",
+            "Boyce-Codd Normal Form (BCNF)",
+            "Lossless decomposition and dependency preservation",
+            "Multivalued dependencies and Fourth Normal Form (4NF) overview"
           ]
         },
         {
           "moduleTitle": "Module 9: Transaction and Concurrency Control",
           "topics": [
-            "Introduction to database transactions",
+            "Concept of a database transaction",
             "ACID properties (Atomicity, Consistency, Isolation, Durability)",
-            "Transaction states, Commit and Rollback",
-            "Concurrency issues and anomalies",
-            "Lock-based protocols",
-            "Deadlock and deadlock prevention"
+            "Transaction states and lifecycle",
+            "Concurrency issues: Dirty reads, Non-repeatable reads, Phantom reads, Lost updates",
+            "Serializability and conflict serializability",
+            "Lock-based protocols: Shared and exclusive locks, Two-Phase Locking (2PL)",
+            "Deadlock detection, prevention, and recovery techniques"
           ]
         },
         {
-          "moduleTitle": "Module 10: Database Security & Administration",
+          "moduleTitle": "Module 10: Database Security",
           "topics": [
-            "Basics of database security",
-            "User authentication and authorization",
-            "Access control, roles and privileges",
-            "Data encryption concepts",
-            "Backup and disaster recovery strategies",
-            "Common database security threats"
+            "Database security threats and defense strategies",
+            "Authentication, authorization, and access control",
+            "Role-based access control (RBAC)",
+            "SQL commands for permissions: GRANT and REVOKE",
+            "SQL injection attacks and prevention strategies",
+            "Data encryption and database auditing",
+            "Backup and disaster recovery strategies"
           ]
         },
         {
           "moduleTitle": "Module 11: Indexing and Query Optimization",
           "topics": [
-            "Introduction to database indexes",
-            "Types of index: Clustered and non-clustered index",
-            "B-Tree and hash indexing",
-            "Basics of query execution plans",
-            "Query optimization techniques",
-            "Database performance improvement"
+            "Fundamentals of database indexing and file organization",
+            "Clustered vs Non-clustered indexes",
+            "Primary, secondary, and composite indexes",
+            "B-Tree and B+ Tree indexing structures",
+            "Hash indexing overview",
+            "Query processing and execution plans (EXPLAIN / EXPLAIN ANALYZE)",
+            "Query optimization techniques and index tuning best practices"
           ]
         },
         {
-          "moduleTitle": "Module 12: Stored Procedure, Function, and Trigger",
+          "moduleTitle": "Module 12: Stored procedures, functions, and triggers",
           "topics": [
-            "Introduction to stored procedures",
-            "Creation and use of functions",
-            "Database triggers and automation",
-            "Parameters, variables, and control flow",
-            "Practical usage in enterprise systems"
+            "Introduction to procedural SQL (PL/SQL / T-SQL / MySQL stored routines)",
+            "Stored procedures: Creation, parameters (IN, OUT, INOUT), execution",
+            "User-defined functions (Scalar and Table-valued)",
+            "Database triggers: BEFORE, AFTER, INSTEAD OF triggers",
+            "Views: Creating, modifying, updatable views, and materialized views",
+            "Database cursors and exception handling"
           ]
         },
         {
           "moduleTitle": "Module 13: Practical Database Management",
           "topics": [
-            "Working with MySQL and other relational databases",
-            "Database structure creation",
-            "SQL query writing and optimization",
-            "Database user management",
-            "Importing and exporting data (CSV/JSON/SQL)",
-            "Database backup and restore operations"
+            "Installing and configuring relational databases (MySQL / PostgreSQL)",
+            "Connecting applications to databases using drivers and connection pooling",
+            "Database administration tasks: user management, schema migration, backup & restore",
+            "Exporting and importing datasets (CSV, SQL dumps)",
+            "Database monitoring, slow query logs, and maintenance"
           ]
         },
         {
           "moduleTitle": "Module 14: Real World DBMS Projects",
           "topics": [
-            "Database design for practical applications",
-            "Construction of ER diagrams",
-            "Implementation of relational tables",
-            "Normalization pipelines",
-            "Complex SQL query writing",
-            "Integration of database with backend applications",
-            "Performance testing and optimization of database"
+            "End-to-end database design and implementation project",
+            "Requirement analysis and business logic modeling",
+            "Complete ER diagram creation and schema normalization",
+            "Writing complex SQL queries, views, stored procedures, and triggers",
+            "Database performance tuning, index design, and security audit",
+            "Connecting the database with backend application (Node.js/Python/Java)",
+            "Project presentation, documentation, and viva preparation"
           ]
         }
       ],
@@ -1666,76 +1668,75 @@ export const docxPagesData = {
         "SQL Developer",
         "Data Engineer",
         "Database Architect",
-        "Business Intelligence Developer",
-        "Cloud Database Engineer",
-        "Backend Developer"
+        "Business Intelligence (BI) Developer",
+        "Cloud Database Engineer"
       ],
       "careerRolesTable": [
         {
           "role": "Database Administrator (DBA)",
-          "responsibilities": "Manage databases, security, backups, recovery, and performance tuning.",
-          "skillsOrPackage": "High Demand • Job-Ready"
+          "responsibilities": "Manage Databases, Security, Backups, Recovery, Performance Tuning",
+          "skillsOrPackage": "₹5–15 LPA ($70,000–$120,000/yr)"
         },
         {
           "role": "Database Developer",
-          "responsibilities": "Design databases, write complex SQL queries, and develop database solutions.",
-          "skillsOrPackage": "High Demand • Job-Ready"
+          "responsibilities": "Design Databases, Querying with SQL, Building Database Applications",
+          "skillsOrPackage": "₹5–14 LPA ($65,000–$115,000/yr)"
         },
         {
           "role": "Data Analyst",
-          "responsibilities": "Analyze data using SQL, prepare reports, and identify useful business insights.",
-          "skillsOrPackage": "High Demand • Job-Ready"
+          "responsibilities": "Analyze Database Records, Generate Reports and Useful Business Insights",
+          "skillsOrPackage": "₹4–12 LPA ($60,000–$105,000/yr)"
         },
         {
           "role": "SQL Developer",
-          "responsibilities": "Create queries, procedures, functions, and optimize database performance.",
-          "skillsOrPackage": "High Demand • Job-Ready"
+          "responsibilities": "Generate Queries, Procedures, Reports, Optimize Database Performance",
+          "skillsOrPackage": "₹4.5–13 LPA ($65,000–$110,000/yr)"
         },
         {
           "role": "Data Engineer",
-          "responsibilities": "Build data pipelines, manage large datasets, and support data infrastructure.",
-          "skillsOrPackage": "High Demand • Job-Ready"
+          "responsibilities": "Build Data Pipelines, Manage Big Data & ETL Workflows, Multiple Sources",
+          "skillsOrPackage": "₹6–18 LPA ($80,000–$140,000/yr)"
         },
         {
           "role": "Database Architect",
-          "responsibilities": "Plan database architecture, scalability, security, and system integration.",
-          "skillsOrPackage": "High Demand • Job-Ready"
+          "responsibilities": "Design Enterprise Database Architecture, Data Models, High Availability",
+          "skillsOrPackage": "₹12–30 LPA ($100,000–$160,000/yr)"
         },
         {
-          "role": "Business Intelligence Developer",
-          "responsibilities": "Develop dashboards, manage data models, and convert data into business insights.",
-          "skillsOrPackage": "High Demand • Job-Ready"
+          "role": "Business Intelligence (BI) Developer",
+          "responsibilities": "Design Dashboards, ETL Pipelines, Database BI Solutions",
+          "skillsOrPackage": "₹6–16 LPA ($75,000–$125,000/yr)"
         },
         {
           "role": "Cloud Database Engineer",
-          "responsibilities": "Manage cloud databases, migration, security, and database performance.",
-          "skillsOrPackage": "High Demand • Job-Ready"
+          "responsibilities": "Cloud DB Migration (AWS RDS, Aurora, Azure SQL), Scalability & Optimization",
+          "skillsOrPackage": "₹7–20 LPA ($85,000–$145,000/yr)"
         }
       ],
       "whyChooseYukti": [
-        "Learn the concepts of DBMS through clear and easy explanations, examples, and practical exercises in databases.",
-        "Work on industrial projects to gain knowledge of the practical usage of databases in various sectors.",
-        "Gain knowledge from experienced instructors who provide you with solutions to complex concepts and answer all your questions.",
-        "Develop your technical skills through assignments and practical sessions.",
-        "Gain career opportunities through mock technical interviews, resume building, and placement support.",
-        "Learn in an interactive classroom and lab environment."
+        "Get an understanding of DBMS concepts with simplified explanations and practical illustrations.",
+        "Hands-on training with real-world database projects, SQL queries, and industry scenarios.",
+        "Learn from experienced mentors and database engineers with 1-on-1 doubt clearing.",
+        "Master industry-standard databases like MySQL, PostgreSQL, and enterprise database tools.",
+        "Enhance problem-solving, schema design, query optimization, and normalization skills.",
+        "Complete career assistance including mock interviews, resume review, and placement guidance."
       ],
       "faqs": [
         {
-          "question": "Does the DBMS course have any practical assignments?",
-          "answer": "Yes. The practical learning involves creation of a database, development of an ER diagram, writing SQL queries, normalization, database management, and completion of projects in real-world scenarios."
+          "question": "Is a DBMS course appropriate for beginners?",
+          "answer": "Yes, beginners can easily enroll. The course starts with basic database fundamentals and gradually progresses to advanced SQL queries, database design, normalization, transactions, and real-world project development."
         },
         {
-          "question": "What career prospects will be open for me after learning DBMS?",
-          "answer": "Learning DBMS prepares you for various careers depending on your additional skills and experience. Common professions include Database Developer, SQL Developer, Database Administrator, Data Analyst, Database Engineer, Backend Developer, Business Intelligence Developer, and Cloud Database Engineer."
+          "question": "Do I require prior programming skills to learn DBMS?",
+          "answer": "No prior programming knowledge is strictly required. A basic understanding of computers is sufficient. You will learn SQL from scratch, and any programming integration required for projects will be taught step-by-step."
         },
         {
-          "question": "Why should I choose a DBMS course that has practical assignments?",
-          "answer": "Practical assignments allow you to go beyond theoretical understanding of database management. You get the chance to write queries, resolve database issues, handle datasets, detect bugs, and learn about the functioning of databases in real workplace scenarios."
+          "question": "What career opportunities are available after completing the DBMS course?",
+          "answer": "After completing this course, you can apply for roles like Database Administrator (DBA), Database Developer, SQL Developer, Data Analyst, Backend Developer, Data Engineer, or Business Intelligence Developer across top IT companies."
         },
         {
-          "question": "How do I choose the best DBMS course in Greater Noida?",
-          "answer": "The syllabus of the course, practical training provided, trainer's experience, mode of training, practical projects, support for beginners, and career guidance must be considered prior to enrolment in a DBMS course. The course at Yukti Software covers basic DBMS concepts along with SQL, security, optimization, and real projects."
+          "question": "What is the difference between SQL and DBMS?",
+          "answer": "DBMS (Database Management System) is the overall software system used to store, manage, and retrieve data efficiently (like MySQL, PostgreSQL, Oracle). SQL (Structured Query Language) is the standard language used to interact with, query, and manipulate data stored within a relational DBMS."
         }
       ]
     },
@@ -2045,7 +2046,7 @@ export const docxPagesData = {
       ]
     },
     "fullstack": {
-      "title": "Webpage for Yukti Software",
+      "title": "Full Stack Development Course Greater Noida",
       "headline": "Full Stack Development Course Greater Noida",
       "keywords": "",
       "description": "Full Stack Development Course Greater Noida with Advanced Lab Training Build practical web development skills with the Full Stack Development course Greater Noida offered by Yukti Software. Learn HTML, CSS, React.js, JavaScript, GIT, deployment, MongoDB, APIs, and Express.js through hands-on training. Furthermore, with advanced lab practice, coding assignments, career guidance, live projects, and expert mentoring, the course helps students prepare for modern full stack and MERN development roles.",
@@ -2430,7 +2431,7 @@ export const docxPagesData = {
       ]
     },
     "html-css": {
-      "title": "Webpage for Yukti Software",
+      "title": "HTML and CSS Course Greater Noida",
       "headline": "HTML and CSS Course Greater Noida",
       "keywords": "",
       "description": "Advanced Web Development with HTML and CSS Course Greater Noida The HTML and CSS course Greater Noida offered by Yukti Software is created for candidates who want to establish a robust foundation in front-end web development through practical training. From designing basic web pages to developing responsive layouts, students learn HTML and CSS with hands-on coding, projects, and expert guidance. Moreover, this precise course focuses on industry-relevant skills that help students confidently create modern, visually appealing, and functional websites.",
@@ -2816,7 +2817,7 @@ export const docxPagesData = {
       ]
     },
     "java": {
-      "title": "Webpage for Yukti Software",
+      "title": "Java Training Institute Greater Noida",
       "headline": "Java Training Institute Greater Noida",
       "keywords": "",
       "description": "Professional, Job-oriented Java Training Institute Greater Noida At Yukti Software, Java Training Courses have been designed and developed by industry experts, which emphasize providing programming skills, as well as development skills. Our Java Training Institute Greater Noida provides training in the latest concepts of Java, Object Oriented Programming, Frameworks, Database Connectivity, and Project Development to make you an industry-ready developer. Through our classes and live project training, you can be confident enough to develop applications at the level of the industry. If you are searching for a reliable Java Training Institute, Yukti Software is the right place for you.",
@@ -3147,7 +3148,7 @@ export const docxPagesData = {
       ]
     },
     "mern-stack": {
-      "title": "Webpage for Yukti Software",
+      "title": "MERN Stack Training Institute Greater Noida",
       "headline": "MERN Stack training institute Greater Noida",
       "keywords": "",
       "description": "MERN Stack Training Institute Greater Noida - Build Job-Ready Skills for Your Dream Career Finding the right technology course can make a big difference when you want to build your career in web development. Our MERN Stack training institute Greater Noida program at Yukti Software is created to assist candidates in moving beyond theoretical concepts and developing practical, job-oriented skills. Furthermore, the training covers MongoDB, Express.js, React.js, and Node.js along with HTML, CSS, APIs, authentication, GIT, JavaScript, databases, project development, and deployment. With practical assignments and expert assistance, live projects, and career preparation, candidates can build the confidence and technical foundation needed to start their journey as MERN Stack developers.",
@@ -3578,7 +3579,7 @@ export const docxPagesData = {
       ]
     },
     "spring-boot": {
-      "title": "Webpage for Yukti Software",
+      "title": "Spring Boot Training Course in Greater Noida",
       "headline": "Spring Boot Training Course in Greater Noida",
       "keywords": "Spring Boot Training course in Greater Noida",
       "description": "Complete Spring Boot Training Course in Greater Noida with Java Basics Industry-Oriented Syllabus: Learn Spring Boot, Spring Framework, REST APIs, Dependency Injection, Database Integration, Microservices, and other related concepts based on current industry needs.",
@@ -4009,8 +4010,8 @@ export const docxPagesData = {
       ]
     },
     "nosql": {
-      "title": "Webpage for Yukti Solutions",
-      "headline": "Webpage for Yukti Solutions | NoSQL Database Course Greater Noida",
+      "title": "NoSQL Database & MongoDB Course",
+      "headline": "NoSQL Database Course Greater Noida",
       "keywords": "",
       "description": "NoSQL Database Course Greater Noida with Advanced Lab Training The NoSQL Database course Greater Noida offered by Yukti Software is designed for candidates, freshers, IT professionals, and developers who want practical database skills. The training covers a wide range of topics, including data modeling, indexing, MongoDB, Redis, CRUD operations, aggregation, and other NoSQL technologies, through hands-on learning. With advanced lab training, practical assignments, expert assistance, projects, and interview preparation, students can build a robust understanding of NoSQL databases and their real-world applications.",
       "fullDescription": [
@@ -4395,82 +4396,34 @@ export const docxPagesData = {
       ]
     },
     "advanced-java": {
-      "title": "Advanced Java Training Institute Greater Noida",
-      "headline": "Advanced Java Training Institute Greater Noida - Learn from Industrial Experts",
+      "title": "Advanced Java Training Institute Greater Noida – Learn from Industrial Experts",
+      "headline": "Advanced Java Training Institute Greater Noida – Learn from Industrial Experts",
       "keywords": "Advanced Java Training Institute Greater Noida, Yukti Software",
       "description": "Take your Java skills and knowledge to the next level with our advanced Java training course. Learn to develop advanced skills to make software solutions for medium- to large-scale enterprises through expert training. Yukti Software, a credible advanced Java training institute Greater Noida, has everything you need. We have qualified faculty with industrial experience, an updated curriculum, and job-oriented learning. Our primary focus is to help you build practical skills and hands-on experience with advanced Java tools. By the end of this Advanced Java Training, you will have in-depth conceptual knowledge of enterprise-level Java concepts and a skill set that is in high demand among recruiters.",
       "fullDescription": [
         "Take your Java skills and knowledge to the next level with our advanced Java training course. Learn to develop advanced skills to make software solutions for medium- to large-scale enterprises through expert training. Yukti Software, a credible advanced Java training institute Greater Noida, has everything you need. We have qualified faculty with industrial experience, an updated curriculum, and job-oriented learning. Our primary focus is to help you build practical skills and hands-on experience with advanced Java tools.",
         "By the end of this Advanced Java Training, you will have in-depth conceptual knowledge of enterprise-level Java concepts and a skill set that is in high demand among recruiters.",
-        "Advanced Java Training Curriculum - Updated"
+        "Key Highlights of the Advanced Java Training by Yukti Software: Yukti Software mentors and industrial experts understand the modern IT infrastructure very well. Thus, they designed the Advanced Java Training course modules to cover every essential Java concept, followed by practical exercises. It plays a huge role in preparing you for the challenges that you will face when building enterprise-level solutions."
       ],
       "courseBenefits": [
         {
-          "title": "Exponential Career Growth",
+          "title": "1. Exponential Career Growth",
           "desc": "Advanced Java is a critical requirement if you want to move up the hierarchical chain. When hiring for expert roles or when promoting junior Java developers, employers require you to show proficiency in advanced concepts. Thus, our Java training by Yukti Software is ideal if you are preparing to grow your career."
         },
         {
-          "title": "Increases Pay Slab",
+          "title": "2. Increases Pay Slab",
           "desc": "Whether you are working for a corporate firm or are self-employed, having advanced Java skills increases your pay scale by a significant margin. We will help you get proficient in advanced Java concepts, which will open high-paying opportunities for you."
         },
         {
-          "title": "Higher Employability",
+          "title": "3. Higher Employability",
           "desc": "Enterprises and businesses are always looking for individuals with advanced-level Java skills. This makes the job search easier as you will have plenty of opportunities to choose from. Moreover, if you have certification that proves your skills, your resume will be shortlisted easily."
         },
         {
-          "title": "Who Can and Who Should Enroll in Advanced Java Training",
-          "desc": "Candidates who are considering enrolling in our Advanced Java Training Institute Greater Noida must understand that this is not beginner-friendly. We will be covering advanced concepts assuming that candidates are familiar with the basics of core Java."
-        },
-        {
-          "title": "Our Advanced Training is Ideal for",
-          "desc": ""
-        },
-        {
-          "title": "Java beginners with basic knowledge",
-          "desc": "Learners who understand Core Java and want to move toward advanced development."
-        },
-        {
-          "title": "Java developers",
-          "desc": "Professionals looking to strengthen their skills in enterprise application development."
-        },
-        {
-          "title": "Computer science graduates",
-          "desc": "Fresh graduates who want to build job-ready Java development skills."
-        },
-        {
-          "title": "Software developers",
-          "desc": "Developers who want to work with technologies such as JDBC, Servlets, JSP, Hibernate, Spring, and Spring Boot."
-        },
-        {
-          "title": "Web developers",
-          "desc": "Professionals interested in developing dynamic, database-driven web applications."
-        },
-        {
-          "title": "IT professionals",
-          "desc": "Those planning to transition into Java-based development roles."
-        },
-        {
-          "title": "Who Should Consider Enrolling",
-          "desc": "Who want to build a career as a Java developer."
-        },
-        {
-          "title": "Already Know Core",
-          "desc": "Already know Core Java and want to learn enterprise-level Java technologies."
-        },
-        {
-          "title": "Enterprise Backend Architecture",
-          "desc": "Who want to develop scalable and database-driven applications."
-        },
-        {
-          "title": "Career & Placement Support",
-          "desc": "Are preparing for Java developer job interviews."
+          "title": "4. Production Microservices & Enterprise Architecture",
+          "desc": "Master Spring Boot 3, RESTful APIs, Spring Security with JWT, Spring Data JPA, Hibernate ORM, Docker containerization, and cloud deployment."
         }
       ],
       "keyHighlights": [
-        {
-          "title": "Standout Feature",
-          "desc": "Yukti Software mentors and industrial experts understand the modern IT infrastructure very well. Thus, they designed the Advanced Java Training course modules to cover every essential Java concept, followed by practical exercises. It plays a huge role in preparing you for the challenges that you will face when building enterprise-level solutions. To further improve your understanding, our Advanced Java Training Institute Greater Noida divides the course into multiple modules. More highlights of the course are listed below:"
-        },
         {
           "title": "Career Assistance by Experts",
           "desc": "Let our experts help you choose the right career path and provide you with key job-market insights."
@@ -4493,14 +4446,18 @@ export const docxPagesData = {
         },
         {
           "title": "Study Resources",
-          "desc": "Get access to the lecture videos, notes, and other study resources."
+          "desc": "Get access to lecture videos, notes, cheatsheets, repositories, and other comprehensive study resources."
         }
       ],
       "targetAudience": [
-        "Fresh graduates and engineering students seeking lucrative IT job roles.",
-        "Working developers wanting to upskill into modern high-demand technologies.",
-        "Non-IT professionals seeking a guided transition into software engineering.",
-        "Freelancers looking to build enterprise-scale web and software solutions."
+        "Java beginners with basic knowledge: Learners who understand Core Java and want to move toward advanced development.",
+        "Java developers: Professionals looking to strengthen their skills in enterprise application development.",
+        "Computer science graduates: Fresh graduates who want to build job-ready Java development skills.",
+        "Software developers: Developers who want to work with technologies such as JDBC, Servlets, JSP, Hibernate, Spring, and Spring Boot.",
+        "Web developers: Professionals interested in developing dynamic, database-driven web applications.",
+        "IT professionals: Those planning to transition into Java-based development roles.",
+        "Aspirants who want to develop scalable, secure, and database-driven enterprise applications.",
+        "Candidates preparing for Java developer job interviews and top MNC technical recruitment drives."
       ],
       "curriculum": [
         {
@@ -4804,27 +4761,47 @@ export const docxPagesData = {
           "skillsOrPackage": "Java, Spring, architecture, problem-solving"
         }
       ],
-      "whyChooseYukti": [],
+      "careerOpportunities": [
+        "Java Developer",
+        "Backend Developer",
+        "Full-Stack Java Developer",
+        "Spring Boot Developer",
+        "Java Web Developer",
+        "Java Application Developer",
+        "Java Microservices Developer",
+        "Software Engineer",
+        "Java QA/Automation Engineer",
+        "Java Technical Consultant"
+      ],
+      "whyChooseYukti": [
+        "At Yukti Software, you will learn from instructors with industry experience who understand modern technologies, development practices, and real-world challenges.",
+        "Access updated course content that reflects the latest technologies, tools, frameworks, and industry requirements.",
+        "Gain hands-on experience through practical exercises, projects, case studies, and lab sessions.",
+        "Develop industry-relevant and job-oriented skills that can help you prepare for roles in the IT sector.",
+        "Improve your interview performance through mock interviews, technical assessments, resume guidance, and interview preparation.",
+        "Receive career guidance to help you choose suitable IT roles, certifications, and professional growth paths.",
+        "Benefit from structured learning resources, doubt-clearing sessions, study materials, and ongoing support throughout the course."
+      ],
       "faqs": [
         {
-          "question": "1: What is Advanced Java training, and what will I learn?",
-          "answer": "A: Advanced Java training focuses on enterprise and web application development using technologies such as JDBC, Servlets, JSP, Hibernate, Spring, Spring Boot, REST APIs, and databases."
+          "question": "What is Advanced Java training, and what will I learn?",
+          "answer": "Advanced Java training focuses on enterprise and web application development using technologies such as JDBC, Servlets, JSP, Hibernate, Spring, Spring Boot, REST APIs, and databases."
         },
         {
-          "question": "2: What are the prerequisites for joining an Advanced Java course?",
-          "answer": "A: Basic knowledge of Core Java, object-oriented programming, and fundamental programming concepts is generally recommended before starting Advanced Java training."
+          "question": "What are the prerequisites for joining an Advanced Java course?",
+          "answer": "Basic knowledge of Core Java, object-oriented programming, and fundamental programming concepts is generally recommended before starting Advanced Java training."
         },
         {
-          "question": "3: How long does it take to complete Advanced Java training?",
-          "answer": ""
+          "question": "How long does it take to complete Advanced Java training?",
+          "answer": "The duration depends on the batch chosen and curriculum depth. Most job-oriented programs range from 3 to 6 months with hands-on enterprise capstone projects."
         },
         {
-          "question": "4: What job opportunities are available after Advanced Java training?",
-          "answer": "A: You can pursue roles such as Java Developer, Backend Developer, Spring Boot Developer, Java Web Developer, Full-Stack Java Developer, and Software Engineer."
+          "question": "What job opportunities are available after Advanced Java training?",
+          "answer": "You can pursue roles such as Java Developer, Backend Developer, Spring Boot Developer, Java Web Developer, Full-Stack Java Developer, and Software Engineer."
         },
         {
-          "question": "5: Is Advanced Java training useful for getting a Java developer job?",
-          "answer": "A: Yes. A practical Advanced Java course can help you develop industry-relevant skills in Spring Boot, REST APIs, databases, Hibernate, testing, and application development, which are commonly used in Java development roles."
+          "question": "Is Advanced Java training useful for getting a Java developer job?",
+          "answer": "Yes. A practical Advanced Java course can help you develop industry-relevant skills in Spring Boot, REST APIs, databases, Hibernate, testing, and application development, which are commonly used in Java development roles."
         }
       ]
     },
@@ -6234,6 +6211,462 @@ export const docxPagesData = {
         {
           "question": "Is this course suitable for working professionals?",
           "answer": "Yes, flexible batch timings (including weekend batches and evening slots) are available at Yukti Software for college students as well as working professionals."
+        }
+      ]
+    },
+    "sql": {
+      "title": "SQL Training Institute in Greater Noida with Experienced Faculty and Advanced Labs",
+      "headline": "SQL Training Institute in Greater Noida with Experienced Faculty and Advanced Labs",
+      "keywords": "SQL Training Institute in Greater Noida, SQL Course Greater Noida, SQL Training with Experienced Faculty, Advanced SQL Labs, Relational Database, SQL Placement, Yukti Software",
+      "description": "Yukti Software is a trusted and certified institute that offers practical SQL training with the most up-to-date curriculum. Covering both advanced and beginner courses, Yukti Software trains candidates for internships, entry-level jobs, and professional roles. Our SQL Training Institute in Greater Noida utilizes structured training modules to ensure efficient learning. Candidates in our institute take part in SQL quizzes and primarily focus on skill development. This helps them prepare for the tough technical interviews and get ready for the modern job world.",
+      "fullDescription": [
+        "Yukti Software is a trusted and certified institute that offers practical SQL training with the most up-to-date curriculum. Covering both advanced and beginner courses, Yukti Software trains candidates for internships, entry-level jobs, and professional roles. Our SQL Training Institute in Greater Noida utilizes structured training modules to ensure efficient learning. Candidates in our institute take part in SQL quizzes and primarily focus on skill development. This helps them prepare for the tough technical interviews and get ready for the modern job world.",
+        "What Makes Yukti Software an Ideal Institute for SQL Training",
+        "As the leading course provider and IT training institute, our complete focus is to prepare candidates to be job-ready. This motto is reflected in our training programs, where we not only cover the latest topics but also conduct mock interviews and special sessions for resume preparation. Overall, we are the ideal SQL Training Institute in Greater Noida if you aim to land an early job or if you are a professional looking to develop advanced SQL skills."
+      ],
+      "courseBenefits": [
+        {
+          "title": "1. High Career Demand",
+          "desc": "SQL is a dominant programming language used across different industries for managing relational databases. Enterprises and businesses, regardless of their operating scale, use databases. Thus, it is in high demand and will continue to be in demand in the future. This gives you multiple job opportunities and a higher number of job vacancies to pursue a successful career."
+        },
+        {
+          "title": "2. Strong Data Analysis Skills",
+          "desc": "Our expert-led SQL Training Institute in Greater Noida prioritizes skill development. Therefore, during the training, you will also develop strong data analysis skills. This will significantly improve the strength of your resume. These skills also prove to be highly beneficial during the difficult technical interview rounds."
+        },
+        {
+          "title": "3. Better Career Growth",
+          "desc": "Advancing your SQL skills gives your career the right boost. You can start from entry-level jobs or internships and make your way to senior roles, advancing in the hierarchy. Career growth with SQL training also includes getting higher earning potential by specializing in different database-related job roles."
+        },
+        {
+          "title": "4. Hands-On Practical Competence",
+          "desc": "Master relational schema design, complex multi-table joins, subqueries, indexing, and query optimization to deliver production-grade database systems with complete confidence."
+        }
+      ],
+      "keyHighlights": [
+        {
+          "title": "Industry-Relevant Training Programs",
+          "desc": "Our training institute offers SQL training programs that are most in-demand and will help you land a job in this competitive market."
+        },
+        {
+          "title": "Experienced Trainers",
+          "desc": "You will receive guidance from industry experts with experience in designing SQL solutions for large-scale enterprises."
+        },
+        {
+          "title": "Hands-On Practical Learning",
+          "desc": "Work on real-world projects, lab exercises, and practical assignments to strengthen technical skills."
+        },
+        {
+          "title": "Interview & Placement Support",
+          "desc": "Our comprehensive job support will not only prepare you for jobs, but also give you multiple job opportunities."
+        },
+        {
+          "title": "Flexible Learning Options",
+          "desc": "We offer a variety of class timings and learning modes so that you can easily fit our SQL training into your daily schedule."
+        },
+        {
+          "title": "Certification & Career Guidance",
+          "desc": "Earn course certifications and receive guidance on career paths, skill development, and relevant IT certifications."
+        }
+      ],
+      "targetAudience": [
+        "Beginners and Freshers: Individuals with little or no prior SQL or database knowledge can start with beginner-level courses.",
+        "Students and Graduates: IT, computer science, engineering, and related students can build database skills for academic and career purposes.",
+        "Working IT Professionals: Developers, testers, software engineers, and other IT professionals can strengthen their database and SQL expertise.",
+        "Data Analysts and Aspiring Analysts: Professionals who work with data can learn SQL for querying, filtering, analyzing, and reporting data.",
+        "Database Professionals: Database administrators and SQL developers can pursue advanced training to improve their query optimization, database management, and performance-tuning skills.",
+        "Professionals Seeking Career Growth: Individuals looking to upgrade their technical skills or transition into data- and database-related roles can choose a course based on their existing knowledge."
+      ],
+      "curriculum": [
+        {
+          "moduleTitle": "Module 1: Introduction to SQL & Relational Databases",
+          "topics": [
+            "Introduction to Relational Databases & RDBMS architecture",
+            "SQL vs NoSQL: Key differences and industry use cases",
+            "Installing & configuring PostgreSQL, MySQL, and SQL Server",
+            "SQL syntax rules, data types, and primary key constraints",
+            "Connecting database clients and writing your first queries"
+          ]
+        },
+        {
+          "moduleTitle": "Module 2: Data Definition (DDL) & Data Manipulation (DML)",
+          "topics": [
+            "CREATE, ALTER, DROP, and TRUNCATE database tables",
+            "INSERT, UPDATE, DELETE, and MERGE data records",
+            "Constraints: NOT NULL, UNIQUE, PRIMARY KEY, FOREIGN KEY, CHECK, DEFAULT",
+            "Database schemas, table relationships, and integrity rules"
+          ]
+        },
+        {
+          "moduleTitle": "Module 3: Basic & Advanced Data Querying (DQL)",
+          "topics": [
+            "SELECT statements, column aliasing, and DISTINCT filtering",
+            "WHERE clause filtering: comparison, logical, and range operators (BETWEEN, IN, LIKE)",
+            "Sorting results with ORDER BY and handling NULL values",
+            "Limiting query outputs with LIMIT, OFFSET, and TOP clauses"
+          ]
+        },
+        {
+          "moduleTitle": "Module 4: Multi-Table Joins & Set Operations",
+          "topics": [
+            "INNER JOIN, LEFT (OUTER) JOIN, RIGHT (OUTER) JOIN, and FULL OUTER JOIN",
+            "CROSS JOIN, SELF JOIN, and multiple table join chains",
+            "Set Operations: UNION, UNION ALL, INTERSECT, and EXCEPT / MINUS",
+            "Filtering joined data sets and resolving join ambiguities"
+          ]
+        },
+        {
+          "moduleTitle": "Module 5: Aggregations, Grouping & Analytical Calculations",
+          "topics": [
+            "Aggregate functions: COUNT, SUM, AVG, MIN, MAX",
+            "GROUP BY clause and multi-column grouping logic",
+            "HAVING clause vs WHERE clause filtering",
+            "String, Date, Time, and Mathematical built-in SQL functions"
+          ]
+        },
+        {
+          "moduleTitle": "Module 6: Subqueries, Nested Queries & CTEs",
+          "topics": [
+            "Single-row, multi-row, and scalar subqueries",
+            "Correlated subqueries and EXISTS / NOT EXISTS operators",
+            "Common Table Expressions (CTEs) and Recursive CTEs",
+            "Temporary tables and table variables in complex querying"
+          ]
+        },
+        {
+          "moduleTitle": "Module 7: Advanced Window Functions & Analytical SQL",
+          "topics": [
+            "OVER clause and PARTITION BY logic",
+            "Ranking functions: ROW_NUMBER(), RANK(), DENSE_RANK(), NTILE()",
+            "Value functions: LEAD(), LAG(), FIRST_VALUE(), LAST_VALUE()",
+            "Cumulative running totals, moving averages, and percentile calculations"
+          ]
+        },
+        {
+          "moduleTitle": "Module 8: Database Design, Normalization & Integrity",
+          "topics": [
+            "Entity-Relationship (ER) modeling and schema design",
+            "Database Normalization: 1NF, 2NF, 3NF, BCNF principles",
+            "Denormalization strategies for read-heavy reporting systems",
+            "Referential integrity and cascading updates/deletes"
+          ]
+        },
+        {
+          "moduleTitle": "Module 9: Views, Indexing & Query Optimization",
+          "topics": [
+            "Standard views, materialized views, and security isolation",
+            "B-Tree, Hash, and Clustered vs Non-Clustered Indexes",
+            "Analyzing Query Execution Plans (EXPLAIN ANALYZE)",
+            "Query optimization techniques, index tuning, and avoiding full table scans"
+          ]
+        },
+        {
+          "moduleTitle": "Module 10: Stored Procedures, Functions & Triggers",
+          "topics": [
+            "Creating parameterized Stored Procedures (PL/SQL / T-SQL)",
+            "User-Defined Functions (UDFs): Scalar and Table-Valued",
+            "Database Triggers: BEFORE, AFTER, and INSTEAD OF triggers",
+            "Error handling, transactions, and control flow in SQL programming"
+          ]
+        },
+        {
+          "moduleTitle": "Module 11: Transactions, Concurrency & ACID Properties",
+          "topics": [
+            "ACID properties: Atomicity, Consistency, Isolation, Durability",
+            "Transaction commands: BEGIN, COMMIT, ROLLBACK, SAVEPOINT",
+            "Transaction Isolation Levels (Read Uncommitted, Read Committed, Repeatable Read, Serializable)",
+            "Deadlocks, locking mechanisms, and row-level vs table-level locks"
+          ]
+        },
+        {
+          "moduleTitle": "Module 12: Real-World Enterprise SQL Capstone Projects",
+          "topics": [
+            "E-Commerce Multi-Vendor Analytics & Order Fulfillment Engine",
+            "Banking & Financial Transaction Processing System with ACID Compliance",
+            "Hospital & Healthcare Management System with Complex Reporting",
+            "BI Dashboard Data Pipeline & Performance Optimization Challenge"
+          ]
+        }
+      ],
+      "careerOpportunities": [
+        "SQL Developer",
+        "Data Analyst",
+        "Database Administrator (DBA)",
+        "Business Analyst",
+        "Data Engineer",
+        "Database Developer",
+        "BI Developer"
+      ],
+      "careerRolesTable": [
+        {
+          "role": "SQL Developer",
+          "responsibilities": "Develop queries, stored procedures, functions, and database solutions.",
+          "skillsOrPackage": "SQL, database design, query optimization, PL/SQL or T-SQL"
+        },
+        {
+          "role": "Data Analyst",
+          "responsibilities": "Extract, clean, and analyze data to generate business insights.",
+          "skillsOrPackage": "SQL, Excel, data analysis, statistics, Power BI/Tableau"
+        },
+        {
+          "role": "Database Administrator (DBA)",
+          "responsibilities": "Manage database performance, security, backups, and maintenance.",
+          "skillsOrPackage": "SQL, database management, backup & recovery, performance tuning"
+        },
+        {
+          "role": "Business Analyst",
+          "responsibilities": "Analyze business data and prepare reports to support decisions.",
+          "skillsOrPackage": "SQL, data analysis, Excel, reporting, business requirements"
+        },
+        {
+          "role": "Data Engineer",
+          "responsibilities": "Build and maintain databases, data pipelines, and data-processing systems.",
+          "skillsOrPackage": "SQL, Python, ETL, data warehousing, cloud platforms"
+        },
+        {
+          "role": "Database Developer",
+          "responsibilities": "Design database structures and develop database applications.",
+          "skillsOrPackage": "SQL, database design, stored procedures, indexing"
+        },
+        {
+          "role": "BI Developer",
+          "responsibilities": "Develop data-driven reports, dashboards, and business intelligence solutions.",
+          "skillsOrPackage": "SQL, Power BI/Tableau, data modeling, DAX, reporting"
+        }
+      ],
+      "whyChooseYukti": [
+        "Yukti Software prioritizes the career growth of our candidates and understands the importance of professionals in the early stage.",
+        "Our experts at our SQL Training Institute in Greater Noida conduct free-of-cost counselling sessions for candidates covering profile evaluation, fee discussion, and finding the right SQL specialization.",
+        "Learn from experienced faculty with expertise in designing SQL solutions for large-scale enterprises.",
+        "Hands-on lab sessions with live query writing, performance tuning, and real industrial database scenarios.",
+        "Comprehensive job support including mock technical interviews, resume building, and placement opportunities."
+      ],
+      "faqs": [
+        {
+          "question": "Why is the demand for SQL professionals growing?",
+          "answer": "The growing use of data-driven decision-making has increased the need for professionals who can query, manage, and analyze databases. SQL is widely used across data analytics, software development, business intelligence, and database management."
+        },
+        {
+          "question": "What should I focus on while choosing an SQL training course?",
+          "answer": "Focus on SQL fundamentals, advanced queries, joins, subqueries, stored procedures, database design, indexing, query optimization, and hands-on projects. The course should also provide practical exposure to commonly used database systems."
+        },
+        {
+          "question": "Is SQL certification important for building a career?",
+          "answer": "An SQL certification can validate your knowledge and provide evidence of structured training. However, employers may also consider practical SQL skills, project experience, problem-solving ability, and knowledge of relevant database technologies."
+        },
+        {
+          "question": "What career specializations can I pursue after SQL training?",
+          "answer": "SQL skills can support several career paths, including SQL Developer, Data Analyst, Database Administrator, Database Developer, Business Analyst, BI Developer, and Data Engineer. Your choice can depend on your interests and complementary technical skills."
+        },
+        {
+          "question": "How can I get a job after completing SQL training?",
+          "answer": "Build practical projects, strengthen your SQL query-writing skills, create a relevant resume, and prepare for technical interviews. Learning complementary tools such as Excel, Python, Power BI, or cloud database platforms can also broaden your job options."
+        },
+        {
+          "question": "What are the benefits of choosing the right SQL training institute?",
+          "answer": "A suitable training provider can offer a structured curriculum, experienced instructors, hands-on database projects, practical assignments, certification preparation, interview training, and career guidance."
+        },
+        {
+          "question": "Do SQL training institutes provide career counselling?",
+          "answer": "Yes, many SQL training institutes offer career counselling to help learners identify suitable career paths based on their skills and interests. Counselling may include guidance on job roles, skill development, resume preparation, interview readiness, and relevant certifications."
+        }
+      ]
+    },
+    "dbms-institute": {
+      "title": "Database Management System Institute Greater Noida with Hands-on Sessions",
+      "headline": "Database Management System Institute Greater Noida with Hands-on Sessions",
+      "keywords": "Database Management System Institute Greater Noida, DBMS Institute Greater Noida, DBMS Training Greater Noida, SQL Programming, Real-world Database Projects, Placement Assistance, Yukti Software",
+      "description": "Learn the complete Database Management System at Yukti Software with practical lab sessions and expert-led training courses. In our Database Management System Greater Noida, we take a systematic and efficient teaching approach. Here, you will cover key fundamentals first, so that you can learn advanced DBMS topics more efficiently, in a shorter duration. However, our key focus during the course is on skill development. Candidates in our institute spend most of the lecture performing CRUD operations, using SQL programming, building real-world projects, and working on crucial DBMS tools.",
+      "fullDescription": [
+        "Learn the complete Database Management System at Yukti Software with practical lab sessions and expert-led training courses. In our Database Management System Greater Noida, we take a systematic and efficient teaching approach. Here, you will cover key fundamentals first, so that you can learn advanced DBMS topics more efficiently, in a shorter duration.",
+        "What Makes Our DBMS Training More Productive and Job-oriented: DBMS courses at Yukti Software are practice-focused and job-oriented. Each course is designed by experts who have years of experience and is divided into modules. Within each module, you will find assessments, quizzes, and assignments that are designed to help you develop a deeper understanding of DBMS concepts."
+      ],
+      "courseBenefits": [
+        {
+          "title": "1. Build Job-ready Skills",
+          "desc": "Database manipulation and management skills are currently in high demand because of the trending digitalization trend. This has significantly increased job listings and the number of vacancies across different job portals. Therefore, with relevant DBMS skills, getting a job is not difficult because of the increasing demand."
+        },
+        {
+          "title": "2. Growth and Higher Pay Scale",
+          "desc": "DBMS is an essential part of the IT industry, and professionals who know how to manipulate data can earn decently from entry-level jobs. The best part is that your pay scale grows greatly as you grow your career and move to higher positions."
+        },
+        {
+          "title": "3. Access to More Career Opportunities",
+          "desc": "Every organization, whether they work on a large or small scale, requires professionals to manage databases for gathering essential trends and insights from the available data. Therefore, we are now seeing more job openings for database management professionals. As per the trends, the requirements will keep on growing in the future."
+        },
+        {
+          "title": "4. Practical Industry Ready Competence",
+          "desc": "Gain hands-on expertise in multi-table SQL queries, relational schema modeling, indexing, transactions, and enterprise database administration with 100% placement support."
+        }
+      ],
+      "keyHighlights": [
+        {
+          "title": "Relevant and Updated DBMS Curriculum",
+          "desc": "At our institute, we cover SQL, database design, normalization, transactions, joins, indexing, and advanced database concepts."
+        },
+        {
+          "title": "Hands-On Practical Training",
+          "desc": "We will provide you with advanced lab sessions for regular practice with SQL queries, data manipulation, and real-world database tasks."
+        },
+        {
+          "title": "Real-World Projects",
+          "desc": "Candidates at Yukti Software will work closely with industry experts to build practical database projects."
+        },
+        {
+          "title": "Expert-Led Training",
+          "desc": "Each course is led by experienced trainers with practical knowledge of database technologies and industry applications."
+        },
+        {
+          "title": "Interview & Placement Preparation",
+          "desc": "Learning at Yukti Software includes SQL interview questions, SQL exercises, mock interviews, and career guidance."
+        },
+        {
+          "title": "Certification & Career Support",
+          "desc": "Get certified and boost the visibility of your resume, and our job support will provide additional assistance with multiple job opportunities."
+        }
+      ],
+      "targetAudience": [
+        "College students pursuing BCA, B.Tech, MCA, Computer Science, IT, or related programs.",
+        "Beginners who want to build foundational databases and SQL skills from scratch.",
+        "Aspiring software developers looking to strengthen their backend and database knowledge.",
+        "Data analytics aspirants who need SQL and database skills for working with structured data.",
+        "Working IT professionals who want to upgrade their database management skills.",
+        "Career switchers planning to move into database, software development, or data-related roles.",
+        "Fresh graduates seeking practical DBMS training and job-oriented technical skills."
+      ],
+      "curriculum": [
+        {
+          "moduleTitle": "Module 1: Career Counselling & Course Guidance",
+          "topics": [
+            "Understand the DBMS course curriculum and learning objectives",
+            "Identify suitable career paths based on your skills and interests",
+            "Get guidance on prerequisites, course duration, and learning approach"
+          ]
+        },
+        {
+          "moduleTitle": "Module 2: Conceptual Learning & Architecture",
+          "topics": [
+            "Learn core DBMS concepts, database architecture, and data models",
+            "Understand SQL, queries, joins, normalization, keys, and constraints",
+            "Learn concepts through instructor-led explanations and practical examples"
+          ]
+        },
+        {
+          "moduleTitle": "Module 3: Quizzes & Knowledge Checks",
+          "topics": [
+            "Take regular quizzes after completing key topics",
+            "Test your understanding of SQL and database concepts",
+            "Identify knowledge gaps and improve areas that need more practice"
+          ]
+        },
+        {
+          "moduleTitle": "Module 4: Practical Lab Assignments",
+          "topics": [
+            "Write and execute SQL queries based on practical scenarios",
+            "Create tables, relationships, views, and database structures",
+            "Practice data insertion, updating, filtering, sorting, and manipulation"
+          ]
+        },
+        {
+          "moduleTitle": "Module 5: Real-World Database Projects",
+          "topics": [
+            "Work on database projects based on real-world use cases",
+            "Design databases and implement appropriate SQL queries",
+            "Apply DBMS concepts to solve practical data management problems"
+          ]
+        },
+        {
+          "moduleTitle": "Module 6: Interview & Job Preparation",
+          "topics": [
+            "Practice commonly asked DBMS and SQL interview questions",
+            "Participate in mock interviews and technical assessments",
+            "Get guidance on resumes, projects, and presenting technical skills"
+          ]
+        },
+        {
+          "moduleTitle": "Module 7: Certification & Career Support",
+          "topics": [
+            "Receive a certificate upon successful completion of the course",
+            "Showcase your practical projects and DBMS skills in your resume",
+            "Get guidance on applying for relevant entry-level IT roles"
+          ]
+        }
+      ],
+      "careerOpportunities": [
+        "SQL Developer",
+        "Database Administrator (DBA)",
+        "Database Developer",
+        "Data Analyst",
+        "Backend Developer",
+        "Data Engineer"
+      ],
+      "careerRolesTable": [
+        {
+          "role": "SQL Developer",
+          "responsibilities": "Write queries, develop database solutions, and manage SQL-based applications",
+          "skillsOrPackage": "SQL, joins, stored procedures, indexing"
+        },
+        {
+          "role": "Database Administrator (DBA)",
+          "responsibilities": "Manage database performance, security, backups, and user access",
+          "skillsOrPackage": "Database administration, security, backup and recovery"
+        },
+        {
+          "role": "Database Developer",
+          "responsibilities": "Design, develop, and maintain database systems",
+          "skillsOrPackage": "Database design, SQL, normalization, optimization"
+        },
+        {
+          "role": "Data Analyst",
+          "responsibilities": "Extract, organize, and analyze data to generate insights",
+          "skillsOrPackage": "SQL, data querying, filtering, aggregation"
+        },
+        {
+          "role": "Backend Developer",
+          "responsibilities": "Build application logic and integrate applications with databases",
+          "skillsOrPackage": "SQL, database integration, transactions"
+        },
+        {
+          "role": "Data Engineer",
+          "responsibilities": "Build and maintain systems for collecting, processing, and storing data",
+          "skillsOrPackage": "SQL, database architecture, data pipelines"
+        }
+      ],
+      "whyChooseYukti": [
+        "Flexible DBMS training classes designed to accommodate students, working professionals, and career changers.",
+        "Compact batch sizes ensuring individual attention and interactive doubt-clearing sessions.",
+        "Experienced faculty with strong industry backgrounds and practical database expertise.",
+        "Hands-on lab sessions with real-time query execution, data manipulation, and project building.",
+        "Free profile evaluation and personalized career counselling sessions.",
+        "Comprehensive mock interview drills and technical interview preparation."
+      ],
+      "faqs": [
+        {
+          "question": "Does Yukti Software offer flexible DBMS training classes?",
+          "answer": "Yes, as the leading Database Management System Institute Greater Noida, Yukti Software offers flexible DBMS classes designed to accommodate students, working professionals, and career changers. Depending on the available schedule, learners can choose suitable class timings and maintain their learning alongside other commitments."
+        },
+        {
+          "question": "Does Yukti Software provide DBMS training in compact batches?",
+          "answer": "Yes, Yukti Software conducts DBMS training in compact batches to encourage better interaction between learners and trainers. Smaller batches also allow students to ask questions, participate in practical exercises, and receive more focused guidance."
+        },
+        {
+          "question": "Does Yukti Software provide career guidance after DBMS training?",
+          "answer": "Yes, Yukti Software provides career guidance to help learners understand suitable DBMS-related career paths. Trainers and career experts can guide students on relevant job roles, skill development, resumes, interviews, and career preparation."
+        },
+        {
+          "question": "What are the benefits of professional career counselling at Yukti Software?",
+          "answer": "Professional counselling at Yukti Software can help learners understand their existing skills, identify suitable career directions, and create a structured learning plan. It can also help students understand the skills and qualifications commonly expected for their target roles."
+        },
+        {
+          "question": "Does Yukti Software conduct mock interviews for DBMS students?",
+          "answer": "Yes, Yukti Software includes mock interviews as part of its career preparation. These sessions allow learners to practice answering technical and HR questions, explain their projects, and become familiar with the interview process."
+        },
+        {
+          "question": "Are the DBMS trainers at Yukti Software experienced?",
+          "answer": "Yes, Yukti Software has experienced faculty who guide DBMS concepts, SQL, practical exercises, and real-world applications. Their industry-oriented approach can help learners connect theoretical concepts with practical database tasks."
+        },
+        {
+          "question": "Why choose Yukti Software for DBMS training?",
+          "answer": "Yukti Software combines structured DBMS learning with practical assignments, compact batches, experienced faculty, career counselling, mock interviews, and job preparation. This approach helps learners develop both technical knowledge and career-oriented skills."
         }
       ]
     }

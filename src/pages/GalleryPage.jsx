@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { getGalleryPhotos, getGalleryVideos } from '../services/contentService';
 import { 
   Sparkles, 
   Image as ImageIcon, 
@@ -15,60 +16,158 @@ import {
   Maximize2
 } from 'lucide-react';
 
+// Gallery Local Image Assets
+import collegeCollabImg from '../assets/Gallery/colleg_collab.jpg';
+import rkgitCollabImg from '../assets/Gallery/rkjitcoloab.jpg';
+import labsCollegeTrainingImg from '../assets/Gallery/labscollegetrainig.jpeg';
+import internshipImg1 from '../assets/Gallery/internship.jpeg';
+import internshipImg2 from '../assets/Gallery/internship (2).jpeg';
+import seminarImg from '../assets/Gallery/IMG_0343.png';
+import classroomWorkshopImg from '../assets/Gallery/IMG_1972.jpg';
+import systemDesignImg from '../assets/Gallery/IMG_2670.jpeg';
+import techDiscussionImg from '../assets/Gallery/IMG20240312113328.jpg';
+import labCoding1Img from '../assets/Gallery/IMG_20240913_101218713_HDR.jpeg';
+import labCoding2Img from '../assets/Gallery/IMG_20240913_101226441_HDR.jpeg';
+import labArchitectureImg from '../assets/Gallery/IMG_20240913_163119530_HDR.jpeg';
+import campusOrientationImg from '../assets/Gallery/IMG_20250320_145946832_HDR~3.jpg';
+import teamDiscussionImg from '../assets/Gallery/WhatsApp Image 2024-09-27 at 22.58.09.jpeg';
+import bootcampImg from '../assets/Gallery/WhatsApp Image 2024-09-27 at 22.58.09 (2).jpeg';
+
 const PHOTO_ITEMS = [
   {
     id: 1,
-    title: "Full Stack Practical Lab Session",
-    category: "classroom",
-    categoryLabel: "Classroom & Labs",
-    caption: "Students building live full stack microservices and React dashboards with 1-on-1 mentor guidance.",
-    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=80",
-    badge: "Greater Noida Center"
+    title: "College MoU & Institutional Collaboration",
+    category: "collab",
+    categoryLabel: "College Collaborations",
+    caption: "Yukti Software signing institutional MoUs and building innovation labs with premier engineering colleges.",
+    image: collegeCollabImg,
+    badge: "Institutional MoU"
   },
   {
     id: 2,
-    title: "Placement Celebration Batch 2026",
-    category: "placements",
-    categoryLabel: "Placement Drives",
-    caption: "Congratulating our 38 placed candidates who received offer letters from leading IT firms and global MNCs.",
-    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=80",
-    badge: "38 Placements"
+    title: "RKGIT College Training & Campus Collaboration",
+    category: "collab",
+    categoryLabel: "College Collaborations",
+    caption: "Technical training and hands-on industrial workshop partnership with engineering students at RKGIT.",
+    image: rkgitCollabImg,
+    badge: "Campus Collaboration"
   },
   {
     id: 3,
-    title: "AI & GenAI 24-Hour Hackathon",
-    category: "workshops",
-    categoryLabel: "Hackathons & Events",
-    caption: "Winning student team demonstrating their autonomous LLM-powered enterprise customer service agents.",
-    image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=1000&q=80",
-    badge: "Hackathon Winner"
+    title: "Hands-On College Laboratory Training Drive",
+    category: "collab",
+    categoryLabel: "College Collaborations",
+    caption: "Live coding, data structures, and full-stack software development sessions in campus computer laboratories.",
+    image: labsCollegeTrainingImg,
+    badge: "Lab Training"
   },
   {
     id: 4,
-    title: "Java Microservices Code Review",
-    category: "classroom",
-    categoryLabel: "Classroom & Labs",
-    caption: "Senior architect conducting line-by-line code audits, Spring Security reviews, and Docker drills.",
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80",
-    badge: "Live Code Audit"
+    title: "Campus Outreach & Engineering Orientation",
+    category: "collab",
+    categoryLabel: "College Collaborations",
+    caption: "Campus orientation session connecting college engineering students with modern software development standards.",
+    image: campusOrientationImg,
+    badge: "Campus Outreach"
   },
   {
     id: 5,
-    title: "Google & Microsoft Alumni Mentorship",
-    category: "workshops",
-    categoryLabel: "Hackathons & Events",
-    caption: "Guest masterclass on Low-Level System Design and cracking Tier-1 product company interview rounds.",
-    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1000&q=80",
-    badge: "FAANG Masterclass"
+    title: "Yukti Software Industrial Internship Batch",
+    category: "internship",
+    categoryLabel: "Industrial Internships",
+    caption: "Interns collaborating on live production software modules, API integrations, and code reviews with senior leads.",
+    image: internshipImg1,
+    badge: "Live Internship"
   },
   {
     id: 6,
-    title: "Corporate Campus Recruitment Drive",
-    category: "placements",
-    categoryLabel: "Placement Drives",
-    caption: "Direct on-campus technical interviews with hiring managers from leading NCR software & fintech firms.",
-    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1000&q=80",
-    badge: "Day 1 Recruiters"
+    title: "Internship Project Sprint Review & Mentorship",
+    category: "internship",
+    categoryLabel: "Industrial Internships",
+    caption: "Senior engineering mentors conducting project sprint reviews, code refactoring, and sprint deliverables.",
+    image: internshipImg2,
+    badge: "Sprint Review"
+  },
+  {
+    id: 7,
+    title: "Advanced Practical Classroom Lab Workshop",
+    category: "classroom",
+    categoryLabel: "Labs & Classrooms",
+    caption: "Students coding real-world web applications and backend APIs with dedicated 1-on-1 mentor assistance.",
+    image: classroomWorkshopImg,
+    badge: "Classroom Lab"
+  },
+  {
+    id: 8,
+    title: "Full Stack Lab Coding & Debugging Session",
+    category: "classroom",
+    categoryLabel: "Labs & Classrooms",
+    caption: "1-on-1 practical code execution, live bug resolution, and developer tooling walkthroughs.",
+    image: labCoding1Img,
+    badge: "Practical Lab"
+  },
+  {
+    id: 9,
+    title: "Interactive Lab Practice & Doubt Clearance",
+    category: "classroom",
+    categoryLabel: "Labs & Classrooms",
+    caption: "Dedicated doubt clearing, algorithmic drills, and full-stack project building in our high-tech labs.",
+    image: labCoding2Img,
+    badge: "Lab Practice"
+  },
+  {
+    id: 10,
+    title: "Industrial Software Architecture Training",
+    category: "classroom",
+    categoryLabel: "Labs & Classrooms",
+    caption: "Deep dive into enterprise coding standards, Git version control workflows, and database normalization.",
+    image: labArchitectureImg,
+    badge: "Architecture Drill"
+  },
+  {
+    id: 11,
+    title: "Tech Innovation Seminar & Keynote",
+    category: "workshops",
+    categoryLabel: "Events & Workshops",
+    caption: "Engaging seminar and interactive discussion on emerging software architectures, cloud computing, and AI tools.",
+    image: seminarImg,
+    badge: "Tech Seminar"
+  },
+  {
+    id: 12,
+    title: "Distributed System Design Masterclass",
+    category: "workshops",
+    categoryLabel: "Events & Workshops",
+    caption: "Interactive masterclass exploring distributed backend architectures, microservices, and real-time data flows.",
+    image: systemDesignImg,
+    badge: "Masterclass"
+  },
+  {
+    id: 13,
+    title: "Interactive Technology & Agile Discussion",
+    category: "workshops",
+    categoryLabel: "Events & Workshops",
+    caption: "Students and tech leads brainstorming software solutions, scrum methodologies, and live application logic.",
+    image: techDiscussionImg,
+    badge: "Agile Workshop"
+  },
+  {
+    id: 14,
+    title: "Collaborative Developer Pod Brainstorming",
+    category: "workshops",
+    categoryLabel: "Events & Workshops",
+    caption: "Developer cohorts brainstorming architectural trade-offs, state management, and UI component libraries.",
+    image: teamDiscussionImg,
+    badge: "Team Collab"
+  },
+  {
+    id: 15,
+    title: "Intensive Developer Training Bootcamp",
+    category: "workshops",
+    categoryLabel: "Events & Workshops",
+    caption: "Intensive coding challenges, hands-on debugging sprints, and modern framework implementation.",
+    image: bootcampImg,
+    badge: "Developer Bootcamp"
   }
 ];
 
@@ -120,10 +219,36 @@ const VIDEO_ITEMS = [
 ];
 
 export default function GalleryPage({ onOpenConsultation }) {
+  const [photos, setPhotos] = useState(PHOTO_ITEMS);
+  const [videos, setVideos] = useState(VIDEO_ITEMS);
+  const [isLoadingDynamic, setIsLoadingDynamic] = useState(false);
   const [activeTab, setActiveTab] = useState('photos');
   const [photoFilter, setPhotoFilter] = useState('all');
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    async function loadDynamicMedia() {
+      try {
+        setIsLoadingDynamic(true);
+        const [fetchedPhotos, fetchedVideos] = await Promise.all([
+          getGalleryPhotos(PHOTO_ITEMS),
+          getGalleryVideos(VIDEO_ITEMS)
+        ]);
+        if (isMounted) {
+          if (fetchedPhotos && fetchedPhotos.length > 0) setPhotos(fetchedPhotos);
+          if (fetchedVideos && fetchedVideos.length > 0) setVideos(fetchedVideos);
+        }
+      } catch (err) {
+        console.warn('Could not fetch dynamic gallery items:', err);
+      } finally {
+        if (isMounted) setIsLoadingDynamic(false);
+      }
+    }
+    loadDynamicMedia();
+    return () => { isMounted = false; };
+  }, []);
 
   // Lock body scroll and handle Escape key on active modal
   useEffect(() => {
@@ -148,8 +273,8 @@ export default function GalleryPage({ onOpenConsultation }) {
   }, [selectedPhoto, selectedVideo]);
 
   const filteredPhotos = photoFilter === 'all' 
-    ? PHOTO_ITEMS 
-    : PHOTO_ITEMS.filter(p => p.category === photoFilter);
+    ? photos 
+    : photos.filter(p => p.category === photoFilter);
 
   return (
     <div className="py-10 sm:py-16">
@@ -176,7 +301,7 @@ export default function GalleryPage({ onOpenConsultation }) {
                 }`}
               >
                 <ImageIcon className="w-4 h-4" />
-                <span>Photo Gallery ({PHOTO_ITEMS.length})</span>
+                <span>Photo Gallery ({photos.length})</span>
               </button>
 
               <button
@@ -188,7 +313,7 @@ export default function GalleryPage({ onOpenConsultation }) {
                 }`}
               >
                 <Video className="w-4 h-4" />
-                <span>Video Stories ({VIDEO_ITEMS.length})</span>
+                <span>Video Stories ({videos.length})</span>
               </button>
             </div>
           </div>
@@ -204,8 +329,9 @@ export default function GalleryPage({ onOpenConsultation }) {
               {[
                 { id: 'all', label: 'All Photos' },
                 { id: 'classroom', label: 'Labs & Classrooms' },
-                { id: 'placements', label: 'Placement Celebrations' },
-                { id: 'workshops', label: 'Hackathons & Events' }
+                { id: 'collab', label: 'College Collaborations' },
+                { id: 'internship', label: 'Industrial Internships' },
+                { id: 'workshops', label: 'Events & Workshops' }
               ].map(cat => (
                 <button
                   key={cat.id}
@@ -274,7 +400,7 @@ export default function GalleryPage({ onOpenConsultation }) {
         {/* ========================================================================= */}
         {activeTab === 'videos' && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fadeIn">
-            {VIDEO_ITEMS.map((vid) => (
+            {videos.map((vid) => (
               <div
                 key={vid.id}
                 onClick={() => setSelectedVideo(vid)}

@@ -1,23 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { docxPagesData } from '../data/pagesDataFromDocs';
 import { getCourseImages } from '../data/courseImages';
 import { getCourseLogo } from './TechLogos';
+import { getCourses } from '../services/contentService';
+import classroomTrainingImg from '../assets/Gallery/IMG_1972.jpg';
 import { 
   ArrowRight, 
   CheckCircle2, 
   Terminal, 
   Code2, 
   Binary, 
-  Sparkles, 
   Globe,
-  Database
+  Database,
+  Cpu
 } from 'lucide-react';
 
-export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) {
-  const [showAll, setShowAll] = useState(false);
-
-  // All 15 Master Courses from DOCX
-  const allMasterCourses = [
+// All 15 Master Courses from DOCX
+const allMasterCourses = [
     {
       id: "course-software-development",
       docxKey: "software-development",
@@ -46,16 +45,29 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
     },
     {
       id: "course-java-fullstack",
-      docxKey: "advanced-java",
+      docxKey: "java-fullstack",
       title: "Java Full Stack Development Course",
       tag: "Enterprise Standard",
       category: "java",
       duration: "5 - 6 Months",
       icon: Code2,
       color: "from-indigo-600 to-purple-600",
-      description: docxPagesData.courses['advanced-java']?.description || "Become a full-spectrum developer mastering React.js frontend, Core & Advanced Java, Spring Boot microservices, and MySQL.",
-      modulesCount: docxPagesData.courses['advanced-java']?.curriculum?.length || 14,
+      description: docxPagesData.courses['java-fullstack']?.description || "Become a full-spectrum developer mastering React.js frontend, Core & Advanced Java, Spring Boot microservices, and MySQL.",
+      modulesCount: docxPagesData.courses['java-fullstack']?.curriculum?.length || 14,
       highlights: ["React.js & Hooks", "Spring Boot & REST APIs", "Hibernate ORM", "Live E-Commerce Project"]
+    },
+    {
+      id: "course-advanced-java",
+      docxKey: "advanced-java",
+      title: "Advanced Java Training Institute",
+      tag: "Industrial Expert Track",
+      category: "java",
+      duration: "4 - 5 Months",
+      icon: Code2,
+      color: "from-orange-600 to-amber-600",
+      description: docxPagesData.courses['advanced-java']?.description || "Take your Java skills to the next level with JDBC, Servlets, JSP, Hibernate, Spring Boot 3, REST APIs, Microservices, and Docker.",
+      modulesCount: docxPagesData.courses['advanced-java']?.curriculum?.length || 14,
+      highlights: ["14 Advanced Modules", "Spring Boot & Microservices", "Hibernate & JPA ORM", "100% Placement Support"]
     },
     {
       id: "course-dsa",
@@ -77,7 +89,7 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
       tag: "Next-Gen AI Era",
       category: "ai",
       duration: "6 Months",
-      icon: Sparkles,
+      icon: Cpu,
       color: "from-purple-600 to-pink-600",
       description: docxPagesData.courses['ai-fullstack']?.description || "Future-proof your career by building full stack applications powered by Generative AI, LLMs, AI Agents, and Vector DBs.",
       modulesCount: docxPagesData.courses['ai-fullstack']?.curriculum?.length || 12,
@@ -168,7 +180,7 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
       tag: "High Growth",
       category: "ai",
       duration: "5 Months",
-      icon: Sparkles,
+      icon: Cpu,
       color: "from-rose-600 to-violet-600",
       description: docxPagesData.courses['ai-ml']?.description || "Master supervised & unsupervised ML, deep neural networks, computer vision, NLP, and model deployment.",
       modulesCount: docxPagesData.courses['ai-ml']?.curriculum?.length || 11,
@@ -177,15 +189,15 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
     {
       id: "course-dbms",
       docxKey: "dbms",
-      title: "Relational DBMS & SQL Mastery",
-      tag: "Core Backend Foundation",
+      title: "Database Management System (DBMS) Course",
+      tag: "Expert-Led & Job-Focused",
       category: "database",
       duration: "2 - 3 Months",
       icon: Database,
       color: "from-blue-700 to-slate-800",
-      description: docxPagesData.courses['dbms']?.description || "Master relational database architecture, ER modeling, complex SQL joins, indexing, query optimization, and transactions.",
-      modulesCount: docxPagesData.courses['dbms']?.curriculum?.length || 8,
-      highlights: ["SQL Query Optimization", "ACID & Transactions", "Indexing & Sharding", "PostgreSQL & MySQL"]
+      description: docxPagesData.courses['dbms']?.description || "Master relational database architecture, ER modeling, complex SQL joins, indexing, query optimization, security, and administration.",
+      modulesCount: docxPagesData.courses['dbms']?.curriculum?.length || 13,
+      highlights: ["13 Comprehensive Modules", "Database Design & Normalization", "Transactions & ACID", "100% Placement Support"]
     },
     {
       id: "course-nosql",
@@ -199,6 +211,19 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
       description: docxPagesData.courses['nosql']?.description || "Harness high-volume document databases with MongoDB, aggregation pipelines, caching with Redis, and horizontal scaling.",
       modulesCount: docxPagesData.courses['nosql']?.curriculum?.length || 9,
       highlights: ["MongoDB Aggregation Pipelines", "Redis In-Memory Caching", "Replica Sets & Sharding", "Real-Time Data Streaming"]
+    },
+    {
+      id: "course-sql",
+      docxKey: "sql",
+      title: "SQL Training & Advanced Labs",
+      tag: "High Career Demand",
+      category: "database",
+      duration: "2 - 3 Months",
+      icon: Database,
+      color: "from-cyan-600 to-blue-700",
+      description: docxPagesData.courses['sql']?.description || "Comprehensive SQL training with experienced faculty, hands-on lab exercises, multi-table joins, subqueries, CTEs, and query optimization.",
+      modulesCount: docxPagesData.courses['sql']?.curriculum?.length || 12,
+      highlights: ["Experienced Industry Faculty", "Advanced Database Labs", "Window Functions & CTEs", "100% Placement Support"]
     },
     {
       id: "course-html-css",
@@ -221,15 +246,32 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
       category: "fullstack",
       duration: "6 Months",
       icon: Code2,
-      color: "from-indigo-600 to-teal-600",
-      description: docxPagesData.courses['fullstack']?.description || "Comprehensive software engineering program covering frontend, backend, databases, testing, CI/CD pipelines, and cloud hosting.",
       modulesCount: docxPagesData.courses['fullstack']?.curriculum?.length || 14,
       highlights: ["Full Lifecycle Engineering", "CI/CD & DevOps Basics", "System Architecture", "Placement Assurance"]
     }
-  ];
+];
 
-  const filteredCourses = allMasterCourses;
-  const displayedCourses = showAll ? allMasterCourses : allMasterCourses.slice(0, 6);
+export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) {
+  const [showAll, setShowAll] = useState(false);
+  const [coursesList, setCoursesList] = useState(allMasterCourses);
+
+  useEffect(() => {
+    let isMounted = true;
+    async function loadDynamicCourses() {
+      try {
+        const dynamicCourses = await getCourses(allMasterCourses);
+        if (isMounted && dynamicCourses && dynamicCourses.length > 0) {
+          setCoursesList(dynamicCourses);
+        }
+      } catch (err) {
+        console.warn('Could not fetch dynamic courses for TrainingCourses:', err);
+      }
+    }
+    loadDynamicCourses();
+    return () => { isMounted = false; };
+  }, []);
+
+  const displayedCourses = showAll ? coursesList : coursesList.slice(0, 6);
 
   const handleCourseClick = (courseId) => {
     if (setCurrentPage) {
@@ -272,24 +314,14 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
-                  <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white">
+                  <div className="absolute bottom-2.5 left-3 right-3 flex items-center text-white">
                     <span className="text-[11px] font-bold text-white drop-shadow truncate">
                       {mainImg.title}
-                    </span>
-                    <span className="px-2 py-0.5 rounded-lg bg-white/20 backdrop-blur-md text-[9px] font-extrabold uppercase text-white border border-white/30 shrink-0">
-                      {mainImg.tag}
                     </span>
                   </div>
                 </div>
 
                 <div className="p-6 sm:p-7 space-y-3.5">
-                  {/* Top Bar */}
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 p-2 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-sm group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
-                      {getCourseLogo(c.id, "w-8 h-8")}
-                    </div>
-                  </div>
-
                   <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
                     {c.title}
                   </h3>
@@ -321,13 +353,13 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
         </div>
 
         {/* View All 15 Courses Button */}
-        {!showAll && filteredCourses.length > 6 && (
+        {!showAll && coursesList.length > 6 && (
           <div className="text-center pt-5 sm:pt-6">
             <button
               onClick={() => setShowAll(true)}
               className="px-8 py-3.5 rounded-2xl bg-slate-900 dark:bg-slate-800 text-white font-extrabold text-sm border border-slate-700 shadow-xl hover:scale-105 active:scale-95 transition-all inline-flex items-center space-x-2"
             >
-              <span>Explore All 15 Master Career Tracks</span>
+              <span>Explore All 16 Master Career Tracks</span>
               <ArrowRight className="w-4 h-4 text-brand-400" />
             </button>
           </div>
@@ -340,7 +372,7 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
             {/* Left Image Showcase */}
             <div className="lg:col-span-5 h-full min-h-[300px] sm:min-h-[380px] relative rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800 group">
               <img 
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" 
+                src={classroomTrainingImg} 
                 alt="Software Training Courses and Placements at Yukti Software" 
                 loading="lazy"
                 decoding="async"
@@ -351,7 +383,7 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
                 <span className="px-3 py-1 rounded-full bg-brand-600 text-white text-[11px] font-bold shadow">
                   Interactive Learning Hub
                 </span>
-                <p className="text-xs text-slate-200 font-medium mt-1">Noida & Greater Noida Campus</p>
+                <p className="text-xs text-slate-200 font-medium mt-1">Greater Noida Campus</p>
               </div>
             </div>
 
@@ -410,7 +442,7 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
                   onClick={() => setCurrentPage && setCurrentPage('courses')}
                   className="flex-1 sm:flex-none px-3 sm:px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-[11px] sm:text-xs border border-slate-200 dark:border-slate-700 transition-all flex items-center justify-center space-x-1 sm:space-x-1.5 whitespace-nowrap text-center"
                 >
-                  <span>Explore 15+ Tracks</span>
+                  <span>Explore 16+ Tracks</span>
                   <ArrowRight className="w-3.5 h-3.5 shrink-0" />
                 </button>
               </div>

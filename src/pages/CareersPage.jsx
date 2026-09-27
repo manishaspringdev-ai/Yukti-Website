@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { submitEnquiry } from '../services/leadService';
+import { getInternshipRoles } from '../services/contentService';
 import { 
   Briefcase, 
   MapPin, 
@@ -133,6 +135,7 @@ const INTERN_TESTIMONIALS = [
 ];
 
 export default function CareersPage({ onOpenConsultation }) {
+  const [internshipRoles, setInternshipRoles] = useState(INTERNSHIP_ROLES);
   const [selectedRole, setSelectedRole] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
@@ -143,13 +146,47 @@ export default function CareersPage({ onOpenConsultation }) {
     githubOrPortfolio: '',
     message: ''
   });
+
+  React.useEffect(() => {
+    let isMounted = true;
+    async function loadRoles() {
+      try {
+        const dynamicRoles = await getInternshipRoles(INTERNSHIP_ROLES);
+        if (isMounted && dynamicRoles && dynamicRoles.length > 0) {
+          setInternshipRoles(dynamicRoles);
+        }
+      } catch (err) {
+        console.warn('Could not fetch dynamic internship roles:', err);
+      }
+    }
+    loadRoles();
+    return () => { isMounted = false; };
+  }, []);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+
+    try {
+      await submitEnquiry({
+        type: 'career_apply',
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        service: formData.rolePreference,
+        message: formData.message || `Internship application for ${formData.rolePreference}. Portfolio: ${formData.githubOrPortfolio || 'N/A'}, College: ${formData.college || 'N/A'}`,
+        metadata: {
+          college: formData.college,
+          rolePreference: formData.rolePreference,
+          githubOrPortfolio: formData.githubOrPortfolio,
+          formSource: 'Careers / Internship Page Application Form'
+        }
+      });
+    } catch (err) {
+      console.error('Career application submit error:', err);
+    } finally {
       setIsSubmitting(false);
       setIsSubmitted(true);
       confetti({ particleCount: 90, spread: 75, origin: { y: 0.6 } });
@@ -166,7 +203,7 @@ export default function CareersPage({ onOpenConsultation }) {
           message: ''
         });
       }, 3500);
-    }, 1000);
+    }
   };
 
   const handleApplyClick = (roleTitle) => {
@@ -187,11 +224,6 @@ export default function CareersPage({ onOpenConsultation }) {
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none -ml-20 -mb-20"></div>
 
           <div className="relative z-10 max-w-3xl space-y-5">
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-500/20 border border-brand-400/30 text-brand-300 text-xs font-black uppercase tracking-wider backdrop-blur-md">
-              <Sparkles className="w-3.5 h-3.5 text-brand-400" />
-              <span>Yukti Software • Career & Internship Program</span>
-            </div>
-
             <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
               Internship Opportunities at Yukti Software – <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 via-emerald-300 to-teal-200">Learn, Grow, and Advance</span>
             </h1>
@@ -199,11 +231,6 @@ export default function CareersPage({ onOpenConsultation }) {
             <p className="text-xs sm:text-sm lg:text-base text-slate-300 leading-relaxed font-medium">
               Be a part of Yukti’s software team and start your journey under the guidance of industry experts and their mentorship, while working on real-world live projects.
             </p>
-
-            <div className="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-xs sm:text-sm font-bold text-emerald-300 flex items-center space-x-2.5">
-              <Zap className="w-4 h-4 text-amber-400 shrink-0" />
-              <span>Start with an internship in your dream job role and level up by improving your skills!</span>
-            </div>
 
             <div className="flex flex-row items-center gap-2 sm:gap-3 pt-1 w-full max-w-lg">
               <button
@@ -230,10 +257,6 @@ export default function CareersPage({ onOpenConsultation }) {
       {/* 2. LIMITLESS GROWTH WITH OUR INTERNSHIP PROGRAM (6 PILLARS) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         <div className="text-center max-w-3xl mx-auto space-y-2">
-          <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400 border border-brand-200 dark:border-brand-800">
-            <TrendingUp className="w-3.5 h-3.5" />
-            <span>Why Choose Yukti Software</span>
-          </div>
           <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 dark:text-white">
             Limitless Growth with Our Internship Program
           </h2>
@@ -274,10 +297,6 @@ export default function CareersPage({ onOpenConsultation }) {
       {/* 3. ROLE-BASED INTERNSHIP PROGRAMS FOR SPECIALIZED SKILL DEVELOPMENT */}
       <section id="roles-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         <div className="text-center max-w-3xl mx-auto space-y-2">
-          <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
-            <GraduationCap className="w-3.5 h-3.5" />
-            <span>Specialized Skill Development</span>
-          </div>
           <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
             Role-based Internship Programs
           </h2>
@@ -287,8 +306,8 @@ export default function CareersPage({ onOpenConsultation }) {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-          {INTERNSHIP_ROLES.map((role) => {
-            const IconComp = role.icon;
+          {internshipRoles.map((role) => {
+            const IconComp = role.icon || Code2;
             return (
               <div 
                 key={role.id}
@@ -439,8 +458,7 @@ export default function CareersPage({ onOpenConsultation }) {
           {/* Left Column: Internship Perks & What Happens Next (Fills Space) */}
           <div className="lg:col-span-5 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-brand-950 to-slate-950 text-white border border-brand-800/60 shadow-xl flex flex-col justify-between space-y-6">
             <div className="space-y-5">
-              <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-500/20 text-brand-300 border border-brand-400/30">
-                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-brand-500/20 text-brand-300 border border-brand-400/30">
                 <span>Join Yukti Software Team</span>
               </div>
 
@@ -506,8 +524,8 @@ export default function CareersPage({ onOpenConsultation }) {
             </div>
 
             <div className="pt-4 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between">
-              <span>📍 Greater Noida & Sector 62</span>
-              <span className="text-emerald-400 font-bold">● Active 2026 Hiring</span>
+              <span>📍 Alpha 1, Greater Noida</span>
+              <span className="text-emerald-400 font-bold">Active 2026 Hiring</span>
             </div>
           </div>
 

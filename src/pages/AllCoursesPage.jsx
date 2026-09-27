@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { docxPagesData } from '../data/pagesDataFromDocs';
 import { getCourseLogo } from '../components/TechLogos';
 import { getCourseImages } from '../data/courseImages';
+import { getCourses } from '../services/contentService';
 import { 
   Sparkles, 
   GraduationCap, 
@@ -22,7 +23,8 @@ import {
   Zap,
   TrendingUp,
   Clock,
-  BookOpen
+  BookOpen,
+  X
 } from 'lucide-react';
 
 const MASTER_COURSES = [
@@ -45,7 +47,7 @@ const MASTER_COURSES = [
     category: "ai",
     badge: "Next-Gen AI",
     duration: "6 Months",
-    icon: Sparkles,
+    icon: Cpu,
     color: "from-purple-600 to-indigo-600",
     description: "Build intelligent full stack web applications integrating Generative AI, LLMs, LangChain, AI Agents, React.js and modern backend APIs.",
     highlights: ["GenAI & Prompt Engineering", "AI Agent Automations", "React.js + Fast API", "Live AI Capstones"]
@@ -135,6 +137,18 @@ const MASTER_COURSES = [
     highlights: ["OOP Design Patterns", "Collections & Streams API", "JDBC Database Connectivity", "Enterprise Capstone"]
   },
   {
+    id: "course-advanced-java",
+    key: "advanced-java",
+    title: "Advanced Java Training Institute (Greater Noida)",
+    category: "programming",
+    badge: "Enterprise Track",
+    duration: "4 - 5 Months",
+    icon: Code2,
+    color: "from-orange-600 to-amber-600",
+    description: "Enterprise Java training covering JDBC, Servlets, JSP, Hibernate ORM, Spring Framework, Spring Boot 3, REST APIs, Microservices, and Docker.",
+    highlights: ["Spring Boot & Microservices", "Hibernate & JPA ORM", "RESTful APIs & Security", "100% Placement Support"]
+  },
+  {
     id: "course-spring-boot",
     key: "spring-boot",
     title: "Spring Boot & Microservices",
@@ -197,14 +211,14 @@ const MASTER_COURSES = [
   {
     id: "course-dbms",
     key: "dbms",
-    title: "Relational DBMS & SQL Mastery",
+    title: "Database Management System (DBMS) Course",
     category: "databases",
-    badge: "Core Foundation",
+    badge: "Expert-Led Track",
     duration: "2 - 3 Months",
     icon: Database,
     color: "from-blue-600 to-indigo-600",
-    description: "Master relational database architecture, ER modeling, complex SQL joins, indexing, query optimization, transactions, stored procedures, and triggers.",
-    highlights: ["Relational Database Design", "Complex SQL & Subqueries", "Indexing & Optimization", "ACID & Stored Procedures"]
+    description: "Build practical database skills covering DBMS concepts, ER modeling, SQL, indexing, security, ACID transactions, and administration.",
+    highlights: ["Relational Database Design", "Advanced SQL & Indexing", "Transactions & ACID", "100% Placement Support"]
   },
   {
     id: "course-nosql",
@@ -217,15 +231,56 @@ const MASTER_COURSES = [
     color: "from-emerald-600 to-teal-600",
     description: "Master modern document and NoSQL databases with MongoDB CRUD operations, aggregation pipelines, schema modeling, indexing, Redis caching, and scaling.",
     highlights: ["Document Data Modeling", "Aggregation Pipelines", "Redis In-Memory Caching", "NoSQL Integration in Node/Python"]
+  },
+  {
+    id: "course-sql",
+    key: "sql",
+    title: "SQL Training & Advanced Labs",
+    category: "databases",
+    badge: "High Demand",
+    duration: "2 - 3 Months",
+    icon: Database,
+    color: "from-cyan-600 to-blue-600",
+    description: "Industry-focused SQL training covering DDL/DML, multi-table joins, subqueries, CTEs, window functions, indexing, stored procedures, and query optimization.",
+    highlights: ["Complex Joins & Subqueries", "Window Functions & CTEs", "Indexing & Optimization", "100% Placement Support"]
+  },
+  {
+    id: "course-dbms-institute",
+    key: "dbms-institute",
+    title: "Database Management System Institute (Greater Noida)",
+    category: "databases",
+    badge: "Hands-on Sessions",
+    duration: "2 - 3 Months",
+    icon: Database,
+    color: "from-indigo-600 to-cyan-600",
+    description: "Complete Database Management System training with practical lab sessions, SQL CRUD operations, real-world projects, quizzes, and complete interview preparation.",
+    highlights: ["Interactive Lab Sessions", "SQL Quizzes & Practice", "Real-World DB Projects", "100% Placement Assistance"]
   }
 ];
 
 export default function AllCoursesPage({ onOpenConsultation, setCurrentPage }) {
+  const [courses, setCourses] = useState(MASTER_COURSES);
   const [filter, setFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
 
+  useEffect(() => {
+    let isMounted = true;
+    async function loadCourses() {
+      try {
+        const dynamicCourses = await getCourses(MASTER_COURSES);
+        if (isMounted && dynamicCourses && dynamicCourses.length > 0) {
+          setCourses(dynamicCourses);
+        }
+      } catch (err) {
+        console.warn('Could not fetch dynamic courses:', err);
+      }
+    }
+    loadCourses();
+    return () => { isMounted = false; };
+  }, []);
+
   const filterTabs = [
-    { id: 'all', label: `All 15 Tracks (${MASTER_COURSES.length})` },
+    { id: 'all', label: `All Tracks (${courses.length})` },
     { id: 'fullstack', label: 'Full Stack & MERN' },
     { id: 'programming', label: 'Programming & Java' },
     { id: 'dsa', label: 'DSA & FAANG' },
@@ -233,14 +288,113 @@ export default function AllCoursesPage({ onOpenConsultation, setCurrentPage }) {
     { id: 'databases', label: 'Database Systems' }
   ];
 
-  const filteredCourses = MASTER_COURSES.filter(c => {
+  const popularTags = [
+    'Python',
+    'Java Full Stack',
+    'MERN Stack',
+    'React.js',
+    'DSA',
+    'AI & ML',
+    'Spring Boot',
+    'SQL'
+  ];
+
+  const trimmedSearch = searchTerm.trim().toLowerCase();
+  
+  // Aliases mapping for common student queries
+  const getNormalizedQuery = (str) => {
+    return str
+      .replace(/react\.?js/g, 'react')
+      .replace(/node\.?js/g, 'node')
+      .replace(/springboot/g, 'spring boot')
+      .replace(/fullstack/g, 'full stack')
+      .replace(/deep learning/g, 'deep neural')
+      .replace(/genai|generative ai/g, 'genai prompt llm');
+  };
+
+  const expandedQuery = getNormalizedQuery(trimmedSearch);
+  const searchTokens = expandedQuery.split(/\s+/).filter(tok => tok.length > 0);
+
+  // Search and filter algorithm
+  const filteredCourses = courses.filter(c => {
+    const docxCourse = docxPagesData.courses[c.key] || {};
+    
+    // Check category filter
     const matchesFilter = filter === 'all' || c.category === filter;
-    const matchesSearch = searchTerm === '' || 
-      c.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      c.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      c.highlights.some(h => h.toLowerCase().includes(searchTerm.toLowerCase()));
-    return matchesFilter && matchesSearch;
+    if (!matchesFilter) return false;
+    if (!trimmedSearch) return true;
+
+    // Searchable text corpus for this course
+    const title = (c.title || '').toLowerCase();
+    const key = (c.key || '').toLowerCase();
+    const desc = (c.description || '').toLowerCase();
+    const highlights = (c.highlights || []).join(' ').toLowerCase();
+    const badge = (c.badge || '').toLowerCase();
+    const category = (c.category || '').toLowerCase();
+    const keywords = (docxCourse.keywords || '').toLowerCase();
+    const headline = (docxCourse.headline || '').toLowerCase();
+    const curriculum = (docxCourse.curriculum || [])
+      .map(m => `${m.moduleTitle || ''} ${(m.topics || []).join(' ')}`)
+      .join(' ')
+      .toLowerCase();
+
+    const corpus = `${title} ${key} ${desc} ${highlights} ${badge} ${category} ${keywords} ${headline} ${curriculum}`;
+
+    // Match either full search phrase OR each token in the query
+    if (corpus.includes(trimmedSearch) || corpus.includes(expandedQuery)) return true;
+    return searchTokens.every(tok => corpus.includes(tok));
+  }).sort((a, b) => {
+    if (!trimmedSearch) return 0;
+
+    const getScore = (c) => {
+      const docxCourse = docxPagesData.courses[c.key] || {};
+      const title = (c.title || '').toLowerCase();
+      const key = (c.key || '').toLowerCase();
+      const highlights = (c.highlights || []).join(' ').toLowerCase();
+      const desc = (c.description || '').toLowerCase();
+      const curriculum = (docxCourse.curriculum || [])
+        .map(m => `${m.moduleTitle || ''} ${(m.topics || []).join(' ')}`)
+        .join(' ')
+        .toLowerCase();
+
+      let score = 0;
+      if (title === trimmedSearch) score += 500;
+      if (title.startsWith(trimmedSearch)) score += 300;
+      if (title.includes(trimmedSearch)) score += 200;
+      if (key.includes(trimmedSearch)) score += 150;
+      if (highlights.includes(trimmedSearch)) score += 80;
+      if (desc.includes(trimmedSearch)) score += 40;
+      if (curriculum.includes(trimmedSearch)) score += 30;
+
+      searchTokens.forEach(tok => {
+        if (title.includes(tok)) score += 60;
+        if (key.includes(tok)) score += 40;
+        if (highlights.includes(tok)) score += 20;
+        if (curriculum.includes(tok)) score += 15;
+      });
+
+      return score;
+    };
+
+    return getScore(b) - getScore(a);
   });
+
+  // Total matches across all categories (used if a specific category is active with 0 results)
+  const totalMatchesAcrossAll = trimmedSearch 
+    ? MASTER_COURSES.filter(c => {
+        const docxCourse = docxPagesData.courses[c.key] || {};
+        const title = (c.title || '').toLowerCase();
+        const key = (c.key || '').toLowerCase();
+        const desc = (c.description || '').toLowerCase();
+        const highlights = (c.highlights || []).join(' ').toLowerCase();
+        const curriculum = (docxCourse.curriculum || [])
+          .map(m => `${m.moduleTitle || ''} ${(m.topics || []).join(' ')}`)
+          .join(' ')
+          .toLowerCase();
+        const corpus = `${title} ${key} ${desc} ${highlights} ${curriculum}`;
+        return corpus.includes(trimmedSearch) || searchTokens.every(tok => corpus.includes(tok));
+      }).length 
+    : MASTER_COURSES.length;
 
   return (
     <div className="pt-4 sm:pt-6 space-y-10 sm:space-y-12 animate-fadeIn">
@@ -253,20 +407,58 @@ export default function AllCoursesPage({ onOpenConsultation, setCurrentPage }) {
             Master Career Catalog & Syllabus
           </h1>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Explore 15 industry-crafted software training programs with 100% practical lab sessions, live enterprise capstones, and dedicated placement support.
+            Explore 16 industry-crafted software training programs with 100% practical lab sessions, live enterprise capstones, and dedicated placement support.
           </p>
 
           {/* Search Bar */}
-          <div className="max-w-md mx-auto pt-2">
+          <div className="max-w-lg mx-auto pt-2 space-y-3">
             <div className="relative">
               <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Search courses by skill (e.g. Python, React, AI, SQL)..."
-                className="w-full pl-10 pr-4 py-3 rounded-2xl bg-slate-800/90 border border-slate-700 text-white text-xs placeholder-slate-400 focus:ring-2 focus:ring-brand-500 outline-none shadow-inner"
+                onChange={(e) => {
+                  const val = e.target.value;
+                  setSearchTerm(val);
+                  if (val && filter !== 'all') {
+                    setFilter('all');
+                  }
+                }}
+                placeholder="Search courses by skill (e.g. Python, React, Java, AI, SQL, DSA)..."
+                className="w-full pl-10 pr-10 py-3 rounded-2xl bg-slate-800/90 border border-slate-700 text-white text-xs sm:text-sm placeholder-slate-400 focus:ring-2 focus:ring-brand-500 outline-none shadow-inner transition-all"
               />
+              {searchTerm && (
+                <button
+                  type="button"
+                  onClick={() => setSearchTerm('')}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-white rounded-full transition-colors"
+                  aria-label="Clear search"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+
+            {/* Quick Popular Searches */}
+            <div className="flex flex-wrap items-center justify-center gap-1.5 text-[11px]">
+              <span className="text-slate-400 font-medium mr-1">Popular:</span>
+              {popularTags.map((tag) => (
+                <button
+                  key={tag}
+                  type="button"
+                  onClick={() => {
+                    setSearchTerm(tag);
+                    setFilter('all');
+                  }}
+                  className={`px-2.5 py-1 rounded-lg border transition-all ${
+                    searchTerm.toLowerCase() === tag.toLowerCase()
+                      ? 'bg-brand-600 border-brand-500 text-white font-bold'
+                      : 'bg-slate-800/80 hover:bg-slate-700 border-slate-700 text-slate-300 hover:text-white'
+                  }`}
+                >
+                  {tag}
+                </button>
+              ))}
             </div>
           </div>
         </div>
@@ -294,10 +486,19 @@ export default function AllCoursesPage({ onOpenConsultation, setCurrentPage }) {
 
         {/* Courses Count Indicator */}
         <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 px-2">
-          <p>Showing <span className="font-extrabold text-slate-900 dark:text-white">{filteredCourses.length}</span> of {MASTER_COURSES.length} Career Tracks</p>
+          <p>
+            {searchTerm ? (
+              <span>Found <span className="font-extrabold text-brand-600 dark:text-brand-400">{filteredCourses.length}</span> course{filteredCourses.length !== 1 ? 's' : ''} matching "<span className="text-slate-900 dark:text-white font-semibold">{searchTerm}</span>"</span>
+            ) : (
+              <span>Showing <span className="font-extrabold text-slate-900 dark:text-white">{filteredCourses.length}</span> of {courses.length} Career Tracks</span>
+            )}
+          </p>
           {searchTerm && (
             <button 
-              onClick={() => setSearchTerm('')}
+              onClick={() => {
+                setSearchTerm('');
+                setFilter('all');
+              }}
               className="text-brand-600 dark:text-brand-400 font-bold hover:underline"
             >
               Clear Search
@@ -305,8 +506,42 @@ export default function AllCoursesPage({ onOpenConsultation, setCurrentPage }) {
           )}
         </div>
 
-        {/* 15 Courses Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* 16 Courses Grid / Empty Search State */}
+        {filteredCourses.length === 0 ? (
+          <div className="text-center py-16 px-4 rounded-3xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-4">
+            <Search className="w-12 h-12 text-slate-400 mx-auto" />
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+              No matching courses found for "{searchTerm}" {filter !== 'all' ? `in this category` : ''}
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-md mx-auto">
+              {filter !== 'all' && totalMatchesAcrossAll > 0 ? (
+                `There are ${totalMatchesAcrossAll} matching course(s) in other categories.`
+              ) : (
+                `Try searching for Python, Java, React, MERN, AI, DSA, or SQL.`
+              )}
+            </p>
+            <div className="flex justify-center gap-3 pt-2">
+              {filter !== 'all' && totalMatchesAcrossAll > 0 && (
+                <button
+                  onClick={() => setFilter('all')}
+                  className="px-6 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs shadow-md transition-all"
+                >
+                  Show All {totalMatchesAcrossAll} Results Across Tracks
+                </button>
+              )}
+              <button
+                onClick={() => {
+                  setSearchTerm('');
+                  setFilter('all');
+                }}
+                className="px-6 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs shadow-md transition-all"
+              >
+                Reset & View All 16 Courses
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredCourses.map((course) => {
             const IconComp = course.icon || Code2;
             const docxCourse = docxPagesData.courses[course.key] || {};
@@ -330,19 +565,10 @@ export default function AllCoursesPage({ onOpenConsultation, setCurrentPage }) {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
-                    <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between text-white">
+                    <div className="absolute bottom-2 left-2 right-2 flex items-center text-white">
                       <span className="text-[10px] font-bold text-white drop-shadow truncate">
                         {mainImg.title}
                       </span>
-                      <span className="px-2 py-0.5 rounded-lg bg-white/20 backdrop-blur-md text-[9px] font-extrabold uppercase text-white border border-white/30 shrink-0">
-                        {mainImg.tag}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center">
-                    <div className="w-11 h-11 p-1.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
-                      {getCourseLogo(course.id, "w-7 h-7")}
                     </div>
                   </div>
 
@@ -350,15 +576,9 @@ export default function AllCoursesPage({ onOpenConsultation, setCurrentPage }) {
                     <h3 className="text-lg font-black text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
                       {course.title}
                     </h3>
-                    <div className="flex items-center space-x-2 text-xs text-slate-500 dark:text-slate-400 mt-1">
-                      <span className="flex items-center space-x-1">
-                        <Clock className="w-3.5 h-3.5 text-slate-400" />
-                        <span>{course.duration}</span>
-                      </span>
-                      <span>•</span>
-                      <span className="px-2 py-0.5 rounded-md bg-brand-50 dark:bg-brand-950/60 text-[10px] font-bold text-brand-600 dark:text-brand-400 border border-brand-200/50 dark:border-brand-800/50">
-                        {course.badge}
-                      </span>
+                    <div className="flex items-center space-x-1.5 text-xs text-slate-500 dark:text-slate-400 mt-1">
+                      <Clock className="w-3.5 h-3.5 text-slate-400" />
+                      <span>{course.duration}</span>
                     </div>
                   </div>
 
@@ -407,6 +627,7 @@ export default function AllCoursesPage({ onOpenConsultation, setCurrentPage }) {
             );
           })}
         </div>
+        )}
 
       </section>
 
@@ -415,10 +636,10 @@ export default function AllCoursesPage({ onOpenConsultation, setCurrentPage }) {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
           <Award className="w-10 h-10 text-brand-600 mx-auto" />
           <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
-            100% Placement Support with 350+ Hiring Partners
+            Placement Assistance with 20+ Hiring Partners
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-            Our dedicated placement cell conducts weekly resume reviews, mock interviews, and direct recruitment drives with leading MNCs and high-growth tech startups.
+            Our dedicated placement cell provides resume preparation, mock interview drills, and career guidance after course completion.
           </p>
           <button
             onClick={onOpenConsultation}

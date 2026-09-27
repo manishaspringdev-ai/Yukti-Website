@@ -79,28 +79,6 @@ export default function Services({ onOpenConsultation }) {
         {/* ========================================================================= */}
         <div className="block lg:hidden space-y-4">
           
-          {/* Quick Filter Horizontal Scroll Pill Bar */}
-          <div className="flex overflow-x-auto pb-2 gap-2 scrollbar-none no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
-            {servicesSection.services.map((service) => {
-              const isActive = activeService === service.id;
-              return (
-                <button
-                  key={service.id}
-                  onClick={() => setActiveService(service.id)}
-                  className={`flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center space-x-2 border ${
-                    isActive
-                      ? 'bg-brand-600 text-white border-brand-600 shadow-md scale-[1.02]'
-                      : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800'
-                  }`}
-                >
-                  <div className="w-4 h-4 shrink-0">
-                    {getServiceLogo(service.id, "w-4 h-4")}
-                  </div>
-                  <span className="whitespace-nowrap">{service.shortTitle}</span>
-                </button>
-              );
-            })}
-          </div>
 
           {/* Accordion Cards Stack for Mobile */}
           <div className="space-y-3 pt-2">
@@ -158,8 +136,7 @@ export default function Services({ onOpenConsultation }) {
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
                             <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-white">
-                              <div className="flex items-center space-x-1.5">
-                                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                              <div className="flex items-center">
                                 <p className="text-[11px] font-bold text-white drop-shadow truncate">{img.caption}</p>
                               </div>
                               <span className="px-2 py-0.5 rounded-lg bg-white/20 backdrop-blur-md text-[9px] font-extrabold uppercase text-white border border-white/30 shrink-0">
@@ -257,8 +234,7 @@ export default function Services({ onOpenConsultation }) {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
                       <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
-                        <div className="flex items-center space-x-2">
-                          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                        <div className="flex items-center">
                           <p className="text-xs font-bold text-white drop-shadow">{img.caption}</p>
                         </div>
                         <span className="px-2.5 py-1 rounded-xl bg-white/20 backdrop-blur-md text-[10px] font-extrabold uppercase tracking-wider text-white border border-white/30">

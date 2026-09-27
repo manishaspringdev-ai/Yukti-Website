@@ -1,15 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { siteData } from '../data';
 import { Sparkles, Mail, Award, ShieldCheck, ChevronRight, Quote, UserCheck } from 'lucide-react';
 import { LinkedInIcon } from './SocialIcons';
+import { getTeamMembers } from '../services/contentService';
 
 export default function Team() {
   const { teamSection } = siteData;
   const teamVariant = 'v2_bentoLeadership';
+  const [members, setMembers] = useState(teamSection.members || []);
   const [selectedMemberIndex, setSelectedMemberIndex] = useState(0);
   const [flippedIndex, setFlippedIndex] = useState(null);
+  const spotlightRef = useRef(null);
 
-  const currentMember = teamSection.members[selectedMemberIndex] || teamSection.members[0];
+  useEffect(() => {
+    let isMounted = true;
+    async function loadTeam() {
+      try {
+        const dynamicMembers = await getTeamMembers(teamSection.members);
+        if (isMounted && dynamicMembers && dynamicMembers.length > 0) {
+          setMembers(dynamicMembers);
+        }
+      } catch (err) {
+        console.warn('Could not fetch dynamic team members:', err);
+      }
+    }
+    loadTeam();
+    return () => { isMounted = false; };
+  }, [teamSection.members]);
+
+  const currentMember = members[selectedMemberIndex] || members[0] || {};
+
+  const handleSelectMember = (idx) => {
+    setSelectedMemberIndex(idx);
+    if (spotlightRef.current) {
+      const isMobile = window.innerWidth < 768;
+      if (isMobile) {
+        const rect = spotlightRef.current.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        window.scrollTo({
+          top: scrollTop + rect.top - 80,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
 
   return (
     <section id="team" className="pt-2 sm:pt-4 pb-6 sm:pb-8 relative overflow-hidden bg-slate-100/50 dark:bg-slate-900/40">
@@ -26,23 +60,26 @@ export default function Team() {
         {/* V2: BENTO LEADERSHIP SPOTLIGHT */}
         {/* ========================================================================= */}
         {teamVariant === 'v2_bentoLeadership' && (
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 animate-fadeIn items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 animate-fadeIn items-start">
             
             {/* Dynamic Spotlight Card (Active Member) */}
-            <div className="md:col-span-6 p-6 sm:p-7 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xl flex flex-col justify-between space-y-4 relative overflow-hidden group card-hover-effect">
+            <div ref={spotlightRef} className="md:col-span-6 p-6 sm:p-7 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xl flex flex-col space-y-4 relative overflow-hidden group card-hover-effect md:sticky md:top-24">
               <div className="space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                   <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden ring-2 ring-brand-500/30 flex-shrink-0 shadow-md group-hover:ring-brand-500/60 transition-all duration-300">
-                    <img 
-                      src={currentMember.image} 
-                      alt={currentMember.name}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
-                    />
-                    <span className="absolute bottom-1 right-1 px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-emerald-500 text-white shadow-md">
-                      Verified
-                    </span>
+                    {currentMember.image ? (
+                      <img 
+                        src={currentMember.image} 
+                        alt={currentMember.name}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
+                      />
+                    ) : (
+                      <div className={`w-full h-full bg-gradient-to-tr ${currentMember.avatarBg || 'from-slate-700 to-slate-900'} flex items-center justify-center text-white font-black text-2xl shadow-inner`}>
+                        {currentMember.initials || (currentMember.name ? currentMember.name.split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase() : 'YS')}
+                      </div>
+                    )}
                   </div>
                   <div className="space-y-1.5">
                     <div className="flex flex-wrap items-center gap-1.5">
@@ -106,13 +143,13 @@ export default function Team() {
             </div>
 
             {/* Team Members List (Click to switch spotlight) */}
-            <div className="md:col-span-6 grid grid-cols-1 gap-3.5">
-              {teamSection.members.map((m, idx) => {
+            <div className="md:col-span-6 grid grid-cols-1 gap-3 md:max-h-[495px] max-h-[500px] overflow-y-auto pr-1 sm:pr-2 scrollbar-thin">
+              {members.map((m, idx) => {
                 const isSelected = selectedMemberIndex === idx;
                 return (
                   <div 
                     key={idx} 
-                    onClick={() => setSelectedMemberIndex(idx)}
+                    onClick={() => handleSelectMember(idx)}
                     className={`p-4 rounded-3xl border transition-all duration-300 flex items-center space-x-4 shadow-sm cursor-pointer group ${
                       isSelected 
                         ? 'bg-brand-50/40 dark:bg-brand-950/30 border-brand-500 dark:border-brand-500 ring-2 ring-brand-500/20 shadow-md' 
@@ -122,13 +159,19 @@ export default function Team() {
                     <div className={`relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden ring-2 flex-shrink-0 shadow transition-all ${
                       isSelected ? 'ring-brand-500' : 'ring-slate-200 dark:ring-slate-700 group-hover:ring-brand-400'
                     }`}>
-                      <img 
-                        src={m.image} 
-                        alt={m.name}
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
-                      />
+                      {m.image ? (
+                        <img 
+                          src={m.image} 
+                          alt={m.name}
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
+                        />
+                      ) : (
+                        <div className={`w-full h-full bg-gradient-to-tr ${m.avatarBg || 'from-slate-700 to-slate-900'} flex items-center justify-center text-white font-bold text-base shadow-inner`}>
+                          {m.initials || (m.name ? m.name.split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase() : 'YS')}
+                        </div>
+                      )}
                     </div>
                     <div className="space-y-0.5 flex-1">
                       <div className="flex items-center justify-between">
@@ -138,13 +181,13 @@ export default function Team() {
                           {m.name}
                         </h4>
                         {isSelected ? (
-                          <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-xs">
-                            <Sparkles className="w-3 h-3 text-amber-300" />
-                            <span>Spotlight</span>
+                          <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold bg-brand-600 text-white shadow-xs">
+                            <span>View Profile</span>
+                            <ChevronRight className="w-3.5 h-3.5" />
                           </span>
                         ) : (
-                          <span className="text-[11px] text-brand-600 dark:text-brand-400 font-bold opacity-0 group-hover:opacity-100 transition-opacity flex items-center space-x-0.5">
-                            <span>Select</span>
+                          <span className="text-[11px] text-brand-600 dark:text-brand-400 font-bold opacity-75 md:opacity-0 group-hover:opacity-100 transition-opacity flex items-center space-x-0.5">
+                            <span>View Profile</span>
                             <ChevronRight className="w-3 h-3" />
                           </span>
                         )}
@@ -168,7 +211,7 @@ export default function Team() {
         {/* ========================================================================= */}
         {teamVariant === 'v3_flipCards' && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-fadeIn">
-            {teamSection.members.map((member, idx) => {
+            {members.map((member, idx) => {
               const isFlipped = flippedIndex === idx;
               return (
                 <div key={idx} onClick={() => setFlippedIndex(isFlipped ? null : idx)} className="cursor-pointer p-7 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-2xl transition-all space-y-4 min-h-[300px] flex flex-col justify-between">
@@ -197,7 +240,7 @@ export default function Team() {
         {/* ========================================================================= */}
         {teamVariant === 'v4_compactList' && (
           <div className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 divide-y divide-slate-100 dark:divide-slate-800 shadow-xl animate-fadeIn">
-            {teamSection.members.map((m, idx) => (
+            {members.map((m, idx) => (
               <div key={idx} className="p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/40">
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 rounded-xl bg-brand-600 text-white font-bold text-lg flex items-center justify-center flex-shrink-0">{m.initials}</div>
@@ -216,7 +259,7 @@ export default function Team() {
         {teamVariant === 'v5_carouselDeck' && (
           <div className="overflow-x-auto pb-4 scrollbar-none animate-fadeIn">
             <div className="flex space-x-6 min-w-[900px]">
-              {teamSection.members.map((m, idx) => (
+              {members.map((m, idx) => (
                 <div key={idx} className="w-72 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 shadow-md space-y-4">
                   <div className="w-16 h-16 rounded-2xl bg-brand-600 text-white font-bold text-xl flex items-center justify-center">{m.initials}</div>
                   <h4 className="text-lg font-bold text-slate-900 dark:text-white">{m.name}</h4>
@@ -233,7 +276,7 @@ export default function Team() {
         {/* ========================================================================= */}
         {teamVariant === 'v6_editorialPortraits' && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-fadeIn">
-            {teamSection.members.map((m, i) => (
+            {members.map((m, i) => (
               <div key={i} className="p-8 rounded-3xl glass-card space-y-4">
                 <div className="flex items-center space-x-4">
                   <div className="w-16 h-16 rounded-full bg-brand-600 text-white font-black text-2xl flex items-center justify-center">{m.initials}</div>
@@ -250,7 +293,7 @@ export default function Team() {
         {/* ========================================================================= */}
         {teamVariant === 'v7_domainLead' && (
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 animate-fadeIn">
-            {teamSection.members.map((m, i) => (
+            {members.map((m, i) => (
               <div key={i} className="p-6 rounded-3xl bg-slate-900 text-white border border-slate-800 space-y-3">
                 <span className="text-[10px] font-mono text-emerald-400 font-bold">DOMAIN LEAD 0{i + 1}</span>
                 <h4 className="text-lg font-bold">{m.name}</h4>
@@ -266,7 +309,7 @@ export default function Team() {
         {/* ========================================================================= */}
         {teamVariant === 'v8_techBadges' && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-fadeIn">
-            {teamSection.members.map((m, i) => (
+            {members.map((m, i) => (
               <div key={i} className="p-6 rounded-3xl glass-card space-y-4">
                 <h4 className="text-base font-bold text-slate-900 dark:text-white">{m.name}</h4>
                 <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] bg-brand-100 text-brand-700 dark:bg-brand-950 dark:text-brand-300 font-bold">{m.role}</span>
@@ -283,7 +326,7 @@ export default function Team() {
         {/* ========================================================================= */}
         {teamVariant === 'v9_socialDirect' && (
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 animate-fadeIn">
-            {teamSection.members.map((m, i) => (
+            {members.map((m, i) => (
               <div key={i} className="p-6 rounded-3xl glass-card text-center space-y-3">
                 <div className="w-16 h-16 mx-auto rounded-full bg-brand-600 text-white font-bold text-xl flex items-center justify-center">{m.initials}</div>
                 <h4 className="font-bold text-slate-900 dark:text-white">{m.name}</h4>
@@ -318,7 +361,7 @@ export default function Team() {
         {teamVariant === 'v_docx_itransition' && (
           <div className="space-y-8 animate-fadeIn">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {teamSection.members.map((member, idx) => (
+              {members.map((member, idx) => (
                 <div 
                   key={idx} 
                   className="p-7 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-2xl hover:border-brand-500/50 transition-all flex flex-col justify-between group"

@@ -28,7 +28,7 @@ export default function FounderMessage({ onOpenConsultation }) {
                 {/* Avatar / Portrait */}
                 <div className="relative mx-auto w-36 h-36 rounded-3xl overflow-hidden shadow-2xl ring-4 ring-brand-500/20 group">
                   <img 
-                    src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=800&q=80" 
+                    src={siteData.aboutPageData?.founderMessage?.image || siteData.teamSection?.members?.[0]?.image} 
                     alt="Ms. Manisha Kumari - Founder & CEO of Yukti Software" 
                     className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                   />

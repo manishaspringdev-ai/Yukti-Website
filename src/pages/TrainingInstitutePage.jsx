@@ -110,7 +110,7 @@ export default function TrainingInstitutePage({ onOpenConsultation, setCurrentPa
       desc: "IT job roles have a clear growth path, where you start at entry-level roles and move to senior roles. The career growth and time duration depend entirely on your skills and your experience. Therefore, with the right guidance, you can easily carve a career growth path for yourself that aligns with your skill set and goals."
     },
     {
-      icon: Sparkles,
+      icon: Cpu,
       title: "Future-Ready Skill Development",
       desc: "Multiple trends suggest that the software market will take over modern jobs, and the future belongs to advanced software technology. Therefore, enrolling in Yukti Software Training Institute Greater Noida will provide you with the necessary tools to prepare yourself for future job roles."
     }
@@ -310,11 +310,6 @@ export default function TrainingInstitutePage({ onOpenConsultation, setCurrentPa
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.08),transparent_60%)] pointer-events-none"></div>
         <div className="max-w-6xl mx-auto relative z-10 space-y-7 text-center sm:text-left">
           
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-50 dark:bg-brand-950/80 border border-brand-200 dark:border-brand-800 text-brand-700 dark:text-brand-300 text-xs font-bold uppercase tracking-wider shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-            <span>Accredited IT Training & Career Hub</span>
-          </div>
-
           <div className="space-y-3 max-w-4xl">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight text-slate-900 dark:text-white">
               Accredited <span className="bg-gradient-to-r from-brand-600 via-teal-600 to-indigo-600 dark:from-brand-400 dark:via-teal-300 dark:to-indigo-300 bg-clip-text text-transparent">Software Training Institute</span> Greater Noida
@@ -758,7 +753,7 @@ export default function TrainingInstitutePage({ onOpenConsultation, setCurrentPa
                   Visit Software Training Institute Greater Noida
                 </h4>
                 <p className="text-xs text-slate-600 dark:text-slate-400">
-                  Alpha 1 Commercial Belt / Knowledge Park Campus, Greater Noida & Sector 62, Noida, NCR, India
+                  Alpha 1 Commercial Belt, Greater Noida, NCR, India
                 </p>
               </div>
             </div>

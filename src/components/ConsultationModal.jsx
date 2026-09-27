@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { siteData } from '../data';
 import { X, Send, CheckCircle2, Building2, GraduationCap, Sparkles } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { submitEnquiry } from '../services/leadService';
 
 export default function ConsultationModal({ isOpen, onClose }) {
   const [formType, setFormType] = useState('enterprise');
@@ -28,10 +29,27 @@ export default function ConsultationModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+
+    try {
+      await submitEnquiry({
+        type: formType === 'student' ? 'course_enquiry' : 'software_development',
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        course: formType === 'student' ? formData.serviceOrCourse : '',
+        service: formType === 'enterprise' ? formData.serviceOrCourse : '',
+        message: formData.message,
+        metadata: {
+          category: formType,
+          formSource: 'Free Consultation / Book Demo Modal'
+        }
+      });
+    } catch (err) {
+      console.error('Consultation submission error:', err);
+    } finally {
       setIsSubmitting(false);
       setIsSubmitted(true);
       
@@ -50,7 +68,7 @@ export default function ConsultationModal({ isOpen, onClose }) {
         setIsSubmitted(false);
         onClose();
       }, 2500);
-    }, 700);
+    }
   };
 
   const enterpriseQuickOptions = [
@@ -88,8 +106,7 @@ export default function ConsultationModal({ isOpen, onClose }) {
         </button>
 
         <div className="mb-6 space-y-1">
-          <div className="inline-flex items-center space-x-1.5 text-xs font-bold text-brand-600 dark:text-brand-400">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center text-xs font-bold text-brand-600 dark:text-brand-400">
             <span>Priority Consultation & Advisory</span>
           </div>
           <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">

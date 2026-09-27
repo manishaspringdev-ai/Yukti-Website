@@ -12,6 +12,7 @@ import {
   Sparkles,
   ArrowRight
 } from 'lucide-react';
+import { submitEnquiry } from '../services/leadService';
 
 export default function ContactForm() {
   const { brand } = siteData;
@@ -33,11 +34,26 @@ export default function ContactForm() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    setTimeout(() => {
+    try {
+      await submitEnquiry({
+        type: formData.inquiryType === 'Software Solutions' ? 'software_development' : 'general_enquiry',
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        service: formData.inquiryType,
+        message: formData.message,
+        metadata: {
+          organization: formData.organization,
+          formSource: 'Homepage Consultation / Contact Form'
+        }
+      });
+    } catch (err) {
+      console.error('Submission error:', err);
+    } finally {
       setIsSubmitting(false);
       setIsSubmitted(true);
       confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
@@ -52,7 +68,7 @@ export default function ContactForm() {
           message: ''
         });
       }, 500);
-    }, 700);
+    }
   };
 
   return (

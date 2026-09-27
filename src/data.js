@@ -1,6 +1,30 @@
 import { docxPagesData } from './data/pagesDataFromDocs';
 
-export { docxPagesData };
+// Team Member Assets
+import founderImg from './assets/Team/founder.png';
+import ctoImg from './assets/Team/cto1.jpg';
+import sanjaySirImg from './assets/Team/sanjaySir.fe65690bca6d0465ee61.jpg';
+import dev1Img from './assets/Team/developer1.png';
+import dev2Img from './assets/Team/developer2.jpeg';
+import utkarshImg from './assets/Team/utkarsh.dfbe1ae535f996acbaa2.jpg';
+import nileshImg from './assets/Team/nilesh.fe4955ba947ac207c6a0.png';
+import diptiImg from './assets/Team/dipti.8eefdb34cb4ba96b203e.png';
+import santhoshImg from './assets/Team/SanthoshShankarImage.ca78a23dd42492ac0278.jpeg';
+import ashuImg from './assets/Team/ashu_rai.331749747d877ccc11ff.jpeg';
+
+export { 
+  docxPagesData, 
+  founderImg, 
+  ctoImg, 
+  sanjaySirImg, 
+  dev1Img, 
+  dev2Img, 
+  utkarshImg, 
+  nileshImg, 
+  diptiImg, 
+  santhoshImg, 
+  ashuImg 
+};
 
 export const siteData = {
   brand: {
@@ -15,7 +39,7 @@ export const siteData = {
     email: "contact@yuktisoftware.com",
     phone: "+91 98765 43210",
     whatsapp: "+919876543210",
-    address: "Tech Innovation Hub, Cyber City, Sector 62, Noida & Greater Noida, NCR, India",
+    address: "Tech Innovation Hub, Alpha 1 Commercial Belt, Greater Noida, NCR, India",
     workingHours: "Mon - Sat: 9:00 AM - 7:00 PM (24/7 Dedicated Tech Support)",
     googleRating: 4.9,
     googleReviewCount: 128,
@@ -440,7 +464,7 @@ export const siteData = {
     reviews: [
       {
         author: "Rahul Sharma",
-        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80",
+        avatar: dev1Img,
         rating: 5,
         date: "1 week ago",
         review: "Yukti Software is the best Python & Java training institute in Greater Noida! The faculty explains everything practically on live servers. Got placed in TCS Digital with 8 LPA package!",
@@ -449,7 +473,7 @@ export const siteData = {
       },
       {
         author: "Siddharth Mehra",
-        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80",
+        avatar: ashuImg,
         rating: 5,
         date: "2 weeks ago",
         review: "We partnered with Yukti Software for our custom ERP and Cloud Migration. Mithilesh and his team delivered the entire web platform within 8 weeks. Unbelievable speed and 24/7 SLA support!",
@@ -458,7 +482,7 @@ export const siteData = {
       },
       {
         author: "Ananya Gupta",
-        avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80",
+        avatar: diptiImg,
         rating: 5,
         date: "3 weeks ago",
         review: "The DSA course at Yukti Software is gold standard. Learned how to approach complex LeetCode hard problems intuitively. Cracked my dream SDE role at an MNC!",
@@ -467,7 +491,7 @@ export const siteData = {
       },
       {
         author: "Vikas Chauhan",
-        avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80",
+        avatar: dev2Img,
         rating: 5,
         date: "1 month ago",
         review: "Best training institute for beginners. Zero hidden charges, 1-on-1 doubt clearing, and practical lab sessions. Strongly recommend Ms. Manisha Kumari's institute.",
@@ -476,7 +500,7 @@ export const siteData = {
       },
       {
         author: "Pooja Verma",
-        avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&auto=format&fit=crop&q=80",
+        avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=120&auto=format&fit=crop&q=80",
         rating: 5,
         date: "1 month ago",
         review: "Completed Java Full Stack course. Built real React and Spring Boot capstones. The mock interviews gave me massive confidence during recruitment drives.",
@@ -485,10 +509,10 @@ export const siteData = {
       },
       {
         author: "Gaurav Trivedi",
-        avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&auto=format&fit=crop&q=80",
+        avatar: utkarshImg,
         rating: 5,
         date: "2 months ago",
-        review: "High quality software development company. They built our secure mobile application with end-to-end encryption. Great communication from the CTO team.",
+        review: "High quality software development company. They built our secure mobile application with end-to-end encryption. Great communication from the engineering team.",
         verified: true,
         tag: "Enterprise Client"
       }
@@ -622,7 +646,7 @@ export const siteData = {
         role: "Founder & CEO",
         education: "NIT Alumna",
         experience: "10+ Years IT & Business Leadership",
-        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
+        image: founderImg,
         bio: "A visionary leader with 10+ years of enterprise IT experience. She drives Yukti Software's global delivery standards, corporate client alliances, and high-impact student placement programs.",
         quote: "Committed to delivering enterprise-grade software solutions while empowering the youth with career-defining IT education.",
         avatarBg: "from-rose-500 to-indigo-600",
@@ -639,7 +663,7 @@ export const siteData = {
         role: "Chief Technology Officer (CTO)",
         education: "Enterprise Architect",
         experience: "14+ Years Large-Scale Enterprise Architecture",
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
+        image: ctoImg,
         bio: "Our technical architect with 14+ years designing high-throughput distributed systems for Fortune 500 clients. Leads architecture reviews, Spring Boot microservices, and AI cloud pipelines.",
         quote: "Architecting zero-downtime distributed systems with resilient microservices and automated cloud pipelines.",
         avatarBg: "from-blue-600 to-cyan-500",
@@ -656,7 +680,7 @@ export const siteData = {
         role: "Head of Big Data & AI Systems",
         education: "Big Data & AI Architect",
         experience: "16+ Years Storage, Big Data & Analytics",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80",
+        image: sanjaySirImg,
         bio: "Veteran data architect with 16+ years designing petabyte-scale storage, distributed databases, and high-performance predictive analytics for enterprise clients.",
         quote: "Transforming complex enterprise data streams into actionable intelligence and high-performance database clusters.",
         avatarBg: "from-purple-600 to-pink-500",
@@ -673,7 +697,7 @@ export const siteData = {
         role: "Lead Full Stack & DevOps Engineer",
         education: "Cloud & DevOps Specialist",
         experience: "Full Stack & Cloud Specialist",
-        image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80",
+        image: dev1Img,
         bio: "Mentors full stack cohorts and oversees live client deliverables across React, Node.js, Next.js, and containerized Docker/Kubernetes deployments.",
         quote: "Bridging modern reactive frontend architectures with scalable containerized deployments and high-quality codebases.",
         avatarBg: "from-emerald-500 to-teal-600",
@@ -684,6 +708,151 @@ export const siteData = {
           { label: "Core Stack", value: "MERN / Next" }
         ],
         specialties: ["Full Stack MERN", "REST & GraphQL APIs", "Kubernetes & Docker", "Code Quality Audits"]
+      },
+      {
+        name: "Hind Sinha",
+        role: "Full Stack & AI Developer",
+        education: "B.Tech — Electrical & Computer Engineering",
+        experience: "Full Stack Developer & AI Enthusiast",
+        image: dev2Img,
+        bio: "Builds modern full stack applications using React, Next.js, Node.js, Firebase, and AI tools, with a strong focus on scalable architectures, developer productivity, and real-world software products.",
+        quote: "Building practical software by combining modern full stack engineering with AI-powered development workflows.",
+        avatarBg: "from-blue-500 to-indigo-600",
+        initials: "HS",
+        stats: [
+          { label: "Domain", value: "Full Stack" },
+          { label: "Backend", value: "Firebase / Node" },
+          { label: "AI", value: "AI Tools & Dev" }
+        ],
+        specialties: [
+          "React & Next.js",
+          "Node.js & REST APIs",
+          "Firebase & Firestore",
+          "AI-Powered Development",
+          "Data Science",
+          "Docker & Cloud",
+          "TypeScript",
+          "Full Stack Development"
+        ]
+      },
+      {
+        name: "Utkarsh Mehta",
+        role: "Frontend Developer",
+        education: "Frontend Specialist",
+        experience: "3 Years Experience",
+        image: utkarshImg,
+        bio: "Creative web developer with 3 years of experience a passion for crafting seamless, high-performance web experiences that blend innovation with functionality.",
+        quote: "Crafting seamless, high-performance web experiences that blend innovation with functionality.",
+        avatarBg: "from-cyan-500 to-blue-600",
+        initials: "UM",
+        stats: [
+          { label: "Experience", value: "3 Yrs" },
+          { label: "Role", value: "Frontend" },
+          { label: "Focus", value: "Web UI/UX" }
+        ],
+        specialties: ["Frontend Development", "React.js", "Web Performance", "Modern UI/UX"]
+      },
+      {
+        name: "Nilesh Prashant",
+        role: "Backend Developer",
+        education: "Backend Specialist",
+        experience: "3 Years Experience",
+        image: nileshImg,
+        bio: "Backend developer with 3 years of experience a knack for building robust, scalable, and efficient server-side solutions that power seamless digital experiences.",
+        quote: "Building robust, scalable, and efficient server-side solutions that power seamless digital experiences.",
+        avatarBg: "from-indigo-500 to-purple-600",
+        initials: "NP",
+        stats: [
+          { label: "Experience", value: "3 Yrs" },
+          { label: "Role", value: "Backend" },
+          { label: "Focus", value: "APIs & DB" }
+        ],
+        specialties: ["Backend Development", "Node.js", "Server Architecture", "Database Systems"]
+      },
+      {
+        name: "Dipti Chaudhary",
+        role: "HR & Student-Client Relations",
+        education: "HR Management",
+        experience: "7 Years Experience",
+        image: diptiImg,
+        bio: "Dipti leads HR operations and serves with 7 years of experience as a trusted point of contact for students and clients, supporting clear communication, smooth coordination, and a positive experience throughout their journey with Yukti Software.",
+        quote: "Supporting clear communication, smooth coordination, and a positive experience throughout your journey.",
+        avatarBg: "from-pink-500 to-rose-600",
+        initials: "DC",
+        stats: [
+          { label: "Experience", value: "7 Yrs" },
+          { label: "Role", value: "HR Lead" },
+          { label: "Focus", value: "Relations" }
+        ],
+        specialties: ["HR Operations", "Student Relations", "Client Coordination", "Talent Management"]
+      },
+      {
+        name: "Rohan Goel",
+        role: "Mobile Developer",
+        education: "Mobile Specialist",
+        experience: "1 Year Experience",
+        image: null,
+        bio: "A mobile developer with 1 year of experience building reliable, user-focused applications and contributing to smooth mobile experiences.",
+        quote: "Building reliable, user-focused applications and contributing to smooth mobile experiences.",
+        avatarBg: "from-slate-700 to-slate-900",
+        initials: "RG",
+        stats: [
+          { label: "Experience", value: "1 Yr" },
+          { label: "Role", value: "Mobile Dev" },
+          { label: "Focus", value: "Apps" }
+        ],
+        specialties: ["Mobile App Development", "Flutter / React Native", "Android & iOS", "App Optimization"]
+      },
+      {
+        name: "Narayan Singh",
+        role: "Frontend Developer",
+        education: "Frontend Specialist",
+        experience: "1 Year Experience",
+        image: null,
+        bio: "A frontend developer with 1 year of experience creating responsive, accessible, and engaging user interfaces.",
+        quote: "Creating responsive, accessible, and engaging user interfaces for modern web applications.",
+        avatarBg: "from-slate-700 to-slate-900",
+        initials: "NS",
+        stats: [
+          { label: "Experience", value: "1 Yr" },
+          { label: "Role", value: "Frontend" },
+          { label: "Focus", value: "Responsive UI" }
+        ],
+        specialties: ["Frontend Development", "HTML/CSS/JS", "Responsive UI", "Web Standards"]
+      },
+      {
+        name: "Santhosh Shankar",
+        role: "Backend Developer",
+        education: "Backend Specialist",
+        experience: "1 Year Experience",
+        image: santhoshImg,
+        bio: "A backend developer with 1 year of experience developing dependable server-side functionality and supporting scalable software solutions.",
+        quote: "Developing dependable server-side functionality and supporting scalable software solutions.",
+        avatarBg: "from-emerald-500 to-teal-600",
+        initials: "SS",
+        stats: [
+          { label: "Experience", value: "1 Yr" },
+          { label: "Role", value: "Backend" },
+          { label: "Focus", value: "Server Logic" }
+        ],
+        specialties: ["Backend Development", "REST APIs", "Database Design", "Node.js"]
+      },
+      {
+        name: "Ashu Rai",
+        role: "Backend Developer",
+        education: "Backend Specialist",
+        experience: "1 Year Experience",
+        image: ashuImg,
+        bio: "A backend developer with 1 year of experience working on secure, maintainable services and reliable application workflows.",
+        quote: "Working on secure, maintainable services and reliable application workflows.",
+        avatarBg: "from-amber-500 to-orange-600",
+        initials: "AR",
+        stats: [
+          { label: "Experience", value: "1 Yr" },
+          { label: "Role", value: "Backend" },
+          { label: "Focus", value: "Secure APIs" }
+        ],
+        specialties: ["Backend Development", "Secure Services", "Database Management", "API Workflows"]
       }
     ]
   },
@@ -700,7 +869,7 @@ export const siteData = {
       quote: "Technology should not be a barrier, but the strongest catalyst for business growth and youthful ambitions. At Yukti Software, our constant endeavor is to craft software that elevates operational intelligence while mentoring young talent into high-performing industry leaders.",
       author: "Manisha Kumari",
       position: "Founder & CEO, Yukti Software",
-      image: "https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=800&q=80"
+      image: founderImg
     },
     mission: {
       title: "Our Mission",

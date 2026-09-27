@@ -77,7 +77,7 @@ export default function App() {
         'python': 'python',
         'java-fullstack': 'java-fullstack',
         'java': 'java',
-        'advanced-java': 'java-fullstack',
+        'advanced-java': 'advanced-java',
         'dsa': 'dsa',
         'ai-fullstack': 'ai-fullstack',
         'ai-ml': 'ai-ml',
@@ -89,7 +89,11 @@ export default function App() {
         'react-js': 'react-js',
         'spring-boot': 'spring-boot',
         'data-analytics': 'data-analytics',
+        'sql': 'sql',
         'dbms': 'dbms',
+        'dbms-institute': 'dbms-institute',
+        'database-management-system-institute': 'dbms-institute',
+        'dbms-training': 'dbms-institute',
         'nosql': 'nosql',
         'html-css': 'html-css'
       };

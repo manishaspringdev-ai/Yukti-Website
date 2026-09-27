@@ -30,7 +30,7 @@ import {
 const ALL_15_COURSES = [
   // Full Stack & Web
   { id: 'course-software-development', name: 'Software Development & Testing', category: 'Programming', badge: 'Accredited', mode: 'Job-Ready Track', icon: Code2, desc: 'SDLC, OOPs, DBMS, APIs, Testing, Git & Cloud' },
-  { id: 'course-ai-fullstack', name: 'AI Full Stack Development', category: 'AI & Next-Gen', badge: 'Trending', mode: 'Live Practical', icon: Sparkles, desc: 'GenAI, LLMs, AI Agents, React & Node.js' },
+  { id: 'course-ai-fullstack', name: 'AI Full Stack Development', category: 'AI & Next-Gen', badge: 'Trending', mode: 'Live Practical', icon: Cpu, desc: 'GenAI, LLMs, AI Agents, React & Node.js' },
   { id: 'course-java-fullstack', name: 'Java Full Stack & Microservices', category: 'Full Stack', badge: 'High Demand', mode: 'Enterprise Standard', icon: Code2, desc: 'React, Spring Boot 3, Kafka, Docker & AWS' },
   { id: 'course-mern-stack', name: 'MERN Stack Development', category: 'Full Stack', badge: 'Hot', mode: 'Full Stack JavaScript', icon: Layers, desc: 'MongoDB, Express, React, Node.js & Next.js' },
   { id: 'course-python-fullstack', name: 'Python Full Stack Developer', category: 'Full Stack', badge: 'Popular', mode: 'Web & APIs', icon: Terminal, desc: 'Python, Django REST, React & PostgreSQL' },
@@ -40,6 +40,7 @@ const ALL_15_COURSES = [
 
   // Programming & Core
   { id: 'course-python', name: 'Python Core & Advanced', category: 'Programming', badge: 'Top Rated', mode: 'Core to Advanced', icon: Terminal, desc: 'Core Python, OOP, Automation & REST APIs' },
+  { id: 'course-advanced-java', name: 'Advanced Java & Microservices', category: 'Programming', badge: 'Enterprise', mode: 'Advanced Enterprise', icon: Code2, desc: 'JDBC, Servlets, Hibernate, Spring Boot & Cloud' },
   { id: 'course-java', name: 'Core & Enterprise Java', category: 'Programming', badge: 'Core', mode: 'Enterprise Java', icon: Code2, desc: 'OOP, Multithreading, JDBC & Collections' },
   { id: 'course-spring-boot', name: 'Spring Boot & Microservices', category: 'Programming', badge: 'Enterprise', mode: 'Cloud Microservices', icon: Server, desc: 'REST APIs, Hibernate, Security & Cloud' },
   { id: 'course-dsa', name: 'DSA & System Design', category: 'Programming', badge: 'FAANG Tier', mode: 'Interview Focused', icon: Binary, desc: '350+ LeetCode Patterns, DP, Trees & Graphs' },
@@ -49,6 +50,8 @@ const ALL_15_COURSES = [
   { id: 'course-data-analytics', name: 'Data Analytics & BI', category: 'AI & Data', badge: 'High Growth', mode: 'Business Intelligence', icon: TrendingUp, desc: 'SQL, Python, Power BI, Excel & Tableau' },
 
   // Databases
+  { id: 'course-dbms-institute', name: 'DBMS Institute (Hands-on Labs)', category: 'Databases', badge: 'Popular', mode: 'Hands-on Labs', icon: Database, desc: 'CRUD, Queries, Schema Design, Quizzes & Placements' },
+  { id: 'course-sql', name: 'SQL Training & Advanced Labs', category: 'Databases', badge: 'Hot', mode: 'Advanced Labs', icon: Database, desc: 'Joins, Subqueries, CTEs, Window Functions & Tuning' },
   { id: 'course-dbms', name: 'DBMS & Advanced SQL', category: 'Databases', badge: 'Foundation', mode: 'Database Architecture', icon: Database, desc: 'Relational DBs, Query Optimization & Stored Procs' },
   { id: 'course-nosql', name: 'NoSQL & MongoDB Database', category: 'Databases', badge: 'Cloud DB', mode: 'Distributed NoSQL', icon: Database, desc: 'Document DBs, Aggregations, Redis & Scaling' }
 ];
@@ -83,7 +86,7 @@ export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation })
                 </div>
                 <div>
                   <h3 className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-wider">
-                    All 15 Professional Career Tracks
+                    All 16 Professional Career Tracks
                   </h3>
                   <p className="text-[10px] text-slate-500 dark:text-slate-400">Classroom Greater Noida & Live Online</p>
                 </div>
@@ -157,23 +160,18 @@ export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation })
             <div className="absolute top-0 right-0 w-32 h-32 bg-brand-500/20 rounded-full blur-2xl pointer-events-none" />
             
             <div className="space-y-3">
-              <div className="flex items-center space-x-1.5 text-amber-400 text-[10px] font-bold">
-                <Star className="w-3.5 h-3.5 fill-amber-400" />
-                <span>Greater Noida Top Tech Academy</span>
-              </div>
-              
               <h4 className="text-sm font-black text-white leading-snug">
                 Industry-Aligned Practical Curriculum
               </h4>
               
               <p className="text-[11px] text-slate-300 leading-relaxed">
-                Industry-aligned syllabus, real software capstones, and direct interview drives with 350+ hiring partners.
+                Industry-aligned syllabus, real software capstones, and direct interview drives with 20+ hiring partners.
               </p>
 
               <div className="space-y-1.5 pt-1 text-[10px] text-slate-200">
                 <div className="flex items-center space-x-2">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
-                  <span>15 Master Career Tracks</span>
+                  <span>16 Master Career Tracks</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
@@ -189,9 +187,8 @@ export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation })
             <div className="pt-4 border-t border-slate-800 space-y-2">
               <button
                 onClick={onOpenConsultation}
-                className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-brand-500 to-accent-primary hover:from-brand-400 hover:to-accent-primary text-white font-bold text-xs shadow-lg flex items-center justify-center space-x-1.5 transition-all active:scale-95"
+                className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-brand-500 to-accent-primary hover:from-brand-400 hover:to-accent-primary text-white font-bold text-xs shadow-lg flex items-center justify-center transition-all active:scale-95 text-center"
               >
-                <Sparkles className="w-3.5 h-3.5" />
                 <span>Book Free 1-on-1 Demo</span>
               </button>
               
@@ -207,7 +204,7 @@ export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation })
                 onClick={() => handleNav('courses')}
                 className="w-full py-2 rounded-xl bg-white/10 hover:bg-white/15 text-white font-bold text-[11px] text-center transition-all"
               >
-                View Full 15-Course Directory
+                View Full 16-Course Directory
               </button>
             </div>
           </div>
@@ -224,7 +221,7 @@ export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation })
             <div className="flex items-center space-x-2">
               <Layers className="w-4 h-4 text-brand-600" />
               <span className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-wider">
-                All 15 Master Career Tracks
+                All 16 Master Career Tracks
               </span>
             </div>
             <button
@@ -278,7 +275,7 @@ export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation })
       {dropdownVariant === 'v3_linearLuxury' && (
         <div className="w-[600px] p-3 rounded-2xl bg-white/95 dark:bg-slate-900/95 border border-slate-200/80 dark:border-slate-800 shadow-2xl backdrop-blur-xl space-y-1 max-h-[80vh] overflow-y-auto">
           <div className="px-3 py-1.5 flex items-center justify-between text-[11px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100 dark:border-slate-800">
-            <span>All 15 Career Tracks</span>
+            <span>All 16 Career Tracks</span>
             <span>Target CTC</span>
           </div>
 
@@ -291,7 +288,7 @@ export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation })
                 <BookOpen className="w-3.5 h-3.5" />
               </div>
               <div>
-                <p className="text-xs font-extrabold text-brand-700 dark:text-brand-300">All 15 Courses Master Directory</p>
+                <p className="text-xs font-extrabold text-brand-700 dark:text-brand-300">All 16 Courses Master Directory</p>
                 <p className="text-[10px] text-slate-500">View complete curriculum and syllabus</p>
               </div>
             </div>
@@ -338,7 +335,7 @@ export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation })
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
               <span className="text-[11px] text-slate-400 ml-2">yukti-academy-cli --all-15-tracks</span>
             </div>
-            <span className="text-emerald-400 text-[10px]">● 15 TRACKS LOADED</span>
+            <span className="text-emerald-400 text-[10px]">● 16 TRACKS LOADED</span>
           </div>
 
           <div className="space-y-1.5">
@@ -436,7 +433,7 @@ export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation })
               onClick={() => handleNav('courses')}
               className="font-bold text-brand-600 dark:text-brand-400 hover:underline flex items-center space-x-1"
             >
-              <span>Explore All 15 Tracks</span>
+              <span>Explore All 16 Tracks</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
             <button

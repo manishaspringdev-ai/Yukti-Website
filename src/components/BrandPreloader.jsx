@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import brandLogo from '../assets/brandlogo.svg';
+import brandLogo from '../assets/yukti-logo.svg';
 
 export default function BrandPreloader() {
   const [loading, setLoading] = useState(true);
@@ -43,10 +43,6 @@ export default function BrandPreloader() {
         {/* Loading Spinner & Progress Text */}
         <div className="flex flex-col items-center space-y-2.5">
           <div className="flex items-center space-x-2">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
             <span className="text-xs font-sans font-bold tracking-wider text-slate-700 dark:text-slate-300">
               Initializing Experience...
             </span>
