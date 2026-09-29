@@ -230,7 +230,7 @@ export default function App() {
         />
 
         {/* Main Content */}
-        <main className="flex-grow pt-24 sm:pt-28 lg:pt-24">
+        <main className="flex-grow pt-16 sm:pt-20 lg:pt-24">
           {renderContent()}
         </main>
 

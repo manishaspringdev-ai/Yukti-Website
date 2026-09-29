@@ -18,7 +18,7 @@ export default function Hero({ onOpenConsultation, onNavigateServices, onNavigat
   const { hero } = siteData;
 
   return (
-    <section id="hero" className="relative pt-6 pb-2 sm:pt-8 sm:pb-3 lg:pt-6 lg:pb-4 overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+    <section id="hero" className="relative pt-2 pb-2 sm:pt-6 sm:pb-3 lg:pt-6 lg:pb-4 overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
       
       {/* Background Soft Glows */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-brand-500/10 dark:bg-brand-500/15 rounded-full blur-3xl pointer-events-none -z-10"></div>
@@ -28,14 +28,14 @@ export default function Hero({ onOpenConsultation, onNavigateServices, onNavigat
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto">
         
         {/* Main Grid: Left Copy & Right Multi-Image Collage */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 xl:gap-10 items-center">
           
           {/* Left Column: Heading, Value Props & CTAs */}
-          <div className="lg:col-span-6 space-y-3.5 sm:space-y-4 text-center lg:text-left">
+          <div className="lg:col-span-6 space-y-3 sm:space-y-4 text-center lg:text-left">
 
             {/* Main Headline */}
-            <div className="space-y-2 sm:space-y-2.5">
-              <h1 className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[46px] font-black tracking-tight text-slate-900 dark:text-white leading-[1.18] sm:leading-[1.14]">
+            <div className="space-y-1.5 sm:space-y-2.5">
+              <h1 className="text-[23px] sm:text-3xl lg:text-[40px] xl:text-[46px] font-black tracking-tight text-slate-900 dark:text-white leading-[1.18] sm:leading-[1.14]">
                 Empowering Businesses & Launching High-Growth{' '}
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-600 via-brand-500 to-accent-primary">
                   Tech Careers
@@ -47,7 +47,7 @@ export default function Hero({ onOpenConsultation, onNavigateServices, onNavigat
             </div>
 
             {/* Real-World Value Points */}
-            <div className="space-y-2.5 pt-1 text-left">
+            <div className="space-y-2 sm:space-y-2.5 pt-0.5 text-left">
               <div className="flex items-start space-x-2.5 sm:space-x-3 justify-start">
                 <div className="mt-0.5 flex-shrink-0 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
                   <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
@@ -77,10 +77,10 @@ export default function Hero({ onOpenConsultation, onNavigateServices, onNavigat
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 pt-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-2.5 sm:gap-3 pt-1 sm:pt-2">
               <button
                 onClick={onOpenConsultation}
-                className="w-full sm:w-auto px-5 sm:px-6 py-3.5 rounded-2xl font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-brand-600 via-brand-500 to-accent-primary hover:shadow-xl hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center space-x-2 shadow-lg shadow-brand-500/20 whitespace-nowrap"
+                className="w-full sm:w-auto px-5 sm:px-6 py-3 sm:py-3.5 rounded-2xl font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-brand-600 via-brand-500 to-accent-primary hover:shadow-xl hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center space-x-2 shadow-lg shadow-brand-500/20 whitespace-nowrap cursor-pointer"
               >
                 <span className="whitespace-nowrap">Book Free Counselling / Demo</span>
                 <ArrowRight className="w-4 h-4 shrink-0" />
@@ -88,7 +88,7 @@ export default function Hero({ onOpenConsultation, onNavigateServices, onNavigat
 
               <button
                 onClick={onNavigateTraining}
-                className="w-full sm:w-auto px-5 sm:px-6 py-3.5 rounded-2xl font-bold text-xs sm:text-sm text-slate-800 dark:text-white bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 hover:border-brand-500 transition-all flex items-center justify-center space-x-2 shadow-sm whitespace-nowrap"
+                className="w-full sm:w-auto px-5 sm:px-6 py-3 sm:py-3.5 rounded-2xl font-bold text-xs sm:text-sm text-slate-800 dark:text-white bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 hover:border-brand-500 transition-all flex items-center justify-center space-x-2 shadow-sm whitespace-nowrap cursor-pointer"
               >
                 <GraduationCap className="w-4 h-4 text-brand-500 shrink-0" />
                 <span className="whitespace-nowrap">Explore 16+ Career Tracks</span>
