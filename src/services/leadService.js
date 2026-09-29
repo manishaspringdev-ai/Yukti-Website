@@ -129,8 +129,8 @@ export async function submitEnquiry(data = {}) {
           service_interest: enquiryPayload.service || 'Software Solutions',
           submission_time: formattedTime,
           company_name: 'Yukti Software',
-          support_phone: '+91 98765 43210',
-          support_email: 'info@yuktisoftware.com',
+          support_phone: '+91 95828 15419',
+          support_email: 'contact@yuktisoftware.com',
           message_content: enquiryPayload.message || 'We have received your enquiry and our senior team will connect with you shortly.'
         };
         await emailjs.send(serviceId, userTemplateId, userParams, publicKey);
@@ -150,7 +150,7 @@ export async function submitEnquiry(data = {}) {
     try {
       const cleanPhone = formatWhatsAppNumber(enquiryPayload.phone);
       const programName = enquiryPayload.course || enquiryPayload.service || 'Software Training Program';
-      const whatsAppMessage = `Hello *${enquiryPayload.name || 'there'}*! 👋\n\nThank you for contacting *Yukti Software (Greater Noida)*.\n\nWe have received your enquiry for *${programName}*.\nOur senior career counselor / technical expert will connect with you within 15 minutes with syllabus & batch details.\n\n🌐 Website: https://yuktisoftware.com\n📞 Helpline: +91 98765 43210`;
+      const whatsAppMessage = `Hello *${enquiryPayload.name || 'there'}*! 👋\n\nThank you for contacting *Yukti Software (Greater Noida)*.\n\nWe have received your enquiry for *${programName}*.\nOur senior career counselor / technical expert will connect with you within 15 minutes with syllabus & batch details.\n\n🌐 Website: https://yuktisoftware.com\n📞 Helpline: +91 95828 15419`;
 
       const response = await fetch(`https://api.green-api.com/waInstance${greenApiId}/sendMessage/${greenApiToken}`, {
         method: 'POST',

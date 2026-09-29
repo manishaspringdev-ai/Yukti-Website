@@ -259,7 +259,7 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
                         <input
                           type="tel"
                           required
-                          placeholder="+91 98765 43210"
+                          placeholder="+91 95828 15419"
                           value={leadForm.phone}
                           onChange={(e) => setLeadForm({ ...leadForm, phone: e.target.value })}
                           className="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:ring-2 focus:ring-brand-500 outline-none placeholder:text-slate-400"

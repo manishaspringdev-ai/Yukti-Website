@@ -10,7 +10,7 @@ export default function FloatingHelpBar({ onOpenConsultation }) {
 
   const handleWhatsAppClick = () => {
     const text = encodeURIComponent("Hello Yukti Software, I want to inquire about your software development services and IT training courses in Greater Noida.");
-    window.open(`https://wa.me/919876543210?text=${text}`, '_blank');
+    window.open(`https://wa.me/919582815419?text=${text}`, '_blank');
   };
 
   // Close call popup on click outside

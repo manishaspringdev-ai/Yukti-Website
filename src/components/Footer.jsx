@@ -42,7 +42,7 @@ export default function Footer({ setCurrentPage, onOpenConsultation }) {
 
   const handleWhatsApp = () => {
     const text = encodeURIComponent("Hello Yukti Software, I want to inquire about your software development and training programs.");
-    window.open("https://wa.me/919876543210?text=" + text, '_blank');
+    window.open("https://wa.me/919582815419?text=" + text, '_blank');
   };
 
   const coursesCol1 = [
