@@ -27,7 +27,11 @@ const TrainingInstitutePage = lazy(() => import('./pages/TrainingInstitutePage')
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
-  const [isConsultationOpen, setIsConsultationOpen] = useState(false);
+  const [consultationModal, setConsultationModal] = useState({
+    isOpen: false,
+    type: 'enterprise',
+    initialCourse: ''
+  });
   const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
@@ -41,6 +45,35 @@ export default function App() {
   const handlePageChange = (page) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleOpenConsultation = (options = {}) => {
+    if (typeof options === 'string') {
+      // If a course name was passed as a string
+      setConsultationModal({
+        isOpen: true,
+        type: 'student',
+        initialCourse: options
+      });
+    } else if (options && typeof options === 'object' && !options.nativeEvent) {
+      setConsultationModal({
+        isOpen: true,
+        type: options.type || (options.course ? 'student' : 'enterprise'),
+        initialCourse: options.course || ''
+      });
+    } else {
+      setConsultationModal(prev => ({
+        ...prev,
+        isOpen: true
+      }));
+    }
+  };
+
+  const handleCloseConsultation = () => {
+    setConsultationModal(prev => ({
+      ...prev,
+      isOpen: false
+    }));
   };
 
   const navigateToServices = () => {
@@ -101,7 +134,7 @@ export default function App() {
         <Suspense fallback={<PageSkeletonLoader type="detail" />}>
           <CourseDetailPage 
             courseKey={keyMap[docxKey] || docxKey} 
-            onOpenConsultation={() => setIsConsultationOpen(true)} 
+            onOpenConsultation={handleOpenConsultation} 
             setCurrentPage={handlePageChange} 
           />
         </Suspense>
@@ -112,20 +145,20 @@ export default function App() {
       case 'about':
         return (
           <Suspense fallback={<PageSkeletonLoader type="about" />}>
-            <AboutPage onOpenConsultation={() => setIsConsultationOpen(true)} />
+            <AboutPage onOpenConsultation={handleOpenConsultation} />
           </Suspense>
         );
       case 'courses':
         return (
           <Suspense fallback={<PageSkeletonLoader type="courses" />}>
-            <AllCoursesPage onOpenConsultation={() => setIsConsultationOpen(true)} setCurrentPage={handlePageChange} />
+            <AllCoursesPage onOpenConsultation={handleOpenConsultation} setCurrentPage={handlePageChange} />
           </Suspense>
         );
       case 'gallery':
       case 'videos':
         return (
           <Suspense fallback={<PageSkeletonLoader type="courses" />}>
-            <GalleryPage onOpenConsultation={() => setIsConsultationOpen(true)} />
+            <GalleryPage onOpenConsultation={handleOpenConsultation} />
           </Suspense>
         );
       case 'careers':
@@ -133,7 +166,7 @@ export default function App() {
       case 'internships':
         return (
           <Suspense fallback={<PageSkeletonLoader type="courses" />}>
-            <CareersPage onOpenConsultation={() => setIsConsultationOpen(true)} />
+            <CareersPage onOpenConsultation={handleOpenConsultation} />
           </Suspense>
         );
       case 'training-institute':
@@ -143,7 +176,7 @@ export default function App() {
         return (
           <Suspense fallback={<PageSkeletonLoader type="about" />}>
             <TrainingInstitutePage 
-              onOpenConsultation={() => setIsConsultationOpen(true)} 
+              onOpenConsultation={handleOpenConsultation} 
               setCurrentPage={handlePageChange} 
             />
           </Suspense>
@@ -153,25 +186,25 @@ export default function App() {
         return (
           <>
             <Hero
-              onOpenConsultation={() => setIsConsultationOpen(true)}
+              onOpenConsultation={handleOpenConsultation}
               onNavigateServices={navigateToServices}
               onNavigateTraining={navigateToTraining}
             />
             
-            <Services onOpenConsultation={() => setIsConsultationOpen(true)} />
+            <Services onOpenConsultation={handleOpenConsultation} />
             
             <TrainingCourses 
-              onOpenConsultation={() => setIsConsultationOpen(true)}
+              onOpenConsultation={handleOpenConsultation}
               setCurrentPage={handlePageChange}
             />
             
-            <Roadmap onOpenConsultation={() => setIsConsultationOpen(true)} />
+            <Roadmap onOpenConsultation={handleOpenConsultation} />
             
-            <StatsHighlights onOpenConsultation={() => setIsConsultationOpen(true)} />
+            <StatsHighlights onOpenConsultation={handleOpenConsultation} />
             
-            <Team onOpenConsultation={() => setIsConsultationOpen(true)} />
+            <Team onOpenConsultation={handleOpenConsultation} />
             
-            <GoogleReviewsWidget onOpenConsultation={() => setIsConsultationOpen(true)} />
+            <GoogleReviewsWidget onOpenConsultation={handleOpenConsultation} />
             
             <ContactForm />
           </>
@@ -193,7 +226,7 @@ export default function App() {
         <Navbar
           currentPage={currentPage || 'home'}
           setCurrentPage={handlePageChange}
-          onOpenConsultation={() => setIsConsultationOpen(true)}
+          onOpenConsultation={handleOpenConsultation}
         />
 
         {/* Main Content */}
@@ -204,17 +237,19 @@ export default function App() {
         {/* Footer */}
         <Footer
           setCurrentPage={handlePageChange}
-          onOpenConsultation={() => setIsConsultationOpen(true)}
+          onOpenConsultation={handleOpenConsultation}
         />
 
-        {/* Global Consultation Booking Modal */}
+        {/* Global Consultation Booking Modal with All Dynamic Courses & Services */}
         <ConsultationModal
-          isOpen={isConsultationOpen}
-          onClose={() => setIsConsultationOpen(false)}
+          isOpen={consultationModal.isOpen}
+          initialType={consultationModal.type}
+          initialCourse={consultationModal.initialCourse}
+          onClose={handleCloseConsultation}
         />
 
         {/* WhatsApp & Call Quick Floating Bar */}
-        <FloatingHelpBar onOpenConsultation={() => setIsConsultationOpen(true)} />
+        <FloatingHelpBar onOpenConsultation={handleOpenConsultation} />
 
         {/* Back To Top Action */}
         {showBackToTop && (

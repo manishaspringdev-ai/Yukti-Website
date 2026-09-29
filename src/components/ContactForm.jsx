@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { siteData } from '../data';
 import confetti from 'canvas-confetti';
 import { 
@@ -10,28 +10,58 @@ import {
   CheckCircle2, 
   ShieldCheck, 
   Sparkles,
-  ArrowRight
+  ArrowRight,
+  GraduationCap,
+  Building2,
+  ChevronDown
 } from 'lucide-react';
 import { submitEnquiry } from '../services/leadService';
+import { DEFAULT_SERVICES_LIST, DEFAULT_COURSES_LIST, loadAllAvailableCourses } from '../data/coursesCatalog';
 
 export default function ContactForm() {
   const { brand } = siteData;
 
+  const [availableCourses, setAvailableCourses] = useState(DEFAULT_COURSES_LIST);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     organization: '',
     inquiryType: 'Software Solutions',
+    selectedItem: DEFAULT_SERVICES_LIST[0].name,
     message: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // Fetch all available courses from Firestore + built-ins
+  useEffect(() => {
+    let isMounted = true;
+    async function fetchCourses() {
+      try {
+        const list = await loadAllAvailableCourses();
+        if (isMounted && list && list.length > 0) {
+          setAvailableCourses(list);
+        }
+      } catch (e) {
+        // Safe fallback
+      }
+    }
+    fetchCourses();
+    return () => { isMounted = false; };
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    if (name === 'inquiryType') {
+      const defaultItem = value === 'IT Training Courses' 
+        ? (availableCourses[0]?.title || DEFAULT_COURSES_LIST[0].title)
+        : DEFAULT_SERVICES_LIST[0].name;
+      setFormData(prev => ({ ...prev, inquiryType: value, selectedItem: defaultItem }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -39,15 +69,19 @@ export default function ContactForm() {
     setIsSubmitting(true);
 
     try {
+      const isCourse = formData.inquiryType === 'IT Training Courses';
       await submitEnquiry({
-        type: formData.inquiryType === 'Software Solutions' ? 'software_development' : 'general_enquiry',
+        type: isCourse ? 'course_enquiry' : 'software_development',
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
-        service: formData.inquiryType,
+        course: isCourse ? formData.selectedItem : '',
+        service: !isCourse ? formData.selectedItem : '',
         message: formData.message,
         metadata: {
           organization: formData.organization,
+          inquiryCategory: formData.inquiryType,
+          selectedTarget: formData.selectedItem,
           formSource: 'Homepage Consultation / Contact Form'
         }
       });
@@ -65,11 +99,20 @@ export default function ContactForm() {
           phone: '',
           organization: '',
           inquiryType: 'Software Solutions',
+          selectedItem: DEFAULT_SERVICES_LIST[0].name,
           message: ''
         });
       }, 500);
     }
   };
+
+  // Group courses by category
+  const coursesByCategory = availableCourses.reduce((acc, course) => {
+    const cat = course.category || 'General & Custom';
+    if (!acc[cat]) acc[cat] = [];
+    acc[cat].push(course);
+    return acc;
+  }, {});
 
   return (
     <section id="consultation" className="pt-2 sm:pt-4 pb-6 sm:pb-8 relative overflow-hidden bg-slate-50/70 dark:bg-slate-950">
@@ -216,20 +259,73 @@ export default function ContactForm() {
 
                     <div>
                       <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
-                        Inquiry Topic
+                        Inquiry Category
                       </label>
-                      <select
-                        name="inquiryType"
-                        value={formData.inquiryType}
-                        onChange={handleChange}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 transition-all"
-                      >
-                        <option value="Software Solutions">Software Solutions & Custom Dev</option>
-                        <option value="IT Training Courses">IT Training & Placement Courses</option>
-                        <option value="Architecture Consultation">Architecture & Tech Consultation</option>
-                        <option value="Other Inquiries">General / Other Inquiries</option>
-                      </select>
+                      <div className="relative">
+                        <select
+                          name="inquiryType"
+                          value={formData.inquiryType}
+                          onChange={handleChange}
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 transition-all appearance-none pr-9 font-medium cursor-pointer"
+                        >
+                          <option value="Software Solutions">Software Solutions & Custom Dev</option>
+                          <option value="IT Training Courses">IT Training & Placement Courses</option>
+                          <option value="Architecture Consultation">Architecture & Tech Consultation</option>
+                          <option value="Other Inquiries">General / Other Inquiries</option>
+                        </select>
+                        <ChevronDown className="w-4 h-4 text-slate-400 pointer-events-none absolute right-3 top-3.5" />
+                      </div>
                     </div>
+                  </div>
+
+                  {/* Dynamic Course / Service Selection Dropdown */}
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5 flex items-center justify-between">
+                      <span>
+                        {formData.inquiryType === 'IT Training Courses' ? 'Select Specific IT Course' : 'Select Specific Service Track'}
+                      </span>
+                      <span className="text-[10px] text-brand-600 dark:text-brand-400 font-semibold">
+                        {formData.inquiryType === 'IT Training Courses' ? `${availableCourses.length} Courses Live` : `${DEFAULT_SERVICES_LIST.length} Services`}
+                      </span>
+                    </label>
+
+                    {formData.inquiryType === 'IT Training Courses' ? (
+                      <div className="relative">
+                        <select
+                          name="selectedItem"
+                          value={formData.selectedItem}
+                          onChange={handleChange}
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 transition-all appearance-none pr-9 font-medium cursor-pointer"
+                        >
+                          {Object.entries(coursesByCategory).map(([category, courses]) => (
+                            <optgroup key={category} label={category} className="dark:bg-slate-900 font-bold text-slate-500">
+                              {courses.map((c) => (
+                                <option key={c.id} value={c.title} className="dark:bg-slate-900 text-slate-900 dark:text-white font-normal">
+                                  {c.title} {c.badge ? `(${c.badge})` : ''} {c.isDynamic ? '★' : ''}
+                                </option>
+                              ))}
+                            </optgroup>
+                          ))}
+                        </select>
+                        <ChevronDown className="w-4 h-4 text-slate-400 pointer-events-none absolute right-3 top-3.5" />
+                      </div>
+                    ) : (
+                      <div className="relative">
+                        <select
+                          name="selectedItem"
+                          value={formData.selectedItem}
+                          onChange={handleChange}
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 transition-all appearance-none pr-9 font-medium cursor-pointer"
+                        >
+                          {DEFAULT_SERVICES_LIST.map((srv) => (
+                            <option key={srv.id} value={srv.name} className="dark:bg-slate-900">
+                              {srv.name}
+                            </option>
+                          ))}
+                        </select>
+                        <ChevronDown className="w-4 h-4 text-slate-400 pointer-events-none absolute right-3 top-3.5" />
+                      </div>
+                    )}
                   </div>
 
                   {/* Organization Name (Optional) */}
