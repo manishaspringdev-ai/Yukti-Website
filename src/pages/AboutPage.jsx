@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Building2, GraduationCap } from 'lucide-react';
 import MissionVision from '../components/MissionVision';
 import FounderMessage from '../components/FounderMessage';
@@ -8,6 +8,10 @@ import StatsHighlights from '../components/StatsHighlights';
 import ContactForm from '../components/ContactForm';
 
 export default function AboutPage({ onOpenConsultation }) {
+  useEffect(() => {
+    document.title = "About Us | Yukti Software - IT Solutions & Software Training in Greater Noida";
+  }, []);
+
   return (
     <div className="space-y-0 animate-fadeIn">
       {/* 1. Mission & Vision & Corporate Overview */}

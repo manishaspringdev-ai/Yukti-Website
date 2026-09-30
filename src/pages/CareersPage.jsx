@@ -148,6 +148,7 @@ export default function CareersPage({ onOpenConsultation }) {
   });
 
   React.useEffect(() => {
+    document.title = "Career & Internship Programs in Greater Noida | Yukti Software";
     let isMounted = true;
     async function loadRoles() {
       try {

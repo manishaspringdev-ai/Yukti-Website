@@ -228,6 +228,7 @@ export default function GalleryPage({ onOpenConsultation }) {
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   useEffect(() => {
+    document.title = "Photo & Video Gallery | Campus, Labs & Events - Yukti Software Greater Noida";
     let isMounted = true;
     async function loadDynamicMedia() {
       try {

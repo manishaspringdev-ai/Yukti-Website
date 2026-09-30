@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { submitEnquiry } from '../services/leadService';
 import { docxPagesData } from '../data/pagesDataFromDocs';
 import { 
@@ -75,6 +75,12 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
   const [enquirySuccess, setEnquirySuccess] = useState(false);
   const [leadForm, setLeadForm] = useState({ name: '', email: '', phone: '', mode: 'Classroom Greater Noida' });
+
+  useEffect(() => {
+    if (course.title) {
+      document.title = `${course.title} in Greater Noida | Practical Training & Placements - Yukti Software`;
+    }
+  }, [course.title]);
 
   const handleLeadSubmit = async (e) => {
     e.preventDefault();

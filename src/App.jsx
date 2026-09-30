@@ -17,6 +17,8 @@ import ScrollProgressBar from './components/ScrollProgressBar';
 import PageSkeletonLoader from './components/PageSkeletonLoader';
 import { ArrowUp } from 'lucide-react';
 
+import { getPageKeyFromPath, pushPageUrl, getUrlPathForPage } from './utils/routeUtils';
+
 // Lazy loaded sub-pages
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const AllCoursesPage = lazy(() => import('./pages/AllCoursesPage'));
@@ -26,13 +28,43 @@ const CareersPage = lazy(() => import('./pages/CareersPage'));
 const TrainingInstitutePage = lazy(() => import('./pages/TrainingInstitutePage'));
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState(() => getPageKeyFromPath(window.location.pathname));
   const [consultationModal, setConsultationModal] = useState({
     isOpen: false,
     type: 'enterprise',
     initialCourse: ''
   });
   const [showBackToTop, setShowBackToTop] = useState(false);
+
+  // Synchronize on browser Back/Forward (popstate)
+  useEffect(() => {
+    const handlePopState = () => {
+      const pageKey = getPageKeyFromPath(window.location.pathname);
+      setCurrentPage(pageKey);
+      if (window.location.hash) {
+        setTimeout(() => {
+          const el = document.querySelector(window.location.hash);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  // Initial load canonical URL synchronization
+  useEffect(() => {
+    try {
+      const initialKey = getPageKeyFromPath(window.location.pathname);
+      const canonicalPath = getUrlPathForPage(initialKey);
+      const currentFull = window.location.pathname;
+      if (canonicalPath !== '/' && currentFull !== canonicalPath && !currentFull.includes('.')) {
+        window.history.replaceState({ pageKey: initialKey }, '', canonicalPath + window.location.hash);
+      }
+    } catch (e) {
+      console.warn('Initial URL sync error:', e);
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,9 +74,17 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handlePageChange = (page) => {
+  const handlePageChange = (page, hash = '') => {
     setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    pushPageUrl(page, hash);
+    if (page === 'home' && hash) {
+      setTimeout(() => {
+        const el = document.querySelector(hash);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const handleOpenConsultation = (options = {}) => {
@@ -78,27 +118,25 @@ export default function App() {
 
   const navigateToServices = () => {
     if (currentPage !== 'home') {
-      setCurrentPage('home');
-      setTimeout(() => {
-        const el = document.querySelector('#services');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+      handlePageChange('home', '#services');
     } else {
       const el = document.querySelector('#services');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
+      try {
+        window.history.pushState({ pageKey: 'home', hash: '#services' }, '', '/#services');
+      } catch (e) {}
     }
   };
 
   const navigateToTraining = () => {
     if (currentPage !== 'home') {
-      setCurrentPage('home');
-      setTimeout(() => {
-        const el = document.querySelector('#training');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+      handlePageChange('home', '#training');
     } else {
       const el = document.querySelector('#training');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
+      try {
+        window.history.pushState({ pageKey: 'home', hash: '#training' }, '', '/#training');
+      } catch (e) {}
     }
   };
 

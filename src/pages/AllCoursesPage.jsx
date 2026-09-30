@@ -264,6 +264,7 @@ export default function AllCoursesPage({ onOpenConsultation, setCurrentPage }) {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
+    document.title = "All IT Training Courses & Master Tracks | Yukti Software Greater Noida";
     let isMounted = true;
     async function loadCourses() {
       try {
