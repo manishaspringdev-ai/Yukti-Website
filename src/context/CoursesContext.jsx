@@ -66,11 +66,29 @@ export function CoursesProvider({ children }) {
         icon: getCategoryIcon(category),
         color: data.color || "from-blue-600 to-indigo-600",
         description: data.description || data.desc || "Master industry concepts with hands-on labs, real enterprise projects, and 1-on-1 mentorship.",
-        modulesCount: data.modulesCount || (Array.isArray(data.modules) ? data.modules.length : 12),
+        modulesCount: data.modulesCount || (Array.isArray(data.curriculum) ? data.curriculum.length : (Array.isArray(data.modules) ? data.modules.length : 12)),
         highlights: highlights,
         topics: data.topics || highlights,
         isDynamic: true,
-        firestoreId: docId
+        firestoreId: docId,
+        headline: data.headline,
+        fullDescription: data.fullDescription,
+        syllabusHeading: data.syllabusHeading,
+        curriculum: data.curriculum || data.modules,
+        modules: data.modules || data.curriculum,
+        differentApproach: data.differentApproach,
+        careerBenefitsHeading: data.careerBenefitsHeading,
+        careerBenefits: data.careerBenefits,
+        whoCanEnroll: data.whoCanEnroll,
+        thingsToKnow: data.thingsToKnow,
+        showCareerOpportunitiesSection: data.showCareerOpportunitiesSection,
+        careerOpportunitiesHeading: data.careerOpportunitiesHeading,
+        careerOpportunities: data.careerOpportunities,
+        careerRolesHeading: data.careerRolesHeading,
+        careerRolesTable: data.careerRolesTable,
+        whyChooseYukti: data.whyChooseYukti || data.whyChooseUs,
+        whyChooseUs: data.whyChooseUs || data.whyChooseYukti,
+        faqs: data.faqs
       };
     });
 

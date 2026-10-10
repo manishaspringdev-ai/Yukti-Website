@@ -61,9 +61,21 @@ const getCardGridClass = (count = 3) => {
 };
 
 export default function CourseDetailPage({ courseKey = 'python', onOpenConsultation, setCurrentPage }) {
-  const { courseCount } = useCourses();
-  // Find course from docxPagesData
-  const course = docxPagesData.courses[courseKey] || docxPagesData.courses['python'] || {};
+  const { courseCount, courses: allContextCourses } = useCourses();
+  
+  // Find dynamic course if present in context
+  const dynamicMatch = allContextCourses?.find(c => 
+    c.key === courseKey || 
+    c.docxKey === courseKey || 
+    c.id === courseKey || 
+    c.id === `course-${courseKey}` ||
+    (c.key && courseKey && c.key.toLowerCase() === courseKey.toLowerCase())
+  );
+
+  // Merge dynamic Firestore course data with docxPagesData
+  const course = (dynamicMatch && (dynamicMatch.curriculum || dynamicMatch.description))
+    ? { ...(docxPagesData.courses[courseKey] || {}), ...dynamicMatch }
+    : (docxPagesData.courses[courseKey] || dynamicMatch || docxPagesData.courses['python'] || {});
   const courseImages = getCourseImages(courseKey);
 
   // Clean headline from any legacy doc prefixes

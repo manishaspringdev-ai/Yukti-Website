@@ -323,6 +323,11 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
                     alt={mainImg.title} 
                     loading="lazy"
                     decoding="async"
+                    onError={(e) => {
+                      if (mainImg.fallback && e.target.src !== mainImg.fallback) {
+                        e.target.src = mainImg.fallback;
+                      }
+                    }}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
