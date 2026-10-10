@@ -11,6 +11,8 @@ export const CANONICAL_ROUTES = {
   careers: '/carrer-page/',
   gallery: '/gallery/',
   courses: '/courses/',
+  verify: '/verify/',
+  admin: '/admin-portal/',
   'training-institute': '/software-training-institute-greater-noida/',
 
   // 19+ Master Courses (Exact matches from Excel Specifications)
@@ -31,8 +33,10 @@ export const CANONICAL_ROUTES = {
   'course-dbms-institute': '/database-management-system-institute-greater-noida/',
   'course-sql': '/sql-training-institute-in-greater-noida/',
   'course-nosql': '/nosql-database-course-greater-noida/',
+  'course-nosql-institute': '/nosql-database-institute-greater-noida/',
   'course-spring-boot': '/spring-boot-training-course-in-greater-noida/',
-  'course-software-development': '/software-training-course-greater-noida/'
+  'course-software-development': '/software-training-course-greater-noida/',
+  'course-programming': '/programming-course-greater-noida/'
 };
 
 // All Inbound Slugs / Aliases mapping to Page Keys
@@ -76,6 +80,20 @@ export const SLUG_TO_PAGE_MAP = {
   'training-institute': 'training-institute',
   'institute': 'training-institute',
 
+  // Certificate Verification
+  'verify': 'verify',
+  'verify/': 'verify',
+  'verify-certificate': 'verify',
+  'certificate-verification': 'verify',
+  'verification': 'verify',
+
+  // Admin Portal & Document Studio
+  'admin': 'admin',
+  'admin/': 'admin',
+  'admin-portal': 'admin',
+  'admin-portal/': 'admin',
+  'document-studio': 'admin',
+
   // Specific Courses (SEO Slugs from User Docx / Excel Sheet)
   'java-training-institute-greater-noida': 'course-java',
   'java': 'course-java',
@@ -114,6 +132,7 @@ export const SLUG_TO_PAGE_MAP = {
   'data-analytics-python': 'course-data-analytics',
 
   'ai-and-machine-learning-course-greater-noida': 'course-ai-ml',
+  'ai-machine-learning-course-greater-noida': 'course-ai-ml',
   'ai-ml': 'course-ai-ml',
   'ai-machine-learning': 'course-ai-ml',
 
@@ -142,7 +161,8 @@ export const SLUG_TO_PAGE_MAP = {
   'advanced-sql': 'course-sql',
 
   'nosql-database-course-greater-noida': 'course-nosql',
-  'nosql-database-institute-greater-noida': 'course-nosql',
+  'nosql-database-institute-greater-noida': 'course-nosql-institute',
+  'nosql-institute': 'course-nosql-institute',
   'nosql': 'course-nosql',
   'mongodb': 'course-nosql',
 
@@ -150,7 +170,10 @@ export const SLUG_TO_PAGE_MAP = {
   'spring-boot': 'course-spring-boot',
   'springboot': 'course-spring-boot',
 
-  'programming-course-greater-noida': 'course-software-development',
+  'programming-course-greater-noida': 'course-programming',
+  'programming-course': 'course-programming',
+  'programming': 'course-programming',
+  'course-programming': 'course-programming',
   'software-training-course-greater-noida': 'course-software-development',
   'software-development': 'course-software-development',
   'software-development-course': 'course-software-development'

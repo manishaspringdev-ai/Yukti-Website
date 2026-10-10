@@ -33,9 +33,11 @@ import {
   UserCheck
 } from 'lucide-react';
 import { siteData } from '../data';
+import { useCourses } from '../context/CoursesContext';
 
 export default function TrainingInstitutePage({ onOpenConsultation, setCurrentPage }) {
   const { brand } = siteData;
+  const { courseCount } = useCourses();
   const [openFaq, setOpenFaq] = useState(0);
 
   useEffect(() => {
@@ -339,14 +341,14 @@ export default function TrainingInstitutePage({ onOpenConsultation, setCurrentPa
               className="flex-1 sm:flex-none px-3.5 sm:px-6 py-3.5 rounded-2xl bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-white font-bold text-xs sm:text-sm border border-slate-200 dark:border-slate-800 shadow-md hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center space-x-1.5 sm:space-x-2 whitespace-nowrap text-center"
             >
               <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5 text-brand-600 dark:text-brand-400 shrink-0" />
-              <span>Explore 15+ Tracks</span>
+              <span>Explore {courseCount}+ Tracks</span>
             </button>
           </div>
 
           {/* Quick Metrics */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-200/80 dark:border-slate-800">
             <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-center sm:text-left">
-              <p className="text-2xl font-black text-brand-600 dark:text-brand-400">15+ Tracks</p>
+              <p className="text-2xl font-black text-brand-600 dark:text-brand-400">{courseCount}+ Tracks</p>
               <p className="text-xs text-slate-500 dark:text-slate-400">Industry-Aligned Courses</p>
             </div>
             <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-center sm:text-left">

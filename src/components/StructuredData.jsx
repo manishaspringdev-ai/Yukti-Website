@@ -10,10 +10,10 @@ export default function StructuredData() {
     "description": "Premier Software Development Company and Leading IT Training Institute in Greater Noida.",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "2nd Floor, Om Tower, Alpha 1 Commercial Belt",
+      "streetAddress": "503, MSX Tower 1, Alpha-1 Commercial Belt",
       "addressLocality": "Greater Noida",
       "addressRegion": "Uttar Pradesh",
-      "postalCode": "201308",
+      "postalCode": "201310",
       "addressCountry": "IN"
     },
     "geo": {

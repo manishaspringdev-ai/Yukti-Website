@@ -1,9 +1,11 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
+import { CoursesProvider } from './context/CoursesContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import TrainingCourses from './components/TrainingCourses';
+import UpcomingBatches from './components/UpcomingBatches';
 import Roadmap from './components/Roadmap';
 import StatsHighlights from './components/StatsHighlights';
 import Team from './components/Team';
@@ -26,6 +28,7 @@ const CourseDetailPage = lazy(() => import('./pages/CourseDetailPage'));
 const GalleryPage = lazy(() => import('./pages/GalleryPage'));
 const CareersPage = lazy(() => import('./pages/CareersPage'));
 const TrainingInstitutePage = lazy(() => import('./pages/TrainingInstitutePage'));
+const VerificationPage = lazy(() => import('./pages/VerificationPage'));
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState(() => getPageKeyFromPath(window.location.pathname));
@@ -166,7 +169,9 @@ export default function App() {
         'database-management-system-institute': 'dbms-institute',
         'dbms-training': 'dbms-institute',
         'nosql': 'nosql',
-        'html-css': 'html-css'
+        'html-css': 'html-css',
+        'programming': 'programming',
+        'programming-course': 'programming'
       };
       return (
         <Suspense fallback={<PageSkeletonLoader type="detail" />}>
@@ -219,6 +224,14 @@ export default function App() {
             />
           </Suspense>
         );
+      case 'verify':
+      case 'verify-certificate':
+      case 'certificate-verification':
+        return (
+          <Suspense fallback={<PageSkeletonLoader type="about" />}>
+            <VerificationPage onOpenConsultation={handleOpenConsultation} />
+          </Suspense>
+        );
       case 'home':
       default:
         return (
@@ -232,6 +245,11 @@ export default function App() {
             <Services onOpenConsultation={handleOpenConsultation} />
             
             <TrainingCourses 
+              onOpenConsultation={handleOpenConsultation}
+              setCurrentPage={handlePageChange}
+            />
+
+            <UpcomingBatches
               onOpenConsultation={handleOpenConsultation}
               setCurrentPage={handlePageChange}
             />
@@ -252,57 +270,59 @@ export default function App() {
 
   return (
     <ThemeProvider>
-      {/* Top Window Scroll Progress Bar */}
-      <ScrollProgressBar />
+      <CoursesProvider>
+        {/* Top Window Scroll Progress Bar */}
+        <ScrollProgressBar />
 
-      <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-300">
-        
-        {/* Schema.org SEO & Metadata */}
-        <StructuredData />
+        <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-300">
+          
+          {/* Schema.org SEO & Metadata */}
+          <StructuredData />
 
-        {/* Top Navbar */}
-        <Navbar
-          currentPage={currentPage || 'home'}
-          setCurrentPage={handlePageChange}
-          onOpenConsultation={handleOpenConsultation}
-        />
+          {/* Top Navbar */}
+          <Navbar
+            currentPage={currentPage || 'home'}
+            setCurrentPage={handlePageChange}
+            onOpenConsultation={handleOpenConsultation}
+          />
 
-        {/* Main Content */}
-        <main className="flex-grow pt-16 sm:pt-20 lg:pt-24">
-          {renderContent()}
-        </main>
+          {/* Main Content */}
+          <main className="flex-grow pt-16 sm:pt-20 lg:pt-24">
+            {renderContent()}
+          </main>
 
-        {/* Footer */}
-        <Footer
-          setCurrentPage={handlePageChange}
-          onOpenConsultation={handleOpenConsultation}
-        />
+          {/* Footer */}
+          <Footer
+            setCurrentPage={handlePageChange}
+            onOpenConsultation={handleOpenConsultation}
+          />
 
-        {/* Global Consultation Booking Modal with All Dynamic Courses & Services */}
-        <ConsultationModal
-          isOpen={consultationModal.isOpen}
-          initialType={consultationModal.type}
-          initialCourse={consultationModal.initialCourse}
-          onClose={handleCloseConsultation}
-        />
+          {/* Global Consultation Booking Modal with All Dynamic Courses & Services */}
+          <ConsultationModal
+            isOpen={consultationModal.isOpen}
+            initialType={consultationModal.type}
+            initialCourse={consultationModal.initialCourse}
+            onClose={handleCloseConsultation}
+          />
 
-        {/* WhatsApp & Call Quick Floating Bar */}
-        <FloatingHelpBar onOpenConsultation={handleOpenConsultation} />
+          {/* WhatsApp & Call Quick Floating Bar */}
+          <FloatingHelpBar onOpenConsultation={handleOpenConsultation} />
 
-        {/* Back To Top Action */}
-        {showBackToTop && (
-          <div className="fixed bottom-18 right-4 sm:bottom-22 sm:right-6 z-30 animate-fadeIn">
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="p-2.5 sm:p-3 rounded-full bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xl hover:bg-slate-50 dark:hover:bg-slate-700 hover:scale-110 active:scale-95 transition-all flex items-center justify-center group"
-              aria-label="Back to Top"
-            >
-              <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5 group-hover:-translate-y-0.5 transition-transform" />
-            </button>
-          </div>
-        )}
+          {/* Back To Top Action */}
+          {showBackToTop && (
+            <div className="fixed bottom-18 right-4 sm:bottom-22 sm:right-6 z-30 animate-fadeIn">
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="p-2.5 sm:p-3 rounded-full bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xl hover:bg-slate-50 dark:hover:bg-slate-700 hover:scale-110 active:scale-95 transition-all flex items-center justify-center group"
+                aria-label="Back to Top"
+              >
+                <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5 group-hover:-translate-y-0.5 transition-transform" />
+              </button>
+            </div>
+          )}
 
-      </div>
+        </div>
+      </CoursesProvider>
     </ThemeProvider>
   );
 }

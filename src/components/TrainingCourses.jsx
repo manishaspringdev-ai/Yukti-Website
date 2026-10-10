@@ -14,13 +14,27 @@ import {
   Database,
   Cpu
 } from 'lucide-react';
+import { useCourses } from '../context/CoursesContext';
 
-// All 15 Master Courses from DOCX
+// All Master Courses from DOCX
 const allMasterCourses = [
+    {
+      id: "course-programming",
+      docxKey: "programming",
+      title: "Programming Course Greater Noida",
+      tag: "Practical Labs",
+      category: "programming",
+      duration: "3 - 4 Months",
+      icon: Code2,
+      color: "from-cyan-600 to-blue-600",
+      description: docxPagesData.courses['programming']?.description || "Master programming fundamentals, logic building, OOPs, Data Structures, File Handling, and database operations with advanced practical lab sessions.",
+      modulesCount: docxPagesData.courses['programming']?.curriculum?.length || 15,
+      highlights: ["14 Deep Practical Modules", "Data Structures & OOPs", "Databases & CRUD APIs", "100% Practical Lab Training"]
+    },
     {
       id: "course-software-development",
       docxKey: "software-development",
-      title: "Software Development & Testing Course",
+      title: "Software Training Course Greater Noida",
       tag: "Accredited Certification",
       category: "programming",
       duration: "4 - 6 Months",
@@ -33,15 +47,15 @@ const allMasterCourses = [
     {
       id: "course-python",
       docxKey: "python",
-      title: "Complete Python Training Course",
+      title: "Python Training Institute Greater Noida",
       tag: "Highest Placements",
       category: "python",
       duration: "4 - 6 Months",
       icon: Terminal,
       color: "from-blue-600 to-cyan-500",
       description: docxPagesData.courses['python']?.description || "Master Python programming from zero to advanced web development, task automation, and data analytics with real capstone projects.",
-      modulesCount: docxPagesData.courses['python']?.curriculum?.length || 12,
-      highlights: ["12 Deep Modules", "Flask & Django Web Dev", "Automation & Web Scraping", "Data Analysis (NumPy/Pandas)"]
+      modulesCount: docxPagesData.courses['python']?.curriculum?.length || 13,
+      highlights: ["13 Deep Modules", "Flask & Django Web Dev", "Automation & Web Scraping", "Data Analysis (NumPy/Pandas)"]
     },
     {
       id: "course-java-fullstack",
@@ -72,14 +86,14 @@ const allMasterCourses = [
     {
       id: "course-dsa",
       docxKey: "dsa",
-      title: "Data Structures & Algorithms (DSA)",
+      title: "DSA Course Greater Noida",
       tag: "FAANG & Product Crack",
       category: "dsa",
       duration: "3 - 4 Months",
       icon: Binary,
       color: "from-emerald-600 to-teal-500",
       description: docxPagesData.courses['dsa']?.description || "Crack technical coding rounds. Master problem-solving, algorithmic Big-O optimization, and System Design with 350+ LeetCode problems.",
-      modulesCount: docxPagesData.courses['dsa']?.curriculum?.length || 12,
+      modulesCount: docxPagesData.courses['dsa']?.curriculum?.length || 14,
       highlights: ["350+ LeetCode Drills", "Dynamic Programming & Graphs", "System Design & Optimization", "1-on-1 Mock Interviews"]
     },
     {
@@ -111,20 +125,20 @@ const allMasterCourses = [
     {
       id: "course-mern-stack",
       docxKey: "mern-stack",
-      title: "MERN Stack Web Development",
+      title: "MERN Stack Training Institute",
       tag: "Startup & SaaS Favorite",
       category: "fullstack",
       duration: "5 Months",
       icon: Globe,
       color: "from-teal-600 to-emerald-600",
       description: docxPagesData.courses['mern-stack']?.description || "Build end-to-end cloud applications using MongoDB, Express.js, React.js, and Node.js with state management and authentication.",
-      modulesCount: docxPagesData.courses['mern-stack']?.curriculum?.length || 12,
+      modulesCount: docxPagesData.courses['mern-stack']?.curriculum?.length || 15,
       highlights: ["React 19 & Redux Toolkit", "Node.js & Express REST APIs", "MongoDB & Mongoose", "Full Stack Cloud Deployment"]
     },
     {
       id: "course-react-js",
       docxKey: "react-js",
-      title: "React JS Frontend Engineering",
+      title: "React JS Training Institute in Greater Noida",
       tag: "UI Architecture",
       category: "fullstack",
       duration: "3 Months",
@@ -137,7 +151,7 @@ const allMasterCourses = [
     {
       id: "course-spring-boot",
       docxKey: "spring-boot",
-      title: "Spring Boot & Microservices",
+      title: "Spring Boot Training Course",
       tag: "Banking & Fintech",
       category: "java",
       duration: "3 - 4 Months",
@@ -163,41 +177,41 @@ const allMasterCourses = [
     {
       id: "course-java",
       docxKey: "java",
-      title: "Core & Advanced Java Training",
+      title: "Java Training Institute Greater Noida",
       tag: "Campus to Corporate",
       category: "java",
       duration: "4 Months",
       icon: Code2,
       color: "from-amber-600 to-rose-600",
       description: docxPagesData.courses['java']?.description || "Solidify Java OOPs concepts, multithreading, collections framework, JDBC, and enterprise architecture.",
-      modulesCount: docxPagesData.courses['java']?.curriculum?.length || 10,
+      modulesCount: docxPagesData.courses['java']?.curriculum?.length || 13,
       highlights: ["Deep OOPs & Collections", "Multithreading & Concurrency", "JDBC & MySQL", "Interview Coding Drills"]
     },
     {
       id: "course-ai-ml",
       docxKey: "ai-ml",
-      title: "AI & Machine Learning Specialist",
+      title: "AI & Machine Learning Course Greater Noida",
       tag: "High Growth",
       category: "ai",
       duration: "5 Months",
       icon: Cpu,
       color: "from-rose-600 to-violet-600",
       description: docxPagesData.courses['ai-ml']?.description || "Master supervised & unsupervised ML, deep neural networks, computer vision, NLP, and model deployment.",
-      modulesCount: docxPagesData.courses['ai-ml']?.curriculum?.length || 11,
+      modulesCount: docxPagesData.courses['ai-ml']?.curriculum?.length || 14,
       highlights: ["Scikit-Learn & PyTorch", "NLP & Computer Vision", "Model Deployment Pipelines", "Real Kaggle Datasets"]
     },
     {
       id: "course-dbms",
       docxKey: "dbms",
-      title: "Database Management System (DBMS) Course",
+      title: "Database Management System Course Greater Noida",
       tag: "Expert-Led & Job-Focused",
       category: "database",
       duration: "2 - 3 Months",
       icon: Database,
       color: "from-blue-700 to-slate-800",
       description: docxPagesData.courses['dbms']?.description || "Master relational database architecture, ER modeling, complex SQL joins, indexing, query optimization, security, and administration.",
-      modulesCount: docxPagesData.courses['dbms']?.curriculum?.length || 13,
-      highlights: ["13 Comprehensive Modules", "Database Design & Normalization", "Transactions & ACID", "100% Placement Support"]
+      modulesCount: docxPagesData.courses['dbms']?.curriculum?.length || 14,
+      highlights: ["14 Comprehensive Modules", "Database Design & Normalization", "Transactions & ACID", "100% Placement Support"]
     },
     {
       id: "course-nosql",
@@ -215,7 +229,7 @@ const allMasterCourses = [
     {
       id: "course-sql",
       docxKey: "sql",
-      title: "SQL Training & Advanced Labs",
+      title: "SQL Training Course in Greater Noida",
       tag: "High Career Demand",
       category: "database",
       duration: "2 - 3 Months",
@@ -241,35 +255,33 @@ const allMasterCourses = [
     {
       id: "course-fullstack",
       docxKey: "fullstack",
-      title: "Full Stack Software Engineering",
+      title: "Full Stack Development Course Greater Noida",
       tag: "Complete Developer",
       category: "fullstack",
       duration: "6 Months",
       icon: Code2,
-      modulesCount: docxPagesData.courses['fullstack']?.curriculum?.length || 14,
+      modulesCount: docxPagesData.courses['fullstack']?.curriculum?.length || 16,
       highlights: ["Full Lifecycle Engineering", "CI/CD & DevOps Basics", "System Architecture", "Placement Assurance"]
+    },
+    {
+      id: "course-nosql-institute",
+      docxKey: "nosql-institute",
+      title: "NoSQL Database Institute Greater Noida",
+      tag: "Job Preparations",
+      category: "database",
+      duration: "2 - 3 Months",
+      icon: Database,
+      color: "from-teal-600 to-cyan-600",
+      description: docxPagesData.courses['nosql-institute']?.description || "Focus on hands-on experience at Yukti Software NoSQL training under the guidance of experienced software engineers with comprehensive job preparation.",
+      modulesCount: docxPagesData.courses['nosql-institute']?.curriculum?.length || 7,
+      highlights: ["MongoDB & NoSQL Architecture", "Data Modeling & Aggregation", "Cloud & Big Data Specializations", "Mock Interviews & Job Support"]
     }
 ];
 
 export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) {
   const [showAll, setShowAll] = useState(false);
-  const [coursesList, setCoursesList] = useState(allMasterCourses);
-
-  useEffect(() => {
-    let isMounted = true;
-    async function loadDynamicCourses() {
-      try {
-        const dynamicCourses = await getCourses(allMasterCourses);
-        if (isMounted && dynamicCourses && dynamicCourses.length > 0) {
-          setCoursesList(dynamicCourses);
-        }
-      } catch (err) {
-        console.warn('Could not fetch dynamic courses for TrainingCourses:', err);
-      }
-    }
-    loadDynamicCourses();
-    return () => { isMounted = false; };
-  }, []);
+  const { courses: contextCourses, courseCount } = useCourses();
+  const coursesList = contextCourses && contextCourses.length > 0 ? contextCourses : allMasterCourses;
 
   const displayedCourses = showAll ? coursesList : coursesList.slice(0, 6);
 
@@ -352,14 +364,14 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
           })}
         </div>
 
-        {/* View All 15 Courses Button */}
+        {/* View All Courses Button */}
         {!showAll && coursesList.length > 6 && (
           <div className="text-center pt-5 sm:pt-6">
             <button
               onClick={() => setShowAll(true)}
               className="px-8 py-3.5 rounded-2xl bg-slate-900 dark:bg-slate-800 text-white font-extrabold text-sm border border-slate-700 shadow-xl hover:scale-105 active:scale-95 transition-all inline-flex items-center space-x-2"
             >
-              <span>Explore All 16 Master Career Tracks</span>
+              <span>Explore All {courseCount} Master Career Tracks</span>
               <ArrowRight className="w-4 h-4 text-brand-400" />
             </button>
           </div>
@@ -442,7 +454,7 @@ export default function TrainingCourses({ onOpenConsultation, setCurrentPage }) 
                   onClick={() => setCurrentPage && setCurrentPage('courses')}
                   className="flex-1 sm:flex-none px-3 sm:px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-[11px] sm:text-xs border border-slate-200 dark:border-slate-700 transition-all flex items-center justify-center space-x-1 sm:space-x-1.5 whitespace-nowrap text-center"
                 >
-                  <span>Explore 16+ Tracks</span>
+                  <span>Explore {courseCount}+ Tracks</span>
                   <ArrowRight className="w-3.5 h-3.5 shrink-0" />
                 </button>
               </div>

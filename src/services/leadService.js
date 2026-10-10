@@ -182,3 +182,26 @@ export async function submitEnquiry(data = {}) {
     data: enquiryPayload
   };
 }
+
+/**
+ * Fetches all inbound leads & enquiries for Admin Portal
+ */
+export async function getEnquiries() {
+  if (!db) return [];
+  try {
+    const { getDocs, query, orderBy, limit } = await import('firebase/firestore');
+    const q = query(collection(db, 'enquiries'), orderBy('serverTimestamp', 'desc'), limit(100));
+    const snap = await getDocs(q);
+    return snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  } catch (err) {
+    try {
+      const { getDocs } = await import('firebase/firestore');
+      const snap = await getDocs(collection(db, 'enquiries'));
+      return snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    } catch (e) {
+      console.warn('[LeadService] Could not fetch enquiries:', e);
+      return [];
+    }
+  }
+}
+

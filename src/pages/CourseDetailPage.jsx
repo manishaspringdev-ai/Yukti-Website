@@ -31,6 +31,8 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { getCourseImages } from '../data/courseImages';
+import { getActiveBatches } from '../services/batchService';
+import { useCourses } from '../context/CoursesContext';
 
 // Helper to get smart icons for benefits
 const getBenefitIcon = (title = '', desc = '', idx = 0) => {
@@ -59,6 +61,7 @@ const getCardGridClass = (count = 3) => {
 };
 
 export default function CourseDetailPage({ courseKey = 'python', onOpenConsultation, setCurrentPage }) {
+  const { courseCount } = useCourses();
   // Find course from docxPagesData
   const course = docxPagesData.courses[courseKey] || docxPagesData.courses['python'] || {};
   const courseImages = getCourseImages(courseKey);
@@ -75,6 +78,39 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
   const [enquirySuccess, setEnquirySuccess] = useState(false);
   const [leadForm, setLeadForm] = useState({ name: '', email: '', phone: '', mode: 'Classroom Greater Noida' });
+  const [relatedBatches, setRelatedBatches] = useState([]);
+  const [batchesLoading, setBatchesLoading] = useState(true);
+
+  // Fetch upcoming batches related specifically to this course from Firestore
+  useEffect(() => {
+    let isMounted = true;
+    async function fetchCourseBatches() {
+      try {
+        setBatchesLoading(true);
+        const allBatches = await getActiveBatches();
+        if (isMounted) {
+          const normKey = (courseKey || '').toLowerCase().replace(/[-_]/g, ' ');
+          const normTitle = (course.title || '').toLowerCase();
+
+          const matched = allBatches.filter(b => {
+            const bName = (b.courseName || '').toLowerCase();
+            return (
+              bName.includes(normTitle) ||
+              normTitle.includes(bName) ||
+              (normKey.length > 2 && bName.includes(normKey))
+            );
+          });
+          setRelatedBatches(matched);
+        }
+      } catch (err) {
+        console.warn('Error fetching course batches:', err);
+      } finally {
+        if (isMounted) setBatchesLoading(false);
+      }
+    }
+    fetchCourseBatches();
+    return () => { isMounted = false; };
+  }, [courseKey, course.title]);
 
   useEffect(() => {
     if (course.title) {
@@ -130,7 +166,7 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
             className="inline-flex items-center space-x-2 text-xs font-bold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-all group bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 px-3.5 py-1.5 rounded-xl shadow-sm hover:shadow"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span>Back to All 16 Career Tracks & Courses</span>
+            <span>Back to All {courseCount} Career Tracks & Courses</span>
           </button>
         </div>
 
@@ -302,135 +338,217 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
       </section>
       </div>
 
-      {/* 3-Image Real Lab & Mentorship Showcase Bento */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        <div className="text-center max-w-2xl mx-auto space-y-2">
-          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
-            Hands-On Experience & Career Environment
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
-            Real interactive coding labs, senior 1-on-1 code reviews, and guaranteed placement drives in Greater Noida.
-          </p>
-        </div>
+      {/* SECTION 2: How This Course Takes a Different Approach */}
+      {course.differentApproach ? (
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+          <div className="space-y-3">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
+              {course.differentApproach.heading}
+            </h2>
+            {course.differentApproach.intro && (
+              <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed max-w-5xl">
+                {course.differentApproach.intro}
+              </p>
+            )}
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {courseImages.map((img, idx) => (
-            <div 
-              key={idx} 
-              className="relative rounded-3xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800 group h-64 sm:h-72 flex flex-col justify-end p-5"
-            >
-              <img 
-                src={img.url} 
-                alt={img.title} 
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent"></div>
-              
-              <div className="relative z-10 space-y-1.5 text-white">
-                <div className="flex items-center justify-between">
-                  <span className="px-2.5 py-1 rounded-xl bg-brand-500/30 backdrop-blur-md text-[10px] font-bold text-brand-300 border border-brand-400/40">
-                    {img.tag}
-                  </span>
-                  <span className="text-[10px] font-mono text-slate-300">
-                    Photo 0{idx + 1}/03
-                  </span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 pt-2">
+            {course.differentApproach.points.map((pt, idx) => (
+              <div 
+                key={idx}
+                className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-all space-y-2 flex flex-col justify-start"
+              >
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-7 h-7 rounded-xl bg-brand-50 dark:bg-brand-950/80 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold text-xs shrink-0 border border-brand-200 dark:border-brand-800">
+                    {idx + 1}
+                  </div>
+                  <h3 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white">
+                    {pt.title}
+                  </h3>
                 </div>
-                <h3 className="text-sm sm:text-base font-bold text-white drop-shadow leading-snug">
-                  {img.title}
-                </h3>
-                <p className="text-xs text-slate-300 drop-shadow line-clamp-2">
-                  {img.caption}
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed pl-9">
+                  {pt.desc}
                 </p>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
-      {/* 2. REAL COURSE BENEFITS SECTION (Parsed from DOCX) */}
-      {course.courseBenefits && course.courseBenefits.length > 0 && (
+      {/* Career Benefits Section (if present) */}
+      {course.careerBenefits && course.careerBenefits.length > 0 && (
         <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
           <div className="text-left space-y-1">
-            <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
-              Benefits of Enrolling in This Course
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+              {course.careerBenefitsHeading || 'Career Benefits of Learning'}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-              Practical skills, industry advantages, and career outcomes guaranteed from this training.
-            </p>
           </div>
 
-          <div className="p-5 sm:p-7 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3.5">
-              {course.courseBenefits.map((b, idx) => {
-                const isGenericTitle = !b.title || /^key benefit|^benefit/i.test(b.title.trim());
-                const displayTitle = !isGenericTitle && b.title !== b.desc ? b.title : null;
-                const displayText = b.desc || b.title;
-
-                return (
-                  <div key={idx} className="flex items-start space-x-3 text-slate-700 dark:text-slate-300">
-                    <div className="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 border border-emerald-200 dark:border-emerald-800">
-                      <ArrowRight className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
-                    </div>
-                    <p className="text-xs sm:text-sm leading-relaxed">
-                      {displayTitle && <strong className="text-slate-900 dark:text-white mr-1.5">{displayTitle}:</strong>}
-                      <span>{displayText}</span>
-                    </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 pt-2">
+            {course.careerBenefits.map((b, idx) => (
+              <div 
+                key={idx}
+                className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-all space-y-2.5 flex flex-col justify-start"
+              >
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-7 h-7 rounded-xl bg-emerald-50 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-xs shrink-0 border border-emerald-200 dark:border-emerald-800">
+                    {idx + 1}
                   </div>
-                );
-              })}
-            </div>
+                  <h3 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white">
+                    {b.title.replace(/^\d+\.\s*/, '')}
+                  </h3>
+                </div>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed pl-9">
+                  {b.desc}
+                </p>
+              </div>
+            ))}
           </div>
         </section>
       )}
 
-      {/* 3. Key Highlights & Approach Section (from DOCX) */}
-      {course.keyHighlights && course.keyHighlights.length > 0 && (
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <div className="text-left space-y-1">
-            <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
-              Why This Course Takes a Different Approach
-            </h2>
-          </div>
+      {/* Fallback Legacy Highlights/Benefits if neither differentApproach nor careerBenefits is provided */}
+      {!course.differentApproach && !course.careerBenefits && (
+        <>
+          {course.courseBenefits && course.courseBenefits.length > 0 && (
+            <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+              <div className="text-left space-y-1">
+                <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+                  Benefits of Enrolling in This Course
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+                  Practical skills, industry advantages, and career outcomes guaranteed from this training.
+                </p>
+              </div>
 
-          <div className="p-5 sm:p-7 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3.5">
-              {course.keyHighlights.map((hl, idx) => {
-                const isGenericTitle = !hl.title || /^key highlight|^key benefit|^highlight/i.test(hl.title.trim());
-                const displayTitle = !isGenericTitle && hl.title !== hl.desc ? hl.title : null;
-                const displayText = hl.desc || hl.title;
+              <div className="p-5 sm:p-7 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3.5">
+                  {course.courseBenefits.map((b, idx) => {
+                    const isGenericTitle = !b.title || /^key benefit|^benefit/i.test(b.title.trim());
+                    const displayTitle = !isGenericTitle && b.title !== b.desc ? b.title : null;
+                    const displayText = b.desc || b.title;
 
-                return (
-                  <div key={idx} className="flex items-start space-x-3 text-slate-700 dark:text-slate-300">
-                    <div className="w-5 h-5 rounded-full bg-brand-100 dark:bg-brand-950 text-brand-600 dark:text-brand-400 flex items-center justify-center shrink-0 mt-0.5 border border-brand-200 dark:border-brand-800">
-                      <ArrowRight className="w-3 h-3 text-brand-600 dark:text-brand-400" />
-                    </div>
-                    <p className="text-xs sm:text-sm leading-relaxed">
-                      {displayTitle && <strong className="text-slate-900 dark:text-white mr-1.5">{displayTitle}:</strong>}
-                      <span>{displayText}</span>
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
+                    return (
+                      <div key={idx} className="flex items-start space-x-3 text-slate-700 dark:text-slate-300">
+                        <div className="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 border border-emerald-200 dark:border-emerald-800">
+                          <ArrowRight className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
+                        </div>
+                        <p className="text-xs sm:text-sm leading-relaxed">
+                          {displayTitle && <strong className="text-slate-900 dark:text-white mr-1.5">{displayTitle}:</strong>}
+                          <span>{displayText}</span>
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </section>
+          )}
+
+          {course.keyHighlights && course.keyHighlights.length > 0 && (
+            <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+              <div className="text-left space-y-1">
+                <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+                  Why This Course Takes a Different Approach
+                </h2>
+              </div>
+
+              <div className="p-5 sm:p-7 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3.5">
+                  {course.keyHighlights.map((hl, idx) => {
+                    const isGenericTitle = !hl.title || /^key highlight|^key benefit|^highlight/i.test(hl.title.trim());
+                    const displayTitle = !isGenericTitle && hl.title !== hl.desc ? hl.title : null;
+                    const displayText = hl.desc || hl.title;
+
+                    return (
+                      <div key={idx} className="flex items-start space-x-3 text-slate-700 dark:text-slate-300">
+                        <div className="w-5 h-5 rounded-full bg-brand-100 dark:bg-brand-950 text-brand-600 dark:text-brand-400 flex items-center justify-center shrink-0 mt-0.5 border border-brand-200 dark:border-brand-800">
+                          <ArrowRight className="w-3 h-3 text-brand-600 dark:text-brand-400" />
+                        </div>
+                        <p className="text-xs sm:text-sm leading-relaxed">
+                          {displayTitle && <strong className="text-slate-900 dark:text-white mr-1.5">{displayTitle}:</strong>}
+                          <span>{displayText}</span>
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </section>
+          )}
+        </>
       )}
 
-      {/* 4. Target Audience / Who Can Enroll Section (from DOCX) */}
-      {course.targetAudience && course.targetAudience.length > 0 && (
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="p-6 sm:p-8 rounded-3xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm">
-            <div className="flex items-center space-x-2 text-brand-600 dark:text-brand-400">
-              <Target className="w-5 h-5 text-brand-500" />
-              <h3 className="text-lg font-black text-slate-900 dark:text-white">Who Can Consider Enrolling?</h3>
+      {/* SECTION 3: Who Can Consider Enrolling? */}
+      {course.whoCanEnroll ? (
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+          <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-4">
+            <div className="flex items-center space-x-2.5 text-brand-600 dark:text-brand-400">
+              <Target className="w-6 h-6 text-brand-500" />
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+                {course.whoCanEnroll.heading}
+              </h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {course.targetAudience.map((aud, aIdx) => (
-                <div key={aIdx} className="flex items-start space-x-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+            
+            {course.whoCanEnroll.intro && (
+              <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                {course.whoCanEnroll.intro}
+              </p>
+            )}
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
+              {course.whoCanEnroll.points.map((point, pIdx) => (
+                <div key={pIdx} className="flex items-start space-x-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
                   <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
-                  <span>{aud}</span>
+                  <span className="leading-snug">{point}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : (
+        course.targetAudience && course.targetAudience.length > 0 && (
+          <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="p-6 sm:p-8 rounded-3xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm">
+              <div className="flex items-center space-x-2 text-brand-600 dark:text-brand-400">
+                <Target className="w-5 h-5 text-brand-500" />
+                <h3 className="text-lg font-black text-slate-900 dark:text-white">Who Can Consider Enrolling?</h3>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {course.targetAudience.map((aud, aIdx) => (
+                  <div key={aIdx} className="flex items-start space-x-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                    <span>{aud}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )
+      )}
+
+      {/* SECTION 4: Things You Need to Know Before Enrolling */}
+      {course.thingsToKnow && (
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+          <div className="p-6 sm:p-8 rounded-3xl bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+            <div className="flex items-center space-x-2.5 text-amber-600 dark:text-amber-400">
+              <ShieldCheck className="w-6 h-6 text-amber-500" />
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+                {course.thingsToKnow.heading}
+              </h2>
+            </div>
+
+            {course.thingsToKnow.intro && (
+              <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                {course.thingsToKnow.intro}
+              </p>
+            )}
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
+              {course.thingsToKnow.points.map((item, tIdx) => (
+                <div key={tIdx} className="flex items-start space-x-3 p-3 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 text-xs sm:text-sm text-slate-700 dark:text-slate-300 shadow-xs">
+                  <CheckCheck className="w-4 h-4 text-brand-500 flex-shrink-0 mt-0.5" />
+                  <span className="leading-snug">{item}</span>
                 </div>
               ))}
             </div>
@@ -438,12 +556,12 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
         </section>
       )}
 
-      {/* 5. Deep Curriculum Syllabus Accordions (Strictly M1 to Mn from DOCX) */}
+      {/* SECTION 5: Deep Curriculum Syllabus Accordions (Strictly M1 to Mn from DOCX) */}
       {course.curriculum && course.curriculum.length > 0 && (
         <section id="syllabus-section" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
           <div className="text-center space-y-2">
             <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white">
-              Industry Curated Training Syllabus ({course.curriculum.length} Modules)
+              {course.syllabusHeading || `${course.title || cleanHeadline} Syllabus`}
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
               Every module is accompanied by hands-on laboratory exercises, coding assignments, and real-world capstones.
@@ -498,6 +616,179 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
         </section>
       )}
 
+      {/* 5.5 Course Specific Upcoming Batches Section */}
+      <section id="course-batches" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div className="text-center space-y-2">
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-brand-50 dark:bg-brand-950/80 border border-brand-200 dark:border-brand-800/80 text-brand-700 dark:text-brand-300 text-xs font-bold">
+            <Calendar className="w-3.5 h-3.5 text-brand-600 dark:text-brand-400" />
+            <span>BATCH SCHEDULE & SEAT AVAILABILITY</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+            Upcoming Batches for {cleanHeadline}
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-xl mx-auto">
+            Choose from flexible weekday morning, evening, or weekend classroom batches at our Greater Noida center or join live interactive online sessions.
+          </p>
+        </div>
+
+        {/* If Batches Exist in Firestore for this Course */}
+        {relatedBatches.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {relatedBatches.map((batch) => {
+              const isFilling = (batch.status || '').toLowerCase().includes('filling');
+              return (
+                <div 
+                  key={batch.id}
+                  className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-5 sm:p-6 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between space-y-4 relative group"
+                >
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="px-2.5 py-0.5 rounded-md bg-brand-50 dark:bg-brand-950 text-brand-700 dark:text-brand-300 font-mono font-extrabold text-[10px] tracking-wider border border-brand-200 dark:border-brand-800">
+                        {batch.batchCode || 'BATCH'}
+                      </span>
+                      <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold flex items-center space-x-1 ${
+                        isFilling
+                          ? 'bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 border border-amber-300 animate-pulse'
+                          : 'bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 border border-emerald-300'
+                      }`}>
+                        <Flame className="w-3 h-3 text-amber-600" />
+                        <span>{batch.status || 'Upcoming - Open'}</span>
+                      </span>
+                    </div>
+
+                    <h3 className="text-base font-black text-slate-900 dark:text-white">
+                      {batch.courseName}
+                    </h3>
+
+                    <div className="space-y-2 pt-1 text-xs">
+                      <div className="flex items-center space-x-2.5 p-2 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
+                        <Calendar className="w-4 h-4 text-brand-600 dark:text-brand-400 shrink-0" />
+                        <div>
+                          <span className="text-[10px] text-slate-400 block font-medium">Start Date</span>
+                          <span className="font-bold text-slate-900 dark:text-white">{batch.startDate}</span>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center space-x-2.5 p-2 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
+                        <Clock className="w-4 h-4 text-indigo-600 dark:text-indigo-400 shrink-0" />
+                        <div>
+                          <span className="text-[10px] text-slate-400 block font-medium">Timings</span>
+                          <span className="font-semibold text-slate-800 dark:text-slate-200">{batch.timing}</span>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center space-x-2.5 p-2 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
+                        <Layers className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                        <div>
+                          <span className="text-[10px] text-slate-400 block font-medium">Mode</span>
+                          <span className="font-semibold text-slate-800 dark:text-slate-200">{batch.mode}</span>
+                        </div>
+                      </div>
+
+                      {batch.trainer && (
+                        <div className="flex items-center space-x-2.5 p-2 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
+                          <Users className="w-4 h-4 text-purple-600 dark:text-purple-400 shrink-0" />
+                          <div>
+                            <span className="text-[10px] text-slate-400 block font-medium">Faculty</span>
+                            <span className="font-semibold text-slate-800 dark:text-slate-200">{batch.trainer}</span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-3">
+                    <span className="text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
+                      ● {batch.seatsLeft || 5} Seats Available
+                    </span>
+                    <button
+                      onClick={() => onOpenConsultation && onOpenConsultation({
+                        type: 'student',
+                        course: course.title || cleanHeadline,
+                        batchCode: batch.batchCode
+                      })}
+                      className="py-2 px-4 rounded-xl bg-gradient-to-r from-brand-600 to-accent-primary hover:from-brand-500 hover:to-accent-primary text-white font-extrabold text-xs shadow-md flex items-center space-x-1.5 transition-all cursor-pointer"
+                    >
+                      <span>Enroll in this Batch</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          /* General Batch Assistance Card when specific batch is not yet scheduled */
+          <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200/80 dark:border-slate-800 shadow-md flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="space-y-2 text-center sm:text-left">
+              <div className="flex items-center justify-center sm:justify-start space-x-2">
+                <Sparkles className="w-5 h-5 text-amber-500" />
+                <h3 className="text-base sm:text-lg font-black text-slate-900 dark:text-white">
+                  New Weekly & Weekend Batches Starting Soon
+                </h3>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-xl leading-relaxed">
+                We organize fresh batches for <strong>{cleanHeadline}</strong> every week with max 15 students per cohort. Flexible slots (Morning, Evening, Weekend) are available at our Greater Noida Center & Live Online.
+              </p>
+              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 pt-1 text-xs text-slate-500 dark:text-slate-400 font-semibold">
+                <span className="flex items-center space-x-1">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
+                  <span>100% Placement Assistance</span>
+                </span>
+                <span className="flex items-center space-x-1">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
+                  <span>Live Project Labs</span>
+                </span>
+                <span className="flex items-center space-x-1">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
+                  <span>Up to 30% Scholarship</span>
+                </span>
+              </div>
+            </div>
+
+            <button
+              onClick={() => onOpenConsultation && onOpenConsultation({
+                type: 'student',
+                course: course.title || cleanHeadline
+              })}
+              className="px-6 py-3 rounded-2xl bg-brand-600 hover:bg-brand-500 text-white font-extrabold text-xs shadow-md transition-all shrink-0 cursor-pointer"
+            >
+              Inquire Batch Timings & Fee
+            </button>
+          </div>
+        )}
+      </section>
+
+      {/* 5.5 Career Opportunities Section (Specific to Software Training Course as per document) */}
+      {(courseKey === 'software-development' || courseKey === 'software-training' || courseKey === 'software-development-course' || course.showCareerOpportunitiesSection) && course.careerOpportunities && course.careerOpportunities.length > 0 && (
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+          <div className="text-center sm:text-left space-y-1">
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+              {course.careerOpportunitiesHeading || `Career Opportunities after ${cleanHeadline}`}
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+              High-growth technical career paths open to our certified graduates across global tech companies and startups.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 pt-1">
+            {course.careerOpportunities.map((opportunity, oIdx) => (
+              <div
+                key={oIdx}
+                className="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:border-brand-500/60 hover:shadow-md transition-all flex items-center space-x-2.5 group"
+              >
+                <div className="w-8 h-8 rounded-xl bg-brand-50 dark:bg-brand-950/70 text-brand-600 dark:text-brand-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                  <Briefcase className="w-4 h-4" />
+                </div>
+                <span className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 leading-snug">
+                  {opportunity}
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* 6. Career Roles & Industry Scope (Fully Responsive Mobile Cards & Desktop Table) */}
       {(() => {
         const rawRoles = course.careerRolesTable || course.careerTable || [];
@@ -507,7 +798,7 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
           <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
             <div className="text-center space-y-2">
               <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white">
-                Target Job Roles & Industry Scope
+                {course.careerRolesHeading || "Target Job Roles & Industry Scope"}
               </h2>
             </div>
 
@@ -518,7 +809,9 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
                   <tr className="bg-slate-100 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-extrabold">
                     <th className="p-4 sm:p-5 whitespace-nowrap w-1/4">Target Job Profile</th>
                     <th className="p-4 sm:p-5">Key Responsibilities</th>
-                    <th className="p-4 sm:p-5 whitespace-nowrap w-56 text-right pr-6">Placement Readiness</th>
+                    <th className="p-4 sm:p-5 whitespace-nowrap w-64 text-right pr-6">
+                      {rawRoles.some(r => r.skillsOrPackage) ? "Package / Placement Readiness" : "Placement Readiness"}
+                    </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
@@ -534,9 +827,15 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
                         {role.responsibilities || role.skills || "Application Development & Architecture"}
                       </td>
                       <td className="p-4 sm:p-5 whitespace-nowrap text-right pr-6">
-                        <span className="inline-flex items-center whitespace-nowrap px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-bold border border-emerald-200 dark:border-emerald-800 text-xs">
-                          High Demand • Job-Ready
-                        </span>
+                        {role.skillsOrPackage ? (
+                          <span className="inline-flex items-center whitespace-nowrap px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 font-extrabold border border-emerald-200 dark:border-emerald-800 text-xs">
+                            {role.skillsOrPackage}
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center whitespace-nowrap px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-bold border border-emerald-200 dark:border-emerald-800 text-xs">
+                            High Demand • Job-Ready
+                          </span>
+                        )}
                       </td>
                     </tr>
                   ))}
@@ -557,7 +856,7 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
                       <span>{role.role}</span>
                     </div>
                     <span className="px-2.5 py-1 rounded-md bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-bold border border-emerald-200 dark:border-emerald-800 text-[10px] shrink-0 whitespace-nowrap">
-                      High Demand • Job-Ready
+                      {role.skillsOrPackage || "High Demand • Job-Ready"}
                     </span>
                   </div>
                   <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed pl-6">
@@ -565,6 +864,54 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
                   </p>
                 </div>
               ))}
+            </div>
+          </section>
+        );
+      })()}
+
+      {/* 6.5 Why Choose Yukti Software Section */}
+      {(() => {
+        const why = course.whyChooseUs || course.whyChooseYukti;
+        if (!why || (Array.isArray(why) && why.length === 0)) return null;
+
+        const isObject = typeof why === 'object' && !Array.isArray(why);
+        const heading = isObject ? (why.heading || `Why Choose Yukti Software for ${cleanHeadline}`) : `Why Choose Yukti Software`;
+        const intro = isObject ? why.intro : null;
+        const subheading = isObject ? why.subheading : null;
+        const points = isObject ? (why.points || []) : why;
+
+        return (
+          <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+            <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-brand-50/50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950 border border-brand-200/60 dark:border-brand-900/40 shadow-sm space-y-4">
+              <div className="flex items-center space-x-2.5 text-brand-600 dark:text-brand-400">
+                <Sparkles className="w-6 h-6 text-brand-500" />
+                <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+                  {heading}
+                </h2>
+              </div>
+
+              {intro && (
+                <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                  {intro}
+                </p>
+              )}
+
+              {subheading && (
+                <p className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 pt-1">
+                  {subheading}
+                </p>
+              )}
+
+              {points && points.length > 0 && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
+                  {points.map((pt, pIdx) => (
+                    <div key={pIdx} className="flex items-start space-x-3 p-3.5 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 text-xs sm:text-sm text-slate-700 dark:text-slate-300 shadow-xs">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                      <span className="leading-snug">{pt}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </section>
         );
@@ -643,7 +990,7 @@ export default function CourseDetailPage({ courseKey = 'python', onOpenConsultat
               onClick={() => setCurrentPage && setCurrentPage('courses')}
               className="px-6 py-4 rounded-2xl bg-black/20 hover:bg-black/30 text-white font-bold text-sm border border-white/30 transition-all"
             >
-              Explore All 16 Career Tracks
+              Explore All {courseCount} Career Tracks
             </button>
           </div>
         </div>

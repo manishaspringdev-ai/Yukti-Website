@@ -15,9 +15,11 @@ import {
   ShieldCheck
 } from 'lucide-react';
 import { LinkedInIcon, TwitterIcon, GithubIcon, WhatsAppIcon } from './SocialIcons';
+import { useCourses } from '../context/CoursesContext';
 
 export default function Footer({ setCurrentPage, onOpenConsultation }) {
   const { brand } = siteData;
+  const { courseCount } = useCourses();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -131,10 +133,17 @@ export default function Footer({ setCurrentPage, onOpenConsultation }) {
                 ))}
                 <li className="pt-3 mt-2 border-t border-slate-200/80 dark:border-slate-800/80 space-y-2">
                   <button 
-                    onClick={() => handleNav('training-institute')} 
+                    onClick={() => handleNav('verify')} 
                     className="w-full flex items-center space-x-1.5 text-left text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 hover:translate-x-1 transition-all group"
                   >
-                    <ArrowRight className="w-3.5 h-3.5 text-emerald-500 shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0 group-hover:translate-x-1 transition-transform" />
+                    <span className="leading-snug">Verify Student Certificate</span>
+                  </button>
+                  <button 
+                    onClick={() => handleNav('training-institute')} 
+                    className="w-full flex items-center space-x-1.5 text-left text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:translate-x-1 transition-all group"
+                  >
+                    <ArrowRight className="w-3.5 h-3.5 text-brand-500 shrink-0 group-hover:translate-x-1 transition-transform" />
                     <span className="leading-snug">Software Training Institute</span>
                   </button>
                   <button 
@@ -142,7 +151,7 @@ export default function Footer({ setCurrentPage, onOpenConsultation }) {
                     className="w-full flex items-center space-x-1.5 text-left text-xs font-bold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 hover:translate-x-1 transition-all group"
                   >
                     <ArrowRight className="w-3.5 h-3.5 text-brand-500 shrink-0 group-hover:translate-x-1 transition-transform" />
-                    <span className="leading-snug">Explore All 16 Career Tracks</span>
+                    <span className="leading-snug">Explore All {courseCount} Career Tracks</span>
                   </button>
                 </li>
               </ul>
@@ -184,7 +193,7 @@ export default function Footer({ setCurrentPage, onOpenConsultation }) {
                 <li className="flex items-start space-x-2.5">
                   <MapPin className="w-4 h-4 text-brand-600 dark:text-brand-400 flex-shrink-0 mt-0.5" />
                   <span className="leading-relaxed">
-                    Alpha 1 Commercial Belt, Greater Noida, NCR, India
+                    {brand.address}
                   </span>
                 </li>
                 
@@ -260,13 +269,43 @@ export default function Footer({ setCurrentPage, onOpenConsultation }) {
 
           </div>
 
+          {/* Mobile Dedicated Quick Verification Banner */}
+          <div className="sm:hidden pt-6 pb-2">
+            <button
+              onClick={() => handleNav('verify')}
+              className="w-full p-3 rounded-2xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800/80 flex items-center justify-between shadow-xs group"
+            >
+              <div className="flex items-center space-x-3 text-left">
+                <div className="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-xs font-extrabold text-emerald-900 dark:text-emerald-200">
+                    Verify Certificate & Credentials
+                  </p>
+                  <p className="text-[10px] text-emerald-700 dark:text-emerald-400">
+                    Official Instant ID Verification
+                  </p>
+                </div>
+              </div>
+              <ChevronRight className="w-4 h-4 text-emerald-600 dark:text-emerald-400 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
+
           {/* Bottom Copyright & Back to Top */}
-          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400 pb-16 sm:pb-0 sm:pr-72 lg:pr-80">
+          <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400 pb-16 sm:pb-0 sm:pr-72 lg:pr-80">
             <div className="flex items-center space-x-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+              <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
               <p>© {new Date().getFullYear()} {brand.name} Private Limited. All Rights Reserved.</p>
             </div>
-            <div className="flex items-center space-x-6">
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6">
+              <button 
+                onClick={() => handleNav('verify')} 
+                className="px-3 py-1 rounded-full bg-emerald-100/80 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-700/60 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-200 font-extrabold transition-all flex items-center space-x-1.5 shadow-2xs"
+              >
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                <span>Verify Certificate</span>
+              </button>
               <button 
                 onClick={onOpenConsultation} 
                 className="text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 font-semibold transition-colors"

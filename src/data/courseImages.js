@@ -166,7 +166,7 @@ export const courseImageGalleries = {
 export function getCourseImages(courseKey = '') {
   const key = (courseKey || '').toLowerCase();
   
-  if (key.includes('software')) return courseImageGalleries.software;
+  if (key.includes('software') || key.includes('program')) return courseImageGalleries.software;
   if (key.includes('python')) return courseImageGalleries.python;
   if (key.includes('java') || key.includes('spring')) return courseImageGalleries.java;
   if (key.includes('dsa') || key.includes('algorithm')) return courseImageGalleries.dsa;

@@ -26,24 +26,26 @@ import {
   Globe,
   Server
 } from 'lucide-react';
+import { useCourses } from '../context/CoursesContext';
 
 const ALL_15_COURSES = [
   // Full Stack & Web
-  { id: 'course-software-development', name: 'Software Development & Testing', category: 'Programming', badge: 'Accredited', mode: 'Job-Ready Track', icon: Code2, desc: 'SDLC, OOPs, DBMS, APIs, Testing, Git & Cloud' },
+  { id: 'course-software-development', name: 'Software Training Course', category: 'Programming', badge: 'Accredited', mode: 'Job-Ready Track', icon: Code2, desc: 'SDLC, OOPs, DBMS, APIs, Testing, Git & Cloud' },
   { id: 'course-ai-fullstack', name: 'AI Full Stack Development', category: 'AI & Next-Gen', badge: 'Trending', mode: 'Live Practical', icon: Cpu, desc: 'GenAI, LLMs, AI Agents, React & Node.js' },
   { id: 'course-java-fullstack', name: 'Java Full Stack & Microservices', category: 'Full Stack', badge: 'High Demand', mode: 'Enterprise Standard', icon: Code2, desc: 'React, Spring Boot 3, Kafka, Docker & AWS' },
-  { id: 'course-mern-stack', name: 'MERN Stack Development', category: 'Full Stack', badge: 'Hot', mode: 'Full Stack JavaScript', icon: Layers, desc: 'MongoDB, Express, React, Node.js & Next.js' },
+  { id: 'course-mern-stack', name: 'MERN Stack Training Institute', category: 'Full Stack', badge: 'Hot', mode: 'Full Stack JavaScript', icon: Layers, desc: 'MongoDB, Express, React, Node.js & Next.js' },
   { id: 'course-python-fullstack', name: 'Python Full Stack Developer', category: 'Full Stack', badge: 'Popular', mode: 'Web & APIs', icon: Terminal, desc: 'Python, Django REST, React & PostgreSQL' },
-  { id: 'course-fullstack', name: 'Full Stack Web Engineering', category: 'Full Stack', badge: 'Job-Ready', mode: 'Production Capstone', icon: Globe, desc: 'HTML, CSS, JS, React, Node & Live Capstone' },
-  { id: 'course-react-js', name: 'React JS & Modern Frontend', category: 'Frontend', badge: 'Essential', mode: 'Modern UI/UX', icon: Zap, desc: 'React 19, Redux Toolkit, Tailwind & APIs' },
+  { id: 'course-fullstack', name: 'Full Stack Development Course', category: 'Full Stack', badge: 'Job-Ready', mode: 'Production Capstone', icon: Globe, desc: 'HTML, CSS, JS, React, Node & Live Capstone' },
+  { id: 'course-react-js', name: 'React JS Training Institute', category: 'Frontend', badge: 'Essential', mode: 'Modern UI/UX', icon: Zap, desc: 'React 19, Redux Toolkit, Tailwind & APIs' },
   { id: 'course-html-css', name: 'HTML5 & Modern CSS3 UI', category: 'Frontend', badge: 'Beginner', mode: 'Responsive Design', icon: Globe, desc: 'Responsive Design, Flexbox, Grid & Animation' },
 
   // Programming & Core
-  { id: 'course-python', name: 'Python Core & Advanced', category: 'Programming', badge: 'Top Rated', mode: 'Core to Advanced', icon: Terminal, desc: 'Core Python, OOP, Automation & REST APIs' },
+  { id: 'course-programming', name: 'Programming Course', category: 'Programming', badge: 'Practical Labs', mode: 'Advanced Labs', icon: Code2, desc: 'Java, Python, C/C++, OOP, Data Structures & DBs' },
+  { id: 'course-python', name: 'Python Training Institute', category: 'Programming', badge: 'Top Rated', mode: 'Core to Advanced', icon: Terminal, desc: 'Core Python, OOPs, Automation, DBs & REST APIs' },
   { id: 'course-advanced-java', name: 'Advanced Java & Microservices', category: 'Programming', badge: 'Enterprise', mode: 'Advanced Enterprise', icon: Code2, desc: 'JDBC, Servlets, Hibernate, Spring Boot & Cloud' },
-  { id: 'course-java', name: 'Core & Enterprise Java', category: 'Programming', badge: 'Core', mode: 'Enterprise Java', icon: Code2, desc: 'OOP, Multithreading, JDBC & Collections' },
-  { id: 'course-spring-boot', name: 'Spring Boot & Microservices', category: 'Programming', badge: 'Enterprise', mode: 'Cloud Microservices', icon: Server, desc: 'REST APIs, Hibernate, Security & Cloud' },
-  { id: 'course-dsa', name: 'DSA & System Design', category: 'Programming', badge: 'FAANG Tier', mode: 'Interview Focused', icon: Binary, desc: '350+ LeetCode Patterns, DP, Trees & Graphs' },
+  { id: 'course-java', name: 'Java Training Institute', category: 'Programming', badge: 'Core', mode: 'Enterprise Java', icon: Code2, desc: 'OOP, Collections, JDBC, Web & Frameworks' },
+  { id: 'course-spring-boot', name: 'Spring Boot Training Course', category: 'Programming', badge: 'Enterprise', mode: 'Cloud Microservices', icon: Server, desc: 'REST APIs, Hibernate, Security & Cloud' },
+  { id: 'course-dsa', name: 'DSA Course Greater Noida', category: 'Programming', badge: 'FAANG Tier', mode: 'Interview Focused', icon: Binary, desc: '350+ LeetCode Patterns, DP, Trees & Graphs' },
 
   // AI & Data
   { id: 'course-ai-ml', name: 'AI & Machine Learning', category: 'AI & Data', badge: 'Next-Gen', mode: 'AI Specialist', icon: Cpu, desc: 'ML Algorithms, Deep Learning & PyTorch' },
@@ -51,20 +53,30 @@ const ALL_15_COURSES = [
 
   // Databases
   { id: 'course-dbms-institute', name: 'DBMS Institute (Hands-on Labs)', category: 'Databases', badge: 'Popular', mode: 'Hands-on Labs', icon: Database, desc: 'CRUD, Queries, Schema Design, Quizzes & Placements' },
-  { id: 'course-sql', name: 'SQL Training & Advanced Labs', category: 'Databases', badge: 'Hot', mode: 'Advanced Labs', icon: Database, desc: 'Joins, Subqueries, CTEs, Window Functions & Tuning' },
-  { id: 'course-dbms', name: 'DBMS & Advanced SQL', category: 'Databases', badge: 'Foundation', mode: 'Database Architecture', icon: Database, desc: 'Relational DBs, Query Optimization & Stored Procs' },
-  { id: 'course-nosql', name: 'NoSQL & MongoDB Database', category: 'Databases', badge: 'Cloud DB', mode: 'Distributed NoSQL', icon: Database, desc: 'Document DBs, Aggregations, Redis & Scaling' }
+  { id: 'course-sql', name: 'SQL Training Course', category: 'Databases', badge: 'Hot', mode: 'Advanced Labs', icon: Database, desc: 'Joins, Subqueries, CTEs, Window Functions & Tuning' },
+  { id: 'course-dbms', name: 'Database Management System (DBMS)', category: 'Databases', badge: 'Foundation', mode: 'Database Architecture', icon: Database, desc: 'Relational DBs, Query Optimization & Stored Procs' },
+  { id: 'course-nosql', name: 'NoSQL & MongoDB Database', category: 'Databases', badge: 'Cloud DB', mode: 'Distributed NoSQL', icon: Database, desc: 'Document DBs, Aggregations, Redis & Scaling' },
+  { id: 'course-nosql-institute', name: 'NoSQL Database Institute', category: 'Databases', badge: 'Job-Ready', mode: 'Job Preparations', icon: Database, desc: 'MongoDB, Data Modeling, Cloud & Big Data' }
 ];
 
 export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation }) {
   const dropdownVariant = 'v1_megaSplit';
   const [activeCategory, setActiveCategory] = useState('All');
+  const { courses: dynamicCourses, courseCount } = useCourses();
+
+  const allCourses = (dynamicCourses && dynamicCourses.length > 0 ? dynamicCourses : ALL_15_COURSES).map(c => ({
+    ...c,
+    name: c.name || c.title,
+    desc: c.desc || c.description,
+    mode: c.mode || c.badge || 'Job-Ready Track',
+    ctc: c.ctc || '₹5 - 12 LPA'
+  }));
 
   const categories = ['All', 'Full Stack', 'Programming', 'AI & Data', 'Databases'];
 
   const filteredCourses = activeCategory === 'All' 
-    ? ALL_15_COURSES 
-    : ALL_15_COURSES.filter(c => c.category.toLowerCase().includes(activeCategory.toLowerCase()));
+    ? allCourses 
+    : allCourses.filter(c => (c.category || '').toLowerCase().includes(activeCategory.toLowerCase()));
 
   return (
     <div className="absolute top-full left-0 pt-2 z-50 animate-fadeIn">
@@ -86,7 +98,7 @@ export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation })
                 </div>
                 <div>
                   <h3 className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-wider">
-                    All 16 Professional Career Tracks
+                    All {courseCount} Professional Career Tracks
                   </h3>
                   <p className="text-[10px] text-slate-500 dark:text-slate-400">Classroom Greater Noida & Live Online</p>
                 </div>
@@ -171,7 +183,7 @@ export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation })
               <div className="space-y-1.5 pt-1 text-[10px] text-slate-200">
                 <div className="flex items-center space-x-2">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
-                  <span>16 Master Career Tracks</span>
+                  <span>{courseCount} Master Career Tracks</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
@@ -204,7 +216,7 @@ export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation })
                 onClick={() => handleNav('courses')}
                 className="w-full py-2 rounded-xl bg-white/10 hover:bg-white/15 text-white font-bold text-[11px] text-center transition-all"
               >
-                View Full 16-Course Directory
+                View Full {courseCount}-Course Directory
               </button>
             </div>
           </div>
@@ -221,7 +233,7 @@ export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation })
             <div className="flex items-center space-x-2">
               <Layers className="w-4 h-4 text-brand-600" />
               <span className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-wider">
-                All 16 Master Career Tracks
+                All {courseCount} Master Career Tracks
               </span>
             </div>
             <button
@@ -234,7 +246,7 @@ export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation })
           </div>
 
           <div className="grid grid-cols-3 gap-3">
-            {ALL_15_COURSES.map((c) => {
+            {allCourses.map((c) => {
               const Icon = c.icon || Code2;
               return (
                 <div
@@ -275,7 +287,7 @@ export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation })
       {dropdownVariant === 'v3_linearLuxury' && (
         <div className="w-[600px] p-3 rounded-2xl bg-white/95 dark:bg-slate-900/95 border border-slate-200/80 dark:border-slate-800 shadow-2xl backdrop-blur-xl space-y-1 max-h-[80vh] overflow-y-auto">
           <div className="px-3 py-1.5 flex items-center justify-between text-[11px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100 dark:border-slate-800">
-            <span>All 16 Career Tracks</span>
+            <span>All {courseCount} Career Tracks</span>
             <span>Target CTC</span>
           </div>
 
@@ -288,14 +300,14 @@ export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation })
                 <BookOpen className="w-3.5 h-3.5" />
               </div>
               <div>
-                <p className="text-xs font-extrabold text-brand-700 dark:text-brand-300">All 16 Courses Master Directory</p>
+                <p className="text-xs font-extrabold text-brand-700 dark:text-brand-300">All {courseCount} Courses Master Directory</p>
                 <p className="text-[10px] text-slate-500">View complete curriculum and syllabus</p>
               </div>
             </div>
             <ArrowRight className="w-4 h-4 text-brand-600" />
           </button>
 
-          {ALL_15_COURSES.map((c) => {
+          {allCourses.map((c) => {
             const Icon = c.icon || Code2;
             return (
               <button
@@ -335,11 +347,11 @@ export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation })
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
               <span className="text-[11px] text-slate-400 ml-2">yukti-academy-cli --all-15-tracks</span>
             </div>
-            <span className="text-emerald-400 text-[10px]">● 16 TRACKS LOADED</span>
+            <span className="text-emerald-400 text-[10px]">● {courseCount} TRACKS LOADED</span>
           </div>
 
           <div className="space-y-1.5">
-            {ALL_15_COURSES.map((c) => (
+            {allCourses.map((c) => (
               <button
                 key={c.id}
                 onClick={() => handleNav(c.id)}
@@ -433,7 +445,7 @@ export default function NavbarCoursesDropdown({ handleNav, onOpenConsultation })
               onClick={() => handleNav('courses')}
               className="font-bold text-brand-600 dark:text-brand-400 hover:underline flex items-center space-x-1"
             >
-              <span>Explore All 16 Tracks</span>
+              <span>Explore All {courseCount} Tracks</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
             <button

@@ -27,7 +27,6 @@ import classroomWorkshopImg from '../assets/Gallery/IMG_1972.jpg';
 import systemDesignImg from '../assets/Gallery/IMG_2670.jpeg';
 import techDiscussionImg from '../assets/Gallery/IMG20240312113328.jpg';
 import labCoding1Img from '../assets/Gallery/IMG_20240913_101218713_HDR.jpeg';
-import labCoding2Img from '../assets/Gallery/IMG_20240913_101226441_HDR.jpeg';
 import labArchitectureImg from '../assets/Gallery/IMG_20240913_163119530_HDR.jpeg';
 import campusOrientationImg from '../assets/Gallery/IMG_20250320_145946832_HDR~3.jpg';
 import teamDiscussionImg from '../assets/Gallery/WhatsApp Image 2024-09-27 at 22.58.09.jpeg';
@@ -105,15 +104,6 @@ const PHOTO_ITEMS = [
     caption: "1-on-1 practical code execution, live bug resolution, and developer tooling walkthroughs.",
     image: labCoding1Img,
     badge: "Practical Lab"
-  },
-  {
-    id: 9,
-    title: "Interactive Lab Practice & Doubt Clearance",
-    category: "classroom",
-    categoryLabel: "Labs & Classrooms",
-    caption: "Dedicated doubt clearing, algorithmic drills, and full-stack project building in our high-tech labs.",
-    image: labCoding2Img,
-    badge: "Lab Practice"
   },
   {
     id: 10,

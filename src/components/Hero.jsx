@@ -13,9 +13,11 @@ import {
 import heroMainImg from '../assets/Gallery/hero.png';
 import heroTopRightImg from '../assets/hero/placement_assist.jpg';
 import heroBottomLeftImg from '../assets/hero/software_dev.jpg';
+import { useCourses } from '../context/CoursesContext';
 
 export default function Hero({ onOpenConsultation, onNavigateServices, onNavigateTraining }) {
   const { hero } = siteData;
+  const { courseCount } = useCourses();
 
   return (
     <section id="hero" className="relative pt-2 pb-2 sm:pt-6 sm:pb-3 lg:pt-6 lg:pb-4 overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
@@ -91,7 +93,7 @@ export default function Hero({ onOpenConsultation, onNavigateServices, onNavigat
                 className="w-full sm:w-auto px-5 sm:px-6 py-3 sm:py-3.5 rounded-2xl font-bold text-xs sm:text-sm text-slate-800 dark:text-white bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 hover:border-brand-500 transition-all flex items-center justify-center space-x-2 shadow-sm whitespace-nowrap cursor-pointer"
               >
                 <GraduationCap className="w-4 h-4 text-brand-500 shrink-0" />
-                <span className="whitespace-nowrap">Explore 16+ Career Tracks</span>
+                <span className="whitespace-nowrap">Explore {courseCount}+ Career Tracks</span>
               </button>
             </div>
 

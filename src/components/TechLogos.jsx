@@ -286,7 +286,7 @@ export function SoftwareDevLogo({ className = "w-6 h-6" }) {
 export function getCourseLogo(courseIdOrKey, className = "w-7 h-7") {
   const id = (courseIdOrKey || '').toLowerCase();
   
-  if (id.includes('software')) return <SoftwareDevLogo className={className} />;
+  if (id.includes('software') || id.includes('program') || id.includes('coding')) return <SoftwareDevLogo className={className} />;
   if (id.includes('python')) return <PythonLogo className={className} />;
   if (id.includes('spring')) return <SpringBootLogo className={className} />;
   if (id.includes('java')) return <JavaLogo className={className} />;

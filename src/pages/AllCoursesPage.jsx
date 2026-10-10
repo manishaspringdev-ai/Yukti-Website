@@ -3,6 +3,7 @@ import { docxPagesData } from '../data/pagesDataFromDocs';
 import { getCourseLogo } from '../components/TechLogos';
 import { getCourseImages } from '../data/courseImages';
 import { getCourses } from '../services/contentService';
+import UpcomingBatches from '../components/UpcomingBatches';
 import { 
   Sparkles, 
   GraduationCap, 
@@ -27,258 +28,18 @@ import {
   X
 } from 'lucide-react';
 
-const MASTER_COURSES = [
-  {
-    id: "course-software-development",
-    key: "software-development",
-    title: "Software Development & Testing Course",
-    category: "programming",
-    badge: "Accredited Certification",
-    duration: "4 - 6 Months",
-    icon: Code2,
-    color: "from-blue-600 to-indigo-600",
-    description: "Comprehensive software engineering program covering SDLC, OOPs, Data Structures, DBMS, Web APIs, Testing, Debugging, Git, and Live Projects.",
-    highlights: ["SDLC & Agile Development", "OOPs & Data Structures", "Software Testing & QA", "Live Industry Project"]
-  },
-  {
-    id: "course-ai-fullstack",
-    key: "ai-fullstack",
-    title: "AI Full Stack Web Development",
-    category: "ai",
-    badge: "Next-Gen AI",
-    duration: "6 Months",
-    icon: Cpu,
-    color: "from-purple-600 to-indigo-600",
-    description: "Build intelligent full stack web applications integrating Generative AI, LLMs, LangChain, AI Agents, React.js and modern backend APIs.",
-    highlights: ["GenAI & Prompt Engineering", "AI Agent Automations", "React.js + Fast API", "Live AI Capstones"]
-  },
-  {
-    id: "course-java-fullstack",
-    key: "java-fullstack",
-    title: "Java Full Stack Development Course",
-    category: "fullstack",
-    badge: "Enterprise Standard",
-    duration: "5 - 6 Months",
-    icon: Code2,
-    color: "from-indigo-600 to-blue-600",
-    description: "Become an enterprise developer mastering React.js frontend, Core & Advanced Java, Spring Boot 3, Microservices, Kafka, Docker and AWS cloud.",
-    highlights: ["React.js & Tailwind CSS", "Spring Boot 3 REST APIs", "Hibernate / JPA & MySQL", "Cloud Microservices Capstone"]
-  },
-  {
-    id: "course-mern-stack",
-    key: "mern-stack",
-    title: "MERN Stack Web Development",
-    category: "fullstack",
-    badge: "High Job Demand",
-    duration: "4 - 6 Months",
-    icon: Layers,
-    color: "from-teal-600 to-emerald-600",
-    description: "Master full stack JavaScript from scratch with MongoDB database, Express.js backend, React.js UI, Node.js runtime, and cloud deployment.",
-    highlights: ["MongoDB & Aggregations", "Express.js REST APIs", "React Hooks & Redux", "JWT Auth & AWS Deploy"]
-  },
-  {
-    id: "course-python-fullstack",
-    key: "python-fullstack",
-    title: "Python Full Stack Development",
-    category: "fullstack",
-    badge: "Most Popular",
-    duration: "4 - 6 Months",
-    icon: Terminal,
-    color: "from-blue-600 to-cyan-600",
-    description: "Comprehensive end-to-end full stack training featuring Python 3, Django REST framework, Flask, React.js frontend, and PostgreSQL databases.",
-    highlights: ["Django & Flask Backends", "React.js Integration", "PostgreSQL & ORM", "Live Full Stack Portal"]
-  },
-  {
-    id: "course-fullstack",
-    key: "fullstack",
-    title: "Full Stack Software Engineering",
-    category: "fullstack",
-    badge: "Job-Ready",
-    duration: "4 - 6 Months",
-    icon: Globe,
-    color: "from-cyan-600 to-blue-600",
-    description: "Full spectrum web engineering covering modern HTML5, CSS3, JavaScript ES6+, React.js, Node.js, REST APIs, Git version control, and CI/CD.",
-    highlights: ["Responsive UI Systems", "Full Stack Node APIs", "Database Modeling", "Production Deployments"]
-  },
-  {
-    id: "course-dsa",
-    key: "dsa",
-    title: "Data Structures & Algorithms (DSA)",
-    category: "dsa",
-    badge: "FAANG Tier",
-    duration: "3 - 4 Months",
-    icon: Binary,
-    color: "from-emerald-600 to-teal-500",
-    description: "Crack product company and FAANG coding rounds. Master algorithmic optimization, DP, Trees, Graphs, and System Design with 350+ LeetCode patterns.",
-    highlights: ["350+ LeetCode Problems", "Dynamic Programming & Graphs", "Low & High Level Design", "1-on-1 Mock Interviews"]
-  },
-  {
-    id: "course-python",
-    key: "python",
-    title: "Complete Python Training Course",
-    category: "programming",
-    badge: "Top Rated",
-    duration: "3 - 4 Months",
-    icon: Terminal,
-    color: "from-sky-600 to-indigo-600",
-    description: "Master Python programming from syntax basics to OOP, multi-threading, automated scripting, web scraping, and database integrations.",
-    highlights: ["Core OOPs & Modularity", "File Handling & Multithreading", "Web Scraping & APIs", "MySQL & SQLite Integration"]
-  },
-  {
-    id: "course-java",
-    key: "java",
-    title: "Core & Advanced Java Training",
-    category: "programming",
-    badge: "Industry Core",
-    duration: "3 - 4 Months",
-    icon: Code2,
-    color: "from-amber-600 to-orange-600",
-    description: "Build robust enterprise fundamentals with Core Java, OOP architecture, Exception Handling, Collections Framework, JDBC, and multithreading.",
-    highlights: ["OOP Design Patterns", "Collections & Streams API", "JDBC Database Connectivity", "Enterprise Capstone"]
-  },
-  {
-    id: "course-advanced-java",
-    key: "advanced-java",
-    title: "Advanced Java Training Institute (Greater Noida)",
-    category: "programming",
-    badge: "Enterprise Track",
-    duration: "4 - 5 Months",
-    icon: Code2,
-    color: "from-orange-600 to-amber-600",
-    description: "Enterprise Java training covering JDBC, Servlets, JSP, Hibernate ORM, Spring Framework, Spring Boot 3, REST APIs, Microservices, and Docker.",
-    highlights: ["Spring Boot & Microservices", "Hibernate & JPA ORM", "RESTful APIs & Security", "100% Placement Support"]
-  },
-  {
-    id: "course-spring-boot",
-    key: "spring-boot",
-    title: "Spring Boot & Microservices",
-    category: "programming",
-    badge: "Backend Pro",
-    duration: "3 - 4 Months",
-    icon: Server,
-    color: "from-emerald-600 to-green-600",
-    description: "Master enterprise backend engineering with Spring Boot 3, Spring Data JPA, Hibernate ORM, Spring Security with JWT, and Microservices architecture.",
-    highlights: ["RESTful API Architecture", "Spring Security & OAuth2", "Microservices & Docker", "Cloud Native Deployments"]
-  },
-  {
-    id: "course-react-js",
-    key: "react-js",
-    title: "React JS Frontend Engineering",
-    category: "fullstack",
-    badge: "Essential UI",
-    duration: "2 - 3 Months",
-    icon: Zap,
-    color: "from-blue-500 to-cyan-500",
-    description: "Master the most popular UI library with React 19, Hooks, Redux Toolkit, Context API, Tailwind CSS, TypeScript, and modern SPA architecture.",
-    highlights: ["Component Architecture", "Custom Hooks & Redux Toolkit", "API Integration & Routing", "High-Performance SPAs"]
-  },
-  {
-    id: "course-html-css",
-    key: "html-css",
-    title: "HTML5, CSS3 & Responsive Web",
-    category: "fullstack",
-    badge: "Beginner Friendly",
-    duration: "2 Months",
-    icon: Globe,
-    color: "from-rose-500 to-orange-500",
-    description: "Start your web journey mastering modern semantic HTML5, CSS Grid, Flexbox, responsive layouts, Tailwind CSS, CSS animations, and UI best practices.",
-    highlights: ["Semantic HTML5 Layouts", "Flexbox & CSS Grid Mastery", "Responsive Mobile-First UI", "Portfolio Website Capstone"]
-  },
-  {
-    id: "course-ai-ml",
-    key: "ai-ml",
-    title: "AI & Machine Learning Specialist",
-    category: "ai",
-    badge: "High Growth",
-    duration: "5 - 6 Months",
-    icon: Cpu,
-    color: "from-violet-600 to-purple-600",
-    description: "Deep dive into Supervised & Unsupervised ML algorithms, Neural Networks, Deep Learning with TensorFlow & PyTorch, NLP, and Computer Vision.",
-    highlights: ["Predictive ML Models", "Deep Neural Networks", "Computer Vision & NLP", "Model Deployment & APIs"]
-  },
-  {
-    id: "course-data-analytics",
-    key: "data-analytics",
-    title: "Data Analytics & Python",
-    category: "ai",
-    badge: "Top Placement",
-    duration: "4 Months",
-    icon: TrendingUp,
-    color: "from-emerald-600 to-cyan-600",
-    description: "Transform business data into insights using Advanced Excel, SQL queries, Python for Data Analysis (Pandas/NumPy), Power BI, and Tableau dashboards.",
-    highlights: ["Advanced SQL & ETL", "Python Analytics (Pandas)", "Power BI & Tableau Dashboards", "Live Business Case Studies"]
-  },
-  {
-    id: "course-dbms",
-    key: "dbms",
-    title: "Database Management System (DBMS) Course",
-    category: "databases",
-    badge: "Expert-Led Track",
-    duration: "2 - 3 Months",
-    icon: Database,
-    color: "from-blue-600 to-indigo-600",
-    description: "Build practical database skills covering DBMS concepts, ER modeling, SQL, indexing, security, ACID transactions, and administration.",
-    highlights: ["Relational Database Design", "Advanced SQL & Indexing", "Transactions & ACID", "100% Placement Support"]
-  },
-  {
-    id: "course-nosql",
-    key: "nosql",
-    title: "NoSQL Database & MongoDB",
-    category: "databases",
-    badge: "Cloud Scale",
-    duration: "2 - 3 Months",
-    icon: Database,
-    color: "from-emerald-600 to-teal-600",
-    description: "Master modern document and NoSQL databases with MongoDB CRUD operations, aggregation pipelines, schema modeling, indexing, Redis caching, and scaling.",
-    highlights: ["Document Data Modeling", "Aggregation Pipelines", "Redis In-Memory Caching", "NoSQL Integration in Node/Python"]
-  },
-  {
-    id: "course-sql",
-    key: "sql",
-    title: "SQL Training & Advanced Labs",
-    category: "databases",
-    badge: "High Demand",
-    duration: "2 - 3 Months",
-    icon: Database,
-    color: "from-cyan-600 to-blue-600",
-    description: "Industry-focused SQL training covering DDL/DML, multi-table joins, subqueries, CTEs, window functions, indexing, stored procedures, and query optimization.",
-    highlights: ["Complex Joins & Subqueries", "Window Functions & CTEs", "Indexing & Optimization", "100% Placement Support"]
-  },
-  {
-    id: "course-dbms-institute",
-    key: "dbms-institute",
-    title: "Database Management System Institute (Greater Noida)",
-    category: "databases",
-    badge: "Hands-on Sessions",
-    duration: "2 - 3 Months",
-    icon: Database,
-    color: "from-indigo-600 to-cyan-600",
-    description: "Complete Database Management System training with practical lab sessions, SQL CRUD operations, real-world projects, quizzes, and complete interview preparation.",
-    highlights: ["Interactive Lab Sessions", "SQL Quizzes & Practice", "Real-World DB Projects", "100% Placement Assistance"]
-  }
-];
+import { MASTER_COURSES } from '../data/coursesData';
+import { useCourses } from '../context/CoursesContext';
 
 export default function AllCoursesPage({ onOpenConsultation, setCurrentPage }) {
-  const [courses, setCourses] = useState(MASTER_COURSES);
+  const { courses: contextCourses, courseCount } = useCourses();
+  const courses = contextCourses && contextCourses.length > 0 ? contextCourses : MASTER_COURSES;
   const [filter, setFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    document.title = "All IT Training Courses & Master Tracks | Yukti Software Greater Noida";
-    let isMounted = true;
-    async function loadCourses() {
-      try {
-        const dynamicCourses = await getCourses(MASTER_COURSES);
-        if (isMounted && dynamicCourses && dynamicCourses.length > 0) {
-          setCourses(dynamicCourses);
-        }
-      } catch (err) {
-        console.warn('Could not fetch dynamic courses:', err);
-      }
-    }
-    loadCourses();
-    return () => { isMounted = false; };
-  }, []);
+    document.title = `All ${courses.length} IT Training Courses & Master Tracks | Yukti Software Greater Noida`;
+  }, [courses.length]);
 
   const filterTabs = [
     { id: 'all', label: `All Tracks (${courses.length})` },
@@ -408,7 +169,7 @@ export default function AllCoursesPage({ onOpenConsultation, setCurrentPage }) {
             Master Career Catalog & Syllabus
           </h1>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Explore 16 industry-crafted software training programs with 100% practical lab sessions, live enterprise capstones, and dedicated placement support.
+            Explore {courses.length} industry-crafted software training programs with 100% practical lab sessions, live enterprise capstones, and dedicated placement support.
           </p>
 
           {/* Search Bar */}
@@ -537,7 +298,7 @@ export default function AllCoursesPage({ onOpenConsultation, setCurrentPage }) {
                 }}
                 className="px-6 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs shadow-md transition-all"
               >
-                Reset & View All 16 Courses
+                Reset & View All {courses.length} Courses
               </button>
             </div>
           </div>
@@ -631,6 +392,9 @@ export default function AllCoursesPage({ onOpenConsultation, setCurrentPage }) {
         )}
 
       </section>
+
+      {/* Upcoming & Ongoing Batches Schedule */}
+      <UpcomingBatches onOpenConsultation={onOpenConsultation} setCurrentPage={setCurrentPage} />
 
       {/* Trust & Placement Banner */}
       <section className="bg-slate-100/60 dark:bg-slate-900/40 py-14 border-y border-slate-200 dark:border-slate-800 text-center">
